@@ -47,7 +47,8 @@ Windows cuando todos sus procesos están detenidos.
 
 Publicada el 4 de octubre de 2026:
 
-- URL estable: https://dayflow-dun-seven.vercel.app
+- URL estable: https://dayflow-by-shadowstudio.vercel.app
+- Acceso: https://dayflow-by-shadowstudio.vercel.app/auth/login
 - Proyecto: `shadow-studio3/dayflow`, `prj_fpBaMferBZRyCQU5U8H67MF4IiKB`.
 - Despliegue: `dpl_ARTjc2TziAh7hEw8EG76zuhTKVV5`, estado `READY`, producción.
 - Compilación remota con Node.js 24, TypeScript y Vite superada; 73 entradas

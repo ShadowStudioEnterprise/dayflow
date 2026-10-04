@@ -2,7 +2,7 @@
 
 Una aplicación personal para organizar notas, tareas, calendario y recordatorios, diseñada para evolucionar a web, PWA, Android e iOS.
 
-**Web publicada:** [Dayflow en Vercel](https://dayflow-dun-seven.vercel.app).
+**Web publicada:** [Dayflow en Vercel](https://dayflow-by-shadowstudio.vercel.app/auth/login).
 
 Incluye notas, tareas, vistas de calendario de mes/semana/día, recordatorios, relaciones, Dashboard, Inbox, búsqueda, etiquetas y perfil con estadísticas. Ofrece sincronización con Supabase, instalación como PWA, arranque offline, actualizaciones sin interrumpir borradores y proyectos Android/iOS. La confirmación y recuperación por correo y las notificaciones web se verificaron manualmente en el alojamiento anterior; la recepción en el nuevo dominio sigue pendiente de prueba manual. Quedan pendientes la firma y publicación en tiendas y la validación en dispositivos físicos. Consulta la [validación de publicación](docs/release-validation.md) y la [configuración de Vercel](docs/vercel.md).
 

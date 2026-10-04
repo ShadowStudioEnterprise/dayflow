@@ -3,7 +3,7 @@
 Estado del 4 de octubre de 2026. Una compilación, una respuesta HTTP o un emulador no acreditan recepción de correo, entrega física de notificaciones ni consumo de batería.
 
 Actualización de alojamiento: la dirección principal es ahora
-[Dayflow en Vercel](https://dayflow-dun-seven.vercel.app), con despliegue `READY`,
+[Dayflow en Vercel](https://dayflow-by-shadowstudio.vercel.app/auth/login), con despliegue `READY`,
 Supabase configurado y comprobación de actualizaciones superada en Chromium.
 Detalles en [publicación en Vercel](vercel.md). La evidencia de correo y avisos
 de la tabla siguiente corresponde a las pruebas previas en Sites; todavía no
