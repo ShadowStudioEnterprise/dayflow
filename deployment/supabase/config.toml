@@ -1,0 +1,15 @@
+# Perfil remoto: solo ajustes de Auth necesarios para Dayflow.
+# El archivo supabase/config.toml de la raíz sigue dedicado a Docker local.
+project_id = "dayflow-hosted"
+
+[auth]
+site_url = "https://dayflow-dun-seven.vercel.app/"
+additional_redirect_urls = ["https://dayflow-dun-seven.vercel.app/", "https://dayflow-dun-seven.vercel.app/auth/update-password", "https://dayflow-productividad.gptgonzaleznavarrete.chatgpt.site/", "https://dayflow-productividad.gptgonzaleznavarrete.chatgpt.site/auth/update-password", "http://127.0.0.1:5173/", "http://127.0.0.1:5173/auth/update-password", "http://localhost:5173/", "http://localhost:5173/auth/update-password", "dayflow://auth/callback", "dayflow://auth/callback?next=recovery"]
+enable_signup = true
+minimum_password_length = 12
+
+[auth.email]
+enable_signup = true
+enable_confirmations = true
+double_confirm_changes = true
+secure_password_change = true

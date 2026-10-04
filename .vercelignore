@@ -1,0 +1,25 @@
+# Upload web source only; environment values are configured in Vercel.
+.git
+.vercel
+.toolchains
+.env
+.env.*
+*.local
+*.log
+**/*.pem
+**/*.key
+**/*.p12
+**/*.jks
+node_modules
+dist
+dist-ssr
+dist-pwa-test
+/android/
+/ios/
+/deployment/
+/supabase/
+/docs/
+test-results*
+playwright-report
+.vscode
+.idea

@@ -1,0 +1,57 @@
+.sync-indicator {
+  text-decoration: none;
+}
+.sync-indicator > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.sync-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+.sync-conflict {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 16px;
+}
+.sync-conflict h3 {
+  margin: 0;
+  overflow-wrap: anywhere;
+}
+.sync-conflict pre {
+  max-height: 260px;
+  overflow: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font-size: 11px;
+}
+.sync-conflict summary {
+  cursor: pointer;
+  font-size: 13px;
+}
+.sync-devices {
+  list-style: none;
+  padding: 0;
+}
+.sync-devices li {
+  display: grid;
+  gap: 7px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+.sync-rejected {
+  margin-top: 20px;
+}
+.sync-rejected strong,
+.sync-rejected p {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 420px) {
+  .sync-actions .button {
+    width: 100%;
+  }
+}

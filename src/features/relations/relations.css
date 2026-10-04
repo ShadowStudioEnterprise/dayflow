@@ -1,0 +1,97 @@
+.relation-picker {
+  min-width: 0;
+  margin: 20px 0;
+  padding: 14px;
+  border: 1px solid var(--line);
+  border-radius: 9px;
+}
+.relation-picker legend {
+  font-size: 13px;
+  padding: 0 6px;
+}
+.relation-picker legend svg {
+  vertical-align: middle;
+  margin-right: 5px;
+}
+.relation-list,
+.relation-results {
+  list-style: none;
+  margin: 10px 0;
+  padding: 0;
+}
+.relation-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+}
+.relation-list li > div {
+  flex: 1;
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+.relation-list a {
+  color: var(--accent);
+  font-size: 13px;
+}
+.relation-list small,
+.relation-results small {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  margin-top: 3px;
+}
+.relation-selector {
+  margin-top: 14px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+}
+.relation-selector label {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  font-size: 11px;
+}
+.relation-selector input,
+.relation-selector select {
+  width: 100%;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 8px;
+  color: var(--text);
+  background: var(--surface);
+}
+.relation-results,
+.relation-selector > p {
+  grid-column: 1 / -1;
+}
+.relation-results {
+  max-height: 220px;
+  overflow: auto;
+  margin: 0;
+}
+.relation-results button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 10px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 5px;
+  color: var(--text);
+  background: var(--panel);
+  overflow-wrap: anywhere;
+  font-size: 13px;
+}
+.relation-results button:hover {
+  background: var(--accent-soft);
+}
+@media (max-width: 380px) {
+  .relation-selector {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

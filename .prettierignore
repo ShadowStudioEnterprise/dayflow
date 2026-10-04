@@ -1,0 +1,16 @@
+node_modules
+dist
+package-lock.json
+test-results
+test-results-pwa
+test-results-local
+test-results-android
+supabase/.temp
+supabase/.branches
+playwright-report
+android
+ios
+dist-pwa-test
+.toolchains
+deployment/web/dist
+deployment/web/.sites-checkout

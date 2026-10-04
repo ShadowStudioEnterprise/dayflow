@@ -1,0 +1,96 @@
+.workspace-menu {
+  position: relative;
+  margin: 25px 0 20px;
+  flex-shrink: 0;
+}
+.sidebar .workspace.workspace-trigger {
+  width: 100%;
+  margin: 0;
+  padding: 8px 9px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  text-align: left;
+  color: var(--text);
+}
+.sidebar-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+.sidebar-body > * {
+  flex-shrink: 0;
+}
+.workspace-trigger:hover,
+.workspace-trigger[aria-expanded='true'] {
+  background: var(--accent-soft);
+  border-color: var(--line);
+}
+.workspace-avatar {
+  flex-shrink: 0;
+}
+.workspace-trigger[aria-expanded='true'] .workspace-chevron {
+  transform: rotate(180deg);
+}
+.workspace-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: max(100%, 220px);
+  max-width: calc(100vw - 40px);
+  z-index: 30;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--surface);
+  padding: 6px;
+  box-shadow: 0 10px 30px #0002;
+}
+.workspace-dropdown a,
+.workspace-logout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+}
+.workspace-dropdown a:hover,
+.workspace-logout:hover:not(:disabled) {
+  background: var(--accent-soft);
+}
+.workspace-account-actions {
+  margin-top: 6px;
+  padding-top: 6px;
+  border-top: 1px solid var(--line);
+}
+.workspace-logout {
+  width: 100%;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+}
+.workspace-logout-error {
+  margin: 6px 10px;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+.workspace-dropdown strong,
+.workspace-dropdown small {
+  display: block;
+}
+.workspace-dropdown small {
+  margin-top: 3px;
+  color: var(--muted);
+  font-size: 11px;
+}
+.sidebar-collapsed .workspace-trigger {
+  justify-content: center;
+  padding: 8px 0;
+}
+.sidebar-collapsed .mobile-open .workspace-trigger {
+  justify-content: flex-start;
+  padding: 8px 9px;
+}

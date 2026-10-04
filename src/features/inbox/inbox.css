@@ -1,0 +1,70 @@
+.inbox-page {
+  max-width: 1040px;
+}
+.inbox-search {
+  max-width: 380px;
+  margin: 28px 0;
+}
+.inbox-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--line);
+}
+.inbox-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--line);
+}
+.inbox-list li > span {
+  overflow-wrap: anywhere;
+  min-width: 0;
+}
+.inbox-list .button {
+  flex-shrink: 0;
+}
+.inbox-dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.inbox-dialog > .text-button {
+  margin-top: 24px;
+}
+.inbox-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+.inbox-dates {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.inbox-dates label {
+  min-width: 0;
+}
+.inbox-check {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+.inbox-check input {
+  width: 18px;
+  height: 18px;
+}
+@media (max-width: 420px) {
+  .inbox-list li {
+    gap: 12px;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+  .inbox-dates {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
