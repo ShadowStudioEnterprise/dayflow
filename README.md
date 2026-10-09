@@ -161,3 +161,7 @@ La [web HTTPS publicada](https://dayflow-productividad.gptgonzaleznavarrete.chat
 - [Temporal: zona horaria y desambiguación](https://tc39.es/proposal-temporal/docs/zoneddatetime.html)
 - [TipTap: integración React](https://tiptap.dev/docs/editor/getting-started/install/react)
 - [TipTap: StarterKit](https://tiptap.dev/docs/editor/extensions/functionality/starterkit)
+
+## Documentación y CI
+
+Consulta el [índice documental](docs/README.md), la [auditoría](docs/audits/README.md) y la [política de notificaciones](docs/notifications-policy.md). Ejecuta `npm run docs:check` y `npm run test:docs` antes de enviar cambios. GitHub Actions valida documentación, TypeScript, lint, formato, unitarias, build, E2E y PWA en PR y push a main.

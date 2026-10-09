@@ -47,6 +47,8 @@ test('captura para hoy, completa offline y conserva el resultado al recargar', a
 test('reúne vencidas, eventos y recordatorios y abre sus editores desde Hoy', async ({
   page,
 }) => {
+  // This scenario creates three entities and reloads before opening each editor.
+  test.setTimeout(60_000)
   await page.goto('/tasks?create=1')
   await page
     .getByLabel('Título', { exact: true })

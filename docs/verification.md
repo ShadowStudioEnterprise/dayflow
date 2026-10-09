@@ -1,5 +1,26 @@
 # Verificación — Fases 1–9, incluida PWA y Capacitor
 
+## Consolidación documental — 9 de octubre de 2026
+
+Ejecución local en Linux, Node 24.19.0, npm 11.9.0. Base inmutable: `a9f5d460964a79c5c84ab30ea94505a141a863c2`; árbol de trabajo de la rama `docs/ci-consolidation`, con cambios documentales y automatización. No se atribuyen estos resultados al commit base sin modificaciones. Huella SHA-256 de rutas y contenidos de los 11 archivos de implementación (excluye este registro): `1718b2724d17123d13ea9b5d5a4917894e7e2169bc6afc61f27591a1b07a6fd6`.
+
+| Comprobación                        | Resultado nuevo                                                     | Código |
+| ----------------------------------- | ------------------------------------------------------------------- | ------ |
+| npm ci                              | Correcto, 614 paquetes                                              | 0      |
+| npm run docs:check                  | Documentos, enlaces locales, anclas, índice y migraciones correctos | 0      |
+| npm run test:docs                   | 3 pruebas correctas                                                 | 0      |
+| npm run typecheck                   | Correcto                                                            | 0      |
+| npm run lint                        | Correcto                                                            | 0      |
+| npm test                            | 206 pruebas en 40 archivos, correctas                               | 0      |
+| npm run build                       | Correcto, worker generado                                           | 0      |
+| npm run format:check                | Correcto                                                            | 0      |
+| npx playwright install chromium     | Descarga inválida, fallo al descomprimir                            | 1      |
+| npm run test:e2e / npm run test:pwa | No ejecutados: Chromium no disponible                               | —      |
+
+El build emite un aviso de importación dinámica/estática de Capacitor sin afectar su resultado. E2E y PWA quedan configuradas en CI para Chromium; no se declara una ejecución remota aprobada. Docker/Supabase real y dispositivos físicos no se han probado en esta ejecución.
+
+Se incorporan [índice documental](README.md), [auditoría histórica](audits/README.md), [política de notificaciones](notifications-policy.md) y [workflow CI](../.github/workflows/ci.yml). El validador cubre enlaces Markdown inline y referencias explícitas, títulos ATX y migraciones enumeradas en database.md; no interpreta todo CommonMark, HTML, enlaces externos ni verifica exactitud semántica. Se retiraron cinco enlaces rotos a capturas históricas locales, conservando sus nombres y alcance.
+
 ## Evaluación sin dispositivo móvil — 3 de octubre de 2026
 
 Se repitieron las comprobaciones sobre el código actual: **192 unitarias**, **92 E2E de navegador** y **10 PWA**, todas correctas, sin reintentos. TypeScript, lint, formato y build correctos; `npm audit --omit=dev` informó de cero vulnerabilidades conocidas.
