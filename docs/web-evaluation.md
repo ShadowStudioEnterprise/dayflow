@@ -32,11 +32,11 @@ La revisión visual detectó que la semana exigía desplazamiento horizontal inc
 
 En 320 px no hay desbordamiento horizontal de la página; la semana se desplaza dentro de su contenedor y la vista Día ofrece una alternativa más cómoda. Los editores conservan sus controles, aunque llegar a las relaciones requiere desplazamiento vertical. Las capturas se revisaron visualmente:
 
-- [Semana en escritorio](../.toolchains/web-evaluation/week-desktop.png).
-- [Semana a 320 px](../.toolchains/web-evaluation/week-320.png).
-- [Día a 320 px](../.toolchains/web-evaluation/day-320.png).
-- [Relaciones en escritorio](../.toolchains/web-evaluation/relations-desktop.png).
-- [Relaciones a 320 px](../.toolchains/web-evaluation/relations-320.png).
+- Semana en escritorio — archivo local histórico `week-desktop.png` (no incluido en el repositorio).
+- Semana a 320 px — archivo local histórico `week-320.png` (no incluido en el repositorio).
+- Día a 320 px — archivo local histórico `day-320.png` (no incluido en el repositorio).
+- Relaciones en escritorio — archivo local histórico `relations-desktop.png` (no incluido en el repositorio).
+- Relaciones a 320 px — archivo local histórico `relations-320.png` (no incluido en el repositorio).
 
 ## Pendientes y límites
 

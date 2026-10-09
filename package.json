@@ -30,7 +30,9 @@
     "backend:configure": "node scripts/local-backend.mjs configure",
     "backend:stop": "node scripts/local-backend.mjs stop",
     "push:deploy": "node scripts/deploy-web-push.mjs",
-    "test:local": "playwright test --config playwright.local.config.ts"
+    "test:local": "playwright test --config playwright.local.config.ts",
+    "docs:check": "node scripts/validate-docs.mjs",
+    "test:docs": "node --test scripts/validate-docs.test.mjs"
   },
   "dependencies": {
     "@capacitor/android": "^8.5.2",
