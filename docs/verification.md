@@ -19,7 +19,7 @@ Ejecución local en Linux, Node 24.19.0, npm 11.9.0. Base inmutable: `a9f5d46096
 
 El build emite un aviso de importación dinámica/estática de Capacitor sin afectar su resultado. E2E y PWA quedan configuradas en CI para Chromium; no se declara una ejecución remota aprobada. Docker/Supabase real y dispositivos físicos no se han probado en esta ejecución.
 
-Se incorporan [índice documental](README.md), [auditoría histórica](audits/README.md), [política de notificaciones](notifications-policy.md) y [workflow CI](../.github/workflows/ci.yml). El validador cubre enlaces Markdown inline y referencias explícitas, títulos ATX y migraciones enumeradas en database.md; no interpreta todo CommonMark, HTML, enlaces externos ni verifica exactitud semántica. Se retiraron cinco enlaces rotos a capturas históricas locales, conservando sus nombres y alcance.
+Se incorporan [índice documental](README.md), [auditoría histórica](audits/README.md), [política de notificaciones](notifications-policy.md) y [workflow CI](https://github.com/ShadowStudioEnterprise/dayflow/blob/main/.github/workflows/ci.yml). El validador cubre enlaces Markdown inline y referencias explícitas, títulos ATX y migraciones enumeradas en database.md; no interpreta todo CommonMark, HTML, enlaces externos ni verifica exactitud semántica. Se retiraron cinco enlaces rotos a capturas históricas locales, conservando sus nombres y alcance.
 
 ## Evaluación sin dispositivo móvil — 3 de octubre de 2026
 

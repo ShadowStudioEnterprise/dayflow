@@ -1,4 +1,4 @@
-# Upload web source only; environment values are configured in Vercel.
+# Upload web source and documentation; environment values are configured in Vercel.
 .git
 .vercel
 .toolchains
@@ -18,7 +18,6 @@ dist-pwa-test
 /ios/
 /deployment/
 /supabase/
-/docs/
 test-results*
 playwright-report
 .vscode
