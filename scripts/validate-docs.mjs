@@ -21,7 +21,9 @@ export function validateDocs(root) {
           .readdirSync(dir, { withFileTypes: true })
           .flatMap((e) =>
             e.isDirectory()
-              ? walk(path.join(dir, e.name))
+              ? ['.vitepress', 'node_modules'].includes(e.name)
+                ? []
+                : walk(path.join(dir, e.name))
               : e.name.endsWith('.md')
                 ? [path.join(dir, e.name)]
                 : [],

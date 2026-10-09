@@ -2,6 +2,11 @@
 
 Las guías describen el comportamiento implementado; las auditorías conservan observaciones y propuestas fechadas. Los resultados históricos no certifican el commit actual.
 
+- [Portada del portal](index.md)
+- [Publicar el portal](portal-deployment.md)
+
+- [Dossier técnico](technical-dossier.md)
+
 ## Guías
 
 - [android-local](android-local.md)

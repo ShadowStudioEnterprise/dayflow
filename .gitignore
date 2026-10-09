@@ -45,3 +45,7 @@ android/app/src/local/assets/
 *.njsproj
 *.sln
 *.sw?
+
+# VitePress generated files
+docs/.vitepress/cache/
+docs/.vitepress/dist/
