@@ -35,3 +35,7 @@ Fase 8 reutiliza `inbox`, `tags`, las tres tablas de asociaciones y las entidade
 ## Purgado futuro
 
 Conservar tombstones hasta tener acuse de sincronización de todos los dispositivos activos y un plazo de retención definido. Un job privilegiado purgará tras ese umbral, con rebootstrap obligatorio de dispositivos antiguos. No hay borrado automático en esta fase ni pérdida silenciosa de colas locales.
+
+## Migración Web Push
+
+`202610040005_web_push.sql` añade suscripciones y reservas de envío; sus RPC privilegiadas deben contrastarse con los permisos efectivos del entorno. Consulta [Web Push](web-push.md) y la [auditoría](audits/2026-10-09.md).
