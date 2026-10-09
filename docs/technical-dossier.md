@@ -141,7 +141,7 @@ src/
   test/               preparación y seguridad SQL
 e2e/                  escenarios Playwright
 supabase/
-  migrations/         cinco migraciones versionadas
+  migrations/         seis migraciones versionadas
   functions/
     push-dispatch/    emisor Web Push
 scripts/              backend, Android, iconos y releases
@@ -285,13 +285,14 @@ Fuentes: `src/services/database/database.ts`, `repository.ts`, `src/services/syn
 
 ### 11.1 Evolución del esquema
 
-| Orden | Archivo                              | Cambio                                                             |
-| ----- | ------------------------------------ | ------------------------------------------------------------------ |
-| 1     | `202609200001_foundation.sql`        | Entidades, perfil, relaciones, auditoría, claves, índices y RLS    |
-| 2     | `202609200002_task_recurrence.sql`   | Zona, ancla y sucesora de tareas; restricciones e índice de estado |
-| 3     | `202609240003_reminder_timezone.sql` | Zona IANA de recordatorios y validación                            |
-| 4     | `202609240004_sync.sql`              | Historial, cabecera, metadatos, acuses y RPC idempotentes          |
-| 5     | `202610040005_web_push.sql`          | Suscripciones, reservas de entrega y RPC de Web Push               |
+| Orden | Archivo                                | Cambio                                                             |
+| ----- | -------------------------------------- | ------------------------------------------------------------------ |
+| 1     | `202609200001_foundation.sql`          | Entidades, perfil, relaciones, auditoría, claves, índices y RLS    |
+| 2     | `202609200002_task_recurrence.sql`     | Zona, ancla y sucesora de tareas; restricciones e índice de estado |
+| 3     | `202609240003_reminder_timezone.sql`   | Zona IANA de recordatorios y validación                            |
+| 4     | `202609240004_sync.sql`                | Historial, cabecera, metadatos, acuses y RPC idempotentes          |
+| 5     | `202610040005_web_push.sql`            | Suscripciones, reservas de entrega y RPC de Web Push               |
+| 6     | `202610090006_security_privileges.sql` | Revocación de EXECUTE sobrante y defaults restrictivos de cliente  |
 
 Se aplican sólo las migraciones pendientes y en orden. La migración 4 incorpora registros existentes al historial, instala triggers y revoca escritura cliente directa en las entidades sincronizadas. El frontend debe usar RPC después de este cambio; desplegar un cliente antiguo con escrituras directas resulta incompatible.
 
@@ -306,6 +307,8 @@ Los índices priorizan propietario, actualización y fechas. Hay unicidad parcia
 RLS limita las lecturas al propietario. Tras Sync, las escrituras de entidades y acuses están controladas por RPC. El cliente no dispone de DELETE físico de documentos. Las funciones con privilegios usan `search_path` vacío y validan identidad; los helpers internos no están concedidos al cliente. La baja de suscripciones Push es una excepción deliberada: permite DELETE al propietario de su suscripción.
 
 El trigger de alta de Auth crea un perfil. El trigger de auditoría conserva creación y propietario, aumenta revisión y coopera con el sello lógico de Sync. El historial y los acuses no tienen purgado automático; Push sí limpia registros de entrega antiguos conforme a su política de 14 días.
+
+La migración 6 revoca EXECUTE de los cinco triggers a `PUBLIC`, `anon` y `authenticated`. Los futuros objetos creados por `postgres` en `public` necesitan GRANT explícito para clientes. La revocación del default de EXECUTE de `PUBLIC` afecta globalmente a futuras funciones de ese propietario; no altera otras funciones existentes. Las pruebas con JWT reales y la corrección desplegada se registran en [verificación](verification.md).
 
 ### 11.3 Tablas de sincronización y Push
 
@@ -680,7 +683,7 @@ La documentación registra un proyecto Dayflow en `eu-central-1`, con referencia
 
 Tras revisar proyecto e historial, se puede enlazar mediante `npx supabase link --project-ref REFERENCIA` y aplicar pendientes con `npx supabase db push`. Deben configurarse Site URL, retornos exactos de web y nativo y confirmación de correo. El mínimo de contraseña debe corresponder al cliente. Una configuración SMTP propia es necesaria para ampliar destinatarios según las restricciones documentadas del servicio predeterminado.
 
-El perfil alojado declara Vercel como Site URL, conserva los retornos anteriores Sites y los locales, y permite callbacks nativos. La documentación confirma aplicación de las cinco migraciones y despliegue de Push. Cambiar de Docker a alojado no migra automáticamente cuentas ni documentos entre proyectos.
+El perfil alojado declara Vercel como Site URL, conserva los retornos anteriores Sites y los locales, y permite callbacks nativos. La documentación confirma aplicación de las seis migraciones y despliegue de Push. La verificación del 9 de octubre comprueba permisos efectivos y aislamiento por API con JWT reales de dos cuentas de ensayo. Cambiar de Docker a alojado no migra automáticamente cuentas ni documentos entre proyectos.
 
 Fuentes: `supabase/config.toml`, `deployment/supabase/config.toml`, `docs/local-backend.md` y `docs/hosted-backend.md`.
 

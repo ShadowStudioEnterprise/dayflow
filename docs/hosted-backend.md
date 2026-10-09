@@ -2,6 +2,10 @@
 
 Esta guía conecta la aplicación existente a un proyecto Supabase por HTTPS. El backend Docker y sus datos permanecen separados: cambiar la URL no migra cuentas ni documentos locales al proyecto alojado.
 
+## Permisos verificados — 9 de octubre de 2026
+
+Las seis migraciones están aplicadas en `spfrfvpexfnnhwpfinrq`. Las 19 tablas públicas tienen RLS y las pruebas con JWT reales verificaron aislamiento entre dos cuentas y las RPC restringidas. La sexta migración revoca permisos sobrantes de triggers y endurece los defaults de futuros objetos. Consulta el [cierre de auditoría y evidencia](audits/2026-10-09-supabase-closure.md).
+
 ## Estado configurado — 3 de octubre de 2026
 
 - Proyecto: **Dayflow**, referencia `spfrfvpexfnnhwpfinrq`, región `eu-central-1`.

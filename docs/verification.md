@@ -1,5 +1,29 @@
 # Verificación — Fases 1–9, incluida PWA y Capacitor
 
+## Preparación del push de la auditoría — 9 de octubre de 2026
+
+Rama `security/supabase-rls-audit`, actualizada sobre `origin/main` (`2d59732`). Windows, Node 24.18.0 y npm 11.16.0. Se incluyen la migración aplicada, pruebas, scripts reproducibles y evidencia anterior/posterior; la revisión de los archivos no detectó credenciales ni archivos temporales. No se repitieron los ensayos remotos durante esta preparación.
+
+El portal ofrece enlaces a ambos informes de Supabase y copia los JSON de auditoría al directorio público de salida. Las nueve descargas enlazadas se comprobaron byte por byte contra sus fuentes. Los enlaces a SQL fuera del portal apuntan al repositorio.
+
+Comprobaciones correctas: `docs:build`, `docs:check`, `test:docs` (tres pruebas), `typecheck`, `lint`, `format:check`, `build` con PWA y las 25 pruebas SQL/Sync afectadas. El build conserva su aviso de importación dinámica/estática de Capacitor. No se repitieron E2E de navegador durante la preparación del commit.
+
+## Cierre de RLS y RPC con JWT reales — 9 de octubre de 2026
+
+En `spfrfvpexfnnhwpfinrq`, **379 comprobaciones HTTP correctas antes y 460 en la batería final ampliada después** de aplicar `202610090006_security_privileges.sql`. Se usaron dos cuentas temporales confirmadas administrativamente y JWT emitidos mediante login real. Lecturas y mutaciones cruzadas A→B/B→A, escrituras directas, referencias ajenas, replay alterado, JWT falsificados y RPC internas de cliente fueron rechazados o devolvieron cero filas conforme a RLS. Las operaciones legítimas y la paginación completa por propietario siguieron funcionando.
+
+La migración retira los permisos EXECUTE sobrantes de cinco triggers y los permisos automáticos de cliente para futuros objetos de `postgres`. El catálogo y 69 comprobaciones SQL posteriores fueron correctos; la creación transaccional de objetos verificó los defaults de los tres roles. No cambiaron las ACL de tablas, políticas ni cuerpos de las 16 funciones existentes. El endpoint GraphQL está deshabilitado para los tres roles; `public` y `graphql_public` son los perfiles HTTP aceptados entre los namespaces inspeccionados.
+
+La limpieza final a las 21:22:01 Europe/Madrid confirmó cero cuentas de ensayo y cero objetos SQL de prueba. Los recordatorios temporales estaban en 2099 y no se enviaron notificaciones. **25 pruebas locales SQL/Sync**, TypeScript, lint, validación documental y sus tres pruebas correctas. Consulta el [informe de cierre y artefactos anteriores/posteriores](audits/2026-10-09-supabase-closure.md). SQL-04 queda corregido y SQL-05 comprobado en el alcance registrado; carga, carreras, SMTP y entrega de notificaciones no se incluyen.
+
+## RLS y RPC en Supabase alojado — 9 de octubre de 2026
+
+Consulta real de solo lectura del proyecto `spfrfvpexfnnhwpfinrq`, PostgreSQL 17.11, sobre el código local `967442bd632cf19f159f28e5f184c9398e1c30ad`. Las 19 tablas públicas tienen RLS; las RPC de sincronización y Push tienen los permisos efectivos previstos para `anon`, `authenticated` y `service_role`. Los cuerpos de las 16 funciones de Dayflow coinciden con las migraciones y el script de despliegue.
+
+**51 comprobaciones SQL correctas**, mediante cambio local de rol: denegaciones de acceso, lecturas RLS de la única cuenta existente y de un sujeto sintético sin cuenta, pull y omisión de RLS para el rol de servicio. Se confirman permisos EXECUTE sobrantes en cinco funciones trigger y defaults amplios para futuros objetos. La llamada directa al trigger de alta es rechazada; no se demuestra una escalada. No se modificaron datos ni permisos remotos. Las pruebas con JWT de dos cuentas reales y mutaciones adversariales siguen pendientes.
+
+Consulta el [informe, matriz de permisos y evidencia reproducible](audits/2026-10-09-supabase-rls-rpc.md). Esta ejecución completa la parte de catálogo de SQL-05 y confirma SQL-04 sin alterar el registro de auditoría original.
+
 ## Consolidación documental — 9 de octubre de 2026
 
 Ejecución local en Linux, Node 24.19.0, npm 11.9.0. Base inmutable: `a9f5d460964a79c5c84ab30ea94505a141a863c2`; árbol de trabajo de la rama `docs/ci-consolidation`, con cambios documentales y automatización. No se atribuyen estos resultados al commit base sin modificaciones. Huella SHA-256 de rutas y contenidos de los 11 archivos de implementación (excluye este registro): `1718b2724d17123d13ea9b5d5a4917894e7e2169bc6afc61f27591a1b07a6fd6`.

@@ -39,3 +39,9 @@ Conservar tombstones hasta tener acuse de sincronización de todos los dispositi
 ## Migración Web Push
 
 `202610040005_web_push.sql` añade suscripciones y reservas de envío; sus RPC privilegiadas deben contrastarse con los permisos efectivos del entorno. Consulta [Web Push](web-push.md) y la [auditoría](audits/2026-10-09.md).
+
+## Permisos explícitos de clientes
+
+`202610090006_security_privileges.sql` retira EXECUTE de `PUBLIC`, `anon` y `authenticated` en las cinco funciones trigger de alta, auditoría y validación. Mantiene los permisos de las RPC de cliente y de `service_role`. Los triggers siguen ejecutándose en su contexto de alta y actualización.
+
+Para futuros objetos creados por `postgres` en `public`, tablas y secuencias no conceden permisos automáticos a clientes, y las funciones no conceden EXECUTE automático a `anon`/`authenticated`. La revocación del permiso base de EXECUTE de `PUBLIC` es global para futuras funciones de `postgres`, porque una revocación por esquema no puede neutralizar el default global de PostgreSQL. Toda nueva función de ese propietario, incluso en otro esquema, debe declarar sus permisos necesarios. Los objetos existentes conservan sus permisos salvo los cinco triggers indicados. Las nuevas migraciones deben conceder explícitamente únicamente los accesos de cliente requeridos.

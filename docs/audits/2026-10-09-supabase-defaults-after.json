@@ -1,0 +1,27 @@
+﻿{
+  "captured_at": "2026-10-09T19:14:09.866376+00:00",
+  "ddl_rolled_back": true,
+  "tests": [
+    {
+      "any_sequence_privilege": false,
+      "any_table_privilege": false,
+      "function_execute": false,
+      "pass": true,
+      "role": "anon"
+    },
+    {
+      "any_sequence_privilege": false,
+      "any_table_privilege": false,
+      "function_execute": false,
+      "pass": true,
+      "role": "authenticated"
+    },
+    {
+      "any_sequence_privilege": true,
+      "any_table_privilege": true,
+      "function_execute": true,
+      "pass": true,
+      "role": "service_role"
+    }
+  ]
+}

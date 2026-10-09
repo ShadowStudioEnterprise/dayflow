@@ -1,0 +1,64 @@
+{
+  "project_ref": "spfrfvpexfnnhwpfinrq",
+  "captured_at": "2026-10-09 19:22:01.859625+00",
+  "checks": [
+    {
+      "test": "api_checks_pass",
+      "pass": true
+    },
+    {
+      "test": "api_cleanup_complete",
+      "pass": true
+    },
+    {
+      "test": "sql_role_checks_pass",
+      "pass": true
+    },
+    {
+      "test": "new_object_defaults_pass",
+      "pass": true
+    },
+    {
+      "test": "all_19_tables_have_rls",
+      "pass": true
+    },
+    {
+      "test": "existing_table_privileges_unchanged",
+      "pass": true
+    },
+    {
+      "test": "existing_policies_unchanged",
+      "pass": true
+    },
+    {
+      "test": "all_16_function_bodies_unchanged",
+      "pass": true
+    },
+    {
+      "test": "client_execute_exactly_three_rpcs",
+      "pass": true
+    },
+    {
+      "test": "all_dayflow_functions_service_execute",
+      "pass": true
+    },
+    {
+      "test": "triggers_no_public_execute",
+      "pass": true
+    },
+    {
+      "test": "sixth_migration_recorded",
+      "pass": true
+    },
+    {
+      "test": "no_remote_test_accounts_or_probe_objects",
+      "pass": true
+    }
+  ],
+  "cleanup": {
+    "captured_at": "2026-10-09 19:22:01.859625+00",
+    "remaining_probe_functions": 0,
+    "remaining_probe_relations": 0,
+    "remaining_test_accounts": 0
+  }
+}

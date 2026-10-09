@@ -1,0 +1,367 @@
+﻿{
+  "captured_at": "2026-10-09T19:14:12.237094+00:00",
+  "existing_subjects": 2,
+  "read_only": "on",
+  "subjects_tested": 3,
+  "synthetic_subjects": 1,
+  "tests": [
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "anon_pull"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "anon_apply"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "anon_register_push"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "anon_candidates"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "authenticated_candidates"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "authenticated_claim"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "authenticated_internal_table"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "authenticated_sync_records"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "authenticated_push_deliveries"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "anon_tasks"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "authenticated_pull_without_subject"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "authenticated_apply_without_subject"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "anon_handle_new_user_direct"
+    },
+    {
+      "expected_sqlstate": "42501",
+      "pass": true,
+      "sqlstate": "42501",
+      "test": "authenticated_handle_new_user_direct"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_1_devices"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_1_entity_links"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_1_event_tags"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_1_events"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_1_inbox"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_1_note_tags"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_1_notes"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_1_profiles"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_1_push_subscriptions"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_1_reminders"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_1_subtasks"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_1_sync_changes"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_1_sync_heads"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_1_sync_operations"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_1_tags"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_1_task_tags"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_1_tasks"
+    },
+    {
+      "has_changes": true,
+      "pass": true,
+      "test": "pull_subject_1"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_devices"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_entity_links"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_event_tags"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_events"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_inbox"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_note_tags"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_notes"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_profiles"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_push_subscriptions"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_reminders"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_subtasks"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_sync_changes"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_sync_heads"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_sync_operations"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_tags"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_task_tags"
+    },
+    {
+      "has_own_rows": true,
+      "pass": true,
+      "test": "rls_subject_2_tasks"
+    },
+    {
+      "has_changes": true,
+      "pass": true,
+      "test": "pull_subject_2"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_devices"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_entity_links"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_event_tags"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_events"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_inbox"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_note_tags"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_notes"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_profiles"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_push_subscriptions"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_reminders"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_subtasks"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_sync_changes"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_sync_heads"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_sync_operations"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_tags"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_task_tags"
+    },
+    {
+      "has_own_rows": false,
+      "pass": true,
+      "test": "rls_subject_3_tasks"
+    },
+    {
+      "has_changes": false,
+      "pass": true,
+      "test": "pull_subject_3"
+    },
+    {
+      "pass": true,
+      "test": "service_role_bypasses_rls"
+    }
+  ]
+}

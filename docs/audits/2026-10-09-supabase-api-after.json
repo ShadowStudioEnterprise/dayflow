@@ -1,0 +1,3028 @@
+{
+  "project_ref": "spfrfvpexfnnhwpfinrq",
+  "phase": "after",
+  "run": "63d2eab3-c834-427a-a23c-42442d141201",
+  "started_at": "2026-10-09T19:19:51.797Z",
+  "auth": "Admin-created, confirmed temporary accounts; password sign-in; real JWTs",
+  "tests": [
+    {
+      "test": "jwt_A_identity",
+      "pass": true
+    },
+    {
+      "test": "jwt_A_server_validation",
+      "pass": true
+    },
+    {
+      "test": "A_create_tasks_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_create_notes_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_create_events_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_create_reminders_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_create_subtasks_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_create_tags_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_create_inbox_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_create_devices_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_create_entity_links_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_create_note_tags_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_create_task_tags_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_create_event_tags_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_register_push",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_valid_claim",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "jwt_B_identity",
+      "pass": true
+    },
+    {
+      "test": "jwt_B_server_validation",
+      "pass": true
+    },
+    {
+      "test": "B_create_tasks_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_create_notes_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_create_events_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_create_reminders_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_create_subtasks_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_create_tags_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_create_inbox_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_create_devices_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_create_entity_links_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_create_note_tags_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_create_task_tags_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_create_event_tags_via_rpc",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_register_push",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_valid_claim",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_graphql_disabled",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_tasks",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_tasks_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_tasks_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_notes",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_notes_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_notes_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_events",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_events_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_events_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_reminders",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_reminders_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_reminders_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_subtasks",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_subtasks_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_subtasks_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_tags",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_tags_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_tags_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_inbox",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_inbox_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_inbox_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_devices",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_devices_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_devices_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_entity_links",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_entity_links_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_entity_links_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_note_tags",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_note_tags_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_note_tags_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_task_tags",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_task_tags_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_task_tags_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_event_tags",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_event_tags_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_event_tags_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_profiles",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_profiles_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_profiles_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_sync_heads",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_sync_heads_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_sync_heads_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_sync_changes",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_sync_changes_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_sync_changes_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_sync_operations",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_sync_operations_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_sync_operations_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_sync_records_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "service_A_sync_records_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_push_subscriptions",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_push_subscriptions_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_A_push_subscriptions_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_push_deliveries_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "service_A_push_deliveries_authorized",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_paginated_pull_isolated",
+      "pass": true
+    },
+    {
+      "test": "A_rpc_create_foreign_owner_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_rpc_update_foreign_owner_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_rpc_delete_foreign_owner_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_foreign_id_spoof_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23505"
+    },
+    {
+      "test": "A_direct_POST_tasks_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_tasks_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_tasks_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_notes_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_notes_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_notes_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_events_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_events_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_events_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_reminders_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_reminders_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_reminders_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_subtasks_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_subtasks_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_subtasks_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_inbox_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_inbox_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_inbox_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_devices_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_devices_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_devices_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_entity_links_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_entity_links_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_entity_links_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_note_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_note_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_note_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_task_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_task_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_task_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_event_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_event_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_event_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_sync_operations_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_sync_operations_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_sync_operations_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_sync_changes_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_sync_changes_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_sync_changes_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_sync_heads_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_sync_heads_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_sync_heads_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_sync_records_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_sync_records_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_sync_records_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_push_deliveries_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_push_deliveries_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_DELETE_push_deliveries_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_profile_owner_change_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "P0001"
+    },
+    {
+      "test": "A_foreign_profile_update_empty",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_own_profile_update",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_foreign_profile_insert_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_profile_delete_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_POST_push_subscriptions_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_direct_PATCH_push_subscriptions_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_cross_reference_subtasks_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23503"
+    },
+    {
+      "test": "A_cross_reference_reminders_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23503"
+    },
+    {
+      "test": "A_cross_reference_tasks_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23503"
+    },
+    {
+      "test": "A_cross_reference_note_tags_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23503"
+    },
+    {
+      "test": "A_cross_reference_task_tags_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23503"
+    },
+    {
+      "test": "A_cross_reference_event_tags_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23503"
+    },
+    {
+      "test": "A_cross_reference_entity_links_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "P0001"
+    },
+    {
+      "test": "A_unallowed_entity_profiles_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "A_unallowed_entity_sync_changes_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "A_unallowed_entity_push_subscriptions_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "A_unallowed_entity_tasks_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "A_unknown_field_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "A_exact_replay_idempotent",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_altered_replay_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "A_foreign_operation_id_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "A_future_clock_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "A_arbitrary_push_endpoint_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "P0001"
+    },
+    {
+      "test": "A_foreign_push_registration_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "P0001"
+    },
+    {
+      "test": "A_foreign_push_delete_empty",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_graphql_disabled",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_tasks",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_tasks_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_tasks_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_notes",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_notes_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_notes_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_events",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_events_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_events_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_reminders",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_reminders_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_reminders_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_subtasks",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_subtasks_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_subtasks_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_tags",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_tags_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_tags_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_inbox",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_inbox_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_inbox_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_devices",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_devices_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_devices_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_entity_links",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_entity_links_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_entity_links_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_note_tags",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_note_tags_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_note_tags_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_task_tags",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_task_tags_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_task_tags_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_event_tags",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_event_tags_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_event_tags_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_profiles",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_profiles_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_profiles_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_sync_heads",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_sync_heads_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_sync_heads_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_sync_changes",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_sync_changes_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_sync_changes_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_sync_operations",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_sync_operations_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_sync_operations_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_sync_records_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "service_B_sync_records_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_push_subscriptions",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_push_subscriptions_hidden",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_B_push_subscriptions_both_owners",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_push_deliveries_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "service_B_push_deliveries_authorized",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_paginated_pull_isolated",
+      "pass": true
+    },
+    {
+      "test": "B_rpc_create_foreign_owner_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_rpc_update_foreign_owner_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_rpc_delete_foreign_owner_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_foreign_id_spoof_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23505"
+    },
+    {
+      "test": "B_direct_POST_tasks_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_tasks_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_tasks_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_notes_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_notes_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_notes_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_events_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_events_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_events_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_reminders_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_reminders_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_reminders_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_subtasks_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_subtasks_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_subtasks_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_inbox_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_inbox_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_inbox_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_devices_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_devices_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_devices_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_entity_links_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_entity_links_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_entity_links_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_note_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_note_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_note_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_task_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_task_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_task_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_event_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_event_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_event_tags_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_sync_operations_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_sync_operations_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_sync_operations_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_sync_changes_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_sync_changes_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_sync_changes_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_sync_heads_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_sync_heads_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_sync_heads_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_sync_records_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_sync_records_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_sync_records_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_push_deliveries_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_push_deliveries_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_DELETE_push_deliveries_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_profile_owner_change_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "P0001"
+    },
+    {
+      "test": "B_foreign_profile_update_empty",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_own_profile_update",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_foreign_profile_insert_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_profile_delete_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_POST_push_subscriptions_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_direct_PATCH_push_subscriptions_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_cross_reference_subtasks_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23503"
+    },
+    {
+      "test": "B_cross_reference_reminders_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23503"
+    },
+    {
+      "test": "B_cross_reference_tasks_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23503"
+    },
+    {
+      "test": "B_cross_reference_note_tags_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23503"
+    },
+    {
+      "test": "B_cross_reference_task_tags_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23503"
+    },
+    {
+      "test": "B_cross_reference_event_tags_denied",
+      "pass": true,
+      "http_status": 409,
+      "error_code": "23503"
+    },
+    {
+      "test": "B_cross_reference_entity_links_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "P0001"
+    },
+    {
+      "test": "B_unallowed_entity_profiles_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "B_unallowed_entity_sync_changes_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "B_unallowed_entity_push_subscriptions_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "B_unallowed_entity_tasks_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "B_unknown_field_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "B_exact_replay_idempotent",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_altered_replay_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "B_foreign_operation_id_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "B_future_clock_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "B_arbitrary_push_endpoint_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "P0001"
+    },
+    {
+      "test": "B_foreign_push_registration_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "P0001"
+    },
+    {
+      "test": "B_foreign_push_delete_empty",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "anon_dayflow_push_candidates_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_dayflow_claim_push_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_dayflow_invoke_push_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_dayflow_table_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_dayflow_wins_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_dayflow_append_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_dayflow_push_endpoint_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_dayflow_capture_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "anon_handle_new_user_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "anon_audit_entity_update_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "anon_validate_entity_link_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "anon_validate_event_timezone_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "anon_validate_task_timezone_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "http_unknown_schema_rejected",
+      "pass": true,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "test": "http_schema_auth_profile_checked",
+      "pass": true,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "test": "http_schema_cron_profile_checked",
+      "pass": true,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "test": "http_schema_extensions_profile_checked",
+      "pass": true,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "test": "http_schema_graphql_profile_checked",
+      "pass": true,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "test": "http_schema_graphql_public_profile_checked",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST205"
+    },
+    {
+      "test": "http_schema_net_profile_checked",
+      "pass": true,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "test": "http_schema_public_profile_checked",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST205"
+    },
+    {
+      "test": "http_schema_realtime_profile_checked",
+      "pass": true,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "test": "http_schema_storage_profile_checked",
+      "pass": true,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "test": "http_schema_supabase_migrations_profile_checked",
+      "pass": true,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "test": "http_schema_vault_profile_checked",
+      "pass": true,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "test": "anon_graphql_disabled",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_graphql_disabled",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "anon_dayflow_pull_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_dayflow_apply_operation_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_dayflow_register_push_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_tasks_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_tasks_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_tasks_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_tasks_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_notes_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_notes_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_notes_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_notes_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_events_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_events_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_events_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_events_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_reminders_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_reminders_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_reminders_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_reminders_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_subtasks_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_subtasks_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_subtasks_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_subtasks_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_tags_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_tags_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_tags_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_tags_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_inbox_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_inbox_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_inbox_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_inbox_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_devices_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_devices_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_devices_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_devices_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_entity_links_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_entity_links_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_entity_links_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_entity_links_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_note_tags_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_note_tags_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_note_tags_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_note_tags_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_task_tags_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_task_tags_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_task_tags_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_task_tags_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_event_tags_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_event_tags_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_event_tags_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_event_tags_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_profiles_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_profiles_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_profiles_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_profiles_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_sync_heads_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_sync_heads_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_sync_heads_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_sync_heads_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_sync_changes_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_sync_changes_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_sync_changes_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_sync_changes_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_sync_operations_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_sync_operations_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_sync_operations_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_sync_operations_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_sync_records_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_sync_records_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_sync_records_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_sync_records_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_push_subscriptions_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_push_subscriptions_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_push_subscriptions_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_push_subscriptions_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_push_deliveries_http_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_POST_push_deliveries_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_PATCH_push_deliveries_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "anon_direct_DELETE_push_deliveries_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_dayflow_push_candidates_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_dayflow_claim_push_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_dayflow_invoke_push_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_dayflow_table_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_dayflow_wins_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_dayflow_append_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_dayflow_push_endpoint_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "A_dayflow_capture_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "A_handle_new_user_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "A_audit_entity_update_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "A_validate_entity_link_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "A_validate_event_timezone_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "A_validate_task_timezone_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "B_dayflow_push_candidates_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_dayflow_claim_push_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_dayflow_invoke_push_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_dayflow_table_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_dayflow_wins_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_dayflow_append_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_dayflow_push_endpoint_http_denied",
+      "pass": true,
+      "http_status": 403,
+      "error_code": "42501"
+    },
+    {
+      "test": "B_dayflow_capture_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "B_handle_new_user_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "B_audit_entity_update_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "B_validate_entity_link_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "B_validate_event_timezone_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "B_validate_task_timezone_http_denied",
+      "pass": true,
+      "http_status": 404,
+      "error_code": "PGRST202"
+    },
+    {
+      "test": "A_task_unchanged_after_attacks",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_forged_jwt_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "PGRST301"
+    },
+    {
+      "test": "A_bad_cursor_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "A_bad_page_limit_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "A_authorized_update",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_authorized_soft_delete",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_authorized_tombstone_persisted",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_authorized_push_delete",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "A_final_paginated_pull_isolated",
+      "pass": true
+    },
+    {
+      "test": "B_task_unchanged_after_attacks",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_forged_jwt_denied",
+      "pass": true,
+      "http_status": 401,
+      "error_code": "PGRST301"
+    },
+    {
+      "test": "B_bad_cursor_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "B_bad_page_limit_denied",
+      "pass": true,
+      "http_status": 400,
+      "error_code": "22023"
+    },
+    {
+      "test": "B_authorized_update",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_authorized_soft_delete",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_authorized_tombstone_persisted",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_authorized_push_delete",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "B_final_paginated_pull_isolated",
+      "pass": true
+    },
+    {
+      "test": "service_candidates_authorized",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    },
+    {
+      "test": "service_claim_invalid_fixture_returns_null",
+      "pass": true,
+      "http_status": 200,
+      "error_code": null
+    }
+  ],
+  "cleanup": [
+    {
+      "account": "A",
+      "deleted": true
+    },
+    {
+      "account": "A",
+      "table": "tasks",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "notes",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "events",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "reminders",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "subtasks",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "tags",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "inbox",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "devices",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "entity_links",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "note_tags",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "task_tags",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "event_tags",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "profiles",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "sync_heads",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "sync_changes",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "sync_operations",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "sync_records",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "push_subscriptions",
+      "empty": true
+    },
+    {
+      "account": "A",
+      "table": "push_deliveries",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "deleted": true
+    },
+    {
+      "account": "B",
+      "table": "tasks",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "notes",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "events",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "reminders",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "subtasks",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "tags",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "inbox",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "devices",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "entity_links",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "note_tags",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "task_tags",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "event_tags",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "profiles",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "sync_heads",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "sync_changes",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "sync_operations",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "sync_records",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "push_subscriptions",
+      "empty": true
+    },
+    {
+      "account": "B",
+      "table": "push_deliveries",
+      "empty": true
+    }
+  ],
+  "graphql": {
+    "enabled": false,
+    "reason": "pg_graphql extension is not enabled"
+  },
+  "exposed_schemas": ["graphql_public", "public"],
+  "schema_probes": [
+    {
+      "schema": "auth",
+      "exposed": false,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "schema": "cron",
+      "exposed": false,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "schema": "extensions",
+      "exposed": false,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "schema": "graphql",
+      "exposed": false,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "schema": "graphql_public",
+      "exposed": true,
+      "http_status": 404,
+      "error_code": "PGRST205"
+    },
+    {
+      "schema": "net",
+      "exposed": false,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "schema": "public",
+      "exposed": true,
+      "http_status": 404,
+      "error_code": "PGRST205"
+    },
+    {
+      "schema": "realtime",
+      "exposed": false,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "schema": "storage",
+      "exposed": false,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "schema": "supabase_migrations",
+      "exposed": false,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    },
+    {
+      "schema": "vault",
+      "exposed": false,
+      "http_status": 406,
+      "error_code": "PGRST106"
+    }
+  ],
+  "finished_at": "2026-10-09T19:20:21.982Z",
+  "pass": true
+}

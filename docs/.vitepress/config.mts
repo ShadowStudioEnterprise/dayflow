@@ -1,4 +1,6 @@
 import { defineConfig } from 'vitepress'
+import { copyFileSync, mkdirSync, readdirSync } from 'node:fs'
+import path from 'node:path'
 
 const group = (text: string, pages: [string, string][]) => ({
   text,
@@ -11,13 +13,23 @@ export default defineConfig({
   description:
     'Arquitectura, producto y operación de Dayflow. Documentación técnica de la aplicación local-first.',
   cleanUrls: true,
+  // Markdown JSON links are preserved as URLs; include their evidence files in SSG output.
+  buildEnd(siteConfig) {
+    const source = path.join(siteConfig.srcDir, 'audits')
+    const output = path.join(siteConfig.outDir, 'audits')
+    mkdirSync(output, { recursive: true })
+    for (const file of readdirSync(source, { withFileTypes: true })) {
+      if (file.isFile() && file.name.endsWith('.json'))
+        copyFileSync(path.join(source, file.name), path.join(output, file.name))
+    }
+  },
   themeConfig: {
     logo: '/logo.svg',
     siteTitle: 'Dayflow / Docs',
     nav: [
       { text: 'Guías', link: '/architecture' },
       { text: 'Validación', link: '/verification' },
-      { text: 'Auditoría', link: '/audits/2026-10-09' },
+      { text: 'Auditoría', link: '/audits/README' },
       { text: 'Publicar', link: '/portal-deployment' },
     ],
     sidebar: [
@@ -52,6 +64,8 @@ export default defineConfig({
         ['Vercel: aplicación', 'vercel'],
         ['Vercel: documentación', 'portal-deployment'],
         ['Auditoría · 09/10/2026', 'audits/2026-10-09'],
+        ['Supabase: catálogo y permisos', 'audits/2026-10-09-supabase-rls-rpc'],
+        ['Supabase: cierre con JWT', 'audits/2026-10-09-supabase-closure'],
       ]),
     ],
     search: {

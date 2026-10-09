@@ -1,0 +1,2440 @@
+﻿{
+  "api_role_settings": [],
+  "captured_at": "2026-10-09T19:14:09.890116+00:00",
+  "column_acl": [],
+  "database": "postgres",
+  "default_acl": [
+    {
+      "acl": "{postgres=rwU/postgres,service_role=rwU/postgres}",
+      "object_type": "S",
+      "owner": "postgres",
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "object_type": "f",
+      "owner": "postgres",
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "object_type": "r",
+      "owner": "postgres",
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=rwU/postgres,anon=rwU/postgres,authenticated=rwU/postgres,service_role=rwU/postgres}",
+      "object_type": "S",
+      "owner": "postgres",
+      "schema": "storage"
+    },
+    {
+      "acl": "{postgres=X/postgres,anon=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+      "object_type": "f",
+      "owner": "postgres",
+      "schema": "storage"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,anon=arwdDxtm/postgres,authenticated=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "object_type": "r",
+      "owner": "postgres",
+      "schema": "storage"
+    },
+    {
+      "acl": "{postgres=X/postgres}",
+      "object_type": "f",
+      "owner": "postgres",
+      "schema": "*"
+    },
+    {
+      "acl": "{postgres=r*w*U*/supabase_admin}",
+      "object_type": "S",
+      "owner": "supabase_admin",
+      "schema": "cron"
+    },
+    {
+      "acl": "{postgres=X*/supabase_admin}",
+      "object_type": "f",
+      "owner": "supabase_admin",
+      "schema": "cron"
+    },
+    {
+      "acl": "{postgres=a*r*w*d*D*x*t*m*/supabase_admin}",
+      "object_type": "r",
+      "owner": "supabase_admin",
+      "schema": "cron"
+    },
+    {
+      "acl": "{postgres=r*w*U*/supabase_admin}",
+      "object_type": "S",
+      "owner": "supabase_admin",
+      "schema": "extensions"
+    },
+    {
+      "acl": "{postgres=X*/supabase_admin}",
+      "object_type": "f",
+      "owner": "supabase_admin",
+      "schema": "extensions"
+    },
+    {
+      "acl": "{postgres=a*r*w*d*D*x*t*m*/supabase_admin}",
+      "object_type": "r",
+      "owner": "supabase_admin",
+      "schema": "extensions"
+    },
+    {
+      "acl": "{postgres=rwU/supabase_admin,anon=rwU/supabase_admin,authenticated=rwU/supabase_admin,service_role=rwU/supabase_admin}",
+      "object_type": "S",
+      "owner": "supabase_admin",
+      "schema": "graphql"
+    },
+    {
+      "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}",
+      "object_type": "f",
+      "owner": "supabase_admin",
+      "schema": "graphql"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/supabase_admin,anon=arwdDxtm/supabase_admin,authenticated=arwdDxtm/supabase_admin,service_role=arwdDxtm/supabase_admin}",
+      "object_type": "r",
+      "owner": "supabase_admin",
+      "schema": "graphql"
+    },
+    {
+      "acl": "{postgres=rwU/supabase_admin,anon=rwU/supabase_admin,authenticated=rwU/supabase_admin,service_role=rwU/supabase_admin}",
+      "object_type": "S",
+      "owner": "supabase_admin",
+      "schema": "graphql_public"
+    },
+    {
+      "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}",
+      "object_type": "f",
+      "owner": "supabase_admin",
+      "schema": "graphql_public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/supabase_admin,anon=arwdDxtm/supabase_admin,authenticated=arwdDxtm/supabase_admin,service_role=arwdDxtm/supabase_admin}",
+      "object_type": "r",
+      "owner": "supabase_admin",
+      "schema": "graphql_public"
+    },
+    {
+      "acl": "{postgres=rwU/supabase_admin,anon=rwU/supabase_admin,authenticated=rwU/supabase_admin,service_role=rwU/supabase_admin}",
+      "object_type": "S",
+      "owner": "supabase_admin",
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}",
+      "object_type": "f",
+      "owner": "supabase_admin",
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/supabase_admin,anon=arwdDxtm/supabase_admin,authenticated=arwdDxtm/supabase_admin,service_role=arwdDxtm/supabase_admin}",
+      "object_type": "r",
+      "owner": "supabase_admin",
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=rwU/supabase_admin,dashboard_user=rwU/supabase_admin}",
+      "object_type": "S",
+      "owner": "supabase_admin",
+      "schema": "realtime"
+    },
+    {
+      "acl": "{postgres=X/supabase_admin,dashboard_user=X/supabase_admin}",
+      "object_type": "f",
+      "owner": "supabase_admin",
+      "schema": "realtime"
+    },
+    {
+      "acl": "{postgres=a*r*wdDxtm/supabase_admin,dashboard_user=arwdDxtm/supabase_admin}",
+      "object_type": "r",
+      "owner": "supabase_admin",
+      "schema": "realtime"
+    },
+    {
+      "acl": "{postgres=rwU/supabase_auth_admin,dashboard_user=rwU/supabase_auth_admin}",
+      "object_type": "S",
+      "owner": "supabase_auth_admin",
+      "schema": "auth"
+    },
+    {
+      "acl": "{postgres=X/supabase_auth_admin,dashboard_user=X/supabase_auth_admin}",
+      "object_type": "f",
+      "owner": "supabase_auth_admin",
+      "schema": "auth"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/supabase_auth_admin,dashboard_user=arwdDxtm/supabase_auth_admin}",
+      "object_type": "r",
+      "owner": "supabase_auth_admin",
+      "schema": "auth"
+    }
+  ],
+  "functions": [
+    {
+      "acl": "{=X/supabase_admin,supabase_admin=X/supabase_admin,postgres=X/supabase_admin,anon=X/supabase_admin,authenticated=X/supabase_admin,service_role=X/supabase_admin}",
+      "arguments": "\"operationName\" text DEFAULT NULL::text, query text DEFAULT NULL::text, variables jsonb DEFAULT NULL::jsonb, extensions jsonb DEFAULT NULL::jsonb",
+      "config": null,
+      "definition_md5": "dfa83944e7a73368d44e3ee4d2a1167c",
+      "execute": {
+        "anon": true,
+        "authenticated": true,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "\"operationName\" text, query text, variables jsonb, extensions jsonb",
+      "kind": "f",
+      "name": "graphql",
+      "owner": "supabase_admin",
+      "owner_bypassrls": true,
+      "owner_superuser": true,
+      "public_execute": true,
+      "result": "jsonb",
+      "schema": "graphql_public",
+      "security_definer": false,
+      "source_md5": "4b822d188772a248642fbe43342f9f17"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "",
+      "config": ["search_path=\"\""],
+      "definition_md5": "11d6bf75b781f0cd785cb4e40b93b3e9",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "",
+      "kind": "f",
+      "name": "audit_entity_update",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "trigger",
+      "schema": "public",
+      "security_definer": false,
+      "source_md5": "3215e84a50a4e311c78f071e73480ec3"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "p_entity text, p_row jsonb, p_stamp jsonb",
+      "config": ["search_path=\"\""],
+      "definition_md5": "a9189f601f1028c1057b89d4718014c9",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "p_entity text, p_row jsonb, p_stamp jsonb",
+      "kind": "f",
+      "name": "dayflow_append",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "bigint",
+      "schema": "public",
+      "security_definer": true,
+      "source_md5": "52b30efeaeb9a32e01f899cc46b98184"
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+      "arguments": "p_operation jsonb",
+      "config": ["search_path=\"\""],
+      "definition_md5": "3cbcf9a563bb3c7c499c3e672d586ea5",
+      "execute": {
+        "anon": false,
+        "authenticated": true,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "p_operation jsonb",
+      "kind": "f",
+      "name": "dayflow_apply_operation",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "jsonb",
+      "schema": "public",
+      "security_definer": true,
+      "source_md5": "ec8b124360ad40a054819e2589f75b0a"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "",
+      "config": ["search_path=\"\""],
+      "definition_md5": "3670b21771b4dcd36c0eb0c297450ced",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "",
+      "kind": "f",
+      "name": "dayflow_capture",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "trigger",
+      "schema": "public",
+      "security_definer": true,
+      "source_md5": "a66eee8246161c610c05f49212c3ab7e"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "p_subscription uuid, p_reminder uuid, p_version integer, p_at timestamp with time zone",
+      "config": ["search_path=\"\""],
+      "definition_md5": "614b8031e72f3ba424e89c70842bb68b",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "p_subscription uuid, p_reminder uuid, p_version integer, p_at timestamp with time zone",
+      "kind": "f",
+      "name": "dayflow_claim_push",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "uuid",
+      "schema": "public",
+      "security_definer": true,
+      "source_md5": "025fe195a23bdf9fbc08a744df11cb3a"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "",
+      "config": ["search_path=\"\""],
+      "definition_md5": "e520ef8c3aff7aa712d0060ff68655e3",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "",
+      "kind": "f",
+      "name": "dayflow_invoke_push",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "bigint",
+      "schema": "public",
+      "security_definer": true,
+      "source_md5": "280753fdebf8283dfbda7e9169bd58fe"
+    },
+    {
+      "acl": "{postgres=X/postgres,authenticated=X/postgres,service_role=X/postgres}",
+      "arguments": "p_after text DEFAULT \u00270\u0027::text, p_limit integer DEFAULT 100",
+      "config": ["search_path=\"\""],
+      "definition_md5": "56a83aa64f558c8490b7234b8f0dfdcf",
+      "execute": {
+        "anon": false,
+        "authenticated": true,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "p_after text, p_limit integer",
+      "kind": "f",
+      "name": "dayflow_pull",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "jsonb",
+      "schema": "public",
+      "security_definer": true,
+      "source_md5": "db6df11c6d55e0ffcf5431cb985e16ee"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "p_after uuid DEFAULT \u002700000000-0000-0000-0000-000000000000\u0027::uuid",
+      "config": ["search_path=\"\""],
+      "definition_md5": "9ccca4845ca3e6076ef6573691c0dea2",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "p_after uuid",
+      "kind": "f",
+      "name": "dayflow_push_candidates",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "jsonb",
+      "schema": "public",
+      "security_definer": true,
+      "source_md5": "e1aa2868dd69dea6d7f4fcafb3aaa1fd"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "p_endpoint text",
+      "config": ["search_path=\"\""],
+      "definition_md5": "0353f5d0f6e3f5631c9f06022d63c1b5",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "p_endpoint text",
+      "kind": "f",
+      "name": "dayflow_push_endpoint",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "boolean",
+      "schema": "public",
+      "security_definer": false,
+      "source_md5": "d800a5b4cbd8baceef3a9a9a4d3c77a4"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres,authenticated=X/postgres}",
+      "arguments": "p_endpoint text, p_p256dh text, p_auth text",
+      "config": ["search_path=\"\""],
+      "definition_md5": "7050652231fbeaa962393b382c28187e",
+      "execute": {
+        "anon": false,
+        "authenticated": true,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "p_endpoint text, p_p256dh text, p_auth text",
+      "kind": "f",
+      "name": "dayflow_register_push",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "uuid",
+      "schema": "public",
+      "security_definer": true,
+      "source_md5": "d84699be4b19fbc43a6128ddb956cf96"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "p_entity text",
+      "config": ["search_path=\"\""],
+      "definition_md5": "3df4d58fbd6c3a5c8b3284599999a7a8",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "p_entity text",
+      "kind": "f",
+      "name": "dayflow_table",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "text",
+      "schema": "public",
+      "security_definer": false,
+      "source_md5": "85f57a1a884572efa70dc03bbf6176fb"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "a jsonb, b jsonb",
+      "config": ["search_path=\"\""],
+      "definition_md5": "592c8048d289f86c2d35f54d438117aa",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "a jsonb, b jsonb",
+      "kind": "f",
+      "name": "dayflow_wins",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "boolean",
+      "schema": "public",
+      "security_definer": false,
+      "source_md5": "f846db972629c47fed53cd5601f46879"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "",
+      "config": ["search_path=\"\""],
+      "definition_md5": "361f98c657a84ddd80fdead6173d803a",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "",
+      "kind": "f",
+      "name": "handle_new_user",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "trigger",
+      "schema": "public",
+      "security_definer": true,
+      "source_md5": "a5345eef4c00e0b6282188ba0355e0d1"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "",
+      "config": ["search_path=\"\""],
+      "definition_md5": "3a7c8d8e6d957f342f5b0fc1fe989eb8",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "",
+      "kind": "f",
+      "name": "validate_entity_link",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "trigger",
+      "schema": "public",
+      "security_definer": false,
+      "source_md5": "89d3b7d688e9ea9199c79792c9385c81"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "",
+      "config": ["search_path=\"\""],
+      "definition_md5": "55cedbaf5e434048dc5ddfa0341f201b",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "",
+      "kind": "f",
+      "name": "validate_event_timezone",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "trigger",
+      "schema": "public",
+      "security_definer": false,
+      "source_md5": "ecb065523c3628e9480e3bce1163d8e2"
+    },
+    {
+      "acl": "{postgres=X/postgres,service_role=X/postgres}",
+      "arguments": "",
+      "config": ["search_path=\"\""],
+      "definition_md5": "f8d8165a25243080914f0f0fdd34ef4b",
+      "execute": {
+        "anon": false,
+        "authenticated": false,
+        "service_role": true
+      },
+      "extension": null,
+      "identity_arguments": "",
+      "kind": "f",
+      "name": "validate_task_timezone",
+      "owner": "postgres",
+      "owner_bypassrls": true,
+      "owner_superuser": false,
+      "public_execute": false,
+      "result": "trigger",
+      "schema": "public",
+      "security_definer": false,
+      "source_md5": "753209fc1459de801cbc4a548ce1d3f2"
+    }
+  ],
+  "memberships": [
+    {
+      "admin_option": false,
+      "granted_role": "anon",
+      "inherit_option": false,
+      "member": "authenticator",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "authenticated",
+      "inherit_option": false,
+      "member": "authenticator",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "service_role",
+      "inherit_option": false,
+      "member": "authenticator",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "postgres",
+      "inherit_option": false,
+      "member": "cli_login_postgres",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "pg_read_all_settings",
+      "inherit_option": true,
+      "member": "pg_monitor",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "pg_read_all_stats",
+      "inherit_option": true,
+      "member": "pg_monitor",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "pg_stat_scan_tables",
+      "inherit_option": true,
+      "member": "pg_monitor",
+      "set_option": true
+    },
+    {
+      "admin_option": true,
+      "granted_role": "anon",
+      "inherit_option": true,
+      "member": "postgres",
+      "set_option": true
+    },
+    {
+      "admin_option": true,
+      "granted_role": "authenticated",
+      "inherit_option": true,
+      "member": "postgres",
+      "set_option": true
+    },
+    {
+      "admin_option": true,
+      "granted_role": "authenticator",
+      "inherit_option": true,
+      "member": "postgres",
+      "set_option": true
+    },
+    {
+      "admin_option": true,
+      "granted_role": "pg_create_subscription",
+      "inherit_option": true,
+      "member": "postgres",
+      "set_option": true
+    },
+    {
+      "admin_option": true,
+      "granted_role": "pg_monitor",
+      "inherit_option": true,
+      "member": "postgres",
+      "set_option": true
+    },
+    {
+      "admin_option": true,
+      "granted_role": "pg_read_all_data",
+      "inherit_option": true,
+      "member": "postgres",
+      "set_option": true
+    },
+    {
+      "admin_option": true,
+      "granted_role": "pg_signal_backend",
+      "inherit_option": true,
+      "member": "postgres",
+      "set_option": true
+    },
+    {
+      "admin_option": true,
+      "granted_role": "service_role",
+      "inherit_option": true,
+      "member": "postgres",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "supabase_privileged_role",
+      "inherit_option": true,
+      "member": "postgres",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "pg_monitor",
+      "inherit_option": true,
+      "member": "supabase_etl_admin",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "pg_read_all_data",
+      "inherit_option": true,
+      "member": "supabase_etl_admin",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "supabase_privileged_role",
+      "inherit_option": true,
+      "member": "supabase_etl_admin",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "pg_monitor",
+      "inherit_option": true,
+      "member": "supabase_read_only_user",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "pg_read_all_data",
+      "inherit_option": true,
+      "member": "supabase_read_only_user",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "anon",
+      "inherit_option": false,
+      "member": "supabase_realtime_admin",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "authenticated",
+      "inherit_option": false,
+      "member": "supabase_realtime_admin",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "service_role",
+      "inherit_option": false,
+      "member": "supabase_realtime_admin",
+      "set_option": true
+    },
+    {
+      "admin_option": false,
+      "granted_role": "authenticator",
+      "inherit_option": false,
+      "member": "supabase_storage_admin",
+      "set_option": true
+    }
+  ],
+  "migrations": [
+    {
+      "name": "foundation",
+      "version": "202609200001"
+    },
+    {
+      "name": "task_recurrence",
+      "version": "202609200002"
+    },
+    {
+      "name": "reminder_timezone",
+      "version": "202609240003"
+    },
+    {
+      "name": "sync",
+      "version": "202609240004"
+    },
+    {
+      "name": "web_push",
+      "version": "202610040005"
+    },
+    {
+      "name": "security_privileges",
+      "version": "202610090006"
+    }
+  ],
+  "policies": [
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "devices_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "devices",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "devices_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "devices",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "devices_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "devices",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "entity_links_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "entity_links",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "entity_links_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "entity_links",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "entity_links_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "entity_links",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "event_tags_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "event_tags",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "event_tags_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "event_tags",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "event_tags_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "event_tags",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "events_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "events",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "events_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "events",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "events_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "events",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "inbox_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "inbox",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "inbox_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "inbox",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "inbox_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "inbox",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "note_tags_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "note_tags",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "note_tags_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "note_tags",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "note_tags_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "note_tags",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "notes_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "notes",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "notes_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "notes",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "notes_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "notes",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "profiles_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "profiles",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "profiles_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "profiles",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "profiles_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "profiles",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "DELETE",
+      "permissive": "PERMISSIVE",
+      "policyname": "push_delete",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "push_subscriptions",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "push_read",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "push_subscriptions",
+      "with_check": null
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "reminders_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "reminders",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "reminders_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "reminders",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "reminders_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "reminders",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "subtasks_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "subtasks",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "subtasks_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "subtasks",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "subtasks_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "subtasks",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "sync_changes_read",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "sync_changes",
+      "with_check": null
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "sync_heads_read",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "sync_heads",
+      "with_check": null
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "sync_operations_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "sync_operations",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "sync_operations_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "sync_operations",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "sync_operations_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "sync_operations",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "tags_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "tags",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "tags_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "tags",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "tags_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "tags",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "task_tags_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "task_tags",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "task_tags_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "task_tags",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "task_tags_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "task_tags",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "INSERT",
+      "permissive": "PERMISSIVE",
+      "policyname": "tasks_insert_own",
+      "qual": null,
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "tasks",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    },
+    {
+      "cmd": "SELECT",
+      "permissive": "PERMISSIVE",
+      "policyname": "tasks_select_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "tasks",
+      "with_check": null
+    },
+    {
+      "cmd": "UPDATE",
+      "permissive": "PERMISSIVE",
+      "policyname": "tasks_update_own",
+      "qual": "(( SELECT auth.uid() AS uid) = user_id)",
+      "roles": ["authenticated"],
+      "schemaname": "public",
+      "tablename": "tasks",
+      "with_check": "(( SELECT auth.uid() AS uid) = user_id)"
+    }
+  ],
+  "query_role": "postgres",
+  "relations": [
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "devices",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "entity_links",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "event_tags",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "events",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "inbox",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "note_tags",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "notes",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=arw/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "profiles",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": false,
+          "insert": true,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": true
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "push_deliveries",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=rd/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "push_subscriptions",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": true,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "reminders",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "subtasks",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "sync_changes",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "sync_heads",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "sync_operations",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "sync_records",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "tags",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "task_tags",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    },
+    {
+      "acl": "{postgres=arwdDxtm/postgres,service_role=arwdDxtm/postgres,authenticated=r/postgres}",
+      "force_rls": false,
+      "kind": "r",
+      "name": "tasks",
+      "options": null,
+      "owner": "postgres",
+      "privileges": {
+        "anon": {
+          "any_column_insert": false,
+          "any_column_select": false,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": false,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "authenticated": {
+          "any_column_insert": false,
+          "any_column_select": true,
+          "any_column_update": false,
+          "delete": false,
+          "insert": false,
+          "maintain": false,
+          "references": false,
+          "select": true,
+          "trigger": false,
+          "truncate": false,
+          "update": false
+        },
+        "service_role": {
+          "any_column_insert": true,
+          "any_column_select": true,
+          "any_column_update": true,
+          "delete": true,
+          "insert": true,
+          "maintain": true,
+          "references": true,
+          "select": true,
+          "trigger": true,
+          "truncate": true,
+          "update": true
+        }
+      },
+      "rls": true,
+      "schema": "public"
+    }
+  ],
+  "roles": [
+    {
+      "rolbypassrls": false,
+      "rolcanlogin": false,
+      "rolcreatedb": false,
+      "rolcreaterole": false,
+      "rolinherit": true,
+      "rolname": "anon",
+      "rolreplication": false,
+      "rolsuper": false
+    },
+    {
+      "rolbypassrls": false,
+      "rolcanlogin": false,
+      "rolcreatedb": false,
+      "rolcreaterole": false,
+      "rolinherit": true,
+      "rolname": "authenticated",
+      "rolreplication": false,
+      "rolsuper": false
+    },
+    {
+      "rolbypassrls": true,
+      "rolcanlogin": false,
+      "rolcreatedb": false,
+      "rolcreaterole": false,
+      "rolinherit": true,
+      "rolname": "service_role",
+      "rolreplication": false,
+      "rolsuper": false
+    }
+  ],
+  "schemas": [
+    {
+      "create": false,
+      "role": "anon",
+      "schema": "auth",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "authenticated",
+      "schema": "auth",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "service_role",
+      "schema": "auth",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "anon",
+      "schema": "cron",
+      "usage": false
+    },
+    {
+      "create": false,
+      "role": "authenticated",
+      "schema": "cron",
+      "usage": false
+    },
+    {
+      "create": false,
+      "role": "service_role",
+      "schema": "cron",
+      "usage": false
+    },
+    {
+      "create": false,
+      "role": "anon",
+      "schema": "extensions",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "authenticated",
+      "schema": "extensions",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "service_role",
+      "schema": "extensions",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "anon",
+      "schema": "graphql",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "authenticated",
+      "schema": "graphql",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "service_role",
+      "schema": "graphql",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "anon",
+      "schema": "graphql_public",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "authenticated",
+      "schema": "graphql_public",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "service_role",
+      "schema": "graphql_public",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "anon",
+      "schema": "net",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "authenticated",
+      "schema": "net",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "service_role",
+      "schema": "net",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "anon",
+      "schema": "public",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "authenticated",
+      "schema": "public",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "service_role",
+      "schema": "public",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "anon",
+      "schema": "realtime",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "authenticated",
+      "schema": "realtime",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "service_role",
+      "schema": "realtime",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "anon",
+      "schema": "storage",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "authenticated",
+      "schema": "storage",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "service_role",
+      "schema": "storage",
+      "usage": true
+    },
+    {
+      "create": false,
+      "role": "anon",
+      "schema": "supabase_migrations",
+      "usage": false
+    },
+    {
+      "create": false,
+      "role": "authenticated",
+      "schema": "supabase_migrations",
+      "usage": false
+    },
+    {
+      "create": false,
+      "role": "service_role",
+      "schema": "supabase_migrations",
+      "usage": false
+    },
+    {
+      "create": false,
+      "role": "anon",
+      "schema": "vault",
+      "usage": false
+    },
+    {
+      "create": false,
+      "role": "authenticated",
+      "schema": "vault",
+      "usage": false
+    },
+    {
+      "create": false,
+      "role": "service_role",
+      "schema": "vault",
+      "usage": true
+    }
+  ],
+  "server_version": "17.11",
+  "transaction_read_only": "on"
+}

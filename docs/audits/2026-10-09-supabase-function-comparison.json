@@ -1,0 +1,114 @@
+[
+  {
+    "name": "audit_entity_update",
+    "local_file": "202609240004_sync.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "3215e84a50a4e311c78f071e73480ec3",
+    "local_source_md5": "3215e84a50a4e311c78f071e73480ec3"
+  },
+  {
+    "name": "dayflow_append",
+    "local_file": "202609240004_sync.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "52b30efeaeb9a32e01f899cc46b98184",
+    "local_source_md5": "52b30efeaeb9a32e01f899cc46b98184"
+  },
+  {
+    "name": "dayflow_apply_operation",
+    "local_file": "202609240004_sync.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "ec8b124360ad40a054819e2589f75b0a",
+    "local_source_md5": "ec8b124360ad40a054819e2589f75b0a"
+  },
+  {
+    "name": "dayflow_capture",
+    "local_file": "202609240004_sync.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "a66eee8246161c610c05f49212c3ab7e",
+    "local_source_md5": "a66eee8246161c610c05f49212c3ab7e"
+  },
+  {
+    "name": "dayflow_claim_push",
+    "local_file": "202610040005_web_push.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "025fe195a23bdf9fbc08a744df11cb3a",
+    "local_source_md5": "025fe195a23bdf9fbc08a744df11cb3a"
+  },
+  {
+    "name": "dayflow_invoke_push",
+    "local_file": "scripts/deploy-web-push.mjs",
+    "matches_local_body": true,
+    "remote_source_md5": "280753fdebf8283dfbda7e9169bd58fe",
+    "local_source_md5": "280753fdebf8283dfbda7e9169bd58fe"
+  },
+  {
+    "name": "dayflow_pull",
+    "local_file": "202609240004_sync.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "db6df11c6d55e0ffcf5431cb985e16ee",
+    "local_source_md5": "db6df11c6d55e0ffcf5431cb985e16ee"
+  },
+  {
+    "name": "dayflow_push_candidates",
+    "local_file": "202610040005_web_push.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "e1aa2868dd69dea6d7f4fcafb3aaa1fd",
+    "local_source_md5": "e1aa2868dd69dea6d7f4fcafb3aaa1fd"
+  },
+  {
+    "name": "dayflow_push_endpoint",
+    "local_file": "202610040005_web_push.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "d800a5b4cbd8baceef3a9a9a4d3c77a4",
+    "local_source_md5": "d800a5b4cbd8baceef3a9a9a4d3c77a4"
+  },
+  {
+    "name": "dayflow_register_push",
+    "local_file": "202610040005_web_push.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "d84699be4b19fbc43a6128ddb956cf96",
+    "local_source_md5": "d84699be4b19fbc43a6128ddb956cf96"
+  },
+  {
+    "name": "dayflow_table",
+    "local_file": "202609240004_sync.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "85f57a1a884572efa70dc03bbf6176fb",
+    "local_source_md5": "85f57a1a884572efa70dc03bbf6176fb"
+  },
+  {
+    "name": "dayflow_wins",
+    "local_file": "202609240004_sync.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "f846db972629c47fed53cd5601f46879",
+    "local_source_md5": "f846db972629c47fed53cd5601f46879"
+  },
+  {
+    "name": "handle_new_user",
+    "local_file": "202609200001_foundation.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "a5345eef4c00e0b6282188ba0355e0d1",
+    "local_source_md5": "a5345eef4c00e0b6282188ba0355e0d1"
+  },
+  {
+    "name": "validate_entity_link",
+    "local_file": "202609200001_foundation.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "89d3b7d688e9ea9199c79792c9385c81",
+    "local_source_md5": "89d3b7d688e9ea9199c79792c9385c81"
+  },
+  {
+    "name": "validate_event_timezone",
+    "local_file": "202609200001_foundation.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "ecb065523c3628e9480e3bce1163d8e2",
+    "local_source_md5": "ecb065523c3628e9480e3bce1163d8e2"
+  },
+  {
+    "name": "validate_task_timezone",
+    "local_file": "202609200002_task_recurrence.sql",
+    "matches_local_body": true,
+    "remote_source_md5": "753209fc1459de801cbc4a548ce1d3f2",
+    "local_source_md5": "753209fc1459de801cbc4a548ce1d3f2"
+  }
+]
