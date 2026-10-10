@@ -1,5 +1,11 @@
 # Verificación — Fases 1–9, incluida PWA y Capacitor
 
+## Pruebas adversariales con dos cuentas — 10 de octubre de 2026
+
+Nueva ejecución contra `spfrfvpexfnnhwpfinrq`, entre las 12:04:51 y las 12:05:32 Europe/Madrid: **460/460 comprobaciones correctas y 40/40 verificaciones de limpieza**. Dos cuentas temporales con JWT reales; lecturas/escrituras cruzadas en ambas direcciones, relaciones entre cuentas, RPC restringidas y reintentos idempotentes comprobados. Accesos indebidos rechazados o sin filas por RLS; las operaciones legítimas siguieron funcionando. Ambas cuentas y sus datos fueron eliminados.
+
+Base local `a061438fcdb8b47d2d4d0b05ce9188338f9a282c`, Windows, Node 24.18.0 y npm 11.16.0, con un cambio del script para conservar resultados en una ruta independiente. Comando `node scripts/audit-supabase-api.mjs after docs/audits/2026-10-10-supabase-adversarial.json`, salida **0**. Sin despliegues ni cambios de permisos. Consulta el [informe y la evidencia nueva](audits/2026-10-10-supabase-adversarial.md); las evidencias del día 9 se conservan intactas. Criterio de cierre cumplido para los escenarios registrados; concurrencia, carga y entrega de notificaciones quedan fuera de esta ejecución.
+
 ## Preparación del push de la auditoría — 9 de octubre de 2026
 
 Rama `security/supabase-rls-audit`, actualizada sobre `origin/main` (`2d59732`). Windows, Node 24.18.0 y npm 11.16.0. Se incluyen la migración aplicada, pruebas, scripts reproducibles y evidencia anterior/posterior; la revisión de los archivos no detectó credenciales ni archivos temporales. No se repitieron los ensayos remotos durante esta preparación.

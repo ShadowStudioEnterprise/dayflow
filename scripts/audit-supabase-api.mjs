@@ -1,6 +1,12 @@
 import { execFileSync } from 'node:child_process'
 import { randomBytes, randomUUID } from 'node:crypto'
-import { mkdirSync, readFileSync, writeFileSync, unlinkSync } from 'node:fs'
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  writeFileSync,
+  unlinkSync,
+} from 'node:fs'
 import { parseEnv } from 'node:util'
 import { createClient } from '@supabase/supabase-js'
 
@@ -9,6 +15,11 @@ import { createClient } from '@supabase/supabase-js'
 // project for which temporary accounts and fixture mutations are authorized.
 const phase = process.argv[2]
 if (!['before', 'after'].includes(phase)) throw new Error('Use before or after')
+// An explicit destination preserves historical evidence on subsequent runs.
+const output =
+  process.argv[3] ?? `docs/audits/2026-10-09-supabase-api-${phase}.json`
+if (process.argv[3] && existsSync(output))
+  throw new Error('Explicit report destination already exists')
 const env = parseEnv(readFileSync('.env.local', 'utf8'))
 const ref = readFileSync('supabase/.temp/project-ref', 'utf8').trim()
 const url = `https://${ref}.supabase.co`
@@ -1119,10 +1130,9 @@ try {
   report.finished_at = new Date().toISOString()
   report.pass =
     !failed && users.length === 2 && report.tests.every((t) => t.pass)
-  writeFileSync(
-    `docs/audits/2026-10-09-supabase-api-${phase}.json`,
-    JSON.stringify(report, null, 2) + '\n',
-  )
+  writeFileSync(output, JSON.stringify(report, null, 2) + '\n', {
+    flag: process.argv[3] ? 'wx' : 'w',
+  })
   console.log(
     `${phase}: ${report.tests.filter((t) => t.pass).length}/${report.tests.length} checks passed; cleanup ${report.cleanup.every((c) => c.deleted ?? c.empty) ? 'verified' : 'incomplete'}`,
   )
