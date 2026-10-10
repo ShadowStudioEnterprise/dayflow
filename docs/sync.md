@@ -63,6 +63,10 @@ El indicador muestra **Guardado local** y el estado actual de la cola, incluida 
 
 Configuración separa **En este dispositivo**, **Cola de envío** y **Última confirmación remota completa**. Esta última muestra la fecha de `lastSuccessAt`, actualizada únicamente tras descargar hasta el final del historial y confirmar toda la cola conocida de esa cuenta. La fecha se conserva como evidencia histórica aunque haya nuevas operaciones, desconexión, error o una pasada parcial; nunca se convierte en la etiqueta de estado actual **Sincronizado**. Si no existe confirmación, se indica explícitamente. Configuración también muestra errores, copias y dispositivos. Estar online no demuestra que Supabase responda. Si falta la migración, la aplicación informa del error y continúa guardando localmente.
 
+## Pruebas de recuperación
+
+Las pruebas de recuperación en `sync-recovery.test.ts` y `SyncRuntime.test.tsx` inyectan fallos en el registro de dispositivo, la cola, los acuses, las páginas y la lectura de metadatos de Dexie. Comprueban rollback, reintento con el mismo ID, recuperación automática, continuidad desde el cursor confirmado tras reabrir la base, conservación de ediciones concurrentes y cambio Alice → Bob → Alice con respuestas tardías. El runtime inicia los reintentos aunque falle el registro inicial; el motor conserva un sondeo de respaldo si no puede consultar cuándo reintentar. Los tests utilizan IndexedDB simulado y transporte controlado; la suite de integración contrasta además el protocolo con las migraciones SQL en PGlite.
+
 ## Límites y continuidad
 
 El protocolo admite tareas, notas, eventos, recordatorios, subtareas, etiquetas, asociaciones, inbox y dispositivos. Perfil de Auth, apariencia y preferencias de notificaciones permanecen fuera de esta cola. Los IDs de alarmas nunca viajan al servidor. El runtime nativo observa cambios remotos de recordatorios y renueva su programación mediante el sistema operativo.

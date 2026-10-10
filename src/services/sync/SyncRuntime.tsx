@@ -24,26 +24,29 @@ export default function SyncRuntime() {
       .registerDevice(
         platform === 'android' || platform === 'ios' ? platform : 'web',
       )
-      .then(() => {
-        if (!disposed) engine.start()
-      })
       .catch((error) => {
         if (!disposed)
-          void database.syncCheckpoints
+          return database.syncCheckpoints
             .get(userId)
             .then((current) =>
-              database.syncCheckpoints.put({
-                ...current,
-                userId,
-                cursor: current?.cursor ?? '0',
-                state: 'error',
-                lastError:
-                  error instanceof Error
-                    ? error.message
-                    : 'No se pudo iniciar la sincronización local.',
-              }),
+              !disposed
+                ? database.syncCheckpoints.put({
+                    ...current,
+                    userId,
+                    cursor: current?.cursor ?? '0',
+                    state: 'error',
+                    lastError:
+                      error instanceof Error
+                        ? error.message
+                        : 'No se pudo iniciar la sincronización local.',
+                  })
+                : undefined,
             )
             .catch(() => {})
+      })
+      .finally(() => {
+        // A failed registration must not prevent automatic recovery.
+        if (!disposed) engine.start()
       })
     const listener = Capacitor.isNativePlatform()
       ? App.addListener('appStateChange', ({ isActive }) => {

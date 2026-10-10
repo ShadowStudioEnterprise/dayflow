@@ -440,6 +440,8 @@ export class SyncEngine {
         .then(() => this.syncOnce())
         .finally(async () => {
           if (!this.active) return
+          // Keep polling even if IndexedDB cannot supply the retry metadata.
+          this.schedule()
           const queue = await this.db.syncQueue
             .where('userId')
             .equals(this.userId)
