@@ -1,5 +1,13 @@
 import type { SyncEngine } from './sync-engine'
 const engines = new Map<string, SyncEngine>()
+export function withFreshRemote<T>(userId: string, work: () => Promise<T>) {
+  const engine = engines.get(userId)
+  if (!engine)
+    throw new Error(
+      'La sincronización todavía se está iniciando. Vuelve a intentarlo.',
+    )
+  return engine.withFreshRemote(work)
+}
 export function registerSyncEngine(userId: string, engine: SyncEngine) {
   engines.set(userId, engine)
   return () => {

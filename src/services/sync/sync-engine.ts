@@ -255,6 +255,26 @@ export class SyncEngine {
     }
     return false
   }
+  /** Read through the remote history without sending pending operations. */
+  async withFreshRemote<T>(work: () => Promise<T>): Promise<T> {
+    return exclusive(
+      `dayflow-sync:${this.db.name}:${this.userId}`,
+      this.controller.signal,
+      async () => {
+        this.check()
+        if (typeof navigator !== 'undefined' && navigator.onLine === false)
+          throw new Error(
+            'Conéctate para comprobar la versión remota antes de reenviar.',
+          )
+        if (!(await this.pull()))
+          throw new Error(
+            'La comprobación remota no ha terminado. Vuelve a intentarlo.',
+          )
+        this.check()
+        return work()
+      },
+    )
+  }
   async syncOnce(force = false): Promise<SyncResult> {
     if (this.running) return this.running
     this.running = exclusive(
@@ -296,10 +316,10 @@ export class SyncEngine {
             this.check()
             if (processed >= 200) break
             if (
-              !force &&
-              (operation.blocked ||
-                (operation.nextAttemptAt &&
-                  Date.parse(operation.nextAttemptAt) > Date.now()))
+              operation.blocked ||
+              (!force &&
+                operation.nextAttemptAt &&
+                Date.parse(operation.nextAttemptAt) > Date.now())
             )
               continue
             processed++

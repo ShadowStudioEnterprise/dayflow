@@ -10,7 +10,7 @@ import { decodePage, decodeReceipt, encodeOperation } from './codec'
 import { ConflictResolver } from './conflict-resolver'
 import type { SyncTransport } from './types'
 import type { SyncOperation } from '../../shared/types/domain'
-import { requeueCurrent } from './recovery'
+import { prepareRequeue, requeueCurrent } from './recovery'
 import { createTaskService } from '../../features/tasks/services/task-service'
 import { createInboxService } from '../../features/inbox/inbox-service'
 import { createTagService } from '../../features/tags/tag-service'
@@ -289,7 +289,15 @@ it('rechaza reloj adelantado y registra el error sin eliminar la operación', as
     retries: 1,
   })
   expect((await a.db.syncCheckpoints.get(alice))?.lastError).toContain('reloj')
-  await requeueCurrent(alice, 'tasks', op.entityId, a.db)
+  const refresh = a.engine.withFreshRemote.bind(a.engine)
+  const review = await prepareRequeue(
+    alice,
+    'tasks',
+    op.entityId,
+    a.db,
+    refresh,
+  )
+  await requeueCurrent(alice, 'tasks', op.entityId, review, a.db, refresh)
   expect(await a.db.syncQueue.get(op.id)).toBeUndefined()
   expect(await a.db.syncConflicts.get(op.id)).toMatchObject({
     reason: 'requeued',

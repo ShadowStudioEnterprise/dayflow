@@ -7,6 +7,7 @@ import type { RemoteChange, SyncPage, SyncTransport } from './types'
 import type { SyncOperation } from '../../shared/types/domain'
 import { SyncFailure } from './supabase-transport'
 import { registerSyncEngine, synchronizeNow } from './sync-control'
+import { prepareRequeue, requeueCurrent } from './recovery'
 const alice = '00000000-0000-4000-8000-000000000001'
 const bob = '00000000-0000-4000-8000-000000000002'
 const draft = {
@@ -45,6 +46,103 @@ const change = (op: SyncOperation): RemoteChange => ({
   entity: op.entity,
   data: op.payload,
   stamp: ConflictResolver.stamp(op),
+})
+it('comprueba y conserva la versión remota antes de reenviar, sin enviar operaciones bloqueadas', async () => {
+  const op = await operation()
+  await db.syncQueue.update(op.id, { blocked: true })
+  const remote = {
+    ...change(op),
+    data: { ...op.payload, title: 'Contenido remoto' },
+  }
+  vi.mocked(transport.pull).mockImplementation(async (cursor) => ({
+    ...empty(),
+    changes: cursor === '0' ? [remote] : [],
+    cursor: '1',
+  }))
+  const refresh = engine.withFreshRemote.bind(engine)
+  const review = await prepareRequeue(alice, 'tasks', op.entityId, db, refresh)
+  expect(review.remote).toMatchObject({ title: 'Contenido remoto' })
+  expect(review.local).toMatchObject({ title: 'Conservar' })
+  expect(transport.push).not.toHaveBeenCalled()
+  await engine.syncOnce(true)
+  expect(transport.push).not.toHaveBeenCalled()
+  await requeueCurrent(alice, 'tasks', op.entityId, review, db, refresh)
+  expect(await db.syncQueue.get(op.id)).toBeUndefined()
+  expect(await db.syncConflicts.get(op.id)).toMatchObject({
+    local: { title: 'Conservar' },
+    remote: { title: 'Contenido remoto' },
+    reason: 'requeued',
+  })
+})
+
+it.each(['local', 'remote'] as const)(
+  'exige otra revisión si cambia la versión %s antes de confirmar',
+  async (side) => {
+    const op = await operation()
+    await db.syncQueue.update(op.id, { blocked: true })
+    const refresh = engine.withFreshRemote.bind(engine)
+    const review = await prepareRequeue(
+      alice,
+      'tasks',
+      op.entityId,
+      db,
+      refresh,
+    )
+    if (side === 'local')
+      await createRepository('tasks', alice, db).update(op.entityId, {
+        title: 'Nueva edición',
+      })
+    else
+      vi.mocked(transport.pull).mockResolvedValue({
+        ...empty(),
+        changes: [
+          {
+            ...change(op),
+            data: { ...op.payload, title: 'Otra edición remota' },
+          },
+        ],
+        cursor: '1',
+      })
+    await expect(
+      requeueCurrent(alice, 'tasks', op.entityId, review, db, refresh),
+    ).rejects.toThrow('ha cambiado')
+    expect(await db.syncQueue.get(op.id)).toMatchObject({ blocked: true })
+    expect(await db.syncConflicts.count()).toBe(0)
+    expect(transport.push).not.toHaveBeenCalled()
+  },
+)
+
+it('un fallo al comprobar el servidor impide preparar o confirmar el reenvío', async () => {
+  const op = await operation()
+  await db.syncQueue.update(op.id, { blocked: true })
+  const refresh = engine.withFreshRemote.bind(engine)
+  const review = await prepareRequeue(alice, 'tasks', op.entityId, db, refresh)
+  vi.mocked(transport.pull).mockRejectedValue(new Error('Servidor inaccesible'))
+  await expect(
+    prepareRequeue(alice, 'tasks', op.entityId, db, refresh),
+  ).rejects.toThrow('Servidor inaccesible')
+  await expect(
+    requeueCurrent(alice, 'tasks', op.entityId, review, db, refresh),
+  ).rejects.toThrow('Servidor inaccesible')
+  expect(await db.syncQueue.get(op.id)).toMatchObject({ blocked: true })
+  expect(await db.syncConflicts.count()).toBe(0)
+})
+
+it('no certifica una revisión remota si alcanza el límite de páginas', async () => {
+  await expect(engine.withFreshRemote(async () => 'confirmado')).resolves.toBe(
+    'confirmado',
+  )
+  vi.mocked(transport.pull).mockImplementation(async (cursor) => {
+    const op = { ...(await operation()) }
+    const changes = Array.from({ length: 100 }, (_, i) => ({
+      ...change(op),
+      seq: String(BigInt(cursor) + BigInt(i + 1)),
+    }))
+    return { ...empty(), changes, cursor: changes.at(-1)!.seq }
+  })
+  const work = vi.fn(async () => 'confirmado')
+  await expect(engine.withFreshRemote(work)).rejects.toThrow('no ha terminado')
+  expect(work).not.toHaveBeenCalled()
 })
 it('no confirma una operación cuando se pierde la respuesta, aplica backoff y mantiene el mismo ID', async () => {
   const op = await operation()

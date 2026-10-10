@@ -33,7 +33,8 @@
   margin: 0;
   overflow-wrap: anywhere;
 }
-.sync-conflict pre {
+.sync-conflict pre,
+.sync-review pre {
   max-height: 260px;
   overflow: auto;
   white-space: pre-wrap;

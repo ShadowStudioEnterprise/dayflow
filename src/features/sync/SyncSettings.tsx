@@ -6,7 +6,12 @@ import { database } from '../../services/database/database'
 import { createRepository } from '../../services/database/repository'
 import { entitySchemas } from '../../shared/validation/schemas'
 import type { SyncConflict } from '../../services/sync/types'
-import { requeueCurrent } from '../../services/sync/recovery'
+import {
+  prepareRequeue,
+  requeueCurrent,
+  type RequeueReview,
+} from '../../services/sync/recovery'
+import { ConflictResolver } from '../../services/sync/conflict-resolver'
 import './sync.css'
 
 function download(value: unknown, filename: string) {
@@ -36,6 +41,7 @@ export function SyncSettings({ userId }: { userId: string }) {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [requeueId, setRequeueId] = useState('')
+  const [review, setReview] = useState<RequeueReview>()
   const synchronize = async () => {
     const result = await synchronizeNow(userId)
     if (result.status === 'error' || result.status === 'offline')
@@ -138,8 +144,8 @@ export function SyncSettings({ userId }: { userId: string }) {
           <div className="sync-rejected">
             <h3>Operaciones que necesitan revisión</h3>
             <p className="muted small">
-              Se conservan sin borrarlas. Corrige la causa indicada y pulsa
-              Sincronizar ahora para reintentarlas.
+              Se conservan sin borrarlas. Corrige la causa indicada y revisa la
+              versión remota antes de reenviar.
             </p>
             {queue
               .filter((item) => item.blocked)
@@ -147,12 +153,36 @@ export function SyncSettings({ userId }: { userId: string }) {
                 <div key={item.id}>
                   <strong>{labelFor(item.payload)}</strong>
                   <p className="field-error">{item.lastError}</p>
-                  {requeueId === item.id ? (
-                    <div className="notice">
+                  {requeueId === item.id && review ? (
+                    <div className="notice sync-review">
+                      <p role="status">
+                        {review.remote
+                          ? ConflictResolver.sameContent(
+                              review.local,
+                              review.remote,
+                            )
+                            ? 'La versión remota comprobada tiene el mismo contenido que la local.'
+                            : review.remote.deletedAt
+                              ? 'Conflicto: el elemento está eliminado en el servidor. El reenvío puede restaurarlo o sustituir su contenido.'
+                              : 'Conflicto: la versión remota tiene contenido diferente. El reenvío puede reemplazarlo por la versión local.'
+                          : 'No existe una versión remota en el historial comprobado. El reenvío puede crear el elemento.'}
+                      </p>
+                      <details>
+                        <summary>Ver versión local que se reenviará</summary>
+                        <pre>{JSON.stringify(review.local, null, 2)}</pre>
+                      </details>
+                      {review.remote && (
+                        <details>
+                          <summary>Ver versión remota comprobada</summary>
+                          <pre>{JSON.stringify(review.remote, null, 2)}</pre>
+                        </details>
+                      )}
                       <p>
                         Se reenviará la versión local actual con fecha nueva.
                         Puede sustituir una versión remota. Los intentos
-                        anteriores se conservarán como copias.
+                        anteriores y la versión remota comprobada se conservarán
+                        como copias locales. Otro dispositivo puede cambiar el
+                        contenido después de esta comprobación.
                       </p>
                       <div className="sync-actions">
                         <button
@@ -164,15 +194,16 @@ export function SyncSettings({ userId }: { userId: string }) {
                         </button>
                         <button
                           className="button primary"
-                          disabled={busy}
+                          disabled={busy || !online}
                           onClick={() =>
                             void run(async () => {
+                              setRequeueId('')
                               await requeueCurrent(
                                 userId,
                                 item.entity,
                                 item.entityId,
+                                review,
                               )
-                              setRequeueId('')
                               await synchronize()
                             })
                           }
@@ -184,8 +215,19 @@ export function SyncSettings({ userId }: { userId: string }) {
                   ) : (
                     <button
                       className="text-button"
-                      disabled={busy}
-                      onClick={() => setRequeueId(item.id)}
+                      disabled={busy || !online}
+                      onClick={() =>
+                        void run(async () => {
+                          setRequeueId('')
+                          const next = await prepareRequeue(
+                            userId,
+                            item.entity,
+                            item.entityId,
+                          )
+                          setReview(next)
+                          setRequeueId(item.id)
+                        })
+                      }
                     >
                       Reenviar versión actual
                     </button>
@@ -214,6 +256,12 @@ export function SyncSettings({ userId }: { userId: string }) {
                 <summary>Ver versión local conservada</summary>
                 <pre>{JSON.stringify(conflict.local, null, 2)}</pre>
               </details>
+              {conflict.remote && (
+                <details>
+                  <summary>Ver versión remota conservada</summary>
+                  <pre>{JSON.stringify(conflict.remote, null, 2)}</pre>
+                </details>
+              )}
               <div className="sync-actions">
                 <button
                   className="button secondary"
