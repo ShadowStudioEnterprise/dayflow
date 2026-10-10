@@ -33,16 +33,17 @@ export function useSyncStatus(userId?: string) {
       }
     }
   }, [userId])
-  const label = !online
-    ? 'Sin conexión'
-    : result?.error || result?.checkpoint?.state === 'error'
-      ? 'Error de sincronización'
-      : result?.checkpoint?.state === 'syncing'
-        ? 'Sincronizando…'
-        : result?.queue.length
-          ? `${result.queue.length} cambios pendientes`
-          : result?.checkpoint?.lastSuccessAt
-            ? 'Sincronizado'
-            : 'Sincronización pendiente'
+  const label =
+    !online || result?.checkpoint?.state === 'offline'
+      ? 'Sin conexión'
+      : result?.error || result?.checkpoint?.state === 'error'
+        ? 'Error de sincronización'
+        : result?.checkpoint?.state === 'syncing'
+          ? 'Sincronizando…'
+          : result?.queue.length
+            ? `${result.queue.length} cambios pendientes`
+            : result?.checkpoint?.lastSuccessAt
+              ? 'Sincronizado'
+              : 'Sincronización pendiente'
   return { ...result, label, online }
 }

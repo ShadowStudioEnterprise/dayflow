@@ -12,5 +12,5 @@ export async function synchronizeNow(userId: string) {
     throw new Error(
       'La sincronización todavía se está iniciando. Vuelve a intentarlo.',
     )
-  await engine.syncOnce(true)
+  return engine.syncOnce(true)
 }

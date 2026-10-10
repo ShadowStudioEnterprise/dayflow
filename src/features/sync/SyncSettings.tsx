@@ -34,6 +34,17 @@ export function SyncSettings({ userId }: { userId: string }) {
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [requeueId, setRequeueId] = useState('')
+  const synchronize = async () => {
+    const result = await synchronizeNow(userId)
+    if (result.status === 'error' || result.status === 'offline')
+      setError(result.message)
+    else if (result.status === 'partial')
+      setError(
+        result.reason === 'cancelled'
+          ? 'La sincronización se interrumpió al cerrar la sesión.'
+          : 'La sincronización no ha terminado. Quedan cambios pendientes.',
+      )
+  }
   const run = async (work: () => Promise<unknown>) => {
     setBusy(true)
     setError('')
@@ -88,7 +99,7 @@ export function SyncSettings({ userId }: { userId: string }) {
           <button
             className="button secondary"
             disabled={busy || !online}
-            onClick={() => void run(() => synchronizeNow(userId))}
+            onClick={() => void run(synchronize)}
           >
             {busy ? 'Sincronizando…' : 'Sincronizar ahora'}
           </button>
@@ -139,7 +150,7 @@ export function SyncSettings({ userId }: { userId: string }) {
                                 item.entityId,
                               )
                               setRequeueId('')
-                              await synchronizeNow(userId)
+                              await synchronize()
                             })
                           }
                         >

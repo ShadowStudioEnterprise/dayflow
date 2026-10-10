@@ -40,6 +40,19 @@ Las sucesoras de tareas recurrentes y sus subtareas utilizan UUIDv8 determinista
 
 ## Errores y recuperación
 
+`SyncEngine.syncOnce(force?)` devuelve `Promise<SyncResult>` y `synchronizeNow(userId)` propaga ese resultado. Una promesa resuelta no certifica que la sincronización haya terminado: el consumidor debe comprobar `result.completed` o `result.status === 'success'`.
+
+| Estado    | `completed` | Significado                                                                                                                                                   |
+| --------- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `success` | `true`      | La descarga final alcanzó el fin del historial y no quedan operaciones de esta cuenta en la cola local. Se actualiza `lastSuccessAt`.                         |
+| `partial` | `false`     | Queda trabajo (`reason: 'pending'`), se omitió la pasada por una pausa de reintento (`'backoff'`, con `nextAttemptAt`) o se detuvo la sesión (`'cancelled'`). |
+| `offline` | `false`     | El navegador informa de desconexión, al comenzar o durante un fallo. Incluye `message`.                                                                       |
+| `error`   | `false`     | Falló la pasada o quedan operaciones bloqueadas. Incluye `message` y `kind`: `transient`, `auth`, `setup` o `permanent`.                                      |
+
+Los límites de 200 envíos y 20 páginas por descarga, las operaciones aplazadas y las nuevas ediciones durante un envío pueden producir `partial`. Los rechazos permanentes permiten continuar con otras operaciones, pero el resultado sigue siendo `error`. Un fallo de transporte con el navegador online es `error`, pues estar online no prueba que el servidor sea accesible. Los llamantes concurrentes comparten el resultado de la pasada en curso; `force` no reinicia una pasada que ya comenzó. La cancelación, incluso mientras se espera el bloqueo entre pestañas, nunca devuelve éxito.
+
+La confirmación describe el estado observado al finalizar la pasada; una edición local o remota posterior requiere otra sincronización. El botón manual informa de los resultados incompletos, y el indicador no presenta una confirmación anterior como finalización de una pasada parcial o desconectada.
+
 Los errores de red reintentan con espera exponencial y jitter, hasta cinco minutos. Autenticación/configuración usan una pausa larga para no saturar el backend; el botón **Sincronizar ahora** permite reintentar inmediatamente. Los datos rechazados por validación quedan bloqueados y visibles, sin perder el snapshot ni bloquear permanentemente otros documentos.
 
 **Exportar cambios pendientes** conserva la cola en JSON. Tras corregir datos o el reloj, **Reenviar versión actual** solicita confirmación, archiva los intentos anteriores, crea un ID de operación nuevo y usa la fecha actual. Puede sustituir contenido remoto; nunca se hace automáticamente. Una copia archivada no implica que se haya sincronizado.

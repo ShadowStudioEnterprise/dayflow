@@ -9,6 +9,7 @@ import {
   type RemoteChange,
   type SyncCheckpoint,
   type SyncReceipt,
+  type SyncResult,
   type SyncTransport,
 } from './types'
 
@@ -79,7 +80,7 @@ export class SyncEngine {
   private db: DayflowDatabase
   private transport: SyncTransport
   private controller = new AbortController()
-  private running?: Promise<void>
+  private running?: Promise<SyncResult>
   private timer?: ReturnType<typeof setTimeout>
   private active = false
   private unsubscribe?: () => void
@@ -254,20 +255,33 @@ export class SyncEngine {
     }
     return false
   }
-  async syncOnce(force = false): Promise<void> {
+  async syncOnce(force = false): Promise<SyncResult> {
     if (this.running) return this.running
     this.running = exclusive(
       `dayflow-sync:${this.db.name}:${this.userId}`,
       this.controller.signal,
-      async () => {
+      async (): Promise<SyncResult> => {
         this.check()
         const before = await this.db.syncCheckpoints.get(this.userId)
+        if (typeof navigator !== 'undefined' && navigator.onLine === false) {
+          await this.checkpoint({ state: 'offline' })
+          return {
+            status: 'offline',
+            completed: false,
+            message: 'Sin conexión.',
+          }
+        }
         if (
           !force &&
           before?.nextAttemptAt &&
           Date.parse(before.nextAttemptAt) > Date.now()
         )
-          return
+          return {
+            status: 'partial',
+            completed: false,
+            reason: 'backoff',
+            nextAttemptAt: before.nextAttemptAt,
+          }
         await this.checkpoint({ state: 'syncing', lastError: undefined })
         try {
           await this.pull()
@@ -318,7 +332,7 @@ export class SyncEngine {
           await this.checkpoint({
             state: remaining.some((item) => item.blocked)
               ? 'error'
-              : caughtUp
+              : caughtUp && remaining.length === 0
                 ? 'idle'
                 : 'syncing',
             failures: 0,
@@ -328,15 +342,26 @@ export class SyncEngine {
               ? { lastSuccessAt: new Date().toISOString() }
               : {}),
           })
+          const blocked = remaining.find((item) => item.blocked)
+          if (blocked)
+            return {
+              status: 'error',
+              completed: false,
+              kind: 'permanent',
+              message: blocked.lastError ?? 'Hay operaciones bloqueadas.',
+            }
+          return caughtUp && remaining.length === 0
+            ? { status: 'success', completed: true }
+            : { status: 'partial', completed: false, reason: 'pending' }
         } catch (error) {
-          if (this.controller.signal.aborted) return
+          if (this.controller.signal.aborted)
+            return { status: 'partial', completed: false, reason: 'cancelled' }
           const failure = classifySyncError(error)
+          const offline =
+            typeof navigator !== 'undefined' && navigator.onLine === false
           const failures = (before?.failures ?? 0) + 1
           await this.checkpoint({
-            state:
-              typeof navigator !== 'undefined' && !navigator.onLine
-                ? 'offline'
-                : 'error',
+            state: offline ? 'offline' : 'error',
             lastError: failure.message,
             failures,
             nextAttemptAt: new Date(
@@ -346,11 +371,31 @@ export class SyncEngine {
                   : retryDelay(failures)),
             ).toISOString(),
           })
+          return offline
+            ? { status: 'offline', completed: false, message: failure.message }
+            : {
+                status: 'error',
+                completed: false,
+                kind: failure.kind,
+                message: failure.message,
+              }
         }
       },
-    ).finally(() => {
-      this.running = undefined
-    })
+    )
+      .catch((error): SyncResult => {
+        if (this.controller.signal.aborted)
+          return { status: 'partial', completed: false, reason: 'cancelled' }
+        const failure = classifySyncError(error)
+        return {
+          status: 'error',
+          completed: false,
+          kind: failure.kind,
+          message: error instanceof Error ? error.message : failure.message,
+        }
+      })
+      .finally(() => {
+        this.running = undefined
+      })
     return this.running
   }
   private wake = () => {

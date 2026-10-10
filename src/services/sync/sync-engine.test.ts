@@ -6,6 +6,7 @@ import { ConflictResolver } from './conflict-resolver'
 import type { RemoteChange, SyncPage, SyncTransport } from './types'
 import type { SyncOperation } from '../../shared/types/domain'
 import { SyncFailure } from './supabase-transport'
+import { registerSyncEngine, synchronizeNow } from './sync-control'
 const alice = '00000000-0000-4000-8000-000000000001'
 const bob = '00000000-0000-4000-8000-000000000002'
 const draft = {
@@ -54,15 +55,26 @@ it('no confirma una operación cuando se pierde la respuesta, aplica backoff y m
       accepted: true,
       change: change(op),
     })
-  await engine.syncOnce()
+  expect(await engine.syncOnce()).toMatchObject({
+    status: 'error',
+    completed: false,
+    kind: 'transient',
+  })
   expect(await db.syncQueue.get(op.id)).toMatchObject({
     retries: 1,
     blocked: false,
     nextAttemptAt: expect.any(String),
   })
-  await engine.syncOnce()
+  expect(await engine.syncOnce()).toMatchObject({
+    status: 'partial',
+    completed: false,
+    reason: 'backoff',
+  })
   expect(transport.push).toHaveBeenCalledTimes(1)
-  await engine.syncOnce(true)
+  expect(await engine.syncOnce(true)).toEqual({
+    status: 'success',
+    completed: true,
+  })
   expect(transport.push).toHaveBeenCalledTimes(2)
   expect(await db.syncQueue.get(op.id)).toBeUndefined()
 })
@@ -83,7 +95,11 @@ it('cancela sesión en mitad de una respuesta y no aplica datos tardíos', async
   await started
   engine.stop()
   release({ ...empty(), changes: [change(op)], cursor: '1' })
-  await running
+  expect(await running).toEqual({
+    status: 'partial',
+    completed: false,
+    reason: 'cancelled',
+  })
   expect(await db.syncQueue.get(op.id)).toBeDefined()
   expect((await db.syncCheckpoints.get(alice))?.cursor).toBe('0')
   expect(await db.syncReplicas.count()).toBe(0)
@@ -169,4 +185,175 @@ it('conserva el remoto más reciente aunque llegue un acuse antiguo después del
     title: 'Remoto posterior',
   })
   expect(await db.syncQueue.count()).toBe(0)
+})
+
+it('expone la confirmación completa al consumidor manual', async () => {
+  const unregister = registerSyncEngine(alice, engine)
+  try {
+    expect(await synchronizeNow(alice)).toEqual({
+      status: 'success',
+      completed: true,
+    })
+    expect((await db.syncCheckpoints.get(alice))?.lastSuccessAt).toBeDefined()
+  } finally {
+    unregister()
+  }
+})
+
+it('distingue estar offline sin enviar ni certificar éxito', async () => {
+  vi.spyOn(navigator, 'onLine', 'get').mockReturnValue(false)
+  expect(await engine.syncOnce(true)).toMatchObject({
+    status: 'offline',
+    completed: false,
+  })
+  expect(transport.pull).not.toHaveBeenCalled()
+  expect((await db.syncCheckpoints.get(alice))?.state).toBe('offline')
+  expect((await db.syncCheckpoints.get(alice))?.lastSuccessAt).toBeUndefined()
+})
+
+it('detecta una desconexión durante la descarga', async () => {
+  vi.mocked(transport.pull).mockImplementationOnce(async () => {
+    vi.spyOn(navigator, 'onLine', 'get').mockReturnValue(false)
+    throw new Error('Red perdida')
+  })
+  expect(await engine.syncOnce()).toMatchObject({
+    status: 'offline',
+    completed: false,
+  })
+})
+
+it.each(['auth', 'setup'] as const)(
+  'devuelve el fallo %s al llamante',
+  async (kind) => {
+    vi.mocked(transport.pull).mockRejectedValue(
+      new SyncFailure('Revisar servidor', kind),
+    )
+    expect(await engine.syncOnce()).toEqual({
+      status: 'error',
+      completed: false,
+      kind,
+      message: 'Revisar servidor',
+    })
+  },
+)
+
+it('un rechazo permanente no impide otros envíos ni devuelve éxito', async () => {
+  const rejected = await operation()
+  await createRepository('tasks', alice, db).create({
+    ...draft,
+    title: 'Válida',
+  })
+  vi.mocked(transport.push).mockImplementation(async (op) => {
+    if (op.id === rejected.id)
+      throw new SyncFailure('Datos rechazados', 'permanent')
+    return { operationId: op.id, accepted: true, change: change(op) }
+  })
+  expect(await engine.syncOnce()).toEqual({
+    status: 'error',
+    completed: false,
+    kind: 'permanent',
+    message: 'Datos rechazados',
+  })
+  expect(await db.syncQueue.count()).toBe(1)
+  expect((await db.syncCheckpoints.get(alice))?.lastSuccessAt).toBeUndefined()
+})
+
+it('una operación aplazada deja la pasada parcial', async () => {
+  const op = await operation()
+  await db.syncQueue.update(op.id, {
+    nextAttemptAt: new Date(Date.now() + 60000).toISOString(),
+  })
+  expect(await engine.syncOnce()).toEqual({
+    status: 'partial',
+    completed: false,
+    reason: 'pending',
+  })
+  expect(transport.push).not.toHaveBeenCalled()
+  expect((await db.syncCheckpoints.get(alice))?.state).toBe('syncing')
+})
+
+it('el límite de envíos no confirma una cola que todavía tiene trabajo', async () => {
+  const op = await operation()
+  await db.syncQueue.bulkPut(
+    Array.from({ length: 200 }, () => ({ ...op, id: crypto.randomUUID() })),
+  )
+  vi.mocked(transport.push).mockImplementation(async (item) => ({
+    operationId: item.id,
+    accepted: true,
+    change: change(item),
+  }))
+  expect(await engine.syncOnce()).toEqual({
+    status: 'partial',
+    completed: false,
+    reason: 'pending',
+  })
+  expect(transport.push).toHaveBeenCalledTimes(200)
+  expect(await db.syncQueue.count()).toBe(1)
+  expect((await db.syncCheckpoints.get(alice))?.lastSuccessAt).toBeUndefined()
+})
+
+it('alcanzar el límite de páginas no certifica que se descargó todo', async () => {
+  const op = await operation()
+  await db.syncQueue.clear()
+  vi.mocked(transport.pull).mockImplementation(async (cursor) => {
+    const changes = Array.from({ length: 100 }, (_, index) => ({
+      ...change(op),
+      seq: String(BigInt(cursor) + BigInt(index + 1)),
+    }))
+    return { ...empty(), changes, cursor: changes[99]!.seq }
+  })
+  expect(await engine.syncOnce()).toEqual({
+    status: 'partial',
+    completed: false,
+    reason: 'pending',
+  })
+  expect(transport.pull).toHaveBeenCalledTimes(40)
+  expect((await db.syncCheckpoints.get(alice))?.lastSuccessAt).toBeUndefined()
+})
+
+it('una edición durante el envío impide una confirmación completa', async () => {
+  const op = await operation()
+  vi.mocked(transport.push).mockImplementationOnce(async () => {
+    await createRepository('tasks', alice, db).update(op.entityId, {
+      title: 'Edición nueva',
+    })
+    return { operationId: op.id, accepted: true, change: change(op) }
+  })
+  expect(await engine.syncOnce()).toEqual({
+    status: 'partial',
+    completed: false,
+    reason: 'pending',
+  })
+  expect(await db.syncQueue.count()).toBe(1)
+})
+
+it('los llamantes concurrentes observan el mismo resultado', async () => {
+  const [first, second] = await Promise.all([
+    engine.syncOnce(),
+    engine.syncOnce(true),
+  ])
+  expect(first).toBe(second)
+  expect(first).toEqual({ status: 'success', completed: true })
+  expect(transport.pull).toHaveBeenCalledTimes(2)
+})
+
+it('una sesión detenida antes de comenzar devuelve cancelación', async () => {
+  engine.stop()
+  expect(await engine.syncOnce()).toEqual({
+    status: 'partial',
+    completed: false,
+    reason: 'cancelled',
+  })
+  expect(transport.pull).not.toHaveBeenCalled()
+})
+
+it('un fallo al guardar el checkpoint tampoco se confunde con éxito', async () => {
+  vi.spyOn(db.syncCheckpoints, 'put').mockRejectedValue(
+    new Error('Sin espacio'),
+  )
+  expect(await engine.syncOnce()).toMatchObject({
+    status: 'error',
+    completed: false,
+    message: 'Sin espacio',
+  })
 })

@@ -48,6 +48,22 @@ export interface SyncTransport {
     onStatus: (connected: boolean) => void,
   ): () => void
 }
+/** Only success certifies a drained local queue and a completed remote pull. */
+export type SyncResult =
+  | { status: 'success'; completed: true }
+  | {
+      status: 'partial'
+      completed: false
+      reason: 'backoff' | 'pending' | 'cancelled'
+      nextAttemptAt?: string
+    }
+  | { status: 'offline'; completed: false; message: string }
+  | {
+      status: 'error'
+      completed: false
+      kind: 'transient' | 'auth' | 'permanent' | 'setup'
+      message: string
+    }
 export interface SyncCheckpoint {
   userId: string
   cursor: string
