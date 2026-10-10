@@ -9,9 +9,13 @@ async function sync(page: Page) {
   await page
     .getByRole('button', { name: 'Sincronizar ahora', exact: true })
     .click()
+  await expect(page.locator('.sync-settings strong').first()).toHaveText(
+    'Sin pendientes',
+  )
   await expect(
-    page.getByText('Sincronizado · 0 operaciones pendientes'),
+    page.getByText('0 operaciones pendientes', { exact: true }),
   ).toBeVisible()
+  await expect(page.locator('.sync-summary time')).toBeVisible()
 }
 test('dos dispositivos convergen, recuperan cambios offline y transmiten borrados', async ({
   page,
@@ -42,13 +46,33 @@ test('dos dispositivos convergen, recuperan cambios offline y transmiten borrado
         exact: true,
       }),
     ).toBeVisible()
+    await second.locator('.sync-indicator').click()
+    await expect(second.locator('.sync-summary time')).toBeVisible()
     await other.setOffline(true)
+    await expect(second.locator('.sync-settings strong').first()).toHaveText(
+      'Sin conexión',
+    )
+    await second.goBack()
     await second
       .getByRole('checkbox', {
         name: 'Completar Compartida entre dispositivos',
         exact: true,
       })
       .click()
+    await second.locator('.sync-indicator').click()
+    await expect(
+      second.getByText('Guardado local', { exact: true }),
+    ).toBeVisible()
+    await expect(
+      second.locator('.sync-summary > div').nth(1).locator('dd'),
+    ).toContainText(/[1-9]\d* operaci/)
+    await expect(second.locator('.sync-summary time')).toBeVisible()
+    await expect(
+      second.getByText(/no garantiza el estado actual del servidor/),
+    ).toBeVisible()
+    await expect(second.getByText('Sincronizado', { exact: true })).toHaveCount(
+      0,
+    )
     await other.setOffline(false)
     await sync(second)
     await sync(page)
@@ -114,7 +138,9 @@ test('recupera una respuesta perdida y conserva las operaciones durante un fallo
       .getByRole('button', { name: 'Sincronizar ahora', exact: true })
       .click()
     await expect(
-      page.getByText(/No se pudo contactar con Supabase/),
+      page
+        .getByRole('alert')
+        .filter({ hasText: /No se pudo contactar con Supabase/ }),
     ).toBeVisible()
     await expect(
       page.getByRole('button', { name: 'Exportar cambios pendientes' }),

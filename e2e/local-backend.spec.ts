@@ -85,9 +85,12 @@ async function sync(page: Page) {
   await page
     .getByRole('button', { name: 'Sincronizar ahora', exact: true })
     .click()
-  await expect(
-    page.getByText('Sincronizado · 0 operaciones pendientes'),
-  ).toBeVisible({ timeout: 20000 })
+  await expect(page.locator('.sync-settings strong').first()).toHaveText(
+    'Sin pendientes',
+    {
+      timeout: 20000,
+    },
+  )
 }
 
 test('registro, correo de confirmación, recuperación y cierre de sesión reales', async ({

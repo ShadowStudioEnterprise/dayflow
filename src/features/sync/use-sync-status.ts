@@ -33,17 +33,39 @@ export function useSyncStatus(userId?: string) {
       }
     }
   }, [userId])
+  const localLabel = !result
+    ? 'Comprobando guardado local…'
+    : result.error
+      ? 'Guardado local no verificado'
+      : 'Guardado local'
+  const pendingLabel =
+    !result || result.error
+      ? 'Cola pendiente de comprobar'
+      : result.queue.length === 1
+        ? '1 operación pendiente'
+        : `${result.queue.length} operaciones pendientes`
+  const pendingChanges =
+    result?.queue.length === 1
+      ? '1 cambio pendiente'
+      : `${result?.queue.length ?? 0} cambios pendientes`
+  const activityLabel = result?.error
+    ? 'Estado de sincronización no disponible'
+    : !result
+      ? 'Comprobando sincronización…'
+      : !online || result.checkpoint?.state === 'offline'
+        ? 'Sin conexión'
+        : result.checkpoint?.state === 'error'
+          ? 'Error de sincronización'
+          : result.queue.length
+            ? pendingChanges
+            : result.checkpoint?.state === 'syncing'
+              ? 'Sincronizando…'
+              : result.checkpoint?.state === 'idle'
+                ? 'Sin pendientes'
+                : 'Comprobación remota pendiente'
   const label =
-    !online || result?.checkpoint?.state === 'offline'
-      ? 'Sin conexión'
-      : result?.error || result?.checkpoint?.state === 'error'
-        ? 'Error de sincronización'
-        : result?.checkpoint?.state === 'syncing'
-          ? 'Sincronizando…'
-          : result?.queue.length
-            ? `${result.queue.length} cambios pendientes`
-            : result?.checkpoint?.lastSuccessAt
-              ? 'Sincronizado'
-              : 'Sincronización pendiente'
-  return { ...result, label, online }
+    result?.queue.length && activityLabel !== pendingChanges
+      ? `${activityLabel} · ${pendingChanges}`
+      : activityLabel
+  return { ...result, label, localLabel, pendingLabel, online }
 }

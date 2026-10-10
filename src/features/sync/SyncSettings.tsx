@@ -24,6 +24,8 @@ const labelFor = (value: SyncConflict['local']) =>
 export function SyncSettings({ userId }: { userId: string }) {
   const {
     label,
+    localLabel,
+    pendingLabel,
     online,
     checkpoint,
     queue = [],
@@ -64,20 +66,41 @@ export function SyncSettings({ userId }: { userId: string }) {
     <>
       <section className="settings-section sync-settings">
         <h2>Sincronización</h2>
-        <p>
-          <strong>{label}</strong> · {queue.length} operaciones pendientes
+        <p role="status">
+          <strong>{label}</strong>
         </p>
+        <dl className="sync-summary">
+          <div>
+            <dt>En este dispositivo</dt>
+            <dd>{localLabel}</dd>
+          </div>
+          <div>
+            <dt>Cola de envío</dt>
+            <dd>{pendingLabel}</dd>
+          </div>
+          <div>
+            <dt>Última confirmación remota completa</dt>
+            <dd>
+              {checkpoint?.lastSuccessAt ? (
+                <time dateTime={checkpoint.lastSuccessAt}>
+                  {new Date(checkpoint.lastSuccessAt).toLocaleString('es')}
+                </time>
+              ) : readError ? (
+                'Confirmación remota no disponible'
+              ) : (
+                'Sin confirmación remota registrada'
+              )}
+            </dd>
+          </div>
+        </dl>
         <p className="muted">
-          Tus cambios se guardan primero en este dispositivo. Sólo se confirma
-          la sincronización tras recibir respuesta de Supabase. Las versiones
-          locales sustituidas por un conflicto se conservan abajo.
+          Tus cambios se guardan primero en este dispositivo. Las operaciones
+          pendientes esperan respuesta de Supabase. La última confirmación
+          remota es histórica: sólo describe la cola y los cambios remotos
+          comprobados al terminar aquella sincronización; no garantiza el estado
+          actual del servidor. Las versiones locales sustituidas por un
+          conflicto se conservan abajo.
         </p>
-        {checkpoint?.lastSuccessAt && (
-          <p className="muted small">
-            Última confirmación completa:{' '}
-            {new Date(checkpoint.lastSuccessAt).toLocaleString('es')}.
-          </p>
-        )}
         <p className="muted small">
           {checkpoint?.realtime
             ? 'Conectado a cambios en tiempo real.'

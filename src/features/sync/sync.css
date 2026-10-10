@@ -12,6 +12,17 @@
   gap: 10px;
   margin-top: 16px;
 }
+.sync-summary > div {
+  display: grid;
+  gap: 4px;
+  padding: 8px 0;
+}
+.sync-summary dt {
+  font-weight: 600;
+}
+.sync-summary dd {
+  margin: 0;
+}
 .sync-conflict {
   border: 1px solid var(--line);
   border-radius: 8px;

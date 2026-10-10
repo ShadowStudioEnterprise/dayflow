@@ -57,7 +57,9 @@ Los errores de red reintentan con espera exponencial y jitter, hasta cinco minut
 
 **Exportar cambios pendientes** conserva la cola en JSON. Tras corregir datos o el reloj, **Reenviar versión actual** solicita confirmación, archiva los intentos anteriores, crea un ID de operación nuevo y usa la fecha actual. Puede sustituir contenido remoto; nunca se hace automáticamente. Una copia archivada no implica que se haya sincronizado.
 
-El indicador sólo muestra **Sincronizado** después de descargar hasta el final del historial y confirmar toda la cola conocida de esa cuenta. Configuración muestra última confirmación completa, errores, copias y dispositivos. Estar online no demuestra que Supabase responda. Si falta la migración, la aplicación informa del error y continúa guardando localmente.
+El indicador muestra **Guardado local** y el estado actual de la cola, incluida la cantidad pendiente durante una desconexión o un error. Una cola vacía se identifica como **Sin pendientes**; no acredita el estado actual del servidor. Durante la lectura inicial o si falla IndexedDB, la interfaz indica que el guardado y la cola están pendientes de comprobar.
+
+Configuración separa **En este dispositivo**, **Cola de envío** y **Última confirmación remota completa**. Esta última muestra la fecha de `lastSuccessAt`, actualizada únicamente tras descargar hasta el final del historial y confirmar toda la cola conocida de esa cuenta. La fecha se conserva como evidencia histórica aunque haya nuevas operaciones, desconexión, error o una pasada parcial; nunca se convierte en la etiqueta de estado actual **Sincronizado**. Si no existe confirmación, se indica explícitamente. Configuración también muestra errores, copias y dispositivos. Estar online no demuestra que Supabase responda. Si falta la migración, la aplicación informa del error y continúa guardando localmente.
 
 ## Límites y continuidad
 
