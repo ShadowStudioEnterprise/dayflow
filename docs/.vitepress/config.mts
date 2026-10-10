@@ -1,5 +1,5 @@
 import { defineConfig } from 'vitepress'
-import { copyFileSync, mkdirSync, readdirSync } from 'node:fs'
+import { copyFileSync, cpSync, mkdirSync, readdirSync } from 'node:fs'
 import path from 'node:path'
 
 const group = (text: string, pages: [string, string][]) => ({
@@ -13,7 +13,7 @@ export default defineConfig({
   description:
     'Arquitectura, producto y operación de Dayflow. Documentación técnica de la aplicación local-first.',
   cleanUrls: true,
-  // Markdown JSON links are preserved as URLs; include their evidence files in SSG output.
+  // Evidence links remain URLs; include JSON reports and nested evidence in SSG output.
   buildEnd(siteConfig) {
     const source = path.join(siteConfig.srcDir, 'audits')
     const output = path.join(siteConfig.outDir, 'audits')
@@ -22,6 +22,9 @@ export default defineConfig({
       if (file.isFile() && file.name.endsWith('.json'))
         copyFileSync(path.join(source, file.name), path.join(output, file.name))
     }
+    cpSync(path.join(source, 'evidence'), path.join(output, 'evidence'), {
+      recursive: true,
+    })
   },
   themeConfig: {
     logo: '/logo.svg',

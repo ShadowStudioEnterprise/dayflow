@@ -22,10 +22,10 @@ El resultado `flaky: 0` del reporter significa que ningún test pasó mediante u
 
 Recorrido: tarea local → IndexedDB/cola → carga completa de `/settings` → clic en «Sincronizar ahora» → motor → RPC/PGlite → checkpoint/UI.
 
-1. [`AppProviders.tsx`](../../src/app/providers/AppProviders.tsx) carga `SyncRuntime` con `lazy` dentro de un `Suspense` independiente, con fallback nulo. La pantalla de Configuración puede estar operativa antes de que ese módulo termine de cargar.
-2. [`SyncSettings.tsx`](../../src/features/sync/SyncSettings.tsx) habilita el botón según `busy` y conectividad, sin comprobar si el motor está registrado.
-3. [`sync-control.ts`](../../src/services/sync/sync-control.ts) rechaza el clic anterior al registro con **«La sincronización todavía se está iniciando. Vuelve a intentarlo.»**
-4. Después de cargar el módulo, [`SyncRuntime.tsx`](../../src/services/sync/SyncRuntime.tsx) registra y arranca el motor. La comprobación automática recibe el 503 y escribe el error esperado en el checkpoint.
+1. [`AppProviders.tsx`](https://github.com/ShadowStudioEnterprise/dayflow/blob/3d9568c1829ce044cc2238aecc6241fe3bf83515/src/app/providers/AppProviders.tsx) carga `SyncRuntime` con `lazy` dentro de un `Suspense` independiente, con fallback nulo. La pantalla de Configuración puede estar operativa antes de que ese módulo termine de cargar.
+2. [`SyncSettings.tsx`](https://github.com/ShadowStudioEnterprise/dayflow/blob/3d9568c1829ce044cc2238aecc6241fe3bf83515/src/features/sync/SyncSettings.tsx) habilita el botón según `busy` y conectividad, sin comprobar si el motor está registrado.
+3. [`sync-control.ts`](https://github.com/ShadowStudioEnterprise/dayflow/blob/3d9568c1829ce044cc2238aecc6241fe3bf83515/src/services/sync/sync-control.ts) rechaza el clic anterior al registro con **«La sincronización todavía se está iniciando. Vuelve a intentarlo.»**
+4. Después de cargar el módulo, [`SyncRuntime.tsx`](https://github.com/ShadowStudioEnterprise/dayflow/blob/3d9568c1829ce044cc2238aecc6241fe3bf83515/src/services/sync/SyncRuntime.tsx) registra y arranca el motor. La comprobación automática recibe el 503 y escribe el error esperado en el checkpoint.
 5. El E2E espera ese error en un elemento `role=alert`, pero el clic había producido la alerta de arranque. El fallo automático posterior aparece como `role=status`. Por eso el locator esperado agota sus cinco segundos aunque el error del servidor sí se muestra y la operación sigue pendiente.
 
 Hay además un límite del helper `sync()` existente: comprobar «Sin pendientes», cola vacía y presencia de un `<time>` no acredita que **ese clic** haya completado una sincronización nueva. Tras recargar, puede observar un checkpoint histórico mientras el clic falla por arranque. Esto facilita que el recorrido avance hasta el fallo posterior.
@@ -34,7 +34,7 @@ Hay además un límite del helper `sync()` existente: comprobar «Sin pendientes
 
 La sonda descrita aquí verificaba el defecto. Tras la corrección se actualizaron sus expectativas para comprobar el botón deshabilitado durante el arranque; los diez resultados originales enlazados abajo se conservan intactos.
 
-[`sync-startup.probe.ts`](../../e2e/sync-startup.probe.ts) intercepta únicamente la carga HTTP del módulo `SyncRuntime.tsx` y la retiene mediante una barrera explícita, sin una espera temporal arbitraria. Auth se intercepta en Playwright y las RPC conservan la fixture SQL existente.
+[`sync-startup.probe.ts`](https://github.com/ShadowStudioEnterprise/dayflow/blob/14b8df1/e2e/sync-startup.probe.ts) intercepta únicamente la carga HTTP del módulo `SyncRuntime.tsx` y la retiene mediante una barrera explícita, sin una espera temporal arbitraria. Auth se intercepta en Playwright y las RPC conservan la fixture SQL existente.
 
 En cada uno de los diez ensayos:
 

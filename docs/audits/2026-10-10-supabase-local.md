@@ -6,10 +6,10 @@ Ejecución en un worktree separado y limpio (`.toolchains/supabase-local-a061438
 
 Comando: `npm run test:local -- --reporter=line,json`, con `CI=1`. Código de salida **0**, dos resultados esperados, cero fallos, cero omisiones y cero pruebas inestables. Configuración: `playwright.local.config.ts`, un worker y cero reintentos.
 
-| Prueba | Resultado y alcance |
-| --- | --- |
-| Registro, confirmación, recuperación y cierre de sesión | Aprobada; Auth y correo local reales, cambio de contraseña, nuevo login y sincronización. |
-| Dos instalaciones y otra cuenta | Aprobada; RPC y WebSocket reales, actualización de tareas, recuperación offline y aislamiento en UI y REST con sesión autenticada. |
+| Prueba                                                  | Resultado y alcance                                                                                                                |
+| ------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| Registro, confirmación, recuperación y cierre de sesión | Aprobada; Auth y correo local reales, cambio de contraseña, nuevo login y sincronización.                                          |
+| Dos instalaciones y otra cuenta                         | Aprobada; RPC y WebSocket reales, actualización de tareas, recuperación offline y aislamiento en UI y REST con sesión autenticada. |
 
 Docker Desktop se arrancó y recuperó el stack local existente. Antes de ejecutar las pruebas se aplicaron exclusivamente a la base local las migraciones pendientes `202610040005_web_push.sql` y `202610090006_security_privileges.sql` mediante `supabase db push --local --yes`, con salida 0. Se verificaron las seis versiones en el historial y el estado de los contenedores. No se reinició desde una base vacía: las 23 cuentas preexistentes se conservaron. Las tres cuentas creadas durante la ejecución se eliminaron por prefijo y ventana temporal; el recuento volvió a 23.
 
@@ -17,7 +17,7 @@ El servidor de pruebas configura explícitamente `http://127.0.0.1:54321`; no se
 
 ## Evidencia conservada
 
-Directorio: [evidence/2026-10-10-supabase-local-a061438](evidence/2026-10-10-supabase-local-a061438/).
+Directorio: [evidence/2026-10-10-supabase-local-a061438](https://github.com/ShadowStudioEnterprise/dayflow/tree/14b8df1/docs/audits/evidence/2026-10-10-supabase-local-a061438).
 
 - [Manifiesto de ejecución](evidence/2026-10-10-supabase-local-a061438/execution.json): SHA, estado del checkout, versiones, comando, salida y resultados.
 - [Informe Playwright](evidence/2026-10-10-supabase-local-a061438/playwright.json), [stdout](evidence/2026-10-10-supabase-local-a061438/playwright.stdout.txt), [stderr](evidence/2026-10-10-supabase-local-a061438/playwright.stderr.txt) y [código de salida](evidence/2026-10-10-supabase-local-a061438/playwright.exit.txt).
@@ -25,4 +25,3 @@ Directorio: [evidence/2026-10-10-supabase-local-a061438](evidence/2026-10-10-sup
 - [Hashes SHA-256](evidence/2026-10-10-supabase-local-a061438/checksums.json) de los archivos de evidencia anteriores.
 
 Los avisos de color de Node aparecen en stderr y no afectaron a las pruebas. Los archivos TXT conservan la salida de PowerShell, incluidas sus envolturas de stderr. No se guardaron claves administrativas, contraseñas ni enlaces de correo.
-
