@@ -1,5 +1,17 @@
 # Verificación — Fases 1–9, incluida PWA y Capacitor
 
+## Corrección del arranque de Sync — 10 de octubre de 2026
+
+El botón espera el registro del motor de la cuenta y vuelve a deshabilitarse cuando se retira. Las acciones de reenvío observan la misma disponibilidad. El resultado manual `success` produce una confirmación explícita que el helper E2E exige; la prueba de respuesta perdida espera el fallo inyectado antes de comprobar la recuperación.
+
+**60/60 E2E de Sync** (diez repeticiones por escenario/perfil de escritorio y móvil), **10/10 ensayos con carga del módulo retenida** y **60/60 unitarias** correctos. Los E2E mantuvieron las fuentes inmutables y cero reintentos. Consulta la [corrección y evidencia posterior](audits/2026-10-10-e2e-sync-fix.md); la investigación previa se conserva por separado.
+
+## Investigación de intermitencia E2E — 10 de octubre de 2026
+
+Sobre `3d9568c1829ce044cc2238aecc6241fe3bf83515`, calendario móvil pasó **130/130 ejecuciones** (100 con cuatro workers y 30 con uno), sin reintentos. Sync reprodujo once fallos por un clic en Configuración anterior al registro del motor cargado con `lazy`; una sonda con barrera explícita confirmó la causa **10/10 veces**, en escritorio y móvil. La batería inicial tuvo además un intento de acceso invalidado por una edición de `tsconfig` durante la ejecución; se conserva separado y las baterías posteriores mantuvieron las fuentes inmutables.
+
+**Investigación cerrada por causa identificada/repeticiones controladas; corrección de Sync pendiente.** No se cambió el producto ni se declara que toda la suite pase. Consulta el [informe, límites, comandos y evidencia por intento](audits/2026-10-10-e2e-intermittency.md).
+
 ## Pruebas adversariales con dos cuentas — 10 de octubre de 2026
 
 Nueva ejecución contra `spfrfvpexfnnhwpfinrq`, entre las 12:04:51 y las 12:05:32 Europe/Madrid: **460/460 comprobaciones correctas y 40/40 verificaciones de limpieza**. Dos cuentas temporales con JWT reales; lecturas/escrituras cruzadas en ambas direcciones, relaciones entre cuentas, RPC restringidas y reintentos idempotentes comprobados. Accesos indebidos rechazados o sin filas por RLS; las operaciones legítimas siguieron funcionando. Ambas cuentas y sus datos fueron eliminados.

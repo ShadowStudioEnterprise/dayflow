@@ -26,6 +26,7 @@ export async function createSyncBackend() {
   )
   let tail: Promise<unknown> = Promise.resolve()
   let loseNextPush = false
+  let responseLost: (() => void) | undefined
   let unavailable = false
   async function connect(context: BrowserContext) {
     await context.route(
@@ -74,6 +75,8 @@ export async function createSyncBackend() {
             if (push && loseNextPush) {
               loseNextPush = false
               await route.abort()
+              responseLost?.()
+              responseLost = undefined
               return
             }
             await route.fulfill({ json: result.rows[0]?.result })
@@ -97,6 +100,9 @@ export async function createSyncBackend() {
     connect,
     loseResponse: () => {
       loseNextPush = true
+      return new Promise<void>((resolve) => {
+        responseLost = resolve
+      })
     },
     setUnavailable: (value: boolean) => {
       unavailable = value

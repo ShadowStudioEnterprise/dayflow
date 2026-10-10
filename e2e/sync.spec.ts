@@ -16,6 +16,9 @@ async function sync(page: Page) {
     page.getByText('0 operaciones pendientes', { exact: true }),
   ).toBeVisible()
   await expect(page.locator('.sync-summary time')).toBeVisible()
+  await expect(
+    page.getByText('Sincronización completada.', { exact: true }),
+  ).toBeVisible()
 }
 test('dos dispositivos convergen, recuperan cambios offline y transmiten borrados', async ({
   page,
@@ -114,10 +117,14 @@ test('recupera una respuesta perdida y conserva las operaciones durante un fallo
     await backend.connect(context)
     await login(page, undefined, { sync: true })
     await sync(page)
-    backend.loseResponse()
+    const responseLost = backend.loseResponse()
     await page.goto('/tasks')
     await page.getByLabel('Título de la nueva tarea').fill('Una sola copia')
     await page.getByLabel('Título de la nueva tarea').press('Enter')
+    await responseLost
+    await expect(page.locator('.sync-indicator')).toContainText(
+      'Error de sincronización',
+    )
     await sync(page)
     await page.reload()
     await sync(page)

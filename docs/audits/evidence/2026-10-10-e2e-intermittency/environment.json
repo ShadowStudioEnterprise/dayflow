@@ -1,0 +1,39 @@
+{
+  "baseCommit": "3d9568c1829ce044cc2238aecc6241fe3bf83515",
+  "date": "2026-10-10",
+  "timezone": "Europe/Madrid",
+  "platform": "Windows-11-10.0.26200-SP0",
+  "node": "v24.18.0",
+  "npm": "11.16.0",
+  "playwright": "1.63.0",
+  "baselineContamination": {
+    "file": "tsconfig.node.json",
+    "changedAtMadrid": "2026-10-10T15:07:25+02:00",
+    "observedDocumentReloadUtc": "2026-10-10T13:07:25.184Z",
+    "affectedAttempt": "sync-desktop / dos ediciones offline conservan la perdedora como copia recuperable / repeatEachIndex 8",
+    "treatment": "Preserved, excluded from product conclusions; follow-up run uses immutable sources."
+  },
+  "vite": "8.3.0",
+  "pglite": "0.5.8",
+  "commands": {
+    "baseline": "npx playwright test --project sync-desktop --project sync-mobile --project calendar-mobile --repeat-each 10 --retries 0 --reporter json",
+    "calendarSerial": "npx playwright test --project calendar-mobile --repeat-each 3 --workers 1 --retries 0 --output .toolchains/e2e-investigation/calendar-serial-artifacts --reporter json",
+    "startupProbe": "npx playwright test --config playwright.investigation.config.ts --repeat-each 5 --retries 0 --output .toolchains/e2e-investigation/startup-probe-artifacts --reporter json"
+  },
+  "exitCodes": {
+    "baseline": 1,
+    "calendarSerial": 0,
+    "startupProbe": 0
+  },
+  "sourceHashes": {
+    "e2e/sync.spec.ts": "35323fd03ec2d2af983d6fde83ea5af0cb27ee4958ebd11c0bafc55e2ad85b5f",
+    "e2e/calendar.spec.ts": "8df29b73ac3f528415f59d6451cdd3761e860f2ffa48b30cba504fee54e86fdb",
+    "e2e/auth-fixture.ts": "e624d768c52925598e708f0d0bc550dbf72c744acad8440775f427037403df82",
+    "src/services/sync/SyncRuntime.tsx": "42045af621dca54810d37448b89b49524dbac59149d71e931a1e970644a59559",
+    "src/services/sync/sync-control.ts": "52aec39fab47b83a769a159706f3496474c0e13f1f8cc92cd1a200db7a0566b3",
+    "src/features/sync/SyncSettings.tsx": "835923c3f7e6eb606e65e7747e54ea922a3dc0f26a06898ed28dd21aeada67c2",
+    "src/app/providers/AppProviders.tsx": "f4a384355c95f1516bf9060b4d0580fb2499edbe7c7a3fa9bb643d16ca4d4e28"
+  },
+  "rawArtifacts": ".toolchains/e2e-investigation/ (ignored); baseline traces copied to baseline-artifacts preserving test-results subdirectories",
+  "controlledRunsImmutable": true
+}

@@ -1,0 +1,30 @@
+{
+  "baseCommit": "3d9568c1829ce044cc2238aecc6241fe3bf83515",
+  "date": "2026-10-10",
+  "timezone": "Europe/Madrid",
+  "node": "24.18.0",
+  "npm": "11.16.0",
+  "playwright": "1.63.0",
+  "vite": "8.3.0",
+  "pglite": "0.5.8",
+  "platform": "Windows",
+  "sourcesImmutableDuringRuns": true,
+  "commands": {
+    "functional": "npx playwright test --project sync-desktop --project sync-mobile --repeat-each 10 --retries 0 --output .toolchains/e2e-investigation/sync-fixed-artifacts --reporter json",
+    "controlled": "npx playwright test --config playwright.investigation.config.ts --repeat-each 5 --retries 0 --output .toolchains/e2e-investigation/startup-fixed-artifacts --reporter json"
+  },
+  "exitCodes": {
+    "sync-fixed": 0,
+    "startup-fixed": 0
+  },
+  "sourceHashes": {
+    "src/services/sync/sync-control.ts": "060a637bc952b31bdc1de4da0bb42d10027d64fd4176f035904018b906320ff4",
+    "src/features/sync/SyncSettings.tsx": "49db310b4c4cba92dfe517868f3e279f94dbc9edee463f59f9b6a41bbc0ea316",
+    "src/features/sync/sync-status.test.tsx": "3e2ee7f084b4d1019ad826f98b1aee28f9e234edf46881e27c5e094233d07d82",
+    "e2e/sync.spec.ts": "80dcb6196e0b76dc5d832aa50e631e5ad157c722d909f23533e56db001aac48e",
+    "e2e/sync-fixture.ts": "bf789830e0638d03a3ddd2017cc4ab7d9ccb277343ea3bfd8cd1ba4dd53a7441",
+    "e2e/sync-startup.probe.ts": "e626b34812e35c4deff9422dc124cca34cbe5305d8a85b96dc8d8f39eac60fb3",
+    "playwright.investigation.config.ts": "9a27cbee1cbff2bcedc95b1ad1e339f3a50e2eb345c69b8da550277aad01c1de"
+  },
+  "rawArtifacts": ".toolchains/e2e-investigation/ (ignored; original JSON, logs, and controlled traces)"
+}

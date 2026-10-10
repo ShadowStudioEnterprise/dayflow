@@ -1,0 +1,4472 @@
+[
+  {
+    "artifact": "sync-dos-ediciones-offline-fcd74-dora-como-copia-recuperable-sync-desktop-repeat8",
+    "traceSha256": "29dbf0f53a38f2fccce8b28b74aca49b0b84ed4a44fad7750f5649d24eaf57c9",
+    "observedState": [],
+    "navigationAndClicks": [
+      {
+        "time": 124565.138,
+        "title": "Navigate",
+        "params": {
+          "url": "/auth/login"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 60,
+            "column": 14,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 125771.214,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Iniciar sesión', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 65,
+            "column": 6,
+            "function": "login"
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 124576.562,
+        "startedDateTime": "2026-10-10T13:07:23.959Z",
+        "durationMs": 16.707,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 125499.326,
+        "startedDateTime": "2026-10-10T13:07:24.867Z",
+        "durationMs": 75.566,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 125800.928,
+        "startedDateTime": "2026-10-10T13:07:25.184Z",
+        "durationMs": 10.373,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 127196.348,
+        "startedDateTime": "2026-10-10T13:07:26.497Z",
+        "durationMs": 113.675,
+        "status": 200
+      }
+    ],
+    "viteConsole": [
+      {
+        "time": 124762.272,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 124939.261,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 126596.249,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 126967.71,
+        "text": "[vite] connected."
+      }
+    ]
+  },
+  {
+    "artifact": "sync-recupera-una-respuest-ddb22-rante-un-fallo-del-servidor-sync-desktop",
+    "traceSha256": "b1dc3a5e3c3753566652563b09d1a1d6fa5bd5dd9d4ce146ef57640ef79dbf51",
+    "observedState": [
+      "- status: Guardado local · Error de sincronización · 1 cambio pendiente",
+      "- status:",
+      "- strong: Error de sincronización · 1 cambio pendiente",
+      "- status: No se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.",
+      "- alert: La sincronización todavía se está iniciando. Vuelve a intentarlo."
+    ],
+    "navigationAndClicks": [
+      {
+        "time": 6219.986,
+        "title": "Navigate",
+        "params": {
+          "url": "/auth/login"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 60,
+            "column": 14,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 7390.244,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Iniciar sesión', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 65,
+            "column": 6,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 7790.545,
+        "title": "Click",
+        "params": {
+          "locator": "locator('a[href=\"/tasks\"]:visible').first()"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 70,
+            "column": 58,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 8111.455,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 8949.54,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 9534.567,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 118,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 10891.726,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 11769.932,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 15540.94,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 15948.616,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 124,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 17201.571,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 136,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 17993.76,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 139,
+            "column": 8
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 6230.823,
+        "startedDateTime": "2026-10-10T13:05:25.613Z",
+        "durationMs": 20.161,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 7201.63,
+        "startedDateTime": "2026-10-10T13:05:26.577Z",
+        "durationMs": 18.67,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 7750.619,
+        "startedDateTime": "2026-10-10T13:05:27.133Z",
+        "durationMs": 22.122,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 7794.272,
+        "startedDateTime": "2026-10-10T13:05:27.174Z",
+        "durationMs": 44.77,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 7854.582,
+        "startedDateTime": "2026-10-10T13:05:27.236Z",
+        "durationMs": 12.527000000000001,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 8937.548,
+        "startedDateTime": "2026-10-10T13:05:28.309Z",
+        "durationMs": 68.715,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 9370.182,
+        "startedDateTime": "2026-10-10T13:05:28.752Z",
+        "durationMs": 12.553,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 9395.234,
+        "startedDateTime": "2026-10-10T13:05:28.779Z",
+        "durationMs": 9,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 10441.366,
+        "startedDateTime": "2026-10-10T13:05:29.820Z",
+        "durationMs": 111.269,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 11762.681,
+        "startedDateTime": "2026-10-10T13:05:31.136Z",
+        "durationMs": 16.986,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 12163.591,
+        "startedDateTime": "2026-10-10T13:05:31.547Z",
+        "durationMs": 15.256,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 12196.299,
+        "startedDateTime": "2026-10-10T13:05:31.577Z",
+        "durationMs": 67.80199999999968,
+        "status": -1
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 14244.558,
+        "startedDateTime": "2026-10-10T13:05:33.627Z",
+        "durationMs": 14.004999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 14272.856,
+        "startedDateTime": "2026-10-10T13:05:33.654Z",
+        "durationMs": 13.539,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 14297.006,
+        "startedDateTime": "2026-10-10T13:05:33.678Z",
+        "durationMs": 13.762,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 15531.85,
+        "startedDateTime": "2026-10-10T13:05:34.909Z",
+        "durationMs": 15.3,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 15884.099,
+        "startedDateTime": "2026-10-10T13:05:35.267Z",
+        "durationMs": 10.022,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 15907.535,
+        "startedDateTime": "2026-10-10T13:05:35.287Z",
+        "durationMs": 13.123,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 16706.129,
+        "startedDateTime": "2026-10-10T13:05:36.078Z",
+        "durationMs": 45.318,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 17165.868,
+        "startedDateTime": "2026-10-10T13:05:36.548Z",
+        "durationMs": 8.783999999999999,
+        "status": 503
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 17989.504,
+        "startedDateTime": "2026-10-10T13:05:37.368Z",
+        "durationMs": 9.882,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 19448.255,
+        "startedDateTime": "2026-10-10T13:05:38.832Z",
+        "durationMs": 5.139,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 22973.331,
+        "startedDateTime": "2026-10-10T13:05:42.356Z",
+        "durationMs": 7.4399999999999995,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 15970.142,
+        "startedDateTime": "2026-10-10T13:05:35.354Z",
+        "durationMs": -1,
+        "status": -1
+      }
+    ],
+    "viteConsole": [
+      {
+        "time": 6554.942,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 6783.606,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 8282.337,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 8479.524,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 9685.34,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 9890.286,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 11258.309,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 11488.343,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 14820.125,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 15067.72,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 16087.325,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 16103.375,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 17327.198,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 17344.072,
+        "text": "[vite] connected."
+      }
+    ]
+  },
+  {
+    "artifact": "sync-recupera-una-respuest-ddb22-rante-un-fallo-del-servidor-sync-desktop-repeat1",
+    "traceSha256": "3a780dfed6d464fc9e7c3fcc949ff5c1fb27559f24d21a5302d22674c443cb3f",
+    "observedState": [
+      "- status: Guardado local · Error de sincronización · 1 cambio pendiente",
+      "- status:",
+      "- strong: Error de sincronización · 1 cambio pendiente",
+      "- status: No se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.",
+      "- alert: La sincronización todavía se está iniciando. Vuelve a intentarlo."
+    ],
+    "navigationAndClicks": [
+      {
+        "time": 24625.09,
+        "title": "Navigate",
+        "params": {
+          "url": "/auth/login"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 60,
+            "column": 14,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 25636.433,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Iniciar sesión', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 65,
+            "column": 6,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 25920.954,
+        "title": "Click",
+        "params": {
+          "locator": "locator('a[href=\"/tasks\"]:visible').first()"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 70,
+            "column": 58,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 26228.52,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 26995.728,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 27331.859,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 118,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 28238.528,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 29038.228,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 33202.759,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 33554.535,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 124,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 34630.941,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 136,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 35326.419,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 139,
+            "column": 8
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 24633.853,
+        "startedDateTime": "2026-10-10T13:05:44.016Z",
+        "durationMs": 13.323,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 25382.416,
+        "startedDateTime": "2026-10-10T13:05:44.757Z",
+        "durationMs": 13.921000000000001,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 25927.481,
+        "startedDateTime": "2026-10-10T13:05:45.307Z",
+        "durationMs": 20.616999999999997,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 25954.336,
+        "startedDateTime": "2026-10-10T13:05:45.337Z",
+        "durationMs": 30.808,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 26015.309,
+        "startedDateTime": "2026-10-10T13:05:45.398Z",
+        "durationMs": 12.116999999999999,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 26988.514,
+        "startedDateTime": "2026-10-10T13:05:46.363Z",
+        "durationMs": 16.044,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 27892.795,
+        "startedDateTime": "2026-10-10T13:05:47.271Z",
+        "durationMs": 12.375,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 29032.157,
+        "startedDateTime": "2026-10-10T13:05:48.409Z",
+        "durationMs": 10.881,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 29450.802,
+        "startedDateTime": "2026-10-10T13:05:48.834Z",
+        "durationMs": 14.548,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 29472.392,
+        "startedDateTime": "2026-10-10T13:05:48.855Z",
+        "durationMs": 53.76900000000023,
+        "status": -1
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 31882.395,
+        "startedDateTime": "2026-10-10T13:05:51.266Z",
+        "durationMs": 6.8309999999999995,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 31898.261,
+        "startedDateTime": "2026-10-10T13:05:51.281Z",
+        "durationMs": 9.315999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 31915.145,
+        "startedDateTime": "2026-10-10T13:05:51.298Z",
+        "durationMs": 8.561,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 33194.963,
+        "startedDateTime": "2026-10-10T13:05:52.570Z",
+        "durationMs": 15.325,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 34315.828,
+        "startedDateTime": "2026-10-10T13:05:53.693Z",
+        "durationMs": 11.854999999999999,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 35319.609,
+        "startedDateTime": "2026-10-10T13:05:54.694Z",
+        "durationMs": 15.870000000000001,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 35757.943,
+        "startedDateTime": "2026-10-10T13:05:55.141Z",
+        "durationMs": 6.13,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 37586.917,
+        "startedDateTime": "2026-10-10T13:05:56.970Z",
+        "durationMs": 5.793,
+        "status": 503
+      }
+    ],
+    "viteConsole": [
+      {
+        "time": 24711.29,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 24871.378,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 26355.828,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 26434.558,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 27417.798,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 27492.8,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 28513.002,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 28686.915,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 32473.775,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 32679.584,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 33661.711,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 33677.626,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 34734.493,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 34883.065,
+        "text": "[vite] connected."
+      }
+    ]
+  },
+  {
+    "artifact": "sync-recupera-una-respuest-ddb22-rante-un-fallo-del-servidor-sync-desktop-repeat2",
+    "traceSha256": "81816fcd522a6a0ee4e7a19960a85494a3613b96aa4faa833d165635d04fe233",
+    "observedState": [
+      "- status: Guardado local · Error de sincronización · 1 cambio pendiente",
+      "- status:",
+      "- strong: Error de sincronización · 1 cambio pendiente",
+      "- status: No se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.",
+      "- alert: La sincronización todavía se está iniciando. Vuelve a intentarlo."
+    ],
+    "navigationAndClicks": [
+      {
+        "time": 28243.121,
+        "title": "Navigate",
+        "params": {
+          "url": "/auth/login"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 60,
+            "column": 14,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 29493.752,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Iniciar sesión', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 65,
+            "column": 6,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 29744.922,
+        "title": "Click",
+        "params": {
+          "locator": "locator('a[href=\"/tasks\"]:visible').first()"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 70,
+            "column": 58,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 29997.311,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 30639.709,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 30975.901,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 118,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 31990.618,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 32781.022,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 35957.454,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 36323.217,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 124,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 37295.435,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 136,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 37891.612,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 139,
+            "column": 8
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 28260.323,
+        "startedDateTime": "2026-10-10T13:05:47.640Z",
+        "durationMs": 23.365000000000002,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 29246.666,
+        "startedDateTime": "2026-10-10T13:05:48.619Z",
+        "durationMs": 16.227999999999998,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 29789.61,
+        "startedDateTime": "2026-10-10T13:05:49.173Z",
+        "durationMs": 12.134,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 29810.166,
+        "startedDateTime": "2026-10-10T13:05:49.194Z",
+        "durationMs": 34.961,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 29871.953,
+        "startedDateTime": "2026-10-10T13:05:49.255Z",
+        "durationMs": 9.499,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 30634.974,
+        "startedDateTime": "2026-10-10T13:05:50.013Z",
+        "durationMs": 11.891,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 31676.562,
+        "startedDateTime": "2026-10-10T13:05:51.055Z",
+        "durationMs": 10.452,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 32761.419,
+        "startedDateTime": "2026-10-10T13:05:52.135Z",
+        "durationMs": 115.127,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 33241.968,
+        "startedDateTime": "2026-10-10T13:05:52.625Z",
+        "durationMs": 14.009,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 33268.504,
+        "startedDateTime": "2026-10-10T13:05:52.652Z",
+        "durationMs": 65.01399999999558,
+        "status": -1
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 35004.027,
+        "startedDateTime": "2026-10-10T13:05:54.387Z",
+        "durationMs": 10.876999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 35034.356,
+        "startedDateTime": "2026-10-10T13:05:54.416Z",
+        "durationMs": 17.361,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 35064.318,
+        "startedDateTime": "2026-10-10T13:05:54.446Z",
+        "durationMs": 12.927999999999999,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 35949.484,
+        "startedDateTime": "2026-10-10T13:05:55.322Z",
+        "durationMs": 18.375,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 36989.95,
+        "startedDateTime": "2026-10-10T13:05:56.370Z",
+        "durationMs": 8.635,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 37885.442,
+        "startedDateTime": "2026-10-10T13:05:57.263Z",
+        "durationMs": 12.818000000000001,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 38329.999,
+        "startedDateTime": "2026-10-10T13:05:57.714Z",
+        "durationMs": 6.9079999999999995,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 40819.512,
+        "startedDateTime": "2026-10-10T13:06:00.202Z",
+        "durationMs": 7.4399999999999995,
+        "status": 503
+      }
+    ],
+    "viteConsole": [
+      {
+        "time": 28376.941,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 28464.438,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 30099.59,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 30161.408,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 31216.58,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 31418.499,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 32113.24,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 32130.552,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 35263.12,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 35311.637,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 36389.809,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 36509.401,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 37395.909,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 37459.13,
+        "text": "[vite] connected."
+      }
+    ]
+  },
+  {
+    "artifact": "sync-recupera-una-respuest-ddb22-rante-un-fallo-del-servidor-sync-desktop-repeat4",
+    "traceSha256": "4762ef2901f086c293048dcea712a106e4b7e91fe50c1e3a8ad9d01f7bc8cb2a",
+    "observedState": [
+      "- status: Guardado local · Error de sincronización · 1 cambio pendiente",
+      "- status:",
+      "- strong: Error de sincronización · 1 cambio pendiente",
+      "- status: No se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.",
+      "- alert: La sincronización todavía se está iniciando. Vuelve a intentarlo."
+    ],
+    "navigationAndClicks": [
+      {
+        "time": 62995.789,
+        "title": "Navigate",
+        "params": {
+          "url": "/auth/login"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 60,
+            "column": 14,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 64145.291,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Iniciar sesión', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 65,
+            "column": 6,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 64398.758,
+        "title": "Click",
+        "params": {
+          "locator": "locator('a[href=\"/tasks\"]:visible').first()"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 70,
+            "column": 58,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 64694.189,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 65451.55,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 65780.1,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 118,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 66769.551,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 67562.562,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 71358.125,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 71980.05,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 124,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 72935.443,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 136,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 73784.485,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 139,
+            "column": 8
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 63008.818,
+        "startedDateTime": "2026-10-10T13:06:22.389Z",
+        "durationMs": 21.887999999999998,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 63878.252,
+        "startedDateTime": "2026-10-10T13:06:23.253Z",
+        "durationMs": 13.147,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 64435.741,
+        "startedDateTime": "2026-10-10T13:06:23.819Z",
+        "durationMs": 17.527,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 64459.575,
+        "startedDateTime": "2026-10-10T13:06:23.843Z",
+        "durationMs": 26.628999999999998,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 64519.702,
+        "startedDateTime": "2026-10-10T13:06:23.903Z",
+        "durationMs": 11.599,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 65446.584,
+        "startedDateTime": "2026-10-10T13:06:24.825Z",
+        "durationMs": 10.123,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 66469.295,
+        "startedDateTime": "2026-10-10T13:06:25.847Z",
+        "durationMs": 11.495999999999999,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 67551.674,
+        "startedDateTime": "2026-10-10T13:06:26.927Z",
+        "durationMs": 63.251,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 68017.204,
+        "startedDateTime": "2026-10-10T13:06:27.400Z",
+        "durationMs": 12.198,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 68042.909,
+        "startedDateTime": "2026-10-10T13:06:27.425Z",
+        "durationMs": 63.529999999998836,
+        "status": -1
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 70248.541,
+        "startedDateTime": "2026-10-10T13:06:29.632Z",
+        "durationMs": 7.3549999999999995,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 70276.691,
+        "startedDateTime": "2026-10-10T13:06:29.657Z",
+        "durationMs": 14.638,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 70299.017,
+        "startedDateTime": "2026-10-10T13:06:29.682Z",
+        "durationMs": 10.57,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 71352.002,
+        "startedDateTime": "2026-10-10T13:06:30.729Z",
+        "durationMs": 11.875,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 71813.941,
+        "startedDateTime": "2026-10-10T13:06:31.180Z",
+        "durationMs": 36.82,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 71846.99,
+        "startedDateTime": "2026-10-10T13:06:31.229Z",
+        "durationMs": 10.96,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 72656.605,
+        "startedDateTime": "2026-10-10T13:06:32.031Z",
+        "durationMs": 18.956,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 73773.206,
+        "startedDateTime": "2026-10-10T13:06:33.145Z",
+        "durationMs": 17.380999999999997,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 74221.555,
+        "startedDateTime": "2026-10-10T13:06:33.605Z",
+        "durationMs": 7.573,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 76121.29,
+        "startedDateTime": "2026-10-10T13:06:35.503Z",
+        "durationMs": 8.761,
+        "status": 503
+      }
+    ],
+    "viteConsole": [
+      {
+        "time": 63115.022,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 63301.767,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 64844.559,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 65002.552,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 65863.745,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 65938.536,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 66897.087,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 67053.019,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 70784.174,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 70865.046,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 72077.647,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 72250.723,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 73055.806,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 73269.549,
+        "text": "[vite] connected."
+      }
+    ]
+  },
+  {
+    "artifact": "sync-recupera-una-respuest-ddb22-rante-un-fallo-del-servidor-sync-desktop-repeat5",
+    "traceSha256": "fba9e877b1b5609bc28ae80809ecf44ca918d8d1f430d4f19c837289b1c4f849",
+    "observedState": [
+      "- status: Guardado local · Error de sincronización · 1 cambio pendiente",
+      "- status:",
+      "- strong: Error de sincronización · 1 cambio pendiente",
+      "- status: No se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.",
+      "- alert: La sincronización todavía se está iniciando. Vuelve a intentarlo."
+    ],
+    "navigationAndClicks": [
+      {
+        "time": 80776.016,
+        "title": "Navigate",
+        "params": {
+          "url": "/auth/login"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 60,
+            "column": 14,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 81781.322,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Iniciar sesión', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 65,
+            "column": 6,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 82005.482,
+        "title": "Click",
+        "params": {
+          "locator": "locator('a[href=\"/tasks\"]:visible').first()"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 70,
+            "column": 58,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 82270.25,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 82958.051,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 83534.933,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 118,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 84666.802,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 85383.821,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 89501.606,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 90093.037,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 124,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 91326.584,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 136,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 92217.534,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 139,
+            "column": 8
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 80785.618,
+        "startedDateTime": "2026-10-10T13:06:40.168Z",
+        "durationMs": 15.986999999999998,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 81590.444,
+        "startedDateTime": "2026-10-10T13:06:40.968Z",
+        "durationMs": 10.258,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 82037.331,
+        "startedDateTime": "2026-10-10T13:06:41.419Z",
+        "durationMs": 15.568999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 82060.002,
+        "startedDateTime": "2026-10-10T13:06:41.443Z",
+        "durationMs": 23.914,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 82136.713,
+        "startedDateTime": "2026-10-10T13:06:41.521Z",
+        "durationMs": 7.653,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 82950.079,
+        "startedDateTime": "2026-10-10T13:06:42.326Z",
+        "durationMs": 14.437999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 83274.648,
+        "startedDateTime": "2026-10-10T13:06:42.658Z",
+        "durationMs": 13.413,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 83310.761,
+        "startedDateTime": "2026-10-10T13:06:42.694Z",
+        "durationMs": 9.491,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 83379.062,
+        "startedDateTime": "2026-10-10T13:06:42.763Z",
+        "durationMs": 9.858,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 83400.757,
+        "startedDateTime": "2026-10-10T13:06:42.784Z",
+        "durationMs": 11.16,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 84338.961,
+        "startedDateTime": "2026-10-10T13:06:43.717Z",
+        "durationMs": 11.293,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 85375.447,
+        "startedDateTime": "2026-10-10T13:06:44.754Z",
+        "durationMs": 14.014,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 85720.576,
+        "startedDateTime": "2026-10-10T13:06:45.105Z",
+        "durationMs": 9.548,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 85738.072,
+        "startedDateTime": "2026-10-10T13:06:45.121Z",
+        "durationMs": 63.65200000000186,
+        "status": -1
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 88129.411,
+        "startedDateTime": "2026-10-10T13:06:47.510Z",
+        "durationMs": 15.044,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 88153.069,
+        "startedDateTime": "2026-10-10T13:06:47.534Z",
+        "durationMs": 14.898,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 88176.828,
+        "startedDateTime": "2026-10-10T13:06:47.559Z",
+        "durationMs": 11.269,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 89495.255,
+        "startedDateTime": "2026-10-10T13:06:48.872Z",
+        "durationMs": 28.174,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 89885.839,
+        "startedDateTime": "2026-10-10T13:06:49.267Z",
+        "durationMs": 15.375,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 89947.33,
+        "startedDateTime": "2026-10-10T13:06:49.309Z",
+        "durationMs": 48.067,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 90954.347,
+        "startedDateTime": "2026-10-10T13:06:50.329Z",
+        "durationMs": 16.482,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 92213.093,
+        "startedDateTime": "2026-10-10T13:06:51.591Z",
+        "durationMs": 11.642,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 92646.532,
+        "startedDateTime": "2026-10-10T13:06:52.031Z",
+        "durationMs": 5.485,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 94591.803,
+        "startedDateTime": "2026-10-10T13:06:53.975Z",
+        "durationMs": 6.772,
+        "status": 503
+      }
+    ],
+    "viteConsole": [
+      {
+        "time": 80872.549,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 81027,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 82353.134,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 82513.641,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 83664.81,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 83683.669,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 84848.845,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 84925.262,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 88788.995,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 89049.905,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 90418.74,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 90458.187,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 91695.1,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 91928.327,
+        "text": "[vite] connected."
+      }
+    ]
+  },
+  {
+    "artifact": "sync-recupera-una-respuest-ddb22-rante-un-fallo-del-servidor-sync-desktop-repeat8",
+    "traceSha256": "b1107682b210ec244cd3b447fc0e79819039a4abecf85d1f4da0315f06d5b0fe",
+    "observedState": [
+      "- status: Guardado local · Error de sincronización · 1 cambio pendiente",
+      "- status:",
+      "- strong: Error de sincronización · 1 cambio pendiente",
+      "- status: No se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.",
+      "- alert: La sincronización todavía se está iniciando. Vuelve a intentarlo."
+    ],
+    "navigationAndClicks": [
+      {
+        "time": 120022.376,
+        "title": "Navigate",
+        "params": {
+          "url": "/auth/login"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 60,
+            "column": 14,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 121150.117,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Iniciar sesión', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 65,
+            "column": 6,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 121447.41,
+        "title": "Click",
+        "params": {
+          "locator": "locator('a[href=\"/tasks\"]:visible').first()"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 70,
+            "column": 58,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 121744.591,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 122550.97,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 123162.478,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 118,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 124263.042,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 125103.924,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 128691.205,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 129061.984,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 124,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 130165.426,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 136,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 130822.608,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 139,
+            "column": 8
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 120034.814,
+        "startedDateTime": "2026-10-10T13:07:19.417Z",
+        "durationMs": 16.358,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 120889.506,
+        "startedDateTime": "2026-10-10T13:07:20.264Z",
+        "durationMs": 13.91,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 121462.247,
+        "startedDateTime": "2026-10-10T13:07:20.836Z",
+        "durationMs": 30.432,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 121495.401,
+        "startedDateTime": "2026-10-10T13:07:20.878Z",
+        "durationMs": 38.869,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 121566.06,
+        "startedDateTime": "2026-10-10T13:07:20.948Z",
+        "durationMs": 14.516,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 122544.447,
+        "startedDateTime": "2026-10-10T13:07:21.916Z",
+        "durationMs": 19.372,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 122903.766,
+        "startedDateTime": "2026-10-10T13:07:22.287Z",
+        "durationMs": 10.863999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 122928.82,
+        "startedDateTime": "2026-10-10T13:07:22.312Z",
+        "durationMs": 10.983,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 122975.014,
+        "startedDateTime": "2026-10-10T13:07:22.357Z",
+        "durationMs": 11.747,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 122993.404,
+        "startedDateTime": "2026-10-10T13:07:22.375Z",
+        "durationMs": 14.216999999999999,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 123918.695,
+        "startedDateTime": "2026-10-10T13:07:23.296Z",
+        "durationMs": 13.138,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 125097.241,
+        "startedDateTime": "2026-10-10T13:07:24.474Z",
+        "durationMs": 12.388,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 125532.309,
+        "startedDateTime": "2026-10-10T13:07:24.914Z",
+        "durationMs": 14.022,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 125556.118,
+        "startedDateTime": "2026-10-10T13:07:24.939Z",
+        "durationMs": 53.552999999999884,
+        "status": -1
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 127364.751,
+        "startedDateTime": "2026-10-10T13:07:26.740Z",
+        "durationMs": 21.05,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 127780.408,
+        "startedDateTime": "2026-10-10T13:07:27.163Z",
+        "durationMs": 13.655000000000001,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 127807.724,
+        "startedDateTime": "2026-10-10T13:07:27.189Z",
+        "durationMs": 14.75,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 127831.17,
+        "startedDateTime": "2026-10-10T13:07:27.214Z",
+        "durationMs": 10.054,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 128681.952,
+        "startedDateTime": "2026-10-10T13:07:28.059Z",
+        "durationMs": 14.084999999999999,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 129792.069,
+        "startedDateTime": "2026-10-10T13:07:29.170Z",
+        "durationMs": 12.193,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 130817.268,
+        "startedDateTime": "2026-10-10T13:07:30.196Z",
+        "durationMs": 10.311,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 131258.644,
+        "startedDateTime": "2026-10-10T13:07:30.643Z",
+        "durationMs": 5.238,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 133561.813,
+        "startedDateTime": "2026-10-10T13:07:32.946Z",
+        "durationMs": 5.176,
+        "status": 503
+      }
+    ],
+    "viteConsole": [
+      {
+        "time": 120092.047,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 120151.445,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 121926.213,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 122110.843,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 123308.06,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 123476.104,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 124428.877,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 124601.231,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 126636.629,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 126965.83,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 128076.398,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 128098.603,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 129212.422,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 129351.103,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 130267.565,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 130352.565,
+        "text": "[vite] connected."
+      }
+    ]
+  },
+  {
+    "artifact": "sync-recupera-una-respuest-ddb22-rante-un-fallo-del-servidor-sync-desktop-repeat9",
+    "traceSha256": "f07e0b491783ca4e3871d68ccfcaf3808be89b2373cf902041950baf468c4f5a",
+    "observedState": [
+      "- status: Guardado local · Error de sincronización · 1 cambio pendiente",
+      "- status:",
+      "- strong: Error de sincronización · 1 cambio pendiente",
+      "- status: No se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.",
+      "- alert: La sincronización todavía se está iniciando. Vuelve a intentarlo."
+    ],
+    "navigationAndClicks": [
+      {
+        "time": 136777.799,
+        "title": "Navigate",
+        "params": {
+          "url": "/auth/login"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 60,
+            "column": 14,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 137734.822,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Iniciar sesión', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 65,
+            "column": 6,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 138005.128,
+        "title": "Click",
+        "params": {
+          "locator": "locator('a[href=\"/tasks\"]:visible').first()"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 70,
+            "column": 58,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 138317.278,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 139011.846,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 139421.732,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 118,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 140507.992,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 141186.672,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 145057.26,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 145492.707,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 124,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 146580.188,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 136,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 147377.357,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 139,
+            "column": 8
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 136790.946,
+        "startedDateTime": "2026-10-10T13:07:36.172Z",
+        "durationMs": 18.089,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 137514.546,
+        "startedDateTime": "2026-10-10T13:07:36.891Z",
+        "durationMs": 12.09,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 138036.376,
+        "startedDateTime": "2026-10-10T13:07:37.420Z",
+        "durationMs": 14.843,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 138062.64,
+        "startedDateTime": "2026-10-10T13:07:37.444Z",
+        "durationMs": 34.736999999999995,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 138138.665,
+        "startedDateTime": "2026-10-10T13:07:37.512Z",
+        "durationMs": 20.758,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 139008.318,
+        "startedDateTime": "2026-10-10T13:07:38.386Z",
+        "durationMs": 11.965,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 140173.879,
+        "startedDateTime": "2026-10-10T13:07:39.548Z",
+        "durationMs": 42.494,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 141173.337,
+        "startedDateTime": "2026-10-10T13:07:40.549Z",
+        "durationMs": 12.416,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 141609.346,
+        "startedDateTime": "2026-10-10T13:07:40.993Z",
+        "durationMs": 7.4719999999999995,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 141622.815,
+        "startedDateTime": "2026-10-10T13:07:41.006Z",
+        "durationMs": 37.336999999999534,
+        "status": -1
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 144140.25,
+        "startedDateTime": "2026-10-10T13:07:43.522Z",
+        "durationMs": 12.484,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 144169.089,
+        "startedDateTime": "2026-10-10T13:07:43.552Z",
+        "durationMs": 10.948,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 144187.228,
+        "startedDateTime": "2026-10-10T13:07:43.570Z",
+        "durationMs": 9.496,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 145048.573,
+        "startedDateTime": "2026-10-10T13:07:44.424Z",
+        "durationMs": 15.315000000000001,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 145415.293,
+        "startedDateTime": "2026-10-10T13:07:44.795Z",
+        "durationMs": 12.437999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 145455.227,
+        "startedDateTime": "2026-10-10T13:07:44.832Z",
+        "durationMs": 35.304,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 146296.391,
+        "startedDateTime": "2026-10-10T13:07:45.675Z",
+        "durationMs": 10.795,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 147371.61,
+        "startedDateTime": "2026-10-10T13:07:46.750Z",
+        "durationMs": 11.001999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 147815.755,
+        "startedDateTime": "2026-10-10T13:07:47.199Z",
+        "durationMs": 6.707,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 149682.346,
+        "startedDateTime": "2026-10-10T13:07:49.066Z",
+        "durationMs": 6.942,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 139456.635,
+        "startedDateTime": "2026-10-10T13:07:38.834Z",
+        "durationMs": -1,
+        "status": -1
+      }
+    ],
+    "viteConsole": [
+      {
+        "time": 136898.684,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 137096.634,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 138439.668,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 138514.605,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 139511.131,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 139563.609,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 140622.221,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 140693.544,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 144533.259,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 144623.621,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 145656.581,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 145671.88,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 146760.666,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 146961.318,
+        "text": "[vite] connected."
+      }
+    ]
+  },
+  {
+    "artifact": "sync-recupera-una-respuest-ddb22-rante-un-fallo-del-servidor-sync-mobile",
+    "traceSha256": "18fc691b03836753211bc29f21d84f211a866415d1ffc07c380d19ee62dc14b3",
+    "observedState": [
+      "- status: Guardado local · Error de sincronización · 1 cambio pendiente",
+      "- status:",
+      "- strong: Error de sincronización · 1 cambio pendiente",
+      "- status: No se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.",
+      "- alert: La sincronización todavía se está iniciando. Vuelve a intentarlo."
+    ],
+    "navigationAndClicks": [
+      {
+        "time": 145790.755,
+        "title": "Navigate",
+        "params": {
+          "url": "/auth/login"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 60,
+            "column": 14,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 146914.939,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Iniciar sesión', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 65,
+            "column": 6,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 147194.253,
+        "title": "Click",
+        "params": {
+          "locator": "locator('a[href=\"/tasks\"]:visible').first()"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 70,
+            "column": 58,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 147369.655,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 148193.447,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 148553.343,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 118,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 149543.395,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 150157.293,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 154018.561,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 154386.445,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 124,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 155441.931,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 136,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 156174.671,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 139,
+            "column": 8
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 145806.094,
+        "startedDateTime": "2026-10-10T13:07:45.188Z",
+        "durationMs": 18.223999999999997,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 146711.067,
+        "startedDateTime": "2026-10-10T13:07:46.085Z",
+        "durationMs": 26.745,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 147226.383,
+        "startedDateTime": "2026-10-10T13:07:46.609Z",
+        "durationMs": 17.143,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 147250.609,
+        "startedDateTime": "2026-10-10T13:07:46.634Z",
+        "durationMs": 24.275,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 147297.247,
+        "startedDateTime": "2026-10-10T13:07:46.681Z",
+        "durationMs": 6.433999999999999,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 148181.499,
+        "startedDateTime": "2026-10-10T13:07:47.557Z",
+        "durationMs": 16.831,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 149237.58,
+        "startedDateTime": "2026-10-10T13:07:48.616Z",
+        "durationMs": 39.524,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 150150.798,
+        "startedDateTime": "2026-10-10T13:07:49.531Z",
+        "durationMs": 9.782,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 150559.857,
+        "startedDateTime": "2026-10-10T13:07:49.943Z",
+        "durationMs": 15.563,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 150584.755,
+        "startedDateTime": "2026-10-10T13:07:49.967Z",
+        "durationMs": 40.820000000006985,
+        "status": -1
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 153127.796,
+        "startedDateTime": "2026-10-10T13:07:52.510Z",
+        "durationMs": 12.103,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 153152.452,
+        "startedDateTime": "2026-10-10T13:07:52.533Z",
+        "durationMs": 12.71,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 153169.083,
+        "startedDateTime": "2026-10-10T13:07:52.552Z",
+        "durationMs": 8.488,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 154011.355,
+        "startedDateTime": "2026-10-10T13:07:53.389Z",
+        "durationMs": 13.32,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 155065.218,
+        "startedDateTime": "2026-10-10T13:07:54.443Z",
+        "durationMs": 13.207,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 156170.063,
+        "startedDateTime": "2026-10-10T13:07:55.549Z",
+        "durationMs": 9.577,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 156630.27,
+        "startedDateTime": "2026-10-10T13:07:56.015Z",
+        "durationMs": 4.664,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 159132.07,
+        "startedDateTime": "2026-10-10T13:07:58.516Z",
+        "durationMs": 6.307,
+        "status": 503
+      }
+    ],
+    "viteConsole": [
+      {
+        "time": 145856.739,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 146061.658,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 147482.679,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 147637.793,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 148645.793,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 148658.365,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 149656.521,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 149803.647,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 153487.009,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 153499.697,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 154507.744,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 154574.414,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 155572.69,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 155740.674,
+        "text": "[vite] connected."
+      }
+    ]
+  },
+  {
+    "artifact": "sync-recupera-una-respuest-ddb22-rante-un-fallo-del-servidor-sync-mobile-repeat1",
+    "traceSha256": "57a445e8d6807abaf444642518704ded6e35aca2131299d60c2bf44a9dc98ef8",
+    "observedState": [
+      "- status: Guardado local · Error de sincronización · 1 cambio pendiente",
+      "- status:",
+      "- strong: Error de sincronización · 1 cambio pendiente",
+      "- status: No se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.",
+      "- alert: La sincronización todavía se está iniciando. Vuelve a intentarlo."
+    ],
+    "navigationAndClicks": [
+      {
+        "time": 158978.155,
+        "title": "Navigate",
+        "params": {
+          "url": "/auth/login"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 60,
+            "column": 14,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 159910.174,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Iniciar sesión', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 65,
+            "column": 6,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 160289.015,
+        "title": "Click",
+        "params": {
+          "locator": "locator('a[href=\"/tasks\"]:visible').first()"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 70,
+            "column": 58,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 160502.988,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 161177.922,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 161693.841,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 118,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 162771.237,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 163544.372,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 167000.224,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 167455.889,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 124,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 168632.257,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 136,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 169495.84,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 139,
+            "column": 8
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 158994.988,
+        "startedDateTime": "2026-10-10T13:07:58.374Z",
+        "durationMs": 24.9,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 159698.862,
+        "startedDateTime": "2026-10-10T13:07:59.077Z",
+        "durationMs": 9.610999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 160221.851,
+        "startedDateTime": "2026-10-10T13:07:59.604Z",
+        "durationMs": 19.585,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 160249.87,
+        "startedDateTime": "2026-10-10T13:07:59.633Z",
+        "durationMs": 28.887999999999998,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 160294.266,
+        "startedDateTime": "2026-10-10T13:07:59.678Z",
+        "durationMs": 11.044,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 161171.909,
+        "startedDateTime": "2026-10-10T13:08:00.549Z",
+        "durationMs": 31.88,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 161532.483,
+        "startedDateTime": "2026-10-10T13:08:00.913Z",
+        "durationMs": 15.578,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 161566.477,
+        "startedDateTime": "2026-10-10T13:08:00.948Z",
+        "durationMs": 13.693999999999999,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 162405.689,
+        "startedDateTime": "2026-10-10T13:08:01.779Z",
+        "durationMs": 19.500999999999998,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 163531.876,
+        "startedDateTime": "2026-10-10T13:08:02.909Z",
+        "durationMs": 20.003,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 163973.904,
+        "startedDateTime": "2026-10-10T13:08:03.357Z",
+        "durationMs": 13.265,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 163999.432,
+        "startedDateTime": "2026-10-10T13:08:03.381Z",
+        "durationMs": 51.079999999987194,
+        "status": -1
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 165725.465,
+        "startedDateTime": "2026-10-10T13:08:05.109Z",
+        "durationMs": 8.129999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 165747.047,
+        "startedDateTime": "2026-10-10T13:08:05.130Z",
+        "durationMs": 12.876,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 165769.826,
+        "startedDateTime": "2026-10-10T13:08:05.153Z",
+        "durationMs": 11.099,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 166991.307,
+        "startedDateTime": "2026-10-10T13:08:06.368Z",
+        "durationMs": 102.784,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 167347.243,
+        "startedDateTime": "2026-10-10T13:08:06.731Z",
+        "durationMs": 7.719,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 167367.754,
+        "startedDateTime": "2026-10-10T13:08:06.752Z",
+        "durationMs": 7.785,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 167422.328,
+        "startedDateTime": "2026-10-10T13:08:06.805Z",
+        "durationMs": 9.374,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 167460.647,
+        "startedDateTime": "2026-10-10T13:08:06.843Z",
+        "durationMs": 10.118,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 168289.422,
+        "startedDateTime": "2026-10-10T13:08:07.663Z",
+        "durationMs": 17.964,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 169489.63,
+        "startedDateTime": "2026-10-10T13:08:08.867Z",
+        "durationMs": 12.403,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 169981.331,
+        "startedDateTime": "2026-10-10T13:08:09.364Z",
+        "durationMs": 8.26,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 172478.096,
+        "startedDateTime": "2026-10-10T13:08:11.862Z",
+        "durationMs": 7.281000000000001,
+        "status": 503
+      }
+    ],
+    "viteConsole": [
+      {
+        "time": 159096.971,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 159256.387,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 160604.544,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 160678.196,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 161809.597,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 161889.141,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 162941.12,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 163107.234,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 166370.382,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 166449.252,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 167671.157,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 167752.128,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 168851.246,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 169039.463,
+        "text": "[vite] connected."
+      }
+    ]
+  },
+  {
+    "artifact": "sync-recupera-una-respuest-ddb22-rante-un-fallo-del-servidor-sync-mobile-repeat2",
+    "traceSha256": "5db05cd1d458483f37d5652b0d7413cc3337aa7874c27ce0d4fc2f745c7751bf",
+    "observedState": [
+      "- status: Guardado local · Error de sincronización · 1 cambio pendiente",
+      "- status:",
+      "- strong: Error de sincronización · 1 cambio pendiente",
+      "- status: No se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.",
+      "- alert: La sincronización todavía se está iniciando. Vuelve a intentarlo."
+    ],
+    "navigationAndClicks": [
+      {
+        "time": 176316.527,
+        "title": "Navigate",
+        "params": {
+          "url": "/auth/login"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 60,
+            "column": 14,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 177382.671,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Iniciar sesión', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 65,
+            "column": 6,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 177647.746,
+        "title": "Click",
+        "params": {
+          "locator": "locator('a[href=\"/tasks\"]:visible').first()"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 70,
+            "column": 58,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 177933.511,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 178801.483,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 179350.064,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 118,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 180485.261,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 181249.156,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 184828.254,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 185262.727,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 124,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 186311.947,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 136,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 187160.984,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 139,
+            "column": 8
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 176325.007,
+        "startedDateTime": "2026-10-10T13:08:15.707Z",
+        "durationMs": 13.043,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 177134.607,
+        "startedDateTime": "2026-10-10T13:08:16.510Z",
+        "durationMs": 16.73,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 177660.202,
+        "startedDateTime": "2026-10-10T13:08:17.043Z",
+        "durationMs": 18.654,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 177686.202,
+        "startedDateTime": "2026-10-10T13:08:17.069Z",
+        "durationMs": 28.607000000000003,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 177749.796,
+        "startedDateTime": "2026-10-10T13:08:17.133Z",
+        "durationMs": 15.548,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 178790.053,
+        "startedDateTime": "2026-10-10T13:08:18.162Z",
+        "durationMs": 20.863,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 179197.392,
+        "startedDateTime": "2026-10-10T13:08:18.580Z",
+        "durationMs": 9.106,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 179217.061,
+        "startedDateTime": "2026-10-10T13:08:18.600Z",
+        "durationMs": 9.747,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 180152.669,
+        "startedDateTime": "2026-10-10T13:08:19.532Z",
+        "durationMs": 13.177,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 181240.714,
+        "startedDateTime": "2026-10-10T13:08:20.611Z",
+        "durationMs": 21.343,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 181588.198,
+        "startedDateTime": "2026-10-10T13:08:20.969Z",
+        "durationMs": 19.808999999999997,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 181621.726,
+        "startedDateTime": "2026-10-10T13:08:21.005Z",
+        "durationMs": 52.73800000001211,
+        "status": -1
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 183872.703,
+        "startedDateTime": "2026-10-10T13:08:23.256Z",
+        "durationMs": 8.091,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 183892.088,
+        "startedDateTime": "2026-10-10T13:08:23.274Z",
+        "durationMs": 11.931999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 183912.755,
+        "startedDateTime": "2026-10-10T13:08:23.295Z",
+        "durationMs": 11.524999999999999,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 184822.024,
+        "startedDateTime": "2026-10-10T13:08:24.197Z",
+        "durationMs": 39.992000000000004,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 185173.613,
+        "startedDateTime": "2026-10-10T13:08:24.555Z",
+        "durationMs": 16.064,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 185223.121,
+        "startedDateTime": "2026-10-10T13:08:24.592Z",
+        "durationMs": 24.366999999999997,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 185982.576,
+        "startedDateTime": "2026-10-10T13:08:25.360Z",
+        "durationMs": 12.777,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 187149.854,
+        "startedDateTime": "2026-10-10T13:08:26.523Z",
+        "durationMs": 16.153,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 187612.097,
+        "startedDateTime": "2026-10-10T13:08:26.995Z",
+        "durationMs": 7.613,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 189460.763,
+        "startedDateTime": "2026-10-10T13:08:28.843Z",
+        "durationMs": 9.835,
+        "status": 503
+      }
+    ],
+    "viteConsole": [
+      {
+        "time": 176415.053,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 176645.298,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 178055.058,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 178266.067,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 179475.974,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 179495.148,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 180599.548,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 180762.395,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 184186.793,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 184357.195,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 185564.599,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 185755.607,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 186513.12,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 186685.563,
+        "text": "[vite] connected."
+      }
+    ]
+  },
+  {
+    "artifact": "sync-recupera-una-respuest-ddb22-rante-un-fallo-del-servidor-sync-mobile-repeat9",
+    "traceSha256": "47976fa8c6cc35fedc326eb9fee9a045fb4ca5b4799572aa3026c6b9b93856b4",
+    "observedState": [
+      "- status: Guardado local · Error de sincronización · 1 cambio pendiente",
+      "- status:",
+      "- strong: Error de sincronización · 1 cambio pendiente",
+      "- status: No se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.",
+      "- alert: La sincronización todavía se está iniciando. Vuelve a intentarlo."
+    ],
+    "navigationAndClicks": [
+      {
+        "time": 274138.436,
+        "title": "Navigate",
+        "params": {
+          "url": "/auth/login"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 60,
+            "column": 14,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 275312.534,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Iniciar sesión', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 65,
+            "column": 6,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 275563.322,
+        "title": "Click",
+        "params": {
+          "locator": "locator('a[href=\"/tasks\"]:visible').first()"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\auth-fixture.ts",
+            "line": 70,
+            "column": 58,
+            "function": "login"
+          }
+        ]
+      },
+      {
+        "time": 275858.137,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 276594.692,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 277164.464,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 118,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 278180,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 8,
+            "column": 64,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 279005.115,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 283116.877,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 11,
+            "column": 6,
+            "function": "sync"
+          }
+        ]
+      },
+      {
+        "time": 283505.705,
+        "title": "Navigate",
+        "params": {
+          "url": "/tasks"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 124,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 284560.628,
+        "title": "Navigate",
+        "params": {
+          "url": "/settings"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 136,
+            "column": 16
+          }
+        ]
+      },
+      {
+        "time": 285276.14,
+        "title": "Click",
+        "params": {
+          "locator": "getByRole('button', { name: 'Sincronizar ahora', exact: true })"
+        },
+        "stack": [
+          {
+            "file": "D:\\Projects\\dayflow\\e2e\\sync.spec.ts",
+            "line": 139,
+            "column": 8
+          }
+        ]
+      }
+    ],
+    "requests": [
+      {
+        "url": "http://127.0.0.1:4175/auth/login",
+        "time": 274159.871,
+        "startedDateTime": "2026-10-10T13:09:53.539Z",
+        "durationMs": 26.08,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 275079.618,
+        "startedDateTime": "2026-10-10T13:09:54.455Z",
+        "durationMs": 13.885,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 275599.542,
+        "startedDateTime": "2026-10-10T13:09:54.983Z",
+        "durationMs": 12.764999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 275625.035,
+        "startedDateTime": "2026-10-10T13:09:55.007Z",
+        "durationMs": 29.002,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 275712.595,
+        "startedDateTime": "2026-10-10T13:09:55.095Z",
+        "durationMs": 23.307000000000002,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 275860.945,
+        "startedDateTime": "2026-10-10T13:09:55.244Z",
+        "durationMs": 10.242,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 276587.821,
+        "startedDateTime": "2026-10-10T13:09:55.963Z",
+        "durationMs": 14.959999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 277005.082,
+        "startedDateTime": "2026-10-10T13:09:56.387Z",
+        "durationMs": 16.669,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 277040.56,
+        "startedDateTime": "2026-10-10T13:09:56.423Z",
+        "durationMs": 13.145,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 277845.332,
+        "startedDateTime": "2026-10-10T13:09:57.221Z",
+        "durationMs": 46.330999999999996,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 278998.193,
+        "startedDateTime": "2026-10-10T13:09:58.374Z",
+        "durationMs": 61.587999999999994,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 279428.094,
+        "startedDateTime": "2026-10-10T13:09:58.812Z",
+        "durationMs": 9.308,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 279451.107,
+        "startedDateTime": "2026-10-10T13:09:58.834Z",
+        "durationMs": 54.20999999996275,
+        "status": -1
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 281901.025,
+        "startedDateTime": "2026-10-10T13:10:01.284Z",
+        "durationMs": 8.876,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_apply_operation",
+        "time": 281923.182,
+        "startedDateTime": "2026-10-10T13:10:01.305Z",
+        "durationMs": 13.649999999999999,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 281946.017,
+        "startedDateTime": "2026-10-10T13:10:01.329Z",
+        "durationMs": 7.775,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 283109.652,
+        "startedDateTime": "2026-10-10T13:10:02.487Z",
+        "durationMs": 12.024,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 284227.994,
+        "startedDateTime": "2026-10-10T13:10:03.597Z",
+        "durationMs": 20.985,
+        "status": 200
+      },
+      {
+        "url": "http://127.0.0.1:4175/src/services/sync/SyncRuntime.tsx",
+        "time": 285271.87,
+        "startedDateTime": "2026-10-10T13:10:04.648Z",
+        "durationMs": 13.913,
+        "status": 200
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 285763.502,
+        "startedDateTime": "2026-10-10T13:10:05.145Z",
+        "durationMs": 14.796999999999999,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 287668.841,
+        "startedDateTime": "2026-10-10T13:10:07.052Z",
+        "durationMs": 5.535,
+        "status": 503
+      },
+      {
+        "url": "https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_pull",
+        "time": 275884.533,
+        "startedDateTime": "2026-10-10T13:09:55.265Z",
+        "durationMs": -1,
+        "status": -1
+      }
+    ],
+    "viteConsole": [
+      {
+        "time": 274271.175,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 274459.568,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 275977.044,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 276060.549,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 277267.789,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 277342.921,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 278285.582,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 278304.242,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 282529.606,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 282597.806,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 283606.376,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 283687.451,
+        "text": "[vite] connected."
+      },
+      {
+        "time": 284655.08,
+        "text": "[vite] connecting..."
+      },
+      {
+        "time": 284736.48,
+        "text": "[vite] connected."
+      }
+    ]
+  }
+]

@@ -1,0 +1,327 @@
+{
+  "sourceReportSha256": "f1460a0929906b318e378a514016329d731c0694a2f143d1f99ad44180e6a3ef",
+  "config": {
+    "workers": 1,
+    "projects": [
+      {
+        "name": "sync-desktop",
+        "repeatEach": 5,
+        "retries": 0
+      },
+      {
+        "name": "sync-mobile",
+        "repeatEach": 5,
+        "retries": 0
+      }
+    ]
+  },
+  "stats": {
+    "startTime": "2026-10-10T13:26:55.786Z",
+    "duration": 58712.647,
+    "expected": 10,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "errors": [],
+  "byProject": {
+    "sync-desktop": {
+      "passed": 5
+    },
+    "sync-mobile": {
+      "passed": 5
+    }
+  },
+  "attempts": [
+    {
+      "project": "sync-desktop",
+      "specId": "27fb4a5ea65fbcc3fff2-7ea24783e5e95f631223",
+      "attemptNumber": 1,
+      "title": "retener SyncRuntime deshabilita la sincronización hasta registrar el motor",
+      "file": "sync-startup.probe.ts",
+      "line": 5,
+      "retry": 0,
+      "workerIndex": 0,
+      "status": "passed",
+      "startTime": "2026-10-10T13:26:58.383Z",
+      "durationMs": 4361,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "before-runtime-registration",
+          "text": "Sincronización\n\n1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\n10/10/2026, 15:27:01\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nSincronizar ahora\nExportar cambios pendientes\n\nPreparando sincronización…\nAcción deshabilitada; sin alerta de arranque."
+        },
+        {
+          "name": "after-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\n10/10/2026, 15:27:01\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados."
+        },
+        {
+          "name": "trace",
+          "path": ".toolchains/e2e-investigation/startup-fixed-artifacts/sync-startup.probe.ts-rete-36f33-ón-hasta-registrar-el-motor-sync-desktop/trace.zip",
+          "sha256": "6e4a48d16c9e03d247e2102be61ab171cc26ed0e2c068b4d0fb1e0388ae627b3"
+        }
+      ]
+    },
+    {
+      "project": "sync-desktop",
+      "specId": "27fb4a5ea65fbcc3fff2-2e463cb98106c860bccb",
+      "attemptNumber": 2,
+      "title": "retener SyncRuntime deshabilita la sincronización hasta registrar el motor",
+      "file": "sync-startup.probe.ts",
+      "line": 5,
+      "retry": 0,
+      "workerIndex": 1,
+      "status": "passed",
+      "startTime": "2026-10-10T13:27:03.538Z",
+      "durationMs": 4290,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "before-runtime-registration",
+          "text": "Sincronización\n\n1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\n10/10/2026, 15:27:06\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nSincronizar ahora\nExportar cambios pendientes\n\nPreparando sincronización…\nAcción deshabilitada; sin alerta de arranque."
+        },
+        {
+          "name": "after-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\n10/10/2026, 15:27:06\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados."
+        },
+        {
+          "name": "trace",
+          "path": ".toolchains/e2e-investigation/startup-fixed-artifacts/sync-startup.probe.ts-rete-36f33-ón-hasta-registrar-el-motor-sync-desktop-repeat1/trace.zip",
+          "sha256": "b7385dec7c2b3ef2e59befba0b62d006b60dc81d231f5ac2d2e79147dbb3f96b"
+        }
+      ]
+    },
+    {
+      "project": "sync-desktop",
+      "specId": "27fb4a5ea65fbcc3fff2-94c58a7f4e3b07265d43",
+      "attemptNumber": 3,
+      "title": "retener SyncRuntime deshabilita la sincronización hasta registrar el motor",
+      "file": "sync-startup.probe.ts",
+      "line": 5,
+      "retry": 0,
+      "workerIndex": 2,
+      "status": "passed",
+      "startTime": "2026-10-10T13:27:08.829Z",
+      "durationMs": 5227,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "before-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\nSin confirmación remota registrada\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\n\nPreparando sincronización…\nAcción deshabilitada; sin alerta de arranque."
+        },
+        {
+          "name": "after-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\nSin confirmación remota registrada\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados."
+        },
+        {
+          "name": "trace",
+          "path": ".toolchains/e2e-investigation/startup-fixed-artifacts/sync-startup.probe.ts-rete-36f33-ón-hasta-registrar-el-motor-sync-desktop-repeat2/trace.zip",
+          "sha256": "461790977c16f2615655d57e16e1ac2ab56a50adfd07e7781a767763a170ac7d"
+        }
+      ]
+    },
+    {
+      "project": "sync-desktop",
+      "specId": "27fb4a5ea65fbcc3fff2-81935c0cd65b9ce8acd2",
+      "attemptNumber": 4,
+      "title": "retener SyncRuntime deshabilita la sincronización hasta registrar el motor",
+      "file": "sync-startup.probe.ts",
+      "line": 5,
+      "retry": 0,
+      "workerIndex": 3,
+      "status": "passed",
+      "startTime": "2026-10-10T13:27:14.830Z",
+      "durationMs": 5626,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "before-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\nSin confirmación remota registrada\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\n\nPreparando sincronización…\nAcción deshabilitada; sin alerta de arranque."
+        },
+        {
+          "name": "after-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\nSin confirmación remota registrada\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados."
+        },
+        {
+          "name": "trace",
+          "path": ".toolchains/e2e-investigation/startup-fixed-artifacts/sync-startup.probe.ts-rete-36f33-ón-hasta-registrar-el-motor-sync-desktop-repeat3/trace.zip",
+          "sha256": "c5f3e8ed08eaaefe464a1a9f16faefdcc73a2db8b8e316a336db6e65cd5ce87e"
+        }
+      ]
+    },
+    {
+      "project": "sync-desktop",
+      "specId": "27fb4a5ea65fbcc3fff2-2ddbbc88d0dba82c7ab4",
+      "attemptNumber": 5,
+      "title": "retener SyncRuntime deshabilita la sincronización hasta registrar el motor",
+      "file": "sync-startup.probe.ts",
+      "line": 5,
+      "retry": 0,
+      "workerIndex": 4,
+      "status": "passed",
+      "startTime": "2026-10-10T13:27:21.418Z",
+      "durationMs": 4296,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "before-runtime-registration",
+          "text": "Sincronización\n\n1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\n10/10/2026, 15:27:24\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nSincronizar ahora\nExportar cambios pendientes\n\nPreparando sincronización…\nAcción deshabilitada; sin alerta de arranque."
+        },
+        {
+          "name": "after-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\n10/10/2026, 15:27:24\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados."
+        },
+        {
+          "name": "trace",
+          "path": ".toolchains/e2e-investigation/startup-fixed-artifacts/sync-startup.probe.ts-rete-36f33-ón-hasta-registrar-el-motor-sync-desktop-repeat4/trace.zip",
+          "sha256": "b620925199a3887eab94950a44813c0d12ecf51d9d385181f97341823863fd00"
+        }
+      ]
+    },
+    {
+      "project": "sync-mobile",
+      "specId": "27fb4a5ea65fbcc3fff2-8b0ecf88b035ef8b251f",
+      "attemptNumber": 1,
+      "title": "retener SyncRuntime deshabilita la sincronización hasta registrar el motor",
+      "file": "sync-startup.probe.ts",
+      "line": 5,
+      "retry": 0,
+      "workerIndex": 5,
+      "status": "passed",
+      "startTime": "2026-10-10T13:27:26.528Z",
+      "durationMs": 4197,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "before-runtime-registration",
+          "text": "Sincronización\n\n1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\n10/10/2026, 15:27:29\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nSincronizar ahora\nExportar cambios pendientes\n\nPreparando sincronización…\nAcción deshabilitada; sin alerta de arranque."
+        },
+        {
+          "name": "after-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\n10/10/2026, 15:27:29\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados."
+        },
+        {
+          "name": "trace",
+          "path": ".toolchains/e2e-investigation/startup-fixed-artifacts/sync-startup.probe.ts-rete-36f33-ón-hasta-registrar-el-motor-sync-mobile/trace.zip",
+          "sha256": "f57ad2e105d1cfa1e4c6ed9bcaa996b7fec518de41e0a4dafa3b441e83e65de8"
+        }
+      ]
+    },
+    {
+      "project": "sync-mobile",
+      "specId": "27fb4a5ea65fbcc3fff2-662c811fc78c33e33819",
+      "attemptNumber": 2,
+      "title": "retener SyncRuntime deshabilita la sincronización hasta registrar el motor",
+      "file": "sync-startup.probe.ts",
+      "line": 5,
+      "retry": 0,
+      "workerIndex": 6,
+      "status": "passed",
+      "startTime": "2026-10-10T13:27:31.506Z",
+      "durationMs": 5337,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "before-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\nSin confirmación remota registrada\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\n\nPreparando sincronización…\nAcción deshabilitada; sin alerta de arranque."
+        },
+        {
+          "name": "after-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\nSin confirmación remota registrada\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados."
+        },
+        {
+          "name": "trace",
+          "path": ".toolchains/e2e-investigation/startup-fixed-artifacts/sync-startup.probe.ts-rete-36f33-ón-hasta-registrar-el-motor-sync-mobile-repeat1/trace.zip",
+          "sha256": "6ba3cacf54e6a1d04c92be8de67583702213abe707a4ea83e9e2fa3b42b2b939"
+        }
+      ]
+    },
+    {
+      "project": "sync-mobile",
+      "specId": "27fb4a5ea65fbcc3fff2-b268216683f4afc2686d",
+      "attemptNumber": 3,
+      "title": "retener SyncRuntime deshabilita la sincronización hasta registrar el motor",
+      "file": "sync-startup.probe.ts",
+      "line": 5,
+      "retry": 0,
+      "workerIndex": 7,
+      "status": "passed",
+      "startTime": "2026-10-10T13:27:37.656Z",
+      "durationMs": 4365,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "before-runtime-registration",
+          "text": "Sincronización\n\n1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\n10/10/2026, 15:27:40\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nSincronizar ahora\nExportar cambios pendientes\n\nPreparando sincronización…\nAcción deshabilitada; sin alerta de arranque."
+        },
+        {
+          "name": "after-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\n10/10/2026, 15:27:40\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados."
+        },
+        {
+          "name": "trace",
+          "path": ".toolchains/e2e-investigation/startup-fixed-artifacts/sync-startup.probe.ts-rete-36f33-ón-hasta-registrar-el-motor-sync-mobile-repeat2/trace.zip",
+          "sha256": "0850fb24196bd52e914c7e967f54556a57de4e6da32a0388f24652405797f4dc"
+        }
+      ]
+    },
+    {
+      "project": "sync-mobile",
+      "specId": "27fb4a5ea65fbcc3fff2-6e46bfc0f9dbb2de3333",
+      "attemptNumber": 4,
+      "title": "retener SyncRuntime deshabilita la sincronización hasta registrar el motor",
+      "file": "sync-startup.probe.ts",
+      "line": 5,
+      "retry": 0,
+      "workerIndex": 8,
+      "status": "passed",
+      "startTime": "2026-10-10T13:27:42.874Z",
+      "durationMs": 4329,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "before-runtime-registration",
+          "text": "Sincronización\n\n1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\n10/10/2026, 15:27:45\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nSincronizar ahora\nExportar cambios pendientes\n\nPreparando sincronización…\nAcción deshabilitada; sin alerta de arranque."
+        },
+        {
+          "name": "after-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\n10/10/2026, 15:27:45\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados."
+        },
+        {
+          "name": "trace",
+          "path": ".toolchains/e2e-investigation/startup-fixed-artifacts/sync-startup.probe.ts-rete-36f33-ón-hasta-registrar-el-motor-sync-mobile-repeat3/trace.zip",
+          "sha256": "1eaddb128edc23ac5fbc82a4021d8732b6369243586fd9da1b2f4db14ecc0d31"
+        }
+      ]
+    },
+    {
+      "project": "sync-mobile",
+      "specId": "27fb4a5ea65fbcc3fff2-c4fe8dd8b1487a3e40e5",
+      "attemptNumber": 5,
+      "title": "retener SyncRuntime deshabilita la sincronización hasta registrar el motor",
+      "file": "sync-startup.probe.ts",
+      "line": 5,
+      "retry": 0,
+      "workerIndex": 9,
+      "status": "passed",
+      "startTime": "2026-10-10T13:27:47.960Z",
+      "durationMs": 5289,
+      "errors": [],
+      "attachments": [
+        {
+          "name": "before-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\nSin confirmación remota registrada\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\n\nPreparando sincronización…\nAcción deshabilitada; sin alerta de arranque."
+        },
+        {
+          "name": "after-runtime-registration",
+          "text": "Sincronización\n\nError de sincronización · 1 cambio pendiente\n\nEn este dispositivo\nGuardado local\nCola de envío\n1 operación pendiente\nÚltima confirmación remota completa\nSin confirmación remota registrada\n\nTus cambios se guardan primero en este dispositivo. Las operaciones pendientes esperan respuesta de Supabase. La última confirmación remota es histórica: sólo describe la cola y los cambios remotos comprobados al terminar aquella sincronización; no garantiza el estado actual del servidor. Las versiones locales sustituidas por un conflicto se conservan abajo.\n\nComprobación periódica; sin conexión Realtime activa.\n\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados.\n\nSincronizar ahora\nExportar cambios pendientes\nNo se pudo contactar con Supabase. Reintentaremos; tus cambios siguen guardados."
+        },
+        {
+          "name": "trace",
+          "path": ".toolchains/e2e-investigation/startup-fixed-artifacts/sync-startup.probe.ts-rete-36f33-ón-hasta-registrar-el-motor-sync-mobile-repeat4/trace.zip",
+          "sha256": "08e86089c224ecabc2bb31fd28c50c1ac0d4a78b7c8531258dc9843e64cd0e2b"
+        }
+      ]
+    }
+  ]
+}

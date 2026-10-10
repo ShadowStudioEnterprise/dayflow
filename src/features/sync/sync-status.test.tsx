@@ -29,6 +29,46 @@ function renderStatus() {
   )
 }
 
+it('espera el registro del motor y retira la disponibilidad cuando se elimina', async () => {
+  await database.syncCheckpoints.put({
+    userId,
+    cursor: '0',
+    state: 'idle',
+    lastSuccessAt,
+  })
+  renderStatus()
+  const button = screen.getByRole('button', { name: 'Sincronizar ahora' })
+  expect(button).toBeDisabled()
+  expect(screen.getByText('Preparando sincronización…')).toBeVisible()
+  const engine = new SyncEngine(userId, {
+    pull: vi.fn(async () => ({
+      changes: [],
+      cursor: '0',
+      serverTime: new Date().toISOString(),
+    })),
+    push: vi.fn(),
+    subscribe: () => () => {},
+  })
+  let unregister = () => {}
+  try {
+    act(() => {
+      unregister = registerSyncEngine(userId, engine)
+    })
+    expect(button).toBeEnabled()
+    expect(
+      screen.queryByText('Preparando sincronización…'),
+    ).not.toBeInTheDocument()
+    fireEvent.click(button)
+    expect(await screen.findByText('Sincronización completada.')).toBeVisible()
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+    act(() => unregister())
+    expect(button).toBeDisabled()
+  } finally {
+    act(() => unregister())
+    engine.stop()
+  }
+})
+
 it('separa una confirmación histórica del guardado local y de una nueva operación offline', async () => {
   await database.syncCheckpoints.put({
     userId,

@@ -1,7 +1,11 @@
-import { useState } from 'react'
+import { useState, useSyncExternalStore } from 'react'
 import { Link } from 'react-router-dom'
 import { useSyncStatus } from './use-sync-status'
-import { synchronizeNow } from '../../services/sync/sync-control'
+import {
+  isSyncEngineReady,
+  subscribeSyncEngine,
+  synchronizeNow,
+} from '../../services/sync/sync-control'
 import { database } from '../../services/database/database'
 import { createRepository } from '../../services/database/repository'
 import { entitySchemas } from '../../shared/validation/schemas'
@@ -27,6 +31,11 @@ function download(value: unknown, filename: string) {
 const labelFor = (value: SyncConflict['local']) =>
   'title' in value ? value.title : 'name' in value ? value.name : value.id
 export function SyncSettings({ userId }: { userId: string }) {
+  const ready = useSyncExternalStore(
+    subscribeSyncEngine,
+    () => isSyncEngineReady(userId),
+    () => false,
+  )
   const {
     label,
     localLabel,
@@ -40,6 +49,7 @@ export function SyncSettings({ userId }: { userId: string }) {
   } = useSyncStatus(userId)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
+  const [completed, setCompleted] = useState(false)
   const [requeueId, setRequeueId] = useState('')
   const [review, setReview] = useState<RequeueReview>()
   const synchronize = async () => {
@@ -52,10 +62,12 @@ export function SyncSettings({ userId }: { userId: string }) {
           ? 'La sincronización se interrumpió al cerrar la sesión.'
           : 'La sincronización no ha terminado. Quedan cambios pendientes.',
       )
+    else setCompleted(true)
   }
   const run = async (work: () => Promise<unknown>) => {
     setBusy(true)
     setError('')
+    setCompleted(false)
     try {
       await work()
     } catch (reason) {
@@ -127,7 +139,7 @@ export function SyncSettings({ userId }: { userId: string }) {
         <div className="sync-actions">
           <button
             className="button secondary"
-            disabled={busy || !online}
+            disabled={busy || !online || !ready}
             onClick={() => void run(synchronize)}
           >
             {busy ? 'Sincronizando…' : 'Sincronizar ahora'}
@@ -140,6 +152,8 @@ export function SyncSettings({ userId }: { userId: string }) {
             Exportar cambios pendientes
           </button>
         </div>
+        {!ready && <p role="status">Preparando sincronización…</p>}
+        {completed && <p role="status">Sincronización completada.</p>}
         {queue.some((item) => item.blocked) && (
           <div className="sync-rejected">
             <h3>Operaciones que necesitan revisión</h3>
@@ -194,7 +208,7 @@ export function SyncSettings({ userId }: { userId: string }) {
                         </button>
                         <button
                           className="button primary"
-                          disabled={busy || !online}
+                          disabled={busy || !online || !ready}
                           onClick={() =>
                             void run(async () => {
                               setRequeueId('')
@@ -215,7 +229,7 @@ export function SyncSettings({ userId }: { userId: string }) {
                   ) : (
                     <button
                       className="text-button"
-                      disabled={busy || !online}
+                      disabled={busy || !online || !ready}
                       onClick={() =>
                         void run(async () => {
                           setRequeueId('')
