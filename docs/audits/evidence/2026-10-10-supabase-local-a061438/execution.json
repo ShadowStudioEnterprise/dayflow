@@ -1,42 +1,40 @@
 ﻿{
-    "sha":  "a061438fcdb8b47d2d4d0b05ce9188338f9a282c",
-    "worktree_status":  [
-
-                        ],
-    "execution":  "npm run test:local -- --reporter=line,json",
-    "exit_code":  0,
-    "stats":  {
-                  "startTime":  "2026-10-10T10:10:06.140Z",
-                  "duration":  25636.157,
-                  "expected":  2,
-                  "skipped":  0,
-                  "unexpected":  0,
-                  "flaky":  0
-              },
-    "timezone":  "Europe/Madrid",
-    "node":  "v24.18.0",
-    "npm":  "11.16.0",
-    "docker":  "26.1.1",
-    "supabase_cli":  "2.118.0",
-    "package_lock_sha256":  "094C2A6624CA6918F1196BC8BA9D8FBFBD140EF46460D1F04576A27031A8C3EE",
-    "dependencies":  "Existing node_modules shared through a junction; no dependency install or lockfile changes",
-    "backend":  "http://127.0.0.1:54321",
-    "migrations":  [
-                       "202609200001",
-                       "202609200002",
-                       "202609240003",
-                       "202609240004",
-                       "202610040005",
-                       "202610090006"
-                   ],
-    "migration_exit_code":  0,
-    "database":  "Existing local Docker volume; 23 preexisting accounts preserved; 3 run accounts deleted",
-    "exclusions":  [
-                       "storage-api",
-                       "imgproxy",
-                       "edge-runtime",
-                       "logflare",
-                       "vector",
-                       "supavisor"
-                   ]
+  "sha": "a061438fcdb8b47d2d4d0b05ce9188338f9a282c",
+  "worktree_status": [],
+  "execution": "npm run test:local -- --reporter=line,json",
+  "exit_code": 0,
+  "stats": {
+    "startTime": "2026-10-10T10:10:06.140Z",
+    "duration": 25636.157,
+    "expected": 2,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "timezone": "Europe/Madrid",
+  "node": "v24.18.0",
+  "npm": "11.16.0",
+  "docker": "26.1.1",
+  "supabase_cli": "2.118.0",
+  "package_lock_sha256": "094C2A6624CA6918F1196BC8BA9D8FBFBD140EF46460D1F04576A27031A8C3EE",
+  "dependencies": "Existing node_modules shared through a junction; no dependency install or lockfile changes",
+  "backend": "http://127.0.0.1:54321",
+  "migrations": [
+    "202609200001",
+    "202609200002",
+    "202609240003",
+    "202609240004",
+    "202610040005",
+    "202610090006"
+  ],
+  "migration_exit_code": 0,
+  "database": "Existing local Docker volume; 23 preexisting accounts preserved; 3 run accounts deleted",
+  "exclusions": [
+    "storage-api",
+    "imgproxy",
+    "edge-runtime",
+    "logflare",
+    "vector",
+    "supavisor"
+  ]
 }

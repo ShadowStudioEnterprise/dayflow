@@ -1,42 +1,42 @@
-﻿[
-    {
-        "file":  "cleanup.txt",
-        "Hash":  "C5CB45BCA030EB2A964591570DFC2C7322CAE035B93DCD7DEAA1808BD49E941E"
-    },
-    {
-        "file":  "db-state-before.txt",
-        "Hash":  "75D85E241C1FABD0DFB921D1CCE92028D286DC3BD3821A0A04B39DA2E1A36CA1"
-    },
-    {
-        "file":  "docker-status.txt",
-        "Hash":  "6A714C74489577CD0E2F243477225E2183B7BB98AA651FE8AF5219FF3801DE1C"
-    },
-    {
-        "file":  "execution.json",
-        "Hash":  "368D3D01BE1A6CC85804606D44A91AE205F50F97B5DDB326231423A035B38DCA"
-    },
-    {
-        "file":  "migrations-apply.txt",
-        "Hash":  "E6CE6370707E923706992170FFB74855EE48D276B1404FD1AF457F427910E5B7"
-    },
-    {
-        "file":  "migrations-plan.txt",
-        "Hash":  "1CBC97239C6C64E7ED88130C31572466964B2221EA10CFCA44D262E7BF4F2C32"
-    },
-    {
-        "file":  "playwright.exit.txt",
-        "Hash":  "13BF7B3039C63BF5A50491FA3CFD8EB4E699D1BA1436315AEF9CBE5711530354"
-    },
-    {
-        "file":  "playwright.json",
-        "Hash":  "0B814ADA6F95FA41E8D1B0B67D62A90C47F6D74FC3268D844002212FEA626CA3"
-    },
-    {
-        "file":  "playwright.stderr.txt",
-        "Hash":  "A1B5176026FC988B041C0903A2229A5E2B8C096DCBE24F13E854042F910B49E5"
-    },
-    {
-        "file":  "playwright.stdout.txt",
-        "Hash":  "46637B872B85B1F2E0FA48E0FE9B11DE20CF454F102D551FB0EF1375399C2F78"
-    }
+[
+  {
+    "file": "cleanup.txt",
+    "Hash": "C5CB45BCA030EB2A964591570DFC2C7322CAE035B93DCD7DEAA1808BD49E941E"
+  },
+  {
+    "file": "db-state-before.txt",
+    "Hash": "75D85E241C1FABD0DFB921D1CCE92028D286DC3BD3821A0A04B39DA2E1A36CA1"
+  },
+  {
+    "file": "docker-status.txt",
+    "Hash": "6A714C74489577CD0E2F243477225E2183B7BB98AA651FE8AF5219FF3801DE1C"
+  },
+  {
+    "file": "execution.json",
+    "Hash": "265F31516B4ADA3B293E229E63ABA7791989EBACE11E791AED08ED5B97BC0DCE"
+  },
+  {
+    "file": "migrations-apply.txt",
+    "Hash": "E6CE6370707E923706992170FFB74855EE48D276B1404FD1AF457F427910E5B7"
+  },
+  {
+    "file": "migrations-plan.txt",
+    "Hash": "1CBC97239C6C64E7ED88130C31572466964B2221EA10CFCA44D262E7BF4F2C32"
+  },
+  {
+    "file": "playwright.exit.txt",
+    "Hash": "13BF7B3039C63BF5A50491FA3CFD8EB4E699D1BA1436315AEF9CBE5711530354"
+  },
+  {
+    "file": "playwright.json",
+    "Hash": "3EB8DB42D9C98A40E19FFE1420FFCE103ED07FBD2F8F0B27B4164069019D8A7E"
+  },
+  {
+    "file": "playwright.stderr.txt",
+    "Hash": "A1B5176026FC988B041C0903A2229A5E2B8C096DCBE24F13E854042F910B49E5"
+  },
+  {
+    "file": "playwright.stdout.txt",
+    "Hash": "46637B872B85B1F2E0FA48E0FE9B11DE20CF454F102D551FB0EF1375399C2F78"
+  }
 ]
