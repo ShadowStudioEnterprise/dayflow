@@ -11,6 +11,7 @@ import {
   type NoteService,
 } from '../services/note-service'
 import { NoteAutosave } from '../services/note-autosave'
+import type { EmergencyDraft } from '../services/note-emergency'
 import { EditorToolbar } from './EditorToolbar'
 import { TagPicker } from '../../tags/TagPicker'
 import { RelationPicker } from '../../relations/RelationPicker'
@@ -20,13 +21,17 @@ export default function NoteEditor({
   service,
   onClose,
   onCopy,
+  recovery,
 }: {
   note: Note
   service: NoteService
   onClose: () => void
   onCopy: (note: Note) => void
+  recovery?: EmergencyDraft
 }) {
-  const [saver] = useState(() => new NoteAutosave(note.id, note, service))
+  const [saver] = useState(
+    () => new NoteAutosave(note.id, note, service, 600, recovery),
+  )
   const state = useSyncExternalStore(saver.subscribe, saver.getSnapshot)
   const [confirmDelete, setConfirmDelete] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -103,6 +108,17 @@ export default function NoteEditor({
         </span>
         <span className="muted small">Guardado local primero</span>
       </div>
+      {state.recovered && (
+        <p role="status">
+          Borrador recuperado. Pulsa Listo para guardarlo; si la nota cambió,
+          podrás guardar una copia.
+        </p>
+      )}
+      {state.recoveryError && (
+        <p className="field-error" role="alert">
+          {state.recoveryError}
+        </p>
+      )}
       <fieldset className="note-editor-fields" disabled={busy}>
         <input
           className="note-title-input"

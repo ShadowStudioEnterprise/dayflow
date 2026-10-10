@@ -1,11 +1,19 @@
 import type { Note } from '../../../shared/types/domain'
 import { draftFromNote, type NoteDraft, type NoteService } from './note-service'
+import {
+  emergencyKey,
+  removeEmergency,
+  writeEmergency,
+  type EmergencyDraft,
+} from './note-emergency'
 
 interface SaveState {
   draft: NoteDraft
   dirty: boolean
   status: 'saved' | 'pending' | 'saving' | 'error'
   error: string
+  recoveryError: string
+  recovered: boolean
 }
 
 /** Serializes writes; an edit made during a save is committed by the next write. */
@@ -19,22 +27,32 @@ export class NoteAutosave {
   readonly noteId: string
   private service: Pick<NoteService, 'save'>
   private delay: number
+  private note: Note
+  private backupKey: string
+  private backupRaw: string | undefined
+  private recovery: EmergencyDraft | undefined
 
   constructor(
     noteId: string,
     note: Note,
     service: Pick<NoteService, 'save'>,
     delay = 600,
+    recovery?: EmergencyDraft,
   ) {
+    this.note = note
+    this.backupKey = emergencyKey(note.userId)
+    this.recovery = recovery
     this.noteId = noteId
     this.service = service
     this.delay = delay
     this.version = note.version
     this.state = {
       draft: draftFromNote(note),
-      dirty: false,
-      status: 'saved',
+      dirty: Boolean(recovery),
+      status: recovery ? 'pending' : 'saved',
       error: '',
+      recoveryError: '',
+      recovered: Boolean(recovery),
     }
   }
   getSnapshot = () => this.state
@@ -50,8 +68,20 @@ export class NoteAutosave {
   }
   change(patch: Partial<NoteDraft>) {
     this.revision++
+    const draft = { ...this.state.draft, ...patch }
+    const raw = writeEmergency(this.backupKey, this.note, this.version, draft)
+    if (raw) {
+      this.backupRaw = raw
+      if (this.recovery) {
+        removeEmergency(this.recovery.key, this.recovery.raw)
+        this.recovery = undefined
+      }
+    }
     this.publish({
-      draft: { ...this.state.draft, ...patch },
+      draft,
+      recoveryError: raw
+        ? ''
+        : 'No se pudo proteger el borrador para la reapertura. Mantén el editor abierto o copia el texto hasta que se guarde.',
       dirty: true,
       status: this.state.error ? 'error' : 'pending',
     })
@@ -78,9 +108,23 @@ export class NoteAutosave {
       try {
         const saved = await this.service.save(this.noteId, this.version, draft)
         this.version = saved.version
+        if (revision === this.revision) this.clearBackup()
+        else {
+          // The remaining draft must use the version of the completed commit.
+          const raw = writeEmergency(
+            this.backupKey,
+            this.note,
+            this.version,
+            this.state.draft,
+          )
+          if (raw) this.backupRaw = raw
+        }
         this.publish({
           dirty: revision !== this.revision,
           status: revision === this.revision ? 'saved' : 'pending',
+          ...(revision === this.revision
+            ? { recoveryError: '', recovered: false }
+            : {}),
         })
       } catch (reason) {
         this.publish({
@@ -98,8 +142,21 @@ export class NoteAutosave {
   stopTimer() {
     clearTimeout(this.timer)
   }
+  private clearBackup() {
+    if (this.backupRaw) removeEmergency(this.backupKey, this.backupRaw)
+    if (this.recovery) removeEmergency(this.recovery.key, this.recovery.raw)
+    this.backupRaw = undefined
+    this.recovery = undefined
+  }
   preservedAsCopy() {
     this.stopTimer()
-    this.publish({ dirty: false, status: 'saved', error: '' })
+    this.clearBackup()
+    this.publish({
+      dirty: false,
+      status: 'saved',
+      error: '',
+      recoveryError: '',
+      recovered: false,
+    })
   }
 }

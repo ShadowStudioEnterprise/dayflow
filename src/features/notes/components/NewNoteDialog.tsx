@@ -1,18 +1,47 @@
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import { Modal } from '../../../shared/components/Modal'
 import { emptyDocument } from '../services/note-document'
 import type { NoteService } from '../services/note-service'
 import type { Note } from '../../../shared/types/domain'
+import {
+  emergencyKey,
+  removeEmergency,
+  writeEmergency,
+} from '../services/note-emergency'
 
 export function NewNoteDialog({
   service,
   onCreated,
   onClose,
+  userId,
 }: {
   service: Pick<NoteService, 'create'>
   onCreated: (note: Note) => void
   onClose: () => void
+  userId?: string
 }) {
+  const [emergency] = useState(() =>
+    userId
+      ? {
+          key: emergencyKey(userId),
+          note: {
+            id: crypto.randomUUID(),
+            userId,
+            version: 1,
+            title: '',
+            content: emptyDocument,
+            plainTextContent: '',
+            color: 'neutral',
+            isPinned: false,
+            isArchived: false,
+            createdAt: new Date().toISOString(),
+            updatedAt: new Date().toISOString(),
+          } satisfies Note,
+        }
+      : undefined,
+  )
+  const backupRaw = useRef<string | undefined>(undefined)
+  const [recoveryError, setRecoveryError] = useState('')
   const [title, setTitle] = useState('')
   const [pending, setPending] = useState(false)
   const [error, setError] = useState('')
@@ -31,15 +60,16 @@ export function NewNoteDialog({
           setPending(true)
           setError('')
           try {
-            onCreated(
-              await service.create({
-                title,
-                content: emptyDocument,
-                color: 'neutral',
-                isPinned: false,
-                isArchived: false,
-              }),
-            )
+            const created = await service.create({
+              title,
+              content: emptyDocument,
+              color: 'neutral',
+              isPinned: false,
+              isArchived: false,
+            })
+            if (emergency && backupRaw.current)
+              removeEmergency(emergency.key, backupRaw.current)
+            onCreated(created)
           } catch (reason) {
             setError(
               reason instanceof Error
@@ -59,7 +89,22 @@ export function NewNoteDialog({
           maxLength={300}
           placeholder="Una idea que merece su espacio…"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => {
+            const title = e.target.value
+            setTitle(title)
+            if (emergency) {
+              const raw = writeEmergency(emergency.key, emergency.note, 1, {
+                ...emergency.note,
+                title,
+              })
+              if (raw) backupRaw.current = raw
+              setRecoveryError(
+                raw
+                  ? ''
+                  : 'No se pudo proteger el borrador para la reapertura.',
+              )
+            }
+          }}
           disabled={pending}
         />
         <p className="muted small">
@@ -68,6 +113,11 @@ export function NewNoteDialog({
         {error && (
           <p role="alert" className="field-error">
             {error}
+          </p>
+        )}
+        {recoveryError && (
+          <p role="alert" className="field-error">
+            {recoveryError}
           </p>
         )}
         <button className="button primary" disabled={pending}>

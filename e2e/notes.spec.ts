@@ -16,6 +16,125 @@ test.beforeEach(async ({ page }) => {
   await expect(page.getByRole('heading', { name: 'Tus notas.' })).toBeVisible()
 })
 
+test('recupera un borrador al reabrir tras fallo de IndexedDB y cierre de la pestaña', async ({
+  page,
+  context,
+}) => {
+  await createNote(page, 'Idea protegida')
+  await page.evaluate(() => {
+    IDBObjectStore.prototype.put = function () {
+      throw new DOMException(
+        'Fallo de IndexedDB de prueba',
+        'QuotaExceededError',
+      )
+    }
+  })
+  await page
+    .getByRole('textbox', { name: 'Contenido de la nota' })
+    .fill('Texto que no llegó a guardarse')
+  await expect(
+    page.getByText('No se ha guardado', { exact: true }),
+  ).toBeVisible()
+  await page
+    .getByRole('textbox', { name: 'Título de la nota' })
+    .fill('Último cambio tras el fallo')
+  await page.close({ runBeforeUnload: false })
+  const reopened = await context.newPage()
+  await reopened.route('https://dayflow-e2e.supabase.co/**', (route) =>
+    route.abort(),
+  )
+  await reopened.goto('/notes')
+  await reopened
+    .getByRole('button', {
+      name: 'Recuperar borrador: Último cambio tras el fallo',
+    })
+    .click()
+  await expect(
+    reopened.getByRole('textbox', { name: 'Contenido de la nota' }),
+  ).toHaveText('Texto que no llegó a guardarse')
+  await expect(
+    reopened.getByRole('textbox', { name: 'Título de la nota' }),
+  ).toHaveValue('Último cambio tras el fallo')
+  await reopened.getByRole('button', { name: 'Listo', exact: true }).click()
+  await expect(
+    reopened.getByRole('region', { name: 'Borradores recuperables' }),
+  ).toHaveCount(0)
+  await reopened.reload()
+  await reopened
+    .getByRole('button', { name: 'Abrir nota: Último cambio tras el fallo' })
+    .click()
+  await expect(
+    reopened.getByRole('textbox', { name: 'Contenido de la nota' }),
+  ).toHaveText('Texto que no llegó a guardarse')
+})
+
+test('ofrece recuperación aunque IndexedDB no pueda abrirse', async ({
+  page,
+  context,
+}) => {
+  await createNote(page, 'Borrador con almacenamiento bloqueado')
+  await page.evaluate(() => {
+    IDBObjectStore.prototype.put = function () {
+      throw new DOMException('Sin espacio', 'QuotaExceededError')
+    }
+  })
+  await page
+    .getByRole('textbox', { name: 'Contenido de la nota' })
+    .fill('Disponible sin IndexedDB')
+  await expect(
+    page.getByText('No se ha guardado', { exact: true }),
+  ).toBeVisible()
+  await page.close({ runBeforeUnload: false })
+  const reopened = await context.newPage()
+  await reopened.route('https://dayflow-e2e.supabase.co/**', (route) =>
+    route.abort(),
+  )
+  await reopened.addInitScript(() => {
+    IDBFactory.prototype.open = function () {
+      throw new DOMException('IndexedDB bloqueado', 'SecurityError')
+    }
+  })
+  await reopened.goto('/notes')
+  await expect(
+    reopened.getByRole('heading', { name: 'No se pudieron cargar las notas' }),
+  ).toBeVisible()
+  await reopened
+    .getByRole('button', {
+      name: 'Recuperar borrador: Borrador con almacenamiento bloqueado',
+    })
+    .click()
+  await expect(
+    reopened.getByRole('textbox', { name: 'Contenido de la nota' }),
+  ).toHaveText('Disponible sin IndexedDB')
+})
+
+test('recupera el título de una nota que todavía no se había creado', async ({
+  page,
+  context,
+}) => {
+  await page.getByRole('button', { name: 'Nueva nota', exact: true }).click()
+  await page
+    .getByRole('textbox', { name: /Título/ })
+    .fill('Idea antes de crear')
+  await page.close({ runBeforeUnload: false })
+  const reopened = await context.newPage()
+  await reopened.route('https://dayflow-e2e.supabase.co/**', (route) =>
+    route.abort(),
+  )
+  await reopened.goto('/notes')
+  await reopened
+    .getByRole('button', { name: 'Recuperar borrador: Idea antes de crear' })
+    .click()
+  await expect(
+    reopened.getByRole('textbox', { name: 'Título de la nota' }),
+  ).toHaveValue('Idea antes de crear')
+  await reopened.getByRole('button', { name: 'Listo', exact: true }).click()
+  await reopened.getByRole('button', { name: 'Guardar como copia' }).click()
+  await expect(
+    reopened.getByRole('textbox', { name: 'Título de la nota' }),
+  ).toHaveValue('Idea antes de crear (copia)')
+})
+
 test('crea, edita formato, autoguarda y persiste al recargar', async ({
   page,
 }) => {

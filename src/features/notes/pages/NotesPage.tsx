@@ -7,6 +7,10 @@ import { usePreferences } from '../../../app/store/preferences'
 import { useNotes, useNotePin } from '../hooks/use-notes'
 import { filterNotes } from '../services/note-service'
 import { NewNoteDialog } from '../components/NewNoteDialog'
+import {
+  readEmergencyDrafts,
+  type EmergencyDraft,
+} from '../services/note-emergency'
 import type { Note } from '../../../shared/types/domain'
 import '../notes.css'
 
@@ -27,6 +31,10 @@ function NoteWorkspace({ userId }: { userId: string }) {
   const [params, setParams] = useSearchParams()
   const [view, setView] = useState<'active' | 'pinned' | 'archived'>('active')
   const [search, setSearch] = useState('')
+  const [recoveries, setRecoveries] = useState(() =>
+    readEmergencyDrafts(userId),
+  )
+  const [recovery, setRecovery] = useState<EmergencyDraft>()
   const notes = state?.data ?? emptyNotes
   const pin = useNotePin(service, notes)
   const visible = useMemo(
@@ -39,7 +47,9 @@ function NoteWorkspace({ userId }: { userId: string }) {
   if (selected && opened?.id !== selected.id) setOpened(selected)
   // Keep an open draft alive if another tab deletes its underlying record.
   const editorNote =
-    selected ?? (opened?.id === selectedId ? opened : undefined)
+    recovery?.note ??
+    selected ??
+    (opened?.id === selectedId ? opened : undefined)
   const dateFormat = useMemo(
     () =>
       new Intl.DateTimeFormat('es', {
@@ -49,8 +59,17 @@ function NoteWorkspace({ userId }: { userId: string }) {
       }),
     [timezone],
   )
-  const open = (note: Note) => setParams({ note: note.id }, { replace: true })
-  const close = () => setParams({}, { replace: true })
+  const refreshRecoveries = () => setRecoveries(readEmergencyDrafts(userId))
+  const open = (note: Note) => {
+    setRecovery(undefined)
+    refreshRecoveries()
+    setParams({ note: note.id }, { replace: true })
+  }
+  const close = () => {
+    setRecovery(undefined)
+    refreshRecoveries()
+    setParams({}, { replace: true })
+  }
   return (
     <div className="page notes-page">
       <div className="page-heading">
@@ -122,6 +141,27 @@ function NoteWorkspace({ userId }: { userId: string }) {
         <p className="field-error" role="alert">
           {pin.error}
         </p>
+      )}
+      {recoveries.length > 0 && (
+        <section className="notice" aria-label="Borradores recuperables">
+          <h2>Borradores sin guardar</h2>
+          <p>
+            Hay cambios conservados antes del cierre. Puedes recuperarlos aunque
+            falle el almacenamiento de notas.
+          </p>
+          {recoveries.map((draft) => (
+            <button
+              className="button secondary"
+              key={draft.key}
+              onClick={() => {
+                setRecovery(draft)
+                setParams({ note: draft.note.id }, { replace: true })
+              }}
+            >
+              Recuperar borrador: {draft.note.title || 'Sin título'}
+            </button>
+          ))}
+        </section>
       )}
       {!state ? (
         <div className="loading-state" role="status">
@@ -206,13 +246,19 @@ function NoteWorkspace({ userId }: { userId: string }) {
         </section>
       )}
       {params.get('create') === '1' && (
-        <NewNoteDialog service={service} onClose={close} onCreated={open} />
+        <NewNoteDialog
+          userId={userId}
+          service={service}
+          onClose={close}
+          onCreated={open}
+        />
       )}
       {editorNote && (
         <Suspense fallback={<p role="status">Abriendo el editor…</p>}>
           <NoteEditor
-            key={editorNote.id}
+            key={recovery?.key ?? editorNote.id}
             note={editorNote}
+            recovery={recovery}
             service={service}
             onClose={close}
             onCopy={open}
