@@ -285,6 +285,7 @@ test('semana y día conservan fecha, filtros, creación y navegación entre año
     'Plan semanal',
   )
   await page.getByRole('button', { name: 'Cancelar', exact: true }).click()
+  await expect(page.getByRole('dialog')).toHaveCount(0)
   await page.getByRole('button', { name: 'Día siguiente', exact: true }).click()
   await expect(page.getByLabel('Ir al día')).toHaveValue('2026-09-25')
   await day.getByRole('button', { name: 'Crear evento el 2026-09-25' }).click()
@@ -292,7 +293,9 @@ test('semana y día conservan fecha, filtros, creación y navegación entre año
     '2026-09-25',
   )
   await page.getByRole('button', { name: 'Cancelar', exact: true }).click()
+  await expect(page.getByRole('dialog')).toHaveCount(0)
   await page.getByLabel('Ir al día').fill('2026-12-31')
+  await expect(page).toHaveURL(/(?:\?|&)day=2026-12-31(?:&|$)/)
   await page.getByRole('button', { name: 'Día siguiente', exact: true }).click()
   await expect(page.getByLabel('Ir al día')).toHaveValue('2027-01-01')
   await page.getByRole('button', { name: 'Semana', exact: true }).click()
