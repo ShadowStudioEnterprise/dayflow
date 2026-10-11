@@ -74,6 +74,12 @@ verificada. La vinculación local se guarda en `.vercel/`, excluida de Git.
 
 ## Referencias
 
+La repetición de Auth y Web Push en el dominio final se registra en
+[la revisión del 12 de octubre](audits/2026-10-12-vercel-auth-web-push.md).
+`npm run test:vercel` repite las comprobaciones públicas de rutas, formularios y
+workers contra producción; la recepción de correos y avisos requiere la prueba
+manual indicada en ese registro.
+
 - [Vite en Vercel](https://vercel.com/docs/frameworks/frontend/vite)
 - [Configuración de Vercel](https://vercel.com/docs/project-configuration/vercel-json)
 - [Inicio de sesión de la CLI](https://vercel.com/docs/cli/login)

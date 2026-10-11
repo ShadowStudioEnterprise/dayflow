@@ -57,6 +57,11 @@ Los cambios del motor de recurrencias requieren volver a desplegar `push-dispatc
 
 ## Verificación
 
+En el dominio final de Vercel, el worker publicado y la comprobación de
+actualizaciones se verificaron de nuevo el 12 de octubre de 2026 con
+`npm run test:vercel`. La entrega física permanece pendiente; consultar
+[el registro específico de Auth y Web Push](audits/2026-10-12-vercel-auth-web-push.md).
+
 Se comprobaron las políticas SQL, límites, reservas y rechazo de versiones antiguas; consentimiento, revocación offline y cambios de cuenta; descarte de cargas malformadas, antiguas o ajenas y navegación local. Las pruebas PWA usan el worker de producción, IndexedDB y Notifications de Chromium, con suscripción/HTTP simulados y un evento Push inyectado.
 
 En Supabase real se comprobaron registro autenticado, restricciones de acceso, cifrado/firma VAPID, petición al proveedor y retirada de un endpoint de prueba inexistente, tanto mediante invocación directa como por Cron. Las cuentas temporales se eliminaron. La suscripción real al proveedor desde un perfil temporal de Chromium no respondió en 25 segundos. Esto **no equivale a probar la entrega completa a una suscripción válida**, ni Safari/Firefox, suspensión del sistema o un móvil físico. Resultados finales en [verificación](verification.md).

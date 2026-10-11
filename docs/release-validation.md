@@ -10,6 +10,12 @@ de la tabla siguiente corresponde a las pruebas previas en Sites; todavía no
 se ha repetido su recepción manual en el nuevo dominio. Los identificadores
 de Sites y del APK se conservan como referencia de esas pruebas.
 
+Revisión del 12 de octubre: [registro de Auth y Web Push en el dominio final](audits/2026-10-12-vercel-auth-web-push.md).
+Las comprobaciones públicas se repiten con `npm run test:vercel` y están superadas.
+Confirmación, recuperación, rechazo de contraseña anterior y recepción física
+de avisos permanecen pendientes en Vercel. La tabla siguiente conserva únicamente
+la evidencia histórica del alojamiento anterior.
+
 | Área                       | Estado                                                                                                            | Evidencia pendiente                                                                                           |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
 | Web HTTPS                  | Publicada; acceso privado del propietario y visitante de prueba verificado por el usuario                         | Prueba en los demás navegadores de destino                                                                    |
