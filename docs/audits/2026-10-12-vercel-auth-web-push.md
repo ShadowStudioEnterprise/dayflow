@@ -47,6 +47,27 @@ publicado al commit local de la rama.
 
 ## Criterios de cierre
 
+### Resultado del intento de registro
+
+El usuario comunica que no apareció un aviso de cuenta existente y no recibió
+el correo de confirmación. Una lectura administrativa de Supabase, limitada a
+la cuenta acordada, confirma que ya estaba creada y confirmada el 4 de octubre
+de 2026 (12:11 Europe/Madrid). No se cambió ni eliminó la cuenta. Este intento
+con una cuenta existente no acredita una nueva confirmación ni demuestra un
+fallo del transporte de correo.
+
+Supabase documenta que un registro de una cuenta confirmada puede devolver un
+usuario ofuscado sin error según la configuración de confirmaciones:
+[referencia de signUp](https://supabase.com/docs/reference/javascript/auth-signup).
+Dayflow mostraba «Revisa tu correo para confirmar tu cuenta» ante cualquier
+respuesta sin sesión, lo que inducía a esperar un correo también en ese caso.
+La rama cambia el texto por un mensaje condicional y ofrece acceso a recuperación
+desde el registro. Esta corrección todavía no está publicada en Vercel.
+
+Continuar con recuperación y Web Push en la cuenta existente. Para comprobar
+confirmación nueva hace falta acordar otra dirección sin registrar y admitida
+por el servicio de correo; no borrar la cuenta existente para repetir el alta.
+
 | Caso                | Estado en Vercel | Evidencia necesaria                                                                                                                                                |
 | ------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Confirmación        | Pendiente        | Registro sin confirmación administrativa, correo recibido y enlace canjeado en el mismo perfil; regreso a Vercel con acceso                                        |

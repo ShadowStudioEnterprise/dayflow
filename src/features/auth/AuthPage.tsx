@@ -103,7 +103,7 @@ function AuthForm({ mode }: { mode: Mode }) {
         )
         if (!result.session)
           setSuccess(
-            'Revisa tu correo para confirmar tu cuenta y después inicia sesión.',
+            'Si este correo puede registrarse, recibirás un enlace de confirmación. Revisa tu correo y spam. Si ya tienes cuenta, inicia sesión o recupera tu contraseña.',
           )
       }
       if (mode === 'reset') {
@@ -248,7 +248,15 @@ function AuthForm({ mode }: { mode: Mode }) {
                 <Link to="/auth/register">Crear cuenta</Link>
               </>
             ) : (
-              <Link to="/auth/login">Volver a iniciar sesión</Link>
+              <>
+                <Link to="/auth/login">Volver a iniciar sesión</Link>
+                {mode === 'register' && (
+                  <>
+                    {' · '}
+                    <Link to="/auth/reset-password">Recuperar contraseña</Link>
+                  </>
+                )}
+              </>
             )}
           </p>
         </div>
