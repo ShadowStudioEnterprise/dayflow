@@ -3,17 +3,20 @@ import {
   disableWebPush,
   enableWebPush,
   webPushActive,
+  webPushPermission,
   webPushUnavailable,
 } from '../../../services/notifications/web-push'
 
 export function WebPushSettings({ userId }: { userId: string }) {
   const [active, setActive] = useState<boolean>()
+  const [permission, setPermission] = useState(webPushPermission)
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const unavailable = webPushUnavailable()
   useEffect(() => {
     let disposed = false
     const refresh = () => {
+      setPermission(webPushPermission())
       void webPushActive(userId)
         .then((value) => {
           if (!disposed) {
@@ -29,12 +32,17 @@ export function WebPushSettings({ userId }: { userId: string }) {
         })
     }
     refresh()
+    if (!unavailable) {
+      void navigator.serviceWorker.ready.then(() => {
+        if (!disposed) refresh()
+      })
+    }
     window.addEventListener('focus', refresh)
     return () => {
       disposed = true
       window.removeEventListener('focus', refresh)
     }
-  }, [userId])
+  }, [userId, unavailable])
   const toggle = async (enabled: boolean) => {
     setBusy(true)
     setError('')
@@ -49,6 +57,7 @@ export function WebPushSettings({ userId }: { userId: string }) {
           : 'No se pudo actualizar la suscripción.',
       )
     } finally {
+      setPermission(webPushPermission())
       setBusy(false)
     }
   }
@@ -63,6 +72,18 @@ export function WebPushSettings({ userId }: { userId: string }) {
               ? 'Avisos web activados para esta cuenta.'
               : 'Avisos web desactivados.')}
       </p>
+      {permission !== null && (
+        <p className="muted small">
+          {permission === 'denied'
+            ? 'Permiso de notificaciones: bloqueado. Permite las notificaciones en los ajustes de este sitio del navegador.'
+            : permission === 'granted'
+              ? 'Permiso de notificaciones: permitido.'
+              : 'Permiso de notificaciones: pendiente. Se solicitará al activar los avisos web.'}
+          {permission === 'granted' &&
+            active === false &&
+            ' Pulsa Activar avisos web para registrar este navegador y recibir avisos con esta cuenta.'}
+        </p>
+      )}
       <p className="muted">
         Los recordatorios sincronizados se comprueban cada minuto, incluso con
         Dayflow cerrada. La entrega necesita conexión y depende del navegador y

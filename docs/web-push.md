@@ -14,6 +14,13 @@ El aviso muestra un mensaje genérico, sin título ni descripción del recordato
 
 ## Envío y límites
 
+La activación comprueba primero el permiso de notificaciones: si está pendiente,
+lo solicita al pulsar el botón; si ya está concedido, registra la suscripción sin
+repetir la solicitud; si está bloqueado, indica cómo permitirlo en los ajustes
+del sitio. Configuración muestra el permiso separado del estado de avisos:
+«permitido» todavía requiere activar y registrar este navegador para la cuenta.
+El permiso se vuelve a consultar al regresar a la ventana y tras la activación.
+
 En el equipo Windows probado, Chrome 154 termina todos sus procesos al cerrar la última ventana, aunque el usuario tenga activada la opción de segundo plano. Se comprobó con una consulta de procesos tras el cierre. En esta configuración hay que mantener Chrome ejecutándose, por ejemplo con una ventana minimizada; la entrega con el navegador detenido no está disponible. Dayflow no incorpora actualmente una integración nativa de notificaciones para Windows.
 
 - En Chrome de escritorio, cerrar la página de Dayflow y detener por completo el navegador son situaciones distintas: la recepción requiere que Chrome siga ejecutándose, aunque no tenga ventanas abiertas ([FAQ de Web Push de Google](https://web.dev/articles/push-notifications-faq)). En Windows se puede revisar `chrome://settings/system` y la opción de continuar ejecutando aplicaciones en segundo plano. El [modo de segundo plano](https://chromeenterprise.google/policies/background-mode-enabled/) permite mantener un proceso tras cerrar la última ventana; debe comprobarse en el equipo y repetir la prueba. Dayflow no puede habilitarlo desde la web ni garantizar entrega si Chrome termina o Windows se suspende.

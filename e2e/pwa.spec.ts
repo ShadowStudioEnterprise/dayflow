@@ -41,6 +41,14 @@ test('Web Push registra por consentimiento, recibe en el worker real y se revoca
   })
   await login(page)
   await ready(page)
+  await expect(
+    page.getByText('Permiso de notificaciones: permitido.', { exact: false }),
+  ).toBeVisible()
+  await expect(
+    page.getByText('Pulsa Activar avisos web para registrar este navegador', {
+      exact: false,
+    }),
+  ).toBeVisible()
   let registered = false
   let revoked = false
   await page.route(
@@ -127,8 +135,8 @@ test('Web Push muestra el permiso denegado sin afirmar que está activado', asyn
   page,
 }) => {
   await page.addInitScript(() => {
-    Object.defineProperty(Notification, 'requestPermission', {
-      value: async () => 'denied',
+    Object.defineProperty(Notification, 'permission', {
+      get: () => 'denied',
     })
   })
   await login(page)
@@ -138,7 +146,7 @@ test('Web Push muestra el permiso denegado sin afirmar que está activado', asyn
     .click()
   await expect(
     page.getByText(
-      'Permiso no concedido. Revisa los permisos de este sitio en tu navegador.',
+      'Las notificaciones están bloqueadas. Permítelas en los ajustes de este sitio del navegador y vuelve a activar los avisos web.',
     ),
   ).toBeVisible()
   await expect(

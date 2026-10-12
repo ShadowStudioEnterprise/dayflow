@@ -103,10 +103,10 @@ it('un proveedor bloqueado devuelve un error y revoca cualquier respuesta tardí
   expect(unsubscribe).toHaveBeenCalledOnce()
   expect(owner).toBeNull()
 })
-it('requiere consentimiento y sólo activa tras confirmar el registro de servidor', async () => {
+it('con permiso concedido registra el navegador sin volver a pedir consentimiento', async () => {
   const { enableWebPush } = await import('./web-push')
   await enableWebPush(userId)
-  expect(Notification.requestPermission).toHaveBeenCalledOnce()
+  expect(Notification.requestPermission).not.toHaveBeenCalled()
   expect(rpc).toHaveBeenCalledWith(
     'dayflow_register_push',
     expect.objectContaining({ p_endpoint: 'https://fcm.googleapis.com/test' }),
@@ -137,9 +137,51 @@ it('el cambio de cuenta revoca sin activar automáticamente la nueva', async () 
   expect(unsubscribe).toHaveBeenCalledOnce()
 })
 it('un permiso denegado no registra ni confirma avisos', async () => {
-  vi.mocked(Notification.requestPermission).mockResolvedValue('denied')
+  vi.stubGlobal('Notification', {
+    permission: 'denied',
+    requestPermission: vi.fn(),
+  })
   const { enableWebPush } = await import('./web-push')
-  await expect(enableWebPush(userId)).rejects.toThrow('Permiso no concedido')
+  await expect(enableWebPush(userId)).rejects.toThrow(
+    'notificaciones están bloqueadas',
+  )
+  expect(Notification.requestPermission).not.toHaveBeenCalled()
   expect(rpc).not.toHaveBeenCalled()
   expect(owner).toBeNull()
+})
+
+it('solicita un permiso pendiente antes de registrar la suscripción', async () => {
+  vi.stubGlobal('Notification', {
+    permission: 'default',
+    requestPermission: vi.fn(async () => 'granted'),
+  })
+  const { enableWebPush } = await import('./web-push')
+  await enableWebPush(userId)
+  expect(Notification.requestPermission).toHaveBeenCalledOnce()
+  expect(rpc).toHaveBeenCalledOnce()
+  expect(owner).toBe(userId)
+})
+
+it.each(['default', 'denied'])(
+  'no suscribe si la solicitud termina con permiso %s',
+  async (permission) => {
+    vi.stubGlobal('Notification', {
+      permission: 'default',
+      requestPermission: vi.fn(async () => permission),
+    })
+    const { enableWebPush } = await import('./web-push')
+    await expect(enableWebPush(userId)).rejects.toThrow(
+      permission === 'denied' ? 'bloqueadas' : 'No se concedió',
+    )
+    expect(rpc).not.toHaveBeenCalled()
+    expect(sub).toBeNull()
+    expect(owner).toBeNull()
+  },
+)
+
+it('el permiso concedido sin suscripción no equivale a avisos activos', async () => {
+  const { webPushActive, webPushPermission } = await import('./web-push')
+  owner = userId
+  expect(webPushPermission()).toBe('granted')
+  expect(await webPushActive(userId)).toBe(false)
 })

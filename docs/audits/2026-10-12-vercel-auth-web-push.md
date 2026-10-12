@@ -160,3 +160,25 @@ de cierre de la tarea.
 
 Conservar separada la limitación histórica de Chrome detenido en Windows;
 no se extiende este resultado a navegador detenido, suspensión u otras plataformas.
+
+## Comprobación de permisos al activar avisos
+
+Tras la prueba real, el usuario solicita comprobar los permisos de notificaciones
+al activar avisos web. La rama consulta el permiso antes de suscribir:
+
+- Pendiente: solicita permiso desde el clic; cancelación o rechazo impiden el alta.
+- Concedido: registra el navegador sin repetir la solicitud de permiso.
+- Bloqueado: indica cómo permitir notificaciones en los ajustes del sitio y no
+  intenta registrar una suscripción.
+
+Configuración muestra permiso y estado de suscripción por separado, y explica
+que permiso concedido aún requiere activar avisos para la cuenta. Reconsulta al
+volver a la ventana, después de activar/desactivar y cuando el worker queda listo.
+Este último paso corrige un estado de comprobación atascado observado en la
+primera ejecución de la prueba móvil, antes de la preparación del worker.
+
+Validación de la corrección: 10 pruebas del servicio y 4 E2E PWA de Web Push
+(escritorio y vista móvil) superados; TypeScript, lint y documentación correctos.
+Las pruebas PWA usan el worker real con suscripción/HTTP simulados; la recepción
+física ya documentada corresponde al despliegue anterior a esta corrección.
+Los cambios de interfaz y permisos permanecen en la rama, sin publicar.
