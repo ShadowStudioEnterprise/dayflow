@@ -79,7 +79,7 @@ En **Authentication → URL Configuration**, usa inicialmente:
 
 Activa email/contraseña, registro y confirmación por email. Configura una contraseña mínima de 12 caracteres. Cuando publiques la web, cambia Site URL al dominio HTTPS e incorpora sus dos rutas de retorno: `/` y `/auth/update-password`. No uses como Site URL la URL de la API de Supabase.
 
-El envío de correo predeterminado está limitado a direcciones del equipo del proyecto y tiene límites reducidos. Para registro y recuperación de otros usuarios, configura **Custom SMTP**. No desactives la confirmación para ocultar un problema de envío. Los correos del proyecto alojado no aparecen en Mailpit local.
+El envío de correo predeterminado está limitado a direcciones del equipo del proyecto y tiene límites reducidos. Para registro y recuperación de otros usuarios, configura **Custom SMTP** siguiendo la [preparación y prueba de cierre de SMTP](auth-smtp.md). No desactives la confirmación para ocultar un problema de envío. Los correos del proyecto alojado no aparecen en Mailpit local.
 
 ## Conectar la aplicación
 

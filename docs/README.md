@@ -15,6 +15,7 @@ Las guías describen el comportamiento implementado; las auditorías conservan o
 - [dashboard](dashboard.md)
 - [database](database.md)
 - [hosted-backend](hosted-backend.md)
+- [SMTP para ampliar la beta](auth-smtp.md)
 - [implementation-plan](implementation-plan.md)
 - [inbox-search-tags](inbox-search-tags.md)
 - [local-backend](local-backend.md)
