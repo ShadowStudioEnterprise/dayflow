@@ -1,0 +1,9 @@
+{
+  "lock": false,
+  "imports": {
+    "@supabase/supabase-js": "./capacity/fake-db.ts",
+    "web-push": "./capacity/fake-provider.ts",
+    "@js-temporal/polyfill": "npm:@js-temporal/polyfill@0.5.1",
+    "rrule": "./rrule.ts"
+  }
+}
