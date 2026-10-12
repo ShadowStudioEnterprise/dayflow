@@ -204,3 +204,15 @@
     width: 100%;
   }
 }
+.notification-diagnostics dl {
+  display: grid;
+  gap: 0.35rem;
+  margin: 1rem 0;
+}
+.notification-diagnostics dt {
+  font-weight: 600;
+}
+.notification-diagnostics dd {
+  margin: 0 0 0.65rem;
+  overflow-wrap: anywhere;
+}
