@@ -1,5 +1,28 @@
 # Verificación — Fases 1–9, incluida PWA y Capacitor
 
+## Estado vigente de CI y despliegue — 12 de octubre de 2026
+
+Producción y CI corresponden a `main`, SHA
+[`b7b2a69c2cab8c8c630783a0c7b3585f0a9597d6`](https://github.com/ShadowStudioEnterprise/dayflow/commit/b7b2a69c2cab8c8c630783a0c7b3585f0a9597d6).
+[Dayflow CI #17](https://github.com/ShadowStudioEnterprise/dayflow/actions/runs/38194437521)
+terminó `success`: **296 unitarias, 106 E2E y 20 PWA** correctos, junto con
+documentación, portal, TypeScript, lint, formato y build. Ubuntu 24.04.5,
+Node 24.21.0 y npm 11.19.0; inicio 04:05:38 y última actualización 04:14:06
+Europe/Madrid del 12/10/2026.
+
+Vercel identifica el mismo SHA en producción:
+[`dpl_BBsU3TZUtcfzmt7ijJFC1fLreFTA`](https://vercel.com/shadow-studio3/dayflow/dpl_BBsU3TZUtcfzmt7ijJFC1fLreFTA),
+**READY** desde las 04:06:24.015, con 74 entradas de precaché y el alias
+[dayflow-by-shadowstudio.vercel.app](https://dayflow-by-shadowstudio.vercel.app).
+La instalación remota informó 5 vulnerabilidades; READY no acredita ausencia
+de vulnerabilidades. El despliegue precede al fin de CI.
+
+**Actualización documental cerrada**: SHA, fecha, resultados y evidencia
+recogidos en el [informe e instantáneas](audits/2026-10-12-ci-deployment.md).
+Los cambios posteriores de SQL/SMTP en `dev` y las pruebas físicas quedan fuera
+de esta ejecución. No se repitieron Auth ni entrega real de Push sobre este SHA.
+Las entradas siguientes conservan sus resultados y pendientes históricos.
+
 ## Corrección del arranque de Sync — 10 de octubre de 2026
 
 El botón espera el registro del motor de la cuenta y vuelve a deshabilitarse cuando se retira. Las acciones de reenvío observan la misma disponibilidad. El resultado manual `success` produce una confirmación explícita que el helper E2E exige; la prueba de respuesta perdida espera el fallo inyectado antes de comprobar la recuperación.

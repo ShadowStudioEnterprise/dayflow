@@ -45,6 +45,21 @@ Windows cuando todos sus procesos están detenidos.
 
 ## Estado
 
+Estado vigente consultado el **12 de octubre de 2026**: producción **READY**,
+despliegue [`dpl_BBsU3TZUtcfzmt7ijJFC1fLreFTA`](https://vercel.com/shadow-studio3/dayflow/dpl_BBsU3TZUtcfzmt7ijJFC1fLreFTA),
+fuente Git desde `main`, SHA `b7b2a69c2cab8c8c630783a0c7b3585f0a9597d6`.
+Creado a las 04:05:41.188 y listo a las **04:06:24.015 Europe/Madrid** del
+12/10/2026; conserva el alias <https://dayflow-by-shadowstudio.vercel.app>.
+Build TypeScript/Vite superado, **74 entradas de precaché**.
+
+[CI #17 del mismo SHA](https://github.com/ShadowStudioEnterprise/dayflow/actions/runs/38194437521)
+finalizó correctamente a las 04:14:06: 296 unitarias, 106 E2E y 20 PWA.
+La instalación de Vercel informó 5 vulnerabilidades (2 moderadas, 3 altas).
+No se repitieron recorridos Auth ni recepción física de Push sobre este despliegue.
+Consulta [el informe, fechas, jobs y evidencia conservada](audits/2026-10-12-ci-deployment.md).
+
+### Publicación inicial e historial
+
 Publicada el 4 de octubre de 2026:
 
 - URL estable: https://dayflow-by-shadowstudio.vercel.app

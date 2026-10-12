@@ -164,4 +164,9 @@ La [web HTTPS publicada](https://dayflow-productividad.gptgonzaleznavarrete.chat
 
 ## Documentación y CI
 
+El [estado vigente del 12 de octubre de 2026](docs/audits/2026-10-12-ci-deployment.md)
+vincula CI y producción con el SHA `b7b2a69c2cab8c8c630783a0c7b3585f0a9597d6`:
+296 unitarias, 106 E2E y 20 PWA correctos; Vercel READY. Incluye fechas, jobs,
+artefactos y evidencia conservada, sin extender estos resultados a cambios posteriores.
+
 Consulta el [índice documental](docs/README.md), la [auditoría](docs/audits/README.md) y la [política de notificaciones](docs/notifications-policy.md). Ejecuta `npm run docs:check` y `npm run test:docs` antes de enviar cambios. GitHub Actions valida documentación, TypeScript, lint, formato, unitarias, build, E2E y PWA en PR y push a main.
