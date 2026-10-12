@@ -26,6 +26,8 @@ Estos tests no reinician un Android físico ni usan WebView 97. Su acierto no de
 
 ## Siguiente prueba discriminante
 
-Solicitado al usuario: sin red y sin reiniciar todavía, añadir «Control antes de reiniciar» a la nota, pulsar Listo y volver a abrirla. Resultado **pendiente**. Si falta ya al cerrar, investigar captura del contenido y escritura local antes de atribuirlo al reinicio. Si está, comprobar otra vez después del reinicio offline con cierre del editor ya completado. Separar los resultados de ese nuevo ensayo del texto perdido inicialmente.
+Ensayo de control sin reinicio: sin red, añadir «Control antes de reiniciar» a la misma nota, pulsar Listo y volver a abrirla. El usuario confirmó «Sí, aparece después de cerrar y volver a abrir la nota». La escritura y lectura locales de ese texto quedan comprobadas manualmente antes del reinicio. No acredita aún persistencia después de terminar el proceso ni demuestra la causa del fallo original.
+
+Siguiente paso solicitado: cerrar de nuevo con Listo, no editar más, mantener modo avión/Wi-Fi apagado, reiniciar y comprobar ese mismo texto en la misma nota. **Pendiente de respuesta**. Separar este ensayo con editor cerrado del intento inicial y de «Edición guardada sin red», que no se recuperó.
 
 Mantener este caso abierto hasta reproducir/localizar la causa, corregir si procede y repetir físicamente. No marcar recuperación de notas como superada sólo porque las suites de Chromium pasen. Registro principal: [Redmi 9A](2026-10-12-redmi-9a.md).
