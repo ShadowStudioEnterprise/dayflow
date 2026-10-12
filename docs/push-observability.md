@@ -1,9 +1,9 @@
 # Métricas y alertas de Web Push y Cron
 
 Implementación en la rama `feat/web-push-observability`, creada desde `dev` el
-12 de octubre de 2026. Requiere desplegar la nueva migración y el emisor;
-todavía no se ha aplicado al proyecto alojado. No modifica las suscripciones
-existentes ni rota claves VAPID.
+12 de octubre de 2026. La migración, el emisor y el monitor se desplegaron ese
+mismo día en el proyecto alojado; consulta la [verificación real](audits/2026-10-12-push-observability-live.md).
+No modifica las suscripciones existentes ni rota claves VAPID.
 
 ## Consultar
 
@@ -123,7 +123,8 @@ se reconstruye como si estas métricas ya existieran.
 Validación local: SQL real en PGlite con roles y respuestas HTTP de prueba;
 emisor Deno con transporte/backend simulados para 201, 429, 410, errores de
 transporte/generación y errores de persistencia. No se enviaron avisos reales
-ni se modificó el proyecto alojado durante esta implementación.
+ni se modificó el proyecto alojado durante esas pruebas locales. El despliegue
+y la consulta posteriores están documentados por separado en la verificación real.
 
 ## Referencias
 

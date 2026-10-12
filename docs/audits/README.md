@@ -1,5 +1,6 @@
 # Auditorías
 
+- [Web Push y Cron: instrumentación real](2026-10-12-push-observability-live.md): migración y emisor desplegados, monitor activo, respuesta HTTP observada y métricas administrativas consultables con visualización `null`.
 - [Autenticación y Web Push en Vercel](2026-10-12-vercel-auth-web-push.md): cuatro criterios de cierre superados. Auth comprobado por el usuario; aviso de las 02:16 recibido y abierto en Vercel, con aceptación del proveedor registrada en un intento. Conserva el intento fallido previo sin suscripción y la corrección del cierre prematuro.
 - [Corrección del arranque de Sync](2026-10-10-e2e-sync-fix.md): disponibilidad del motor observada por la interfaz; 60 E2E funcionales y 10 ensayos de carga retenida correctos sin reintentos.
 - [Intermitencia E2E de Sync y calendario móvil](2026-10-10-e2e-intermittency.md): causa de arranque de Sync reproducida 10/10 veces; calendario móvil 130/130 correcto sin reintentos. Diagnóstico previo a la corrección.

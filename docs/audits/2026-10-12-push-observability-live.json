@@ -1,0 +1,67 @@
+{
+  "alerts": [],
+  "coverage_started_at": "2026-10-12T01:06:13.666415+00:00",
+  "cron": [
+    {
+      "http_status": null,
+      "observed_at": null,
+      "state": "queued",
+      "tick_at": "2026-10-12T01:09:00.02682+00:00"
+    },
+    {
+      "http_status": 200,
+      "observed_at": "2026-10-12T01:09:00.029897+00:00",
+      "state": "succeeded",
+      "tick_at": "2026-10-12T01:08:00.043263+00:00"
+    },
+    {
+      "http_status": 200,
+      "observed_at": "2026-10-12T01:08:00.04135+00:00",
+      "state": "succeeded",
+      "tick_at": "2026-10-12T01:07:00.042705+00:00"
+    }
+  ],
+  "hourly": [
+    {
+      "attempts": 0,
+      "avg_dispatch_delay_ms": null,
+      "avg_provider_duration_ms": null,
+      "dispatch_window_expired": 0,
+      "expired_endpoints": 0,
+      "failed_runs": 0,
+      "hour": "2026-10-12T01:00:00+00:00",
+      "max_dispatch_delay_ms": null,
+      "metrics_error_runs": 0,
+      "provider_accepted": 0,
+      "provider_message_ttl_expired": null,
+      "recurrence_failures": 0,
+      "runs": 4,
+      "scanned": 0,
+      "send_failures": 0,
+      "sends": 0,
+      "unfinished_runs": 0,
+      "visualized": null
+    }
+  ],
+  "monitor_cron": {
+    "active": true,
+    "schedule": "* * * * *"
+  },
+  "project_ref": "spfrfvpexfnnhwpfinrq",
+  "queried_at": "2026-10-12T01:09:15.273028+00:00",
+  "semantics": {
+    "dispatch_window_expired": "Eligible occurrences observed too late during dispatch; not all missed occurrences",
+    "expired_endpoints": "Provider HTTP 404/410, not message TTL expiry",
+    "provider_accepted": "Provider HTTP 2xx; not screen display",
+    "provider_message_ttl_expired": "Not observable from provider response; null",
+    "sends": "HTTP requests initiated; no guarantee provider received a timed-out request",
+    "visualized": "Not instrumented; null, never zero"
+  },
+  "thresholds": {
+    "delay_ms": 90000,
+    "expiration_count": 3,
+    "failure_count": 3,
+    "stale_seconds": 180
+  },
+  "window_hours": 1
+}

@@ -39,7 +39,7 @@ En el equipo Windows probado, Chrome 154 termina todos sus procesos al cerrar la
 - Cada cuenta puede registrar hasta diez navegadores. Hay reservas exclusivas por suscripción, recordatorio e instante, con hasta tres intentos separados por al menos 90 segundos. Los registros de envío se conservan 14 días.
 - Un proveedor que responde 404/410 provoca la retirada de la suscripción. La aceptación del proveedor no demuestra que el dispositivo mostrara el aviso. Una caída después del envío y antes de guardar la aceptación puede causar un reintento; el tag del aviso reduce duplicados visibles, sin prometer entrega exactamente una vez.
 - Los mensajes tienen TTL de cinco minutos; el worker rechaza cargas con más de diez minutos. No se acumula un histórico de alarmas para entregar días después.
-- El trabajo se pagina por 100 recordatorios y tiene un presupuesto de 45 segundos, además del tiempo de la operación en curso. No se ha probado carga masiva. Las [métricas y alertas administrativas](push-observability.md) requieren desplegar la instrumentación nueva; no hay un panel de métricas en la aplicación. Un retraso prolongado del servidor puede perder avisos fuera de la ventana de recuperación.
+- El trabajo se pagina por 100 recordatorios y tiene un presupuesto de 45 segundos, además del tiempo de la operación en curso. No se ha probado carga masiva. Las [métricas y alertas administrativas](push-observability.md) están operativas en Supabase desde el 12 de octubre; no hay un panel de métricas en la aplicación. Un retraso prolongado del servidor puede perder avisos fuera de la ventana de recuperación.
 - Desactivar o borrar mientras no hay conexión no cambia inmediatamente el recordatorio del servidor. Un mensaje ya enviado tampoco puede retirarse de todos los proveedores. La baja local de la suscripción protege este navegador incluso si no puede borrarse su fila remota en ese momento.
 
 ## Despliegue y secretos
@@ -74,9 +74,10 @@ Los cambios del motor de recurrencias requieren volver a desplegar `push-dispatc
 ## Verificación
 
 La instrumentación de ejecuciones, intentos, Cron y alertas administrativas está
-documentada en [métricas y alertas](push-observability.md). Requiere desplegar la
-migración y el emisor nuevos; aceptación del proveedor y visualización permanecen
-separadas, y los estados no observables se consultan como `null`.
+documentada en [métricas y alertas](push-observability.md). Migración, emisor y
+monitor están desplegados desde el 12 de octubre; aceptación del proveedor y
+visualización permanecen separadas, y los estados no observables se consultan
+como `null`.
 
 En el dominio final de Vercel, el worker publicado y la comprobación de
 actualizaciones se verificaron de nuevo el 12 de octubre de 2026 con
