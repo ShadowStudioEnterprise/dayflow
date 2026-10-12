@@ -1,5 +1,7 @@
 # Auditorías
 
+- [PWA móvil del 12 de octubre de 2026](2026-10-12-pwa-mobile.md): ejecución automatizada, cambio de cuenta y protocolo de instalación/offline/persistencia/actualización para Android y Safari/iOS. App nativa iOS descartada por decisión del usuario.
+
 - [Protocolo de alarmas Android del 12 de octubre de 2026](2026-10-12-android-alarms.md): matriz de permisos, bloqueo, Doze, batería y reinicio; medición de recepción y retrasos. Ejecución física pendiente por falta de teléfono.
 
 - [Protocolo de Android físico del 12 de octubre de 2026](2026-10-12-android-physical.md): APK y SHA identificados; matriz de instalación, Auth/PKCE, offline, sincronización y recuperación de sesión. Ejecución física pendiente por falta de teléfono.

@@ -1,5 +1,7 @@
 # PWA y Capacitor — Fase 9
 
+Alcance del 12 de octubre de 2026: la app nativa iOS se descarta por decisión del usuario, incluidas firma, pruebas físicas y notificaciones locales iOS. Las instrucciones y recursos iOS siguientes conservan el contexto histórico, no son trabajo pendiente del plan vigente. La PWA en Safari/iOS continúa en el [protocolo de PWA móvil](audits/2026-10-12-pwa-mobile.md).
+
 ## Instalación web
 
 `npm run build` genera `dist/` con manifest, iconos y service worker de Workbox mediante `vite-plugin-pwa`. `npm run preview` permite comprobarlo en localhost. En un servidor público se necesita HTTPS y fallback de las rutas SPA a `index.html`.
