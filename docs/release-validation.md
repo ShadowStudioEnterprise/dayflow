@@ -15,8 +15,9 @@ Las comprobaciones públicas se repiten con `npm run test:vercel` y están super
 La confirmación nueva está superada en Vercel: correo recibido y regreso con
 acceso confirmados por el usuario, junto con una cuenta nueva confirmada en
 Supabase. El usuario confirmó también recuperación, rechazo de contraseña
-anterior y recepción/apertura del aviso real: los cuatro criterios de esta
-repetición quedan superados. El registro detalla el alcance de la evidencia
+anterior. Web Push sigue pendiente de recepción/apertura real: la respuesta
+«Comprobados» se había interpretado como cierre del aviso y se corrigió tras
+la aclaración del usuario. El registro detalla el alcance de la evidencia
 manual. La tabla siguiente conserva únicamente la
 evidencia histórica del alojamiento anterior.
 

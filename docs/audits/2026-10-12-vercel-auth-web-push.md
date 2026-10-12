@@ -1,9 +1,8 @@
 # Autenticación y Web Push en el dominio final de Vercel
 
-Estado: **superado; cuatro criterios de cierre comprobados en Vercel**.
-El cierre utiliza los resultados manuales comunicados el 12 de octubre,
-además de las comprobaciones públicas; la evidencia de Sites se conserva como
-histórico separado.
+Estado: **Auth superado; Web Push pendiente de prueba real en Vercel**.
+Los resultados manuales de Auth se comunicaron el 12 de octubre; la evidencia
+de Sites se conserva como histórico separado.
 
 - Fecha: 12 de octubre de 2026, Europe/Madrid.
 - Origen probado: <https://dayflow-by-shadowstudio.vercel.app>.
@@ -81,7 +80,7 @@ durante esta revisión.
 | Confirmación        | Superado         | Usuario confirma recepción del correo, apertura del enlace y regreso a Vercel con acceso; nueva cuenta confirmada en Supabase, sin confirmación administrativa |
 | Recuperación        | Superado         | Resultado manual confirmado por el usuario tras solicitar cambio de contraseña e inicio de sesión con la nueva en Vercel                                       |
 | Contraseña anterior | Superado         | Usuario confirma la comprobación solicitada de rechazo de la contraseña anterior después del cambio                                                            |
-| Web Push            | Superado         | Usuario confirma la comprobación solicitada de recepción y apertura de un aviso real desde Vercel                                                              |
+| Web Push            | Pendiente        | Prueba real solicitada: recordatorio sincronizado, recepción con Dayflow cerrado y Chrome ejecutándose, y clic que abre el recordatorio en Vercel              |
 
 Para cada correo registrar solicitud/recepción, carpeta y resultado sin guardar
 el contenido del enlace. Una cuenta que ya existía o una pantalla de correo
@@ -90,11 +89,22 @@ permiso, hora prevista/recibida y estado del navegador. La aceptación del
 proveedor no sustituye recepción física.
 
 Usar el procedimiento de [validación de publicación](../release-validation.md).
-El usuario respondió «Comprobados» después de solicitar las tres verificaciones
-pendientes: recuperación con contraseña nueva, rechazo de la anterior y
-recepción/apertura del aviso. Esta confirmación cierra los cuatro criterios en
-el dominio final. No se comunicaron por separado cuenta usada en estos tres
-casos, horas, carpeta de correo, navegador/SO ni estado de ventanas/procesos.
-Es evidencia manual comunicada, no observación automatizada de esos recorridos.
+La respuesta «Comprobados» se interpretó inicialmente como cierre también de
+Web Push. Tras la aclaración del usuario («Quedaba el web push?» y «probemos el
+aviso»), se corrige esa interpretación: solo acredita las comprobaciones de
+Auth. No hay todavía confirmación de recepción/apertura de un aviso en Vercel.
+La tarea sigue abierta por Web Push. No se comunicaron por separado cuenta
+usada en recuperación, horas ni carpeta de correo. Es evidencia manual
+comunicada, no observación automatizada de esos recorridos.
+
+## Prueba de aviso en curso
+
+Se indicó activar avisos web en el navegador habitual del dominio final, crear
+«Prueba Push Vercel» sin repetición para tres minutos después, esperar a cero
+operaciones pendientes y cerrar las pestañas de Dayflow dejando Chrome abierto
+y el equipo despierto. Registrar cuenta, hora programada/recibida y resultado
+del clic. No hay navegador conectado a las herramientas de control en esta
+sesión; preparación y recepción requieren la comprobación manual del usuario.
+
 Conservar separada la limitación histórica de Chrome detenido en Windows;
 no se extiende este resultado a navegador detenido, suspensión u otras plataformas.
