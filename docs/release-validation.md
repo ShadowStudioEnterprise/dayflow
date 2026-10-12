@@ -1,5 +1,7 @@
 # Validación de publicación y dispositivos
 
+Preparación del 12 de octubre de 2026: [protocolo y matriz de Android físico](audits/2026-10-12-android-physical.md), con SHA del código y huella del APK actual. El usuario no dispone ahora de un teléfono; la ejecución física permanece pendiente.
+
 Estado del 4 de octubre de 2026. Una compilación, una respuesta HTTP o un emulador no acreditan recepción de correo, entrega física de notificaciones ni consumo de batería.
 
 Ampliación de beta — 12 de octubre de 2026: [SMTP propio preparado](auth-smtp.md), con activación pendiente de proveedor, dominio y credenciales. La confirmación y recuperación de las pruebas previas no certifican destinatarios ajenos al equipo de Supabase. Este criterio adicional sigue pendiente hasta completar ambos flujos con una cuenta externa.
