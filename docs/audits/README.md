@@ -1,6 +1,6 @@
 # Auditorías
 
-- [Compatibilidad WebView 97](2026-10-12-webview97-compat.md): corrección de zonas horarias y cancelación/timeout de Sync tras el error en Redmi 9A. Pruebas automatizadas correctas; actualización y repetición física pendientes.
+- [Compatibilidad WebView 97](2026-10-12-webview97-compat.md): corrección de zonas horarias y cancelación/timeout de Sync tras el error en Redmi 9A. Pruebas automatizadas correctas; creación y sincronización bidireccional confirmadas manualmente tras actualizar.
 
 - [Validación física del Redmi 9A](2026-10-12-redmi-9a.md): Android 11/API 30 y WebView identificados; instalación y apertura superadas por comprobación manual del usuario después de rechazos ADB. Autenticación, demás casos funcionales y alarmas pendientes; última consulta ADB offline.
 
