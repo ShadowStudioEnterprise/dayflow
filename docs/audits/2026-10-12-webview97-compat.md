@@ -26,6 +26,8 @@ La emulación de APIs ausentes en Chromium moderno no sustituye WebView 97 real.
 
 ## Repetición física
 
+APK nuevo compilado correctamente con `npm run build`, `npx cap sync android` y `assembleDebug --no-daemon` (Gradle: 52 s). Código compilado: `beeca6a54ccdda0048c84498713b2aafbfe57f30`. APK: 5.100.912 bytes, SHA-256 `0FF52D83F174B4163E9C26D7513AF2DA07C250AF76019918490239A1D7E4181B`. Copia local identificable: `.toolchains/redmi-9a/Dayflow-0.9.0-WebView97.apk`. ADB sigue offline: no se ha copiado ni instalado este APK corregido en el Redmi.
+
 Compilar desde esta rama, registrar el SHA del código y SHA-256 del APK nuevo, actualizar Dayflow conservando datos y repetir creación de la tarea y sincronización bidireccional. La instalación del APK anterior no valida esta corrección. Consultar el [registro Redmi](2026-10-12-redmi-9a.md).
 
 Referencia de compatibilidad: [Intl.supportedValuesOf](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/supportedValuesOf), [AbortSignal.throwIfAborted](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/throwIfAborted) y [AbortSignal.any](https://developer.mozilla.org/en-US/docs/Web/API/AbortSignal/any_static).
