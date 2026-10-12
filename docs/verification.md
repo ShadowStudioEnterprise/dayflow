@@ -1,5 +1,13 @@
 # Verificación — Fases 1–9, incluida PWA y Capacitor
 
+## Preparación de SMTP para beta externa — 12 de octubre de 2026
+
+Rama `feat/beta-custom-smtp`, creada desde `dev` en `83af7b6b266624236d5abd265da32f91f8ecf17a`, con cambios de preparación sobre esa base. Windows/PowerShell, sin proveedor ni credenciales SMTP disponibles según el propietario. Se añadió un configurador de Management API, plantilla privada y [guía de activación y cierre](auth-smtp.md).
+
+`npm run test:smtp`: **5/5 pruebas correctas**, salida **0**, con HTTP simulado. Verifican rechazo de proyecto distinto/datos de ejemplo antes de contactar la API, PATCH limitado a correo, lectura posterior, `check` sin escrituras, bloqueo ante Send Email Hook y errores sin secretos. `npm run docs:check`, `npm run test:docs` (**3/3**), `npm run lint` y `git diff --check`: salida **0**. `git check-ignore .env.smtp.local` confirmó que el archivo privado está excluido.
+
+No se aplicó configuración remota ni se enviaron mensajes. **La tarea permanece pendiente de activación SMTP y confirmación/recuperación completadas con destinatarios ajenos al equipo**. Las pruebas del configurador y Mailpit no prueban entrega externa.
+
 ## Corrección del arranque de Sync — 10 de octubre de 2026
 
 El botón espera el registro del motor de la cuenta y vuelve a deshabilitarse cuando se retira. Las acciones de reenvío observan la misma disponibilidad. El resultado manual `success` produce una confirmación explícita que el helper E2E exige; la prueba de respuesta perdida espera el fallo inyectado antes de comprobar la recuperación.

@@ -56,6 +56,7 @@ export default defineConfig({
         ['Android local', 'android-local'],
         ['Backend local', 'local-backend'],
         ['Backend alojado', 'hosted-backend'],
+        ['SMTP para la beta', 'auth-smtp'],
         ['Web Push', 'web-push'],
         ['Política de notificaciones', 'notifications-policy'],
       ]),
