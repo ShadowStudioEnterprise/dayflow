@@ -41,6 +41,15 @@ test('Web Push registra por consentimiento, recibe en el worker real y se revoca
   })
   await login(page)
   await ready(page)
+  await expect(
+    page.getByText('Permiso de notificaciones: permitido.', { exact: false }),
+  ).toBeVisible()
+  await expect(
+    page.getByText(
+      'Permiso de notificaciones: permitido. Pulsa Activar avisos web para registrar este navegador y recibir avisos con esta cuenta.',
+      { exact: true },
+    ),
+  ).toBeVisible()
   let registered = false
   let revoked = false
   await page.route(
@@ -134,8 +143,8 @@ test('Web Push muestra el permiso denegado sin afirmar que está activado', asyn
   page,
 }) => {
   await page.addInitScript(() => {
-    Object.defineProperty(Notification, 'requestPermission', {
-      value: async () => 'denied',
+    Object.defineProperty(Notification, 'permission', {
+      get: () => 'denied',
     })
   })
   await login(page)
@@ -145,7 +154,7 @@ test('Web Push muestra el permiso denegado sin afirmar que está activado', asyn
     .click()
   await expect(
     page.getByText(
-      'Permiso no concedido. Revisa los permisos de este sitio en tu navegador.',
+      'Las notificaciones están bloqueadas. Permítelas en los ajustes de este sitio del navegador y vuelve a activar los avisos web.',
     ),
   ).toBeVisible()
   await expect(
@@ -154,6 +163,94 @@ test('Web Push muestra el permiso denegado sin afirmar que está activado', asyn
 })
 test.beforeEach(async ({ request }) => {
   await request.post('/__test/reset')
+})
+
+async function savePushReminder(page: Page, title: string) {
+  await page.getByLabel('Título', { exact: true }).fill(title)
+  await page.getByLabel('Fecha', { exact: true }).fill('2030-01-01')
+  await page.getByLabel('Hora', { exact: true }).fill('12:00')
+  await page
+    .getByRole('button', { name: 'Guardar recordatorio', exact: true })
+    .click()
+  await expect(page.getByRole('dialog')).toHaveCount(0)
+  await expect(
+    page.getByRole('button', { name: new RegExp(title) }),
+  ).toBeVisible()
+}
+
+test('crear un recordatorio solicita permiso pendiente y activa la suscripción web', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    let permission = 'default'
+    let sub: object | null = null
+    Object.defineProperty(Notification, 'permission', { get: () => permission })
+    Object.defineProperty(Notification, 'requestPermission', {
+      value: async () => {
+        permission = 'granted'
+        return permission
+      },
+    })
+    Object.defineProperty(PushManager.prototype, 'getSubscription', {
+      value: async () => sub,
+    })
+    Object.defineProperty(PushManager.prototype, 'subscribe', {
+      value: async () => {
+        sub = {
+          endpoint: 'https://fcm.googleapis.com/fcm/send/reminder-test',
+          toJSON: () => ({ keys: { p256dh: 'test-key', auth: 'test-auth' } }),
+          unsubscribe: async () => {
+            sub = null
+            return true
+          },
+        }
+        return sub
+      },
+    })
+  })
+  let registered = false
+  await page.route(
+    'https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_register_push',
+    (route) => {
+      registered = true
+      return route.fulfill({ json: '00000000-0000-4000-8000-000000000003' })
+    },
+  )
+  await login(page)
+  await ready(page)
+  await page.goto('/reminders?create=1')
+  await expect(
+    page.getByText('Permiso de notificaciones pendiente.', { exact: false }),
+  ).toBeVisible()
+  await savePushReminder(page, 'Aviso con permiso pendiente')
+  expect(registered).toBe(true)
+})
+
+test('crear un recordatorio con notificaciones bloqueadas lo guarda y explica cómo habilitarlas', async ({
+  page,
+}) => {
+  await page.addInitScript(() => {
+    Object.defineProperty(Notification, 'permission', { get: () => 'denied' })
+  })
+  let registered = false
+  await page.route(
+    'https://dayflow-e2e.supabase.co/rest/v1/rpc/dayflow_register_push',
+    (route) => {
+      registered = true
+      return route.fulfill({ json: null })
+    },
+  )
+  await login(page)
+  await ready(page)
+  await page.goto('/reminders?create=1')
+  await expect(
+    page.getByText('Notificaciones bloqueadas.', { exact: false }),
+  ).toBeVisible()
+  await savePushReminder(page, 'Aviso con permiso bloqueado')
+  expect(registered).toBe(false)
+  await expect(
+    page.getByRole('status').filter({ hasText: 'Recordatorio guardado' }),
+  ).toContainText('ajustes de este sitio')
 })
 
 test('diagnóstico distingue permiso de Web Push activo y explica pendientes y renovación', async ({

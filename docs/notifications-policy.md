@@ -40,6 +40,11 @@ fallidas se muestran como estado desconocido, sin afirmar que hay cero pendiente
 
 ## Evidencia y evolución
 
+El [ensayo de capacidad y recuperación](notification-capacity.md) mide cupo,
+recuperación, cambios horarios y fallos parciales con límites de alcance
+explícitos. El presupuesto de 45 s se revisa entre operaciones y no limita una
+RPC ya iniciada; no es un máximo absoluto ni justifica un SLA de volumen.
+
 - Guardado local: almacenamiento confirmado en el dispositivo.
 - Sincronización remota: confirmación de datos en backend.
 - Programación nativa: aviso reconocido como pendiente por el sistema.

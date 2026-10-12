@@ -24,6 +24,7 @@
     "vite.config.ts",
     "capacitor.config.ts",
     "playwright.pwa.config.ts",
+    "playwright.vercel.config.ts",
     "playwright.local.config.ts",
     "playwright.investigation.config.ts",
     "vitest.config.ts",

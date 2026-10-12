@@ -3,6 +3,9 @@ import { requireSupabase } from '../supabase/client'
 export const webPushConfigured = Boolean(
   import.meta.env.VITE_WEB_PUSH_PUBLIC_KEY,
 )
+export function webPushPermission(): NotificationPermission | null {
+  return typeof Notification === 'undefined' ? null : Notification.permission
+}
 export function webPushUnavailable() {
   if (!webPushConfigured) return 'Web Push todavía no está configurado.'
   if (!import.meta.env.PROD)
@@ -123,10 +126,21 @@ export async function webPushActive(userId: string) {
 export async function enableWebPush(userId: string) {
   const unavailable = webPushUnavailable()
   if (unavailable) throw new Error(unavailable)
-  // Ask directly from the user gesture, before any unrelated asynchronous work.
-  if ((await Notification.requestPermission()) !== 'granted')
+  const currentPermission = Notification.permission
+  if (currentPermission === 'denied')
     throw new Error(
-      'Permiso no concedido. Revisa los permisos de este sitio en tu navegador.',
+      'Las notificaciones están bloqueadas. Permítelas en los ajustes de este sitio del navegador y vuelve a activar los avisos web.',
+    )
+  // Ask only when undecided, directly from the user gesture before other async work.
+  const permission =
+    currentPermission === 'granted'
+      ? currentPermission
+      : await Notification.requestPermission()
+  if (permission !== 'granted')
+    throw new Error(
+      permission === 'denied'
+        ? 'Las notificaciones están bloqueadas. Permítelas en los ajustes de este sitio del navegador y vuelve a activar los avisos web.'
+        : 'No se concedió el permiso de notificaciones. Pulsa Activar avisos web y acepta el permiso para recibir avisos.',
     )
   return locked(async () => {
     const worker = await registration()
@@ -172,6 +186,24 @@ export async function enableWebPush(userId: string) {
       throw error
     }
   })
+}
+// Call from the save gesture, before awaiting storage or network work.
+// Notification failures must not prevent saving the reminder itself.
+export async function prepareReminderWebPush(
+  userId: string,
+): Promise<string | undefined> {
+  try {
+    const unavailable = webPushUnavailable()
+    if (unavailable) return unavailable
+    if (Notification.permission === 'granted' && (await webPushActive(userId)))
+      return undefined
+    await enableWebPush(userId)
+    return undefined
+  } catch (error) {
+    return error instanceof Error
+      ? error.message
+      : 'No se pudieron activar los avisos web para este navegador.'
+  }
 }
 export async function disableWebPush() {
   if (!('serviceWorker' in navigator) || !('PushManager' in window)) return

@@ -1,5 +1,7 @@
 # Auditorías
 
+- [Capacidad y recuperación de notificaciones](../notification-capacity.md): 26 pruebas, 78 perfiles de emisor y recuperación medida en dos versiones. Cupo de 60, fronteras de cinco minutos, DST, fallos parciales y límite blando de 45 segundos documentados con datos.
+- [Autenticación y Web Push en Vercel](2026-10-12-vercel-auth-web-push.md): cuatro criterios de cierre superados. Auth comprobado por el usuario; aviso de las 02:16 recibido y abierto en Vercel, con aceptación del proveedor registrada en un intento. Conserva el intento fallido previo sin suscripción y la corrección del cierre prematuro.
 - [Corrección del arranque de Sync](2026-10-10-e2e-sync-fix.md): disponibilidad del motor observada por la interfaz; 60 E2E funcionales y 10 ensayos de carga retenida correctos sin reintentos.
 - [Intermitencia E2E de Sync y calendario móvil](2026-10-10-e2e-intermittency.md): causa de arranque de Sync reproducida 10/10 veces; calendario móvil 130/130 correcto sin reintentos. Diagnóstico previo a la corrección.
 - [Pruebas adversariales del 10 de octubre de 2026](2026-10-10-supabase-adversarial.md): nueva ejecución con dos cuentas, 460 comprobaciones correctas y 40 verificaciones de limpieza.

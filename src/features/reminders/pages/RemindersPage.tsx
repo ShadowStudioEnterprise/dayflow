@@ -271,6 +271,7 @@ function ReminderWorkspace({ userId }: { userId: string }) {
       {state?.data && (params.get('create') === '1' || editing) && (
         <ReminderEditor
           key={editing?.id ?? 'new'}
+          userId={userId}
           reminder={editing}
           timezone={timezone}
           service={service}

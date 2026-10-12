@@ -1,0 +1,4129 @@
+{
+  "generated_at": "2026-10-12T01:41:34.693Z",
+  "node": "v24.18.0",
+  "platform": "win32",
+  "arch": "x64",
+  "validation": {
+    "native_tests": 16,
+    "sql_tests": 10
+  },
+  "emitter": {
+    "generated_at": "2026-10-12T01:36:48.122Z",
+    "scope": "Local Deno CPU; synthetic RPC, signing and transport; no real sends or production capacity claim.",
+    "baseline": "9172b5dfddb7892b52713ee20964720e447f4044",
+    "instrumented_source": "b4ff64e99846c60028171cdc38cd45155e1fd1fd",
+    "samples": [
+      {
+        "version": "dev",
+        "sample": 1,
+        "scope": "Synthetic latency/RPC/provider; actual Deno dispatch and recurrence CPU. Not production throughput.",
+        "runtime": {
+          "deno": "2.9.6",
+          "v8": "15.0.245.2-rusty",
+          "typescript": "6.0.3"
+        },
+        "results": [
+          {
+            "name": "page-99",
+            "reminders": 99,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 99,
+              "accepted": 99,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 99,
+            "rpcClaims": 99,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 16.54
+          },
+          {
+            "name": "page-100",
+            "reminders": 100,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 100,
+              "accepted": 100,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 100,
+            "rpcClaims": 100,
+            "candidatePages": 2,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 7.238
+          },
+          {
+            "name": "page-101",
+            "reminders": 101,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 101,
+              "accepted": 101,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 101,
+            "rpcClaims": 101,
+            "candidatePages": 2,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 6.186
+          },
+          {
+            "name": "cpu-1000",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 1000,
+              "accepted": 1000,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 1000,
+            "rpcClaims": 1000,
+            "candidatePages": 11,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 41.348
+          },
+          {
+            "name": "cpu-10000",
+            "reminders": 10000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 10000,
+              "accepted": 10000,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 10000,
+            "rpcClaims": 10000,
+            "candidatePages": 101,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 443.163
+          },
+          {
+            "name": "fanout-100x10",
+            "reminders": 100,
+            "subscriptions": 10,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 44,
+              "accepted": 433,
+              "expired": 0,
+              "failed": 0,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 433,
+            "rpcClaims": 433,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 45034,
+            "wallMs": 5.067
+          },
+          {
+            "name": "serial-1000-100ms",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 434,
+              "accepted": 433,
+              "expired": 0,
+              "failed": 0,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 433,
+            "rpcClaims": 433,
+            "candidatePages": 5,
+            "metricWrites": 0,
+            "modeledElapsedMs": 45042,
+            "wallMs": 13.547
+          },
+          {
+            "name": "serial-1000-1000ms",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 1000,
+            "status": 500,
+            "counts": {
+              "scanned": 46,
+              "accepted": 45,
+              "expired": 0,
+              "failed": 0,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 45,
+            "rpcClaims": 45,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 45182,
+            "wallMs": 1.737
+          },
+          {
+            "name": "timeouts-8s",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 8000,
+            "status": 500,
+            "counts": {
+              "scanned": 7,
+              "accepted": 0,
+              "expired": 0,
+              "failed": 6,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 6,
+            "rpcClaims": 6,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 48014,
+            "wallMs": 0.438
+          },
+          {
+            "name": "mixed-failures",
+            "reminders": 100,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 207,
+            "counts": {
+              "scanned": 100,
+              "accepted": 25,
+              "expired": 25,
+              "failed": 50
+            },
+            "providerCalls": 100,
+            "rpcClaims": 100,
+            "candidatePages": 2,
+            "metricWrites": 0,
+            "modeledElapsedMs": 10306,
+            "wallMs": 3.348
+          },
+          {
+            "name": "recurring-1000",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 1000,
+              "accepted": 1000,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 1000,
+            "rpcClaims": 1000,
+            "candidatePages": 11,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 357.397
+          },
+          {
+            "name": "slow-rpc-20s",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 20000,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 2,
+              "accepted": 1,
+              "expired": 0,
+              "failed": 0,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 1,
+            "rpcClaims": 1,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 60100,
+            "wallMs": 0.167
+          },
+          {
+            "name": "marker-failure",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 207,
+            "counts": {
+              "scanned": 20,
+              "accepted": 0,
+              "expired": 0,
+              "failed": 20
+            },
+            "providerCalls": 20,
+            "rpcClaims": 20,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 2084,
+            "wallMs": 0.617
+          }
+        ],
+        "recoveries": [
+          {
+            "reminders": 1000,
+            "transportMs": 100,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 434,
+                  "accepted": 433,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 433,
+                "modeledEndMs": 45042,
+                "wallMs": 11.897
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 859,
+                  "accepted": 425,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 858,
+                "modeledEndMs": 105084,
+                "wallMs": 22.817
+              },
+              {
+                "minute": 2,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 142,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 136508,
+                "wallMs": 16.536
+              },
+              {
+                "minute": 3,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 182024,
+                "wallMs": 14.403
+              },
+              {
+                "minute": 4,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 242024,
+                "wallMs": 20.129
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 300004,
+                "wallMs": 0.312
+              }
+            ],
+            "acceptedUnique": 1000,
+            "unaccepted": 0
+          },
+          {
+            "reminders": 1000,
+            "transportMs": 1000,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 46,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 45,
+                "modeledEndMs": 45182,
+                "wallMs": 1.505
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 91,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 90,
+                "modeledEndMs": 105272,
+                "wallMs": 2.122
+              },
+              {
+                "minute": 2,
+                "status": 500,
+                "counts": {
+                  "scanned": 136,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 135,
+                "modeledEndMs": 165364,
+                "wallMs": 3.053
+              },
+              {
+                "minute": 3,
+                "status": 500,
+                "counts": {
+                  "scanned": 181,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 180,
+                "modeledEndMs": 225454,
+                "wallMs": 4.168
+              },
+              {
+                "minute": 4,
+                "status": 500,
+                "counts": {
+                  "scanned": 226,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 225,
+                "modeledEndMs": 285546,
+                "wallMs": 4.246
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 225,
+                "modeledEndMs": 300004,
+                "wallMs": 0.255
+              }
+            ],
+            "acceptedUnique": 225,
+            "unaccepted": 775
+          },
+          {
+            "reminders": 1000,
+            "transportMs": 7999,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 7,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 6,
+                "modeledEndMs": 48020,
+                "wallMs": 0.488
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 13,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 12,
+                "modeledEndMs": 108032,
+                "wallMs": 0.505
+              },
+              {
+                "minute": 2,
+                "status": 500,
+                "counts": {
+                  "scanned": 19,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 18,
+                "modeledEndMs": 168044,
+                "wallMs": 0.74
+              },
+              {
+                "minute": 3,
+                "status": 500,
+                "counts": {
+                  "scanned": 25,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 24,
+                "modeledEndMs": 228056,
+                "wallMs": 0.661
+              },
+              {
+                "minute": 4,
+                "status": 500,
+                "counts": {
+                  "scanned": 31,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 30,
+                "modeledEndMs": 288068,
+                "wallMs": 0.784
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 30,
+                "modeledEndMs": 300004,
+                "wallMs": 0.255
+              }
+            ],
+            "acceptedUnique": 30,
+            "unaccepted": 970
+          }
+        ]
+      },
+      {
+        "version": "dev",
+        "sample": 2,
+        "scope": "Synthetic latency/RPC/provider; actual Deno dispatch and recurrence CPU. Not production throughput.",
+        "runtime": {
+          "deno": "2.9.6",
+          "v8": "15.0.245.2-rusty",
+          "typescript": "6.0.3"
+        },
+        "results": [
+          {
+            "name": "page-99",
+            "reminders": 99,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 99,
+              "accepted": 99,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 99,
+            "rpcClaims": 99,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 15.821
+          },
+          {
+            "name": "page-100",
+            "reminders": 100,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 100,
+              "accepted": 100,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 100,
+            "rpcClaims": 100,
+            "candidatePages": 2,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 6.884
+          },
+          {
+            "name": "page-101",
+            "reminders": 101,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 101,
+              "accepted": 101,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 101,
+            "rpcClaims": 101,
+            "candidatePages": 2,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 6.112
+          },
+          {
+            "name": "cpu-1000",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 1000,
+              "accepted": 1000,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 1000,
+            "rpcClaims": 1000,
+            "candidatePages": 11,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 42.046
+          },
+          {
+            "name": "cpu-10000",
+            "reminders": 10000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 10000,
+              "accepted": 10000,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 10000,
+            "rpcClaims": 10000,
+            "candidatePages": 101,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 444.5
+          },
+          {
+            "name": "fanout-100x10",
+            "reminders": 100,
+            "subscriptions": 10,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 44,
+              "accepted": 433,
+              "expired": 0,
+              "failed": 0,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 433,
+            "rpcClaims": 433,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 45034,
+            "wallMs": 5.869
+          },
+          {
+            "name": "serial-1000-100ms",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 434,
+              "accepted": 433,
+              "expired": 0,
+              "failed": 0,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 433,
+            "rpcClaims": 433,
+            "candidatePages": 5,
+            "metricWrites": 0,
+            "modeledElapsedMs": 45042,
+            "wallMs": 13.67
+          },
+          {
+            "name": "serial-1000-1000ms",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 1000,
+            "status": 500,
+            "counts": {
+              "scanned": 46,
+              "accepted": 45,
+              "expired": 0,
+              "failed": 0,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 45,
+            "rpcClaims": 45,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 45182,
+            "wallMs": 1.665
+          },
+          {
+            "name": "timeouts-8s",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 8000,
+            "status": 500,
+            "counts": {
+              "scanned": 7,
+              "accepted": 0,
+              "expired": 0,
+              "failed": 6,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 6,
+            "rpcClaims": 6,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 48014,
+            "wallMs": 0.521
+          },
+          {
+            "name": "mixed-failures",
+            "reminders": 100,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 207,
+            "counts": {
+              "scanned": 100,
+              "accepted": 25,
+              "expired": 25,
+              "failed": 50
+            },
+            "providerCalls": 100,
+            "rpcClaims": 100,
+            "candidatePages": 2,
+            "metricWrites": 0,
+            "modeledElapsedMs": 10306,
+            "wallMs": 8.385
+          },
+          {
+            "name": "recurring-1000",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 1000,
+              "accepted": 1000,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 1000,
+            "rpcClaims": 1000,
+            "candidatePages": 11,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 349.974
+          },
+          {
+            "name": "slow-rpc-20s",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 20000,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 2,
+              "accepted": 1,
+              "expired": 0,
+              "failed": 0,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 1,
+            "rpcClaims": 1,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 60100,
+            "wallMs": 0.174
+          },
+          {
+            "name": "marker-failure",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 207,
+            "counts": {
+              "scanned": 20,
+              "accepted": 0,
+              "expired": 0,
+              "failed": 20
+            },
+            "providerCalls": 20,
+            "rpcClaims": 20,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 2084,
+            "wallMs": 0.623
+          }
+        ],
+        "recoveries": [
+          {
+            "reminders": 1000,
+            "transportMs": 100,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 434,
+                  "accepted": 433,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 433,
+                "modeledEndMs": 45042,
+                "wallMs": 14.625
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 859,
+                  "accepted": 425,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 858,
+                "modeledEndMs": 105084,
+                "wallMs": 19.882
+              },
+              {
+                "minute": 2,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 142,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 136508,
+                "wallMs": 17.657
+              },
+              {
+                "minute": 3,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 182024,
+                "wallMs": 19.739
+              },
+              {
+                "minute": 4,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 242024,
+                "wallMs": 16.299
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 300004,
+                "wallMs": 0.31
+              }
+            ],
+            "acceptedUnique": 1000,
+            "unaccepted": 0
+          },
+          {
+            "reminders": 1000,
+            "transportMs": 1000,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 46,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 45,
+                "modeledEndMs": 45182,
+                "wallMs": 1.559
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 91,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 90,
+                "modeledEndMs": 105272,
+                "wallMs": 2.081
+              },
+              {
+                "minute": 2,
+                "status": 500,
+                "counts": {
+                  "scanned": 136,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 135,
+                "modeledEndMs": 165364,
+                "wallMs": 3.173
+              },
+              {
+                "minute": 3,
+                "status": 500,
+                "counts": {
+                  "scanned": 181,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 180,
+                "modeledEndMs": 225454,
+                "wallMs": 4.248
+              },
+              {
+                "minute": 4,
+                "status": 500,
+                "counts": {
+                  "scanned": 226,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 225,
+                "modeledEndMs": 285546,
+                "wallMs": 4.561
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 225,
+                "modeledEndMs": 300004,
+                "wallMs": 0.276
+              }
+            ],
+            "acceptedUnique": 225,
+            "unaccepted": 775
+          },
+          {
+            "reminders": 1000,
+            "transportMs": 7999,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 7,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 6,
+                "modeledEndMs": 48020,
+                "wallMs": 0.484
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 13,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 12,
+                "modeledEndMs": 108032,
+                "wallMs": 0.533
+              },
+              {
+                "minute": 2,
+                "status": 500,
+                "counts": {
+                  "scanned": 19,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 18,
+                "modeledEndMs": 168044,
+                "wallMs": 4.733
+              },
+              {
+                "minute": 3,
+                "status": 500,
+                "counts": {
+                  "scanned": 25,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 24,
+                "modeledEndMs": 228056,
+                "wallMs": 1.358
+              },
+              {
+                "minute": 4,
+                "status": 500,
+                "counts": {
+                  "scanned": 31,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 30,
+                "modeledEndMs": 288068,
+                "wallMs": 0.784
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 30,
+                "modeledEndMs": 300004,
+                "wallMs": 0.33
+              }
+            ],
+            "acceptedUnique": 30,
+            "unaccepted": 970
+          }
+        ]
+      },
+      {
+        "version": "dev",
+        "sample": 3,
+        "scope": "Synthetic latency/RPC/provider; actual Deno dispatch and recurrence CPU. Not production throughput.",
+        "runtime": {
+          "deno": "2.9.6",
+          "v8": "15.0.245.2-rusty",
+          "typescript": "6.0.3"
+        },
+        "results": [
+          {
+            "name": "page-99",
+            "reminders": 99,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 99,
+              "accepted": 99,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 99,
+            "rpcClaims": 99,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 15.125
+          },
+          {
+            "name": "page-100",
+            "reminders": 100,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 100,
+              "accepted": 100,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 100,
+            "rpcClaims": 100,
+            "candidatePages": 2,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 5.892
+          },
+          {
+            "name": "page-101",
+            "reminders": 101,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 101,
+              "accepted": 101,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 101,
+            "rpcClaims": 101,
+            "candidatePages": 2,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 7.173
+          },
+          {
+            "name": "cpu-1000",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 1000,
+              "accepted": 1000,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 1000,
+            "rpcClaims": 1000,
+            "candidatePages": 11,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 40.301
+          },
+          {
+            "name": "cpu-10000",
+            "reminders": 10000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 10000,
+              "accepted": 10000,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 10000,
+            "rpcClaims": 10000,
+            "candidatePages": 101,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 444.8
+          },
+          {
+            "name": "fanout-100x10",
+            "reminders": 100,
+            "subscriptions": 10,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 44,
+              "accepted": 433,
+              "expired": 0,
+              "failed": 0,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 433,
+            "rpcClaims": 433,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 45034,
+            "wallMs": 10.803
+          },
+          {
+            "name": "serial-1000-100ms",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 434,
+              "accepted": 433,
+              "expired": 0,
+              "failed": 0,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 433,
+            "rpcClaims": 433,
+            "candidatePages": 5,
+            "metricWrites": 0,
+            "modeledElapsedMs": 45042,
+            "wallMs": 12.545
+          },
+          {
+            "name": "serial-1000-1000ms",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 1000,
+            "status": 500,
+            "counts": {
+              "scanned": 46,
+              "accepted": 45,
+              "expired": 0,
+              "failed": 0,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 45,
+            "rpcClaims": 45,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 45182,
+            "wallMs": 1.523
+          },
+          {
+            "name": "timeouts-8s",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 8000,
+            "status": 500,
+            "counts": {
+              "scanned": 7,
+              "accepted": 0,
+              "expired": 0,
+              "failed": 6,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 6,
+            "rpcClaims": 6,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 48014,
+            "wallMs": 0.423
+          },
+          {
+            "name": "mixed-failures",
+            "reminders": 100,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 207,
+            "counts": {
+              "scanned": 100,
+              "accepted": 25,
+              "expired": 25,
+              "failed": 50
+            },
+            "providerCalls": 100,
+            "rpcClaims": 100,
+            "candidatePages": 2,
+            "metricWrites": 0,
+            "modeledElapsedMs": 10306,
+            "wallMs": 3.572
+          },
+          {
+            "name": "recurring-1000",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 1000,
+              "accepted": 1000,
+              "expired": 0,
+              "failed": 0
+            },
+            "providerCalls": 1000,
+            "rpcClaims": 1000,
+            "candidatePages": 11,
+            "metricWrites": 0,
+            "modeledElapsedMs": 0,
+            "wallMs": 356.238
+          },
+          {
+            "name": "slow-rpc-20s",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 20000,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 2,
+              "accepted": 1,
+              "expired": 0,
+              "failed": 0,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 1,
+            "rpcClaims": 1,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 60100,
+            "wallMs": 0.161
+          },
+          {
+            "name": "marker-failure",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 207,
+            "counts": {
+              "scanned": 20,
+              "accepted": 0,
+              "expired": 0,
+              "failed": 20
+            },
+            "providerCalls": 20,
+            "rpcClaims": 20,
+            "candidatePages": 1,
+            "metricWrites": 0,
+            "modeledElapsedMs": 2084,
+            "wallMs": 0.617
+          }
+        ],
+        "recoveries": [
+          {
+            "reminders": 1000,
+            "transportMs": 100,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 434,
+                  "accepted": 433,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 433,
+                "modeledEndMs": 45042,
+                "wallMs": 12.454
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 859,
+                  "accepted": 425,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 858,
+                "modeledEndMs": 105084,
+                "wallMs": 18.477
+              },
+              {
+                "minute": 2,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 142,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 136508,
+                "wallMs": 21.604
+              },
+              {
+                "minute": 3,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 182024,
+                "wallMs": 15.037
+              },
+              {
+                "minute": 4,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 242024,
+                "wallMs": 19.027
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 300004,
+                "wallMs": 0.346
+              }
+            ],
+            "acceptedUnique": 1000,
+            "unaccepted": 0
+          },
+          {
+            "reminders": 1000,
+            "transportMs": 1000,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 46,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 45,
+                "modeledEndMs": 45182,
+                "wallMs": 1.535
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 91,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 90,
+                "modeledEndMs": 105272,
+                "wallMs": 1.949
+              },
+              {
+                "minute": 2,
+                "status": 500,
+                "counts": {
+                  "scanned": 136,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 135,
+                "modeledEndMs": 165364,
+                "wallMs": 2.806
+              },
+              {
+                "minute": 3,
+                "status": 500,
+                "counts": {
+                  "scanned": 181,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 180,
+                "modeledEndMs": 225454,
+                "wallMs": 3.462
+              },
+              {
+                "minute": 4,
+                "status": 500,
+                "counts": {
+                  "scanned": 226,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 225,
+                "modeledEndMs": 285546,
+                "wallMs": 4.22
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 225,
+                "modeledEndMs": 300004,
+                "wallMs": 0.264
+              }
+            ],
+            "acceptedUnique": 225,
+            "unaccepted": 775
+          },
+          {
+            "reminders": 1000,
+            "transportMs": 7999,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 7,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 6,
+                "modeledEndMs": 48020,
+                "wallMs": 0.476
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 13,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 12,
+                "modeledEndMs": 108032,
+                "wallMs": 0.51
+              },
+              {
+                "minute": 2,
+                "status": 500,
+                "counts": {
+                  "scanned": 19,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 18,
+                "modeledEndMs": 168044,
+                "wallMs": 0.578
+              },
+              {
+                "minute": 3,
+                "status": 500,
+                "counts": {
+                  "scanned": 25,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 24,
+                "modeledEndMs": 228056,
+                "wallMs": 0.639
+              },
+              {
+                "minute": 4,
+                "status": 500,
+                "counts": {
+                  "scanned": 31,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 30,
+                "modeledEndMs": 288068,
+                "wallMs": 0.72
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0
+                },
+                "acceptedUnique": 30,
+                "modeledEndMs": 300004,
+                "wallMs": 0.24
+              }
+            ],
+            "acceptedUnique": 30,
+            "unaccepted": 970
+          }
+        ]
+      },
+      {
+        "version": "instrumented",
+        "sample": 1,
+        "scope": "Synthetic latency/RPC/provider; actual Deno dispatch and recurrence CPU. Not production throughput.",
+        "runtime": {
+          "deno": "2.9.6",
+          "v8": "15.0.245.2-rusty",
+          "typescript": "6.0.3"
+        },
+        "results": [
+          {
+            "name": "page-99",
+            "reminders": 99,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 99,
+              "accepted": 99,
+              "expired": 0,
+              "failed": 0,
+              "sends": 99,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 99,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 99,
+            "rpcClaims": 99,
+            "candidatePages": 1,
+            "metricWrites": 101,
+            "modeledElapsedMs": 0,
+            "wallMs": 15.312
+          },
+          {
+            "name": "page-100",
+            "reminders": 100,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 100,
+              "accepted": 100,
+              "expired": 0,
+              "failed": 0,
+              "sends": 100,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 100,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 100,
+            "rpcClaims": 100,
+            "candidatePages": 2,
+            "metricWrites": 102,
+            "modeledElapsedMs": 0,
+            "wallMs": 6.686
+          },
+          {
+            "name": "page-101",
+            "reminders": 101,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 101,
+              "accepted": 101,
+              "expired": 0,
+              "failed": 0,
+              "sends": 101,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 101,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 101,
+            "rpcClaims": 101,
+            "candidatePages": 2,
+            "metricWrites": 103,
+            "modeledElapsedMs": 0,
+            "wallMs": 8.041
+          },
+          {
+            "name": "cpu-1000",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 1000,
+              "accepted": 1000,
+              "expired": 0,
+              "failed": 0,
+              "sends": 1000,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 1000,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 1000,
+            "rpcClaims": 1000,
+            "candidatePages": 11,
+            "metricWrites": 1002,
+            "modeledElapsedMs": 0,
+            "wallMs": 45.834
+          },
+          {
+            "name": "cpu-10000",
+            "reminders": 10000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 10000,
+              "accepted": 10000,
+              "expired": 0,
+              "failed": 0,
+              "sends": 10000,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 10000,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 10000,
+            "rpcClaims": 10000,
+            "candidatePages": 101,
+            "metricWrites": 10002,
+            "modeledElapsedMs": 0,
+            "wallMs": 466.923
+          },
+          {
+            "name": "fanout-100x10",
+            "reminders": 100,
+            "subscriptions": 10,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 43,
+              "accepted": 425,
+              "expired": 0,
+              "failed": 0,
+              "sends": 425,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 425,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 425,
+            "rpcClaims": 425,
+            "candidatePages": 1,
+            "metricWrites": 427,
+            "modeledElapsedMs": 45056,
+            "wallMs": 8.343
+          },
+          {
+            "name": "serial-1000-100ms",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 426,
+              "accepted": 425,
+              "expired": 0,
+              "failed": 0,
+              "sends": 425,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 425,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 425,
+            "rpcClaims": 425,
+            "candidatePages": 5,
+            "metricWrites": 427,
+            "modeledElapsedMs": 45064,
+            "wallMs": 17.857
+          },
+          {
+            "name": "serial-1000-1000ms",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 1000,
+            "status": 500,
+            "counts": {
+              "scanned": 46,
+              "accepted": 45,
+              "expired": 0,
+              "failed": 0,
+              "sends": 45,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 45,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 45,
+            "rpcClaims": 45,
+            "candidatePages": 1,
+            "metricWrites": 47,
+            "modeledElapsedMs": 45276,
+            "wallMs": 1.788
+          },
+          {
+            "name": "timeouts-8s",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 8000,
+            "status": 500,
+            "counts": {
+              "scanned": 7,
+              "accepted": 0,
+              "expired": 0,
+              "failed": 6,
+              "sends": 6,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 0,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 6,
+            "rpcClaims": 6,
+            "candidatePages": 1,
+            "metricWrites": 8,
+            "modeledElapsedMs": 48030,
+            "wallMs": 0.519
+          },
+          {
+            "name": "mixed-failures",
+            "reminders": 100,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 207,
+            "counts": {
+              "scanned": 100,
+              "accepted": 25,
+              "expired": 25,
+              "failed": 50,
+              "sends": 100,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 25,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 100,
+            "rpcClaims": 100,
+            "candidatePages": 2,
+            "metricWrites": 102,
+            "modeledElapsedMs": 10510,
+            "wallMs": 3.348
+          },
+          {
+            "name": "recurring-1000",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 1000,
+              "accepted": 1000,
+              "expired": 0,
+              "failed": 0,
+              "sends": 1000,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 1000,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 1000,
+            "rpcClaims": 1000,
+            "candidatePages": 11,
+            "metricWrites": 1002,
+            "modeledElapsedMs": 0,
+            "wallMs": 350.05
+          },
+          {
+            "name": "slow-rpc-20s",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 20000,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 2,
+              "accepted": 1,
+              "expired": 0,
+              "failed": 0,
+              "sends": 1,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 1,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 1,
+            "rpcClaims": 1,
+            "candidatePages": 1,
+            "metricWrites": 3,
+            "modeledElapsedMs": 120100,
+            "wallMs": 0.181
+          },
+          {
+            "name": "marker-failure",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 1,
+              "accepted": 1,
+              "expired": 0,
+              "failed": 0,
+              "sends": 1,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 1,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 1,
+            "rpcClaims": 1,
+            "candidatePages": 1,
+            "metricWrites": 3,
+            "modeledElapsedMs": 112,
+            "wallMs": 0.45
+          }
+        ],
+        "recoveries": [
+          {
+            "reminders": 1000,
+            "transportMs": 100,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 426,
+                  "accepted": 425,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 425,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 425,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 425,
+                "modeledEndMs": 45064,
+                "wallMs": 15.668
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 843,
+                  "accepted": 417,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 417,
+                  "window_expired": 0,
+                  "skipped": 425,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 417,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 842,
+                "modeledEndMs": 105074,
+                "wallMs": 20.132
+              },
+              {
+                "minute": 2,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 158,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 158,
+                  "window_expired": 0,
+                  "skipped": 842,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 158,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 138460,
+                "wallMs": 21.298
+              },
+              {
+                "minute": 3,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 1000,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 182028,
+                "wallMs": 15.178
+              },
+              {
+                "minute": 4,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 1000,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 242028,
+                "wallMs": 15.897
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 300008,
+                "wallMs": 0.347
+              }
+            ],
+            "acceptedUnique": 1000,
+            "unaccepted": 0
+          },
+          {
+            "reminders": 1000,
+            "transportMs": 1000,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 46,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 45,
+                "modeledEndMs": 45276,
+                "wallMs": 2.14
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 91,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 45,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 90,
+                "modeledEndMs": 105366,
+                "wallMs": 2.4
+              },
+              {
+                "minute": 2,
+                "status": 500,
+                "counts": {
+                  "scanned": 136,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 90,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 135,
+                "modeledEndMs": 165458,
+                "wallMs": 7.215
+              },
+              {
+                "minute": 3,
+                "status": 500,
+                "counts": {
+                  "scanned": 181,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 135,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 180,
+                "modeledEndMs": 225548,
+                "wallMs": 3.877
+              },
+              {
+                "minute": 4,
+                "status": 500,
+                "counts": {
+                  "scanned": 226,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 180,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 225,
+                "modeledEndMs": 285640,
+                "wallMs": 4.768
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 225,
+                "modeledEndMs": 300008,
+                "wallMs": 0.298
+              }
+            ],
+            "acceptedUnique": 225,
+            "unaccepted": 775
+          },
+          {
+            "reminders": 1000,
+            "transportMs": 7999,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 7,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 6,
+                "modeledEndMs": 48036,
+                "wallMs": 0.598
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 13,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 6,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 12,
+                "modeledEndMs": 108048,
+                "wallMs": 0.577
+              },
+              {
+                "minute": 2,
+                "status": 500,
+                "counts": {
+                  "scanned": 19,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 12,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 18,
+                "modeledEndMs": 168060,
+                "wallMs": 0.68
+              },
+              {
+                "minute": 3,
+                "status": 500,
+                "counts": {
+                  "scanned": 25,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 18,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 24,
+                "modeledEndMs": 228072,
+                "wallMs": 0.707
+              },
+              {
+                "minute": 4,
+                "status": 500,
+                "counts": {
+                  "scanned": 31,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 24,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 30,
+                "modeledEndMs": 288084,
+                "wallMs": 0.797
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 30,
+                "modeledEndMs": 300008,
+                "wallMs": 0.259
+              }
+            ],
+            "acceptedUnique": 30,
+            "unaccepted": 970
+          }
+        ]
+      },
+      {
+        "version": "instrumented",
+        "sample": 2,
+        "scope": "Synthetic latency/RPC/provider; actual Deno dispatch and recurrence CPU. Not production throughput.",
+        "runtime": {
+          "deno": "2.9.6",
+          "v8": "15.0.245.2-rusty",
+          "typescript": "6.0.3"
+        },
+        "results": [
+          {
+            "name": "page-99",
+            "reminders": 99,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 99,
+              "accepted": 99,
+              "expired": 0,
+              "failed": 0,
+              "sends": 99,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 99,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 99,
+            "rpcClaims": 99,
+            "candidatePages": 1,
+            "metricWrites": 101,
+            "modeledElapsedMs": 0,
+            "wallMs": 15.963
+          },
+          {
+            "name": "page-100",
+            "reminders": 100,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 100,
+              "accepted": 100,
+              "expired": 0,
+              "failed": 0,
+              "sends": 100,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 100,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 100,
+            "rpcClaims": 100,
+            "candidatePages": 2,
+            "metricWrites": 102,
+            "modeledElapsedMs": 0,
+            "wallMs": 7.247
+          },
+          {
+            "name": "page-101",
+            "reminders": 101,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 101,
+              "accepted": 101,
+              "expired": 0,
+              "failed": 0,
+              "sends": 101,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 101,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 101,
+            "rpcClaims": 101,
+            "candidatePages": 2,
+            "metricWrites": 103,
+            "modeledElapsedMs": 0,
+            "wallMs": 6.931
+          },
+          {
+            "name": "cpu-1000",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 1000,
+              "accepted": 1000,
+              "expired": 0,
+              "failed": 0,
+              "sends": 1000,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 1000,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 1000,
+            "rpcClaims": 1000,
+            "candidatePages": 11,
+            "metricWrites": 1002,
+            "modeledElapsedMs": 0,
+            "wallMs": 43.452
+          },
+          {
+            "name": "cpu-10000",
+            "reminders": 10000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 10000,
+              "accepted": 10000,
+              "expired": 0,
+              "failed": 0,
+              "sends": 10000,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 10000,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 10000,
+            "rpcClaims": 10000,
+            "candidatePages": 101,
+            "metricWrites": 10002,
+            "modeledElapsedMs": 0,
+            "wallMs": 475.942
+          },
+          {
+            "name": "fanout-100x10",
+            "reminders": 100,
+            "subscriptions": 10,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 43,
+              "accepted": 425,
+              "expired": 0,
+              "failed": 0,
+              "sends": 425,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 425,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 425,
+            "rpcClaims": 425,
+            "candidatePages": 1,
+            "metricWrites": 427,
+            "modeledElapsedMs": 45056,
+            "wallMs": 7.388
+          },
+          {
+            "name": "serial-1000-100ms",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 426,
+              "accepted": 425,
+              "expired": 0,
+              "failed": 0,
+              "sends": 425,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 425,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 425,
+            "rpcClaims": 425,
+            "candidatePages": 5,
+            "metricWrites": 427,
+            "modeledElapsedMs": 45064,
+            "wallMs": 16.484
+          },
+          {
+            "name": "serial-1000-1000ms",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 1000,
+            "status": 500,
+            "counts": {
+              "scanned": 46,
+              "accepted": 45,
+              "expired": 0,
+              "failed": 0,
+              "sends": 45,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 45,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 45,
+            "rpcClaims": 45,
+            "candidatePages": 1,
+            "metricWrites": 47,
+            "modeledElapsedMs": 45276,
+            "wallMs": 2.157
+          },
+          {
+            "name": "timeouts-8s",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 8000,
+            "status": 500,
+            "counts": {
+              "scanned": 7,
+              "accepted": 0,
+              "expired": 0,
+              "failed": 6,
+              "sends": 6,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 0,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 6,
+            "rpcClaims": 6,
+            "candidatePages": 1,
+            "metricWrites": 8,
+            "modeledElapsedMs": 48030,
+            "wallMs": 0.565
+          },
+          {
+            "name": "mixed-failures",
+            "reminders": 100,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 207,
+            "counts": {
+              "scanned": 100,
+              "accepted": 25,
+              "expired": 25,
+              "failed": 50,
+              "sends": 100,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 25,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 100,
+            "rpcClaims": 100,
+            "candidatePages": 2,
+            "metricWrites": 102,
+            "modeledElapsedMs": 10510,
+            "wallMs": 3.69
+          },
+          {
+            "name": "recurring-1000",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 1000,
+              "accepted": 1000,
+              "expired": 0,
+              "failed": 0,
+              "sends": 1000,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 1000,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 1000,
+            "rpcClaims": 1000,
+            "candidatePages": 11,
+            "metricWrites": 1002,
+            "modeledElapsedMs": 0,
+            "wallMs": 375.341
+          },
+          {
+            "name": "slow-rpc-20s",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 20000,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 2,
+              "accepted": 1,
+              "expired": 0,
+              "failed": 0,
+              "sends": 1,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 1,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 1,
+            "rpcClaims": 1,
+            "candidatePages": 1,
+            "metricWrites": 3,
+            "modeledElapsedMs": 120100,
+            "wallMs": 0.175
+          },
+          {
+            "name": "marker-failure",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 1,
+              "accepted": 1,
+              "expired": 0,
+              "failed": 0,
+              "sends": 1,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 1,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 1,
+            "rpcClaims": 1,
+            "candidatePages": 1,
+            "metricWrites": 3,
+            "modeledElapsedMs": 112,
+            "wallMs": 0.391
+          }
+        ],
+        "recoveries": [
+          {
+            "reminders": 1000,
+            "transportMs": 100,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 426,
+                  "accepted": 425,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 425,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 425,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 425,
+                "modeledEndMs": 45064,
+                "wallMs": 17.229
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 843,
+                  "accepted": 417,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 417,
+                  "window_expired": 0,
+                  "skipped": 425,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 417,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 842,
+                "modeledEndMs": 105074,
+                "wallMs": 21.639
+              },
+              {
+                "minute": 2,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 158,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 158,
+                  "window_expired": 0,
+                  "skipped": 842,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 158,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 138460,
+                "wallMs": 18.689
+              },
+              {
+                "minute": 3,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 1000,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 182028,
+                "wallMs": 18.711
+              },
+              {
+                "minute": 4,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 1000,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 242028,
+                "wallMs": 14.757
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 300008,
+                "wallMs": 0.31
+              }
+            ],
+            "acceptedUnique": 1000,
+            "unaccepted": 0
+          },
+          {
+            "reminders": 1000,
+            "transportMs": 1000,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 46,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 45,
+                "modeledEndMs": 45276,
+                "wallMs": 1.964
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 91,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 45,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 90,
+                "modeledEndMs": 105366,
+                "wallMs": 2.268
+              },
+              {
+                "minute": 2,
+                "status": 500,
+                "counts": {
+                  "scanned": 136,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 90,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 135,
+                "modeledEndMs": 165458,
+                "wallMs": 3.123
+              },
+              {
+                "minute": 3,
+                "status": 500,
+                "counts": {
+                  "scanned": 181,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 135,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 180,
+                "modeledEndMs": 225548,
+                "wallMs": 3.629
+              },
+              {
+                "minute": 4,
+                "status": 500,
+                "counts": {
+                  "scanned": 226,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 180,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 225,
+                "modeledEndMs": 285640,
+                "wallMs": 4.461
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 225,
+                "modeledEndMs": 300008,
+                "wallMs": 0.262
+              }
+            ],
+            "acceptedUnique": 225,
+            "unaccepted": 775
+          },
+          {
+            "reminders": 1000,
+            "transportMs": 7999,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 7,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 6,
+                "modeledEndMs": 48036,
+                "wallMs": 1.199
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 13,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 6,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 12,
+                "modeledEndMs": 108048,
+                "wallMs": 0.57
+              },
+              {
+                "minute": 2,
+                "status": 500,
+                "counts": {
+                  "scanned": 19,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 12,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 18,
+                "modeledEndMs": 168060,
+                "wallMs": 0.656
+              },
+              {
+                "minute": 3,
+                "status": 500,
+                "counts": {
+                  "scanned": 25,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 18,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 24,
+                "modeledEndMs": 228072,
+                "wallMs": 0.707
+              },
+              {
+                "minute": 4,
+                "status": 500,
+                "counts": {
+                  "scanned": 31,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 24,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 30,
+                "modeledEndMs": 288084,
+                "wallMs": 0.855
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 30,
+                "modeledEndMs": 300008,
+                "wallMs": 0.272
+              }
+            ],
+            "acceptedUnique": 30,
+            "unaccepted": 970
+          }
+        ]
+      },
+      {
+        "version": "instrumented",
+        "sample": 3,
+        "scope": "Synthetic latency/RPC/provider; actual Deno dispatch and recurrence CPU. Not production throughput.",
+        "runtime": {
+          "deno": "2.9.6",
+          "v8": "15.0.245.2-rusty",
+          "typescript": "6.0.3"
+        },
+        "results": [
+          {
+            "name": "page-99",
+            "reminders": 99,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 99,
+              "accepted": 99,
+              "expired": 0,
+              "failed": 0,
+              "sends": 99,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 99,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 99,
+            "rpcClaims": 99,
+            "candidatePages": 1,
+            "metricWrites": 101,
+            "modeledElapsedMs": 0,
+            "wallMs": 15.814
+          },
+          {
+            "name": "page-100",
+            "reminders": 100,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 100,
+              "accepted": 100,
+              "expired": 0,
+              "failed": 0,
+              "sends": 100,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 100,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 100,
+            "rpcClaims": 100,
+            "candidatePages": 2,
+            "metricWrites": 102,
+            "modeledElapsedMs": 0,
+            "wallMs": 6.767
+          },
+          {
+            "name": "page-101",
+            "reminders": 101,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 101,
+              "accepted": 101,
+              "expired": 0,
+              "failed": 0,
+              "sends": 101,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 101,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 101,
+            "rpcClaims": 101,
+            "candidatePages": 2,
+            "metricWrites": 103,
+            "modeledElapsedMs": 0,
+            "wallMs": 6.701
+          },
+          {
+            "name": "cpu-1000",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 1000,
+              "accepted": 1000,
+              "expired": 0,
+              "failed": 0,
+              "sends": 1000,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 1000,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 1000,
+            "rpcClaims": 1000,
+            "candidatePages": 11,
+            "metricWrites": 1002,
+            "modeledElapsedMs": 0,
+            "wallMs": 44.486
+          },
+          {
+            "name": "cpu-10000",
+            "reminders": 10000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 10000,
+              "accepted": 10000,
+              "expired": 0,
+              "failed": 0,
+              "sends": 10000,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 10000,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 10000,
+            "rpcClaims": 10000,
+            "candidatePages": 101,
+            "metricWrites": 10002,
+            "modeledElapsedMs": 0,
+            "wallMs": 474.752
+          },
+          {
+            "name": "fanout-100x10",
+            "reminders": 100,
+            "subscriptions": 10,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 43,
+              "accepted": 425,
+              "expired": 0,
+              "failed": 0,
+              "sends": 425,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 425,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 425,
+            "rpcClaims": 425,
+            "candidatePages": 1,
+            "metricWrites": 427,
+            "modeledElapsedMs": 45056,
+            "wallMs": 7.463
+          },
+          {
+            "name": "serial-1000-100ms",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 426,
+              "accepted": 425,
+              "expired": 0,
+              "failed": 0,
+              "sends": 425,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 425,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 425,
+            "rpcClaims": 425,
+            "candidatePages": 5,
+            "metricWrites": 427,
+            "modeledElapsedMs": 45064,
+            "wallMs": 19.316
+          },
+          {
+            "name": "serial-1000-1000ms",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 1000,
+            "status": 500,
+            "counts": {
+              "scanned": 46,
+              "accepted": 45,
+              "expired": 0,
+              "failed": 0,
+              "sends": 45,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 45,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 45,
+            "rpcClaims": 45,
+            "candidatePages": 1,
+            "metricWrites": 47,
+            "modeledElapsedMs": 45276,
+            "wallMs": 1.838
+          },
+          {
+            "name": "timeouts-8s",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 8000,
+            "status": 500,
+            "counts": {
+              "scanned": 7,
+              "accepted": 0,
+              "expired": 0,
+              "failed": 6,
+              "sends": 6,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 0,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 6,
+            "rpcClaims": 6,
+            "candidatePages": 1,
+            "metricWrites": 8,
+            "modeledElapsedMs": 48030,
+            "wallMs": 0.54
+          },
+          {
+            "name": "mixed-failures",
+            "reminders": 100,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 207,
+            "counts": {
+              "scanned": 100,
+              "accepted": 25,
+              "expired": 25,
+              "failed": 50,
+              "sends": 100,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 25,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 100,
+            "rpcClaims": 100,
+            "candidatePages": 2,
+            "metricWrites": 102,
+            "modeledElapsedMs": 10510,
+            "wallMs": 3.368
+          },
+          {
+            "name": "recurring-1000",
+            "reminders": 1000,
+            "subscriptions": 1,
+            "rpcMs": 0,
+            "transportMs": 0,
+            "status": 200,
+            "counts": {
+              "scanned": 1000,
+              "accepted": 1000,
+              "expired": 0,
+              "failed": 0,
+              "sends": 1000,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 1000,
+              "visualized": null,
+              "provider_message_ttl_expired": null
+            },
+            "providerCalls": 1000,
+            "rpcClaims": 1000,
+            "candidatePages": 11,
+            "metricWrites": 1002,
+            "modeledElapsedMs": 0,
+            "wallMs": 361.198
+          },
+          {
+            "name": "slow-rpc-20s",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 20000,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 2,
+              "accepted": 1,
+              "expired": 0,
+              "failed": 0,
+              "sends": 1,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 1,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 1,
+            "rpcClaims": 1,
+            "candidatePages": 1,
+            "metricWrites": 3,
+            "modeledElapsedMs": 120100,
+            "wallMs": 0.179
+          },
+          {
+            "name": "marker-failure",
+            "reminders": 20,
+            "subscriptions": 1,
+            "rpcMs": 2,
+            "transportMs": 100,
+            "status": 500,
+            "counts": {
+              "scanned": 1,
+              "accepted": 1,
+              "expired": 0,
+              "failed": 0,
+              "sends": 1,
+              "window_expired": 0,
+              "skipped": 0,
+              "recurrence_failures": 0,
+              "provider_accepted": 1,
+              "visualized": null,
+              "provider_message_ttl_expired": null,
+              "error": "Push dispatch failed"
+            },
+            "providerCalls": 1,
+            "rpcClaims": 1,
+            "candidatePages": 1,
+            "metricWrites": 3,
+            "modeledElapsedMs": 112,
+            "wallMs": 0.445
+          }
+        ],
+        "recoveries": [
+          {
+            "reminders": 1000,
+            "transportMs": 100,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 426,
+                  "accepted": 425,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 425,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 425,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 425,
+                "modeledEndMs": 45064,
+                "wallMs": 13.778
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 843,
+                  "accepted": 417,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 417,
+                  "window_expired": 0,
+                  "skipped": 425,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 417,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 842,
+                "modeledEndMs": 105074,
+                "wallMs": 22.465
+              },
+              {
+                "minute": 2,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 158,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 158,
+                  "window_expired": 0,
+                  "skipped": 842,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 158,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 138460,
+                "wallMs": 23.425
+              },
+              {
+                "minute": 3,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 1000,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 182028,
+                "wallMs": 16.114
+              },
+              {
+                "minute": 4,
+                "status": 200,
+                "counts": {
+                  "scanned": 1000,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 1000,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 242028,
+                "wallMs": 17.184
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 1000,
+                "modeledEndMs": 300008,
+                "wallMs": 0.35
+              }
+            ],
+            "acceptedUnique": 1000,
+            "unaccepted": 0
+          },
+          {
+            "reminders": 1000,
+            "transportMs": 1000,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 46,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 45,
+                "modeledEndMs": 45276,
+                "wallMs": 2.578
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 91,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 45,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 90,
+                "modeledEndMs": 105366,
+                "wallMs": 2.478
+              },
+              {
+                "minute": 2,
+                "status": 500,
+                "counts": {
+                  "scanned": 136,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 90,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 135,
+                "modeledEndMs": 165458,
+                "wallMs": 7.673
+              },
+              {
+                "minute": 3,
+                "status": 500,
+                "counts": {
+                  "scanned": 181,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 135,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 180,
+                "modeledEndMs": 225548,
+                "wallMs": 4
+              },
+              {
+                "minute": 4,
+                "status": 500,
+                "counts": {
+                  "scanned": 226,
+                  "accepted": 45,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 45,
+                  "window_expired": 0,
+                  "skipped": 180,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 45,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 225,
+                "modeledEndMs": 285640,
+                "wallMs": 6
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 225,
+                "modeledEndMs": 300008,
+                "wallMs": 0.365
+              }
+            ],
+            "acceptedUnique": 225,
+            "unaccepted": 775
+          },
+          {
+            "reminders": 1000,
+            "transportMs": 7999,
+            "rpcMs": 2,
+            "runs": [
+              {
+                "minute": 0,
+                "status": 500,
+                "counts": {
+                  "scanned": 7,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 6,
+                "modeledEndMs": 48036,
+                "wallMs": 0.746
+              },
+              {
+                "minute": 1,
+                "status": 500,
+                "counts": {
+                  "scanned": 13,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 6,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 12,
+                "modeledEndMs": 108048,
+                "wallMs": 0.589
+              },
+              {
+                "minute": 2,
+                "status": 500,
+                "counts": {
+                  "scanned": 19,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 12,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 18,
+                "modeledEndMs": 168060,
+                "wallMs": 0.649
+              },
+              {
+                "minute": 3,
+                "status": 500,
+                "counts": {
+                  "scanned": 25,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 18,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 24,
+                "modeledEndMs": 228072,
+                "wallMs": 0.73
+              },
+              {
+                "minute": 4,
+                "status": 500,
+                "counts": {
+                  "scanned": 31,
+                  "accepted": 6,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 6,
+                  "window_expired": 0,
+                  "skipped": 24,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 6,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null,
+                  "error": "Push dispatch failed"
+                },
+                "acceptedUnique": 30,
+                "modeledEndMs": 288084,
+                "wallMs": 0.81
+              },
+              {
+                "minute": 5,
+                "status": 200,
+                "counts": {
+                  "scanned": 0,
+                  "accepted": 0,
+                  "expired": 0,
+                  "failed": 0,
+                  "sends": 0,
+                  "window_expired": 0,
+                  "skipped": 0,
+                  "recurrence_failures": 0,
+                  "provider_accepted": 0,
+                  "visualized": null,
+                  "provider_message_ttl_expired": null
+                },
+                "acceptedUnique": 30,
+                "modeledEndMs": 300008,
+                "wallMs": 0.262
+              }
+            ],
+            "acceptedUnique": 30,
+            "unaccepted": 970
+          }
+        ]
+      }
+    ]
+  },
+  "native": {
+    "scope": "IndexedDB and actual scheduler; simulated OS, not physical delivery",
+    "measurements": [
+      {
+        "case": "global-cap",
+        "count": 0,
+        "pending": 0,
+        "limited": 0,
+        "wallMs": 19.361
+      },
+      {
+        "case": "global-cap",
+        "count": 59,
+        "pending": 59,
+        "limited": 0,
+        "wallMs": 44.308
+      },
+      {
+        "case": "global-cap",
+        "count": 60,
+        "pending": 60,
+        "limited": 0,
+        "wallMs": 38.465
+      },
+      {
+        "case": "global-cap",
+        "count": 61,
+        "pending": 60,
+        "limited": 1,
+        "wallMs": 37.243
+      },
+      {
+        "case": "global-cap",
+        "count": 120,
+        "pending": 60,
+        "limited": 60,
+        "wallMs": 58.027
+      },
+      {
+        "case": "global-cap",
+        "count": 1000,
+        "pending": 60,
+        "limited": 940,
+        "wallMs": 1190.428
+      },
+      {
+        "case": "renewal",
+        "before": 60,
+        "remaining": 57,
+        "renewed": 60,
+        "duplicateIds": 0
+      },
+      {
+        "case": "partial-os",
+        "mode": "throw",
+        "partial": 30,
+        "durableIds": 60,
+        "recovered": 60
+      },
+      {
+        "case": "partial-os",
+        "mode": "silent",
+        "partial": 30,
+        "durableIds": 60,
+        "recovered": 60
+      },
+      {
+        "case": "partial-cancel",
+        "retainedIds": 60,
+        "recovered": 60
+      },
+      {
+        "case": "dst",
+        "triggerAt": "2026-03-28T08:00:00Z",
+        "occurrences": [
+          "2026-03-28T08:00:00Z",
+          "2026-03-29T07:00:00Z",
+          "2026-03-30T07:00:00Z"
+        ]
+      },
+      {
+        "case": "dst",
+        "triggerAt": "2026-10-24T07:00:00Z",
+        "occurrences": [
+          "2026-10-24T07:00:00Z",
+          "2026-10-25T08:00:00Z",
+          "2026-10-26T08:00:00Z"
+        ]
+      },
+      {
+        "case": "dst-gap-or-fold",
+        "triggerAt": "2026-03-28T01:30:00Z",
+        "occurrences": ["2026-03-28T01:30:00Z", "2026-03-30T00:30:00Z"]
+      },
+      {
+        "case": "dst-gap-or-fold",
+        "triggerAt": "2026-10-24T00:30:00Z",
+        "occurrences": ["2026-10-24T00:30:00Z", "2026-10-25T00:30:00Z"]
+      }
+    ]
+  },
+  "sql": {
+    "scope": "Actual PostgreSQL functions in PGlite; single embedded connection, not hosted load",
+    "measurements": [
+      {
+        "case": "five-minute-window",
+        "name": "inside",
+        "eligible": true
+      },
+      {
+        "case": "five-minute-window",
+        "name": "exact",
+        "eligible": true
+      },
+      {
+        "case": "five-minute-window",
+        "name": "outside",
+        "eligible": false
+      },
+      {
+        "case": "five-minute-window",
+        "name": "future",
+        "eligible": false
+      },
+      {
+        "case": "retry",
+        "exact90s": false,
+        "after90s": true,
+        "maxAttempts": 3
+      },
+      {
+        "case": "exclusive-claim",
+        "requests": 20,
+        "leases": 1,
+        "scope": "single PGlite connection"
+      },
+      {
+        "case": "sql-pagination",
+        "candidates": 1001,
+        "pages": 11,
+        "seedMs": 17758.59,
+        "wallMs": 103.769
+      }
+    ]
+  }
+}
