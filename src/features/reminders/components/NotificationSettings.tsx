@@ -2,17 +2,26 @@ import { useEffect, useState } from 'react'
 import { Capacitor } from '@capacitor/core'
 import { webPushConfigured } from '../../../services/notifications/web-push'
 import { WebPushSettings } from './WebPushSettings'
+import { NotificationDiagnostics } from './NotificationDiagnostics'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { database } from '../../../services/database/database'
 import { notificationAdapter } from '../../../services/notifications/adapter'
 import { notificationScheduler } from '../../../services/notifications/scheduler'
-import type { NotificationCapability } from '../../../services/notifications/types'
+import {
+  notificationStateChangedEvent,
+  type NotificationCapability,
+} from '../../../services/notifications/types'
 
 export function NotificationSettings({ userId }: { userId: string }) {
-  return !Capacitor.isNativePlatform() && webPushConfigured ? (
-    <WebPushSettings userId={userId} />
-  ) : (
-    <LocalNotificationSettings userId={userId} />
+  return (
+    <>
+      {!Capacitor.isNativePlatform() && webPushConfigured ? (
+        <WebPushSettings userId={userId} />
+      ) : (
+        <LocalNotificationSettings userId={userId} />
+      )}
+      <NotificationDiagnostics key={userId} userId={userId} />
+    </>
   )
 }
 function LocalNotificationSettings({ userId }: { userId: string }) {
@@ -46,6 +55,7 @@ function LocalNotificationSettings({ userId }: { userId: string }) {
       )
     } finally {
       setBusy(false)
+      window.dispatchEvent(new Event(notificationStateChangedEvent))
     }
   }
   useEffect(() => {

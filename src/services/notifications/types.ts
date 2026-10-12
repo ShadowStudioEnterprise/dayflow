@@ -1,5 +1,6 @@
 export type NotificationPermission =
   'granted' | 'denied' | 'prompt' | 'unsupported'
+export const notificationStateChangedEvent = 'dayflow-notifications-changed'
 export interface NotificationCapability {
   platform: 'web' | 'android' | 'ios'
   permission: NotificationPermission

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { notificationStateChangedEvent } from '../../../services/notifications/types'
 import {
   disableWebPush,
   enableWebPush,
@@ -59,6 +60,7 @@ export function WebPushSettings({ userId }: { userId: string }) {
     } finally {
       setPermission(webPushPermission())
       setBusy(false)
+      window.dispatchEvent(new Event(notificationStateChangedEvent))
     }
   }
   return (

@@ -16,6 +16,28 @@ Capacitor programa notificaciones locales con permisos del sistema. El planifica
 
 Las pruebas en emulador no acreditan teléfonos físicos. Quedan pendientes reinicio, Doze, revocación/restauración de permisos, cambios horarios y suspensión prolongada. Consulta [recordatorios](reminders.md), [PWA y nativo](pwa-native.md) y [validación de publicación](release-validation.md).
 
+## Diagnóstico en Configuración
+
+La sección **Diagnóstico de notificaciones** consulta permisos, mecanismo activo,
+avisos pendientes y renovación para la cuenta actual. No solicita permisos ni
+activa suscripciones al abrirse. Se actualiza cada minuto, al recuperar el foco,
+al cambiar conectividad y después de activar/desactivar avisos o actualizar la
+programación. **Comprobar estado de avisos** permite repetir la lectura.
+
+En web distingue permiso concedido de suscripción registrada para la cuenta,
+comprueba caducidad si el proveedor comunica una fecha y muestra cambios de
+recordatorios por sincronizar. Cuenta recordatorios locales con próximas fechas
+dentro de 366 días, no mensajes en una cola del servidor ni alarmas del sistema.
+Sin fecha de caducidad no inventa una fecha de renovación. Explica las restricciones
+de navegador detenido, suspensión, ahorro de energía y PWA instalada en iOS.
+
+En nativo muestra permisos de notificación y, en Android, alarmas exactas;
+cruza los identificadores pendientes del sistema con los avisos futuros de la
+cuenta en este dispositivo. Si faltan confirmaciones o la programación tiene
+errores, pendientes o límites, recomienda actualizarla. Recuerda el límite de
+60 avisos/366 días y la renovación al abrir o reanudar la app. Las consultas
+fallidas se muestran como estado desconocido, sin afirmar que hay cero pendientes.
+
 ## Evidencia y evolución
 
 - Guardado local: almacenamiento confirmado en el dispositivo.

@@ -45,9 +45,10 @@ test('Web Push registra por consentimiento, recibe en el worker real y se revoca
     page.getByText('Permiso de notificaciones: permitido.', { exact: false }),
   ).toBeVisible()
   await expect(
-    page.getByText('Pulsa Activar avisos web para registrar este navegador', {
-      exact: false,
-    }),
+    page.getByText(
+      'Permiso de notificaciones: permitido. Pulsa Activar avisos web para registrar este navegador y recibir avisos con esta cuenta.',
+      { exact: true },
+    ),
   ).toBeVisible()
   let registered = false
   let revoked = false
@@ -75,6 +76,13 @@ test('Web Push registra por consentimiento, recibe en el worker real y se revoca
     .click()
   await expect(
     page.getByText('Avisos web activados para esta cuenta.', { exact: true }),
+  ).toBeVisible()
+  await expect(
+    page
+      .getByRole('region', { name: 'Diagnóstico de notificaciones' })
+      .getByText('Web Push · suscripción activa para esta cuenta', {
+        exact: true,
+      }),
   ).toBeVisible()
   expect(registered).toBe(true)
   const worker = context
@@ -243,6 +251,43 @@ test('crear un recordatorio con notificaciones bloqueadas lo guarda y explica c�
   await expect(
     page.getByRole('status').filter({ hasText: 'Recordatorio guardado' }),
   ).toContainText('ajustes de este sitio')
+})
+
+test('diagnóstico distingue permiso de Web Push activo y explica pendientes y renovación', async ({
+  page,
+  context,
+}, testInfo) => {
+  await context.grantPermissions(['notifications'], {
+    origin: 'http://127.0.0.1:4177',
+  })
+  await login(page)
+  await ready(page)
+  const diagnostic = page.getByRole('region', {
+    name: 'Diagnóstico de notificaciones',
+  })
+  await diagnostic
+    .getByRole('button', { name: 'Comprobar estado de avisos' })
+    .click()
+  await expect(diagnostic.getByText('Permitido', { exact: true })).toBeVisible()
+  await expect(
+    diagnostic.getByText('Web Push inactivo · sin alarmas locales', {
+      exact: true,
+    }),
+  ).toBeVisible()
+  await expect(
+    diagnostic.getByText('El permiso por sí solo', { exact: false }),
+  ).toBeVisible()
+  await expect(
+    diagnostic.getByText('No son avisos programados en el dispositivo.', {
+      exact: false,
+    }),
+  ).toBeVisible()
+  await expect(
+    diagnostic.getByText('no es una alarma exacta', { exact: false }),
+  ).toBeVisible()
+  await diagnostic.screenshot({
+    path: testInfo.outputPath('notifications-diagnostics.png'),
+  })
 })
 
 test('manifest, iconos y caché contienen sólo archivos públicos de la aplicación', async ({
