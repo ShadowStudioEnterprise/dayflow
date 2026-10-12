@@ -29,6 +29,7 @@ Las guías describen el comportamiento implementado; las auditorías conservan o
 - [verification](verification.md)
 - [web-evaluation](web-evaluation.md)
 - [web-push](web-push.md)
+- [Métricas y alertas de Web Push](push-observability.md)
 
 - [Auditorías](audits/README.md)
 

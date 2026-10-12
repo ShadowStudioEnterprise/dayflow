@@ -1,0 +1,8 @@
+{
+  "imports": {
+    "@supabase/supabase-js": "./tests/fake-db.ts",
+    "@js-temporal/polyfill": "npm:@js-temporal/polyfill@0.5.1",
+    "rrule": "./rrule.ts",
+    "web-push": "./tests/fake-provider.ts"
+  }
+}

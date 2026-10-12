@@ -45,4 +45,4 @@ fallidas se muestran como estado desconocido, sin afirmar que hay cero pendiente
 - Programación nativa: aviso reconocido como pendiente por el sistema.
 - Aceptación Push: proveedor acepta el envío; no acredita visualización.
 
-Los estados displayed, interacted y expired de observabilidad son propuestas de la [auditoría](audits/2026-10-09.md), no garantías implementadas. Para ampliar garantías deben registrarse retrasos, expiraciones y resultados físicos con modelo, sistema, permisos, conectividad y fechas prevista/real.
+Los estados displayed e interacted siguen sin instrumentar. Las [métricas y alertas administrativas](push-observability.md) miden aceptación, fallos, retrasos hacia el proveedor, expiración de endpoints y vencimiento de ventana observado. No infieren visualización ni expiración del TTL dentro del proveedor; esos campos son `null`. Requieren desplegar la migración y el emisor nuevos. Los resultados físicos siguen necesitando evidencia con modelo, sistema, permisos, conectividad y fechas prevista/real.

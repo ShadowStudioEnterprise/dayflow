@@ -40,6 +40,13 @@ Conservar tombstones hasta tener acuse de sincronización de todos los dispositi
 
 `202610040005_web_push.sql` añade suscripciones y reservas de envío; sus RPC privilegiadas deben contrastarse con los permisos efectivos del entorno. Consulta [Web Push](web-push.md) y la [auditoría](audits/2026-10-09.md).
 
+## Observabilidad de Push y Cron
+
+`202610120007_push_observability.sql` incorpora ejecuciones, intentos, ticks,
+agregados horarios y alertas operativas de Web Push. Solo administración accede
+a estos objetos; las métricas no guardan contenido ni credenciales y no
+equiparan aceptación a visualización. Consulta [métricas y alertas](push-observability.md).
+
 ## Permisos explícitos de clientes
 
 `202610090006_security_privileges.sql` retira EXECUTE de `PUBLIC`, `anon` y `authenticated` en las cinco funciones trigger de alta, auditoría y validación. Mantiene los permisos de las RPC de cliente y de `service_role`. Los triggers siguen ejecutándose en su contexto de alta y actualización.

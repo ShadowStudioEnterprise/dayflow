@@ -109,11 +109,15 @@ begin
       headers := jsonb_build_object('Content-Type','application/json','Authorization',
         'Bearer ' || (select decrypted_secret from vault.decrypted_secrets where name = 'dayflow_push_cron_secret')),
       body := '{}'::jsonb, timeout_milliseconds := 55000) into v_request;
+    insert into public.push_cron_ticks(request_id,state) values(v_request,'queued');
+  else
+    insert into public.push_cron_ticks(state) values('idle');
   end if;
   return v_request;
 end $fn$;
 revoke all on function public.dayflow_invoke_push() from public, anon, authenticated;
 select cron.schedule('dayflow-web-push', '* * * * *', 'select public.dayflow_invoke_push()');
+select cron.schedule('dayflow-web-push-monitor', '* * * * *', 'select public.dayflow_monitor_push()');
 `
 mkdirSync('.toolchains', { recursive: true })
 const sqlPath = '.toolchains/push-deploy-secret.sql'
