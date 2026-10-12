@@ -32,4 +32,10 @@ Reinicio offline con editor cerrado: el usuario cerró de nuevo con Listo y, sin
 
 Siguiente ensayo solicitado: añadir «Control editor abierto» sin red, mantener el editor abierto, esperar el mensaje literal «Guardado en este dispositivo», reiniciar y comprobar esa edición sin red. **Pendiente de respuesta**. Si el mensaje no aparece, recoger el error antes de interpretar el ensayo. El texto perdido originalmente no se ha recuperado.
 
+Resultado confirmado el 13 de octubre de 2026: inicialmente el usuario no localizaba el estado de guardado. Tras indicar su posición en el editor, comunicó «Prueba correcta». Se aclaró explícitamente si había visto «Guardado en este dispositivo» y si, tras reiniciar sin red con el editor abierto, «Control editor abierto» permanecía en la nota; respondió «si». **Ensayo superado por comprobación manual del usuario** para ese recorrido.
+
+El fallo inicial no se ha reproducido en los controles con cierre explícito ni con editor abierto y guardado confirmado. No se modificó código ni se reinstaló entre esos controles. La causa del primer fallo permanece sin determinar: no se atribuye a una confusión del estado ni se presenta como corregida. El texto perdido originalmente no se recuperó. Esta investigación conserva el incidente y queda pendiente de reproducción si reaparece; los controles posteriores sí acreditan sus respectivos recorridos.
+
+Se solicita reconectar sin cerrar sesión, sincronizar hasta cero pendientes y comprobar ambos textos de control en la web. Resultado pendiente; no inferir renovación del token únicamente por una sesión restaurada tras un reinicio corto.
+
 Mantener este caso abierto hasta reproducir/localizar la causa, corregir si procede y repetir físicamente. No marcar recuperación de notas como superada sólo porque las suites de Chromium pasen. Registro principal: [Redmi 9A](2026-10-12-redmi-9a.md).
