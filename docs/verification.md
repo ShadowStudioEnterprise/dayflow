@@ -1,5 +1,9 @@
 # Verificación — Fases 1–9, incluida PWA y Capacitor
 
+## Calendario móvil — 12 de octubre de 2026
+
+[Revisión y evidencia](audits/2026-10-12-calendar-mobile.md): base `d3910ab`, 100 intentos con cuatro workers y 30 con uno, todos correctos, sin reintentos y con hashes de fuentes iguales antes/después. Se cierra el criterio de investigación por repeticiones controladas; no se afirma haber identificado o corregido una causa del calendario ni validado dispositivos físicos.
+
 ## Estado vigente de CI y despliegue — 12 de octubre de 2026
 
 Producción y CI corresponden a `main`, SHA
