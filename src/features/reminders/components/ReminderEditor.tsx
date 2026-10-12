@@ -1,16 +1,28 @@
 import { useEffect, useRef, useState } from 'react'
 import { useBlocker } from 'react-router-dom'
+import { Capacitor } from '@capacitor/core'
 import { Modal } from '../../../shared/components/Modal'
 import type { Reminder } from '../../../shared/types/domain'
 import { dateTimeFields, fromDateTimeFields } from '../../../shared/utils/dates'
 import { recurrencePresets } from '../../../shared/utils/recurrence'
-import type { ReminderService } from '../services/reminder-service'
+import {
+  normalizeReminder,
+  type ReminderService,
+} from '../services/reminder-service'
+import {
+  prepareReminderWebPush,
+  webPushActive,
+  webPushConfigured,
+  webPushPermission,
+  webPushUnavailable,
+} from '../../../services/notifications/web-push'
 
 export interface ReminderLink {
   value: string
   label: string
 }
 export function ReminderEditor({
+  userId,
   reminder,
   timezone,
   links,
@@ -19,6 +31,7 @@ export function ReminderEditor({
   onClose,
   onSuccess,
 }: {
+  userId: string
   reminder?: Reminder
   timezone: string
   links: ReminderLink[]
@@ -59,6 +72,45 @@ export function ReminderEditor({
     Boolean(rule && !recurrencePresets.some((item) => item.value === rule)),
   )
   const [enabled, setEnabled] = useState(initial?.notificationEnabled ?? true)
+  const web = !Capacitor.isNativePlatform() && webPushConfigured
+  const [permission, setPermission] = useState(webPushPermission)
+  const [pushActive, setPushActive] = useState<boolean>()
+  const [pushError, setPushError] = useState('')
+  useEffect(() => {
+    if (!web || !enabled) return
+    let disposed = false
+    const refresh = () => {
+      setPermission(webPushPermission())
+      if (webPushUnavailable()) return
+      void webPushActive(userId).then(
+        (active) => {
+          if (!disposed) {
+            setPushActive(active)
+            setPushError('')
+          }
+        },
+        () => {
+          if (!disposed) {
+            setPushActive(undefined)
+            setPushError(
+              'No se pudo comprobar la suscripción de este navegador.',
+            )
+          }
+        },
+      )
+    }
+    refresh()
+    if (!webPushUnavailable()) {
+      void navigator.serviceWorker.ready.then(() => {
+        if (!disposed) refresh()
+      })
+    }
+    window.addEventListener('focus', refresh)
+    return () => {
+      disposed = true
+      window.removeEventListener('focus', refresh)
+    }
+  }, [web, enabled, userId])
   const [busy, setBusy] = useState(false)
   const [error, setError] = useState('')
   const [discard, setDiscard] = useState(false)
@@ -155,9 +207,22 @@ export function ReminderEditor({
               eventId: type === 'event' ? id : undefined,
               noteId: type === 'note' ? id : undefined,
             }
-            return initial
+            // Validate before requesting permission, still within the save gesture.
+            normalizeReminder(draft)
+            const pushPreparation =
+              web && enabled
+                ? prepareReminderWebPush(userId)
+                : Promise.resolve(undefined)
+            const result = await (initial
               ? service.update(initial.id, draft, initial.version)
-              : service.create(draft)
+              : service.create(draft))
+            const pushWarning = await pushPreparation
+            return {
+              ...result,
+              warning:
+                [result.warning, pushWarning].filter(Boolean).join(' ') ||
+                undefined,
+            }
           }, 'Recordatorio guardado en este dispositivo.')
         }}
       >
@@ -281,6 +346,31 @@ export function ReminderEditor({
             />
             Solicitar aviso para este recordatorio
           </label>
+          {web && enabled && (
+            <div
+              className="notice"
+              aria-label="Estado de avisos de este navegador"
+            >
+              <p>
+                {permission === 'denied'
+                  ? 'Notificaciones bloqueadas. Permítelas en los ajustes de este sitio del navegador. El recordatorio se guardará sin activar avisos en este navegador.'
+                  : permission === 'default'
+                    ? 'Permiso de notificaciones pendiente. Se solicitará al guardar el recordatorio.'
+                    : permission === 'granted'
+                      ? 'Permiso de notificaciones permitido.'
+                      : 'Este navegador no ofrece permiso de notificaciones.'}
+              </p>
+              <p>
+                {webPushUnavailable() ||
+                  pushError ||
+                  (pushActive === undefined
+                    ? 'Comprobando suscripción de esta cuenta…'
+                    : pushActive
+                      ? 'Suscripción de avisos activa para esta cuenta.'
+                      : 'Suscripción de avisos inactiva. Si concedes el permiso, se intentará activar al guardar.')}
+              </p>
+            </div>
+          )}
           <p className="muted small">
             Se conserva la hora local de esta zona en cada repetición. Editar o
             eliminar afecta a toda la serie. La asociación no cambia la fecha ni

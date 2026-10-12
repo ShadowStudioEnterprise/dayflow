@@ -9,12 +9,19 @@ const unsubscribe = vi.fn(async () => {
 })
 const rpc = vi.fn(async () => ({ error: null }))
 const revoke = vi.fn(async () => ({ error: { message: 'offline' } }))
+const registeredSubscription = vi.fn(async () => ({
+  data: { id: 'subscription' },
+  error: null,
+}))
 const client = {
   auth: {
     getSession: async () => ({ data: { session: { user: { id: userId } } } }),
   },
   rpc,
-  from: () => ({ delete: () => ({ eq: () => ({ abortSignal: revoke }) }) }),
+  from: () => ({
+    delete: () => ({ eq: () => ({ abortSignal: revoke }) }),
+    select: () => ({ eq: () => ({ maybeSingle: registeredSubscription }) }),
+  }),
 }
 vi.mock('../supabase/client', () => ({ requireSupabase: () => client }))
 const subscription = () => ({
@@ -184,4 +191,50 @@ it('el permiso concedido sin suscripción no equivale a avisos activos', async (
   owner = userId
   expect(webPushPermission()).toBe('granted')
   expect(await webPushActive(userId)).toBe(false)
+})
+
+it('preparar un recordatorio solicita permiso pendiente desde el gesto y registra avisos', async () => {
+  vi.stubGlobal('Notification', {
+    permission: 'default',
+    requestPermission: vi.fn(async () => 'granted'),
+  })
+  const { prepareReminderWebPush } = await import('./web-push')
+  const pending = prepareReminderWebPush(userId)
+  expect(Notification.requestPermission).toHaveBeenCalledOnce()
+  expect(await pending).toBeUndefined()
+  expect(rpc).toHaveBeenCalledOnce()
+})
+
+it('preparar un recordatorio conserva la suscripción ya activa', async () => {
+  owner = userId
+  sub = subscription()
+  const { prepareReminderWebPush } = await import('./web-push')
+  expect(await prepareReminderWebPush(userId)).toBeUndefined()
+  expect(rpc).not.toHaveBeenCalled()
+  expect(Notification.requestPermission).not.toHaveBeenCalled()
+})
+
+it('preparar un recordatorio con permiso pero sin suscripción registra el navegador', async () => {
+  const { prepareReminderWebPush } = await import('./web-push')
+  expect(await prepareReminderWebPush(userId)).toBeUndefined()
+  expect(rpc).toHaveBeenCalledOnce()
+  expect(Notification.requestPermission).not.toHaveBeenCalled()
+})
+
+it('el permiso bloqueado devuelve una advertencia para guardar el recordatorio', async () => {
+  vi.stubGlobal('Notification', {
+    permission: 'denied',
+    requestPermission: vi.fn(),
+  })
+  const { prepareReminderWebPush } = await import('./web-push')
+  expect(await prepareReminderWebPush(userId)).toContain(
+    'ajustes de este sitio',
+  )
+  expect(rpc).not.toHaveBeenCalled()
+})
+
+it('el fallo de alta devuelve una advertencia para guardar el recordatorio', async () => {
+  rpc.mockResolvedValueOnce({ error: { message: 'offline' } } as never)
+  const { prepareReminderWebPush } = await import('./web-push')
+  expect(await prepareReminderWebPush(userId)).toContain('No se pudo registrar')
 })

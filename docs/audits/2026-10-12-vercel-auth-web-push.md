@@ -182,3 +182,18 @@ Validación de la corrección: 10 pruebas del servicio y 4 E2E PWA de Web Push
 Las pruebas PWA usan el worker real con suscripción/HTTP simulados; la recepción
 física ya documentada corresponde al despliegue anterior a esta corrección.
 Los cambios de interfaz y permisos permanecen en la rama, sin publicar.
+
+## Permisos desde la creación del recordatorio
+
+El usuario precisa que la comprobación debe ocurrir al crear el recordatorio.
+El editor muestra permiso y suscripción por separado cuando se solicita aviso.
+Al guardar valida el borrador y, desde ese mismo gesto, solicita un permiso
+pendiente y registra Web Push si falta la suscripción de esta cuenta. Conserva
+la suscripción ya activa. Un bloqueo o fallo de alta se convierte en advertencia
+sin impedir el guardado local. Al editar se aplica la misma comprobación; sin
+aviso solicitado no se pide permiso. La plataforma nativa conserva su flujo.
+
+Validación: 15 pruebas del servicio y 8 E2E PWA (escritorio y vista móvil)
+superados, incluidos creación con permiso pendiente y guardado con permiso
+bloqueado. TypeScript y lint correctos. Las suscripciones y HTTP de estos E2E
+son simulados y el worker es real; no se ha publicado esta ampliación en Vercel.

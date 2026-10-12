@@ -187,6 +187,24 @@ export async function enableWebPush(userId: string) {
     }
   })
 }
+// Call from the save gesture, before awaiting storage or network work.
+// Notification failures must not prevent saving the reminder itself.
+export async function prepareReminderWebPush(
+  userId: string,
+): Promise<string | undefined> {
+  try {
+    const unavailable = webPushUnavailable()
+    if (unavailable) return unavailable
+    if (Notification.permission === 'granted' && (await webPushActive(userId)))
+      return undefined
+    await enableWebPush(userId)
+    return undefined
+  } catch (error) {
+    return error instanceof Error
+      ? error.message
+      : 'No se pudieron activar los avisos web para este navegador.'
+  }
+}
 export async function disableWebPush() {
   if (!('serviceWorker' in navigator) || !('PushManager' in window)) return
   return locked(disableUnsafe)
