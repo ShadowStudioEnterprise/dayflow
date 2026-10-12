@@ -64,15 +64,26 @@ Publicada el 4 de octubre de 2026:
   Sin errores JavaScript en esos recorridos.
 
 El dominio estable permite cargar la web sin una cuenta de Vercel; los datos
-personales requieren la sesión de Dayflow. No se repitieron el envío y la
-recepción manual de correos ni el alta y entrega de notificaciones en el nuevo
-dominio. El acceso anterior de Sites sigue disponible con su audiencia privada.
+personales requieren la sesión de Dayflow. En la publicación inicial no se
+repitieron los correos ni las notificaciones en el nuevo dominio. El 12 de
+octubre el usuario confirmó registro/confirmación, recuperación, rechazo de la
+contraseña anterior en Vercel y, después de activar la suscripción, recepción
+y apertura del aviso de las 02:16. Supabase registra aceptación del proveedor
+en un intento; véase [el registro de validación](audits/2026-10-12-vercel-auth-web-push.md).
+El acceso anterior de Sites sigue disponible con su audiencia privada.
 
 La primera compilación remota falló porque una exclusión `supabase` también
 omitía `src/services/supabase`. Se corrigió a `/supabase/` antes de la publicación
 verificada. La vinculación local se guarda en `.vercel/`, excluida de Git.
 
 ## Referencias
+
+La repetición de Auth y Web Push en el dominio final se registra en
+[la revisión del 12 de octubre](audits/2026-10-12-vercel-auth-web-push.md).
+`npm run test:vercel` repite las comprobaciones públicas de rutas, formularios y
+workers contra producción; los resultados de Auth se acreditan mediante la
+confirmación manual del usuario; recepción y apertura del aviso de las 02:16
+también quedaron confirmadas, junto con el registro remoto de envío.
 
 - [Vite en Vercel](https://vercel.com/docs/frameworks/frontend/vite)
 - [Configuración de Vercel](https://vercel.com/docs/project-configuration/vercel-json)

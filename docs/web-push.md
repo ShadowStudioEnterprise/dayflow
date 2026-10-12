@@ -14,6 +14,22 @@ El aviso muestra un mensaje genérico, sin título ni descripción del recordato
 
 ## Envío y límites
 
+La activación comprueba primero el permiso de notificaciones: si está pendiente,
+lo solicita al pulsar el botón; si ya está concedido, registra la suscripción sin
+repetir la solicitud; si está bloqueado, indica cómo permitirlo en los ajustes
+del sitio. Configuración muestra el permiso separado del estado de avisos:
+«permitido» todavía requiere activar y registrar este navegador para la cuenta.
+El permiso se vuelve a consultar al regresar a la ventana y tras la activación.
+
+Al crear o editar un recordatorio con **Solicitar aviso para este recordatorio**,
+el editor muestra permiso y suscripción de la cuenta por separado. Al guardar,
+solicita el permiso pendiente desde ese clic e intenta registrar el navegador
+si falta la suscripción. Una suscripción ya activa se conserva. Si el permiso
+está bloqueado o el alta falla, guarda el recordatorio con una advertencia y
+explica cómo habilitar notificaciones; no presenta el aviso como activado.
+Sin aviso solicitado no se pide permiso ni se activa Web Push. Esta comprobación
+es de la versión web; la programación nativa conserva su flujo propio.
+
 En el equipo Windows probado, Chrome 154 termina todos sus procesos al cerrar la última ventana, aunque el usuario tenga activada la opción de segundo plano. Se comprobó con una consulta de procesos tras el cierre. En esta configuración hay que mantener Chrome ejecutándose, por ejemplo con una ventana minimizada; la entrega con el navegador detenido no está disponible. Dayflow no incorpora actualmente una integración nativa de notificaciones para Windows.
 
 - En Chrome de escritorio, cerrar la página de Dayflow y detener por completo el navegador son situaciones distintas: la recepción requiere que Chrome siga ejecutándose, aunque no tenga ventanas abiertas ([FAQ de Web Push de Google](https://web.dev/articles/push-notifications-faq)). En Windows se puede revisar `chrome://settings/system` y la opción de continuar ejecutando aplicaciones en segundo plano. El [modo de segundo plano](https://chromeenterprise.google/policies/background-mode-enabled/) permite mantener un proceso tras cerrar la última ventana; debe comprobarse en el equipo y repetir la prueba. Dayflow no puede habilitarlo desde la web ni garantizar entrega si Chrome termina o Windows se suspende.
@@ -56,6 +72,13 @@ select jobname, schedule, active from cron.job where jobname = 'dayflow-web-push
 Los cambios del motor de recurrencias requieren volver a desplegar `push-dispatch`, además de compilar la web. El adaptador `rrule.ts` resuelve la entrada UMD de npm en Deno; Vite conserva la entrada ESM. La función puede comprobarse con `deno check --config supabase/functions/push-dispatch/deno.json supabase/functions/push-dispatch/index.ts`.
 
 ## Verificación
+
+En el dominio final de Vercel, el worker publicado y la comprobación de
+actualizaciones se verificaron de nuevo el 12 de octubre de 2026 con
+`npm run test:vercel`. Tras activar la suscripción, el usuario confirmó recepción
+y apertura del aviso real de las 02:16 en ese dominio. Supabase registra
+aceptación del proveedor a las 02:16:00.642 en un intento; consultar
+[el registro específico de Auth y Web Push](audits/2026-10-12-vercel-auth-web-push.md).
 
 Se comprobaron las políticas SQL, límites, reservas y rechazo de versiones antiguas; consentimiento, revocación offline y cambios de cuenta; descarte de cargas malformadas, antiguas o ajenas y navegación local. Las pruebas PWA usan el worker de producción, IndexedDB y Notifications de Chromium, con suscripción/HTTP simulados y un evento Push inyectado.
 
