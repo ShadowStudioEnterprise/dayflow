@@ -36,6 +36,6 @@ Resultado confirmado el 13 de octubre de 2026: inicialmente el usuario no locali
 
 El fallo inicial no se ha reproducido en los controles con cierre explícito ni con editor abierto y guardado confirmado. No se modificó código ni se reinstaló entre esos controles. La causa del primer fallo permanece sin determinar: no se atribuye a una confusión del estado ni se presenta como corregida. El texto perdido originalmente no se recuperó. Esta investigación conserva el incidente y queda pendiente de reproducción si reaparece; los controles posteriores sí acreditan sus respectivos recorridos.
 
-Se solicita reconectar sin cerrar sesión, sincronizar hasta cero pendientes y comprobar ambos textos de control en la web. Resultado pendiente; no inferir renovación del token únicamente por una sesión restaurada tras un reinicio corto.
+Reconexión de los controles, confirmada el 13 de octubre: el usuario respondió «Conserva la sesión, sincroniza y ambos textos aparecen en la web» al procedimiento de sincronizar hasta cero pendientes sin cerrar sesión. **Superado manualmente** para los dos textos de control. No acredita recuperación del texto perdido inicialmente ni renovación del token tras caducidad.
 
 Mantener este caso abierto hasta reproducir/localizar la causa, corregir si procede y repetir físicamente. No marcar recuperación de notas como superada sólo porque las suites de Chromium pasen. Registro principal: [Redmi 9A](2026-10-12-redmi-9a.md).
