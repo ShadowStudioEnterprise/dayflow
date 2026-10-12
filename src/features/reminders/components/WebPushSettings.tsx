@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { notificationStateChangedEvent } from '../../../services/notifications/types'
 import {
   disableWebPush,
   enableWebPush,
@@ -29,12 +30,17 @@ export function WebPushSettings({ userId }: { userId: string }) {
         })
     }
     refresh()
+    if (!unavailable) {
+      void navigator.serviceWorker.ready.then(() => {
+        if (!disposed) refresh()
+      })
+    }
     window.addEventListener('focus', refresh)
     return () => {
       disposed = true
       window.removeEventListener('focus', refresh)
     }
-  }, [userId])
+  }, [userId, unavailable])
   const toggle = async (enabled: boolean) => {
     setBusy(true)
     setError('')
@@ -50,6 +56,7 @@ export function WebPushSettings({ userId }: { userId: string }) {
       )
     } finally {
       setBusy(false)
+      window.dispatchEvent(new Event(notificationStateChangedEvent))
     }
   }
   return (

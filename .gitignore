@@ -19,6 +19,7 @@ dist-pwa-test
 !.env.example
 test-results/
 test-results-pwa/
+test-results-vercel/
 playwright-report/
 supabase/.temp/
 supabase/.branches/
