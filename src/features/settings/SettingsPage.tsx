@@ -9,13 +9,14 @@ import { NotificationSettings } from '../reminders/components/NotificationSettin
 import { SyncSettings } from '../sync/SyncSettings'
 import { InstallationSettings } from './InstallationSettings'
 import '../reminders/reminders.css'
+import { supportedTimezones } from '../../shared/utils/timezones'
 
 export default function SettingsPage() {
   const preferences = usePreferences()
   const { user } = useAuth()
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
-  const timezones = Intl.supportedValuesOf('timeZone')
+  const timezones = supportedTimezones()
   const logout = async () => {
     setBusy(true)
     setError('')

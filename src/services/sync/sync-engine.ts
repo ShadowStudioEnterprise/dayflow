@@ -4,6 +4,7 @@ import { createRepository } from '../database/repository'
 import type { EntityMap, SyncOperation } from '../../shared/types/domain'
 import { ConflictResolver } from './conflict-resolver'
 import { classifySyncError } from './supabase-transport'
+import { throwIfAborted } from '../../shared/utils/abort'
 import {
   entityNames,
   type RemoteChange,
@@ -24,7 +25,7 @@ export async function exclusive<T>(
   const result = (queues.get(name) ?? Promise.resolve())
     .catch(() => {})
     .then(() => {
-      signal.throwIfAborted()
+      throwIfAborted(signal)
       return work()
     })
   queues.set(
@@ -92,7 +93,7 @@ export class SyncEngine {
     this.db = db
   }
   private check() {
-    this.controller.signal.throwIfAborted()
+    throwIfAborted(this.controller.signal)
   }
   private async checkpoint(patch: Partial<SyncCheckpoint>) {
     this.check()

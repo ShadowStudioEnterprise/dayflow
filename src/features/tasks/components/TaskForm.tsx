@@ -11,6 +11,7 @@ import {
 } from '../schemas/task-form'
 import { recurrencePresets } from '../../../shared/utils/recurrence'
 import { priorities, statuses } from '../task-options'
+import { supportedTimezones } from '../../../shared/utils/timezones'
 
 export function TaskForm({
   task,
@@ -153,15 +154,11 @@ export function TaskForm({
           <label>
             Zona horaria
             <select {...register('timezone')} disabled={recurrenceLocked}>
-              {[
-                ...new Set([
-                  selectedZone,
-                  'UTC',
-                  ...Intl.supportedValuesOf('timeZone'),
-                ]),
-              ].map((zone) => (
-                <option key={zone}>{zone}</option>
-              ))}
+              {[...new Set([selectedZone, 'UTC', ...supportedTimezones()])].map(
+                (zone) => (
+                  <option key={zone}>{zone}</option>
+                ),
+              )}
             </select>
             {message('timezone')}
           </label>

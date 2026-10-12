@@ -20,6 +20,93 @@ async function sync(page: Page) {
     page.getByText('Sincronización completada.', { exact: true }),
   ).toBeVisible()
 }
+test('formularios y Sync funcionan sin APIs recientes de WebView', async ({
+  page,
+  context,
+  browser,
+}) => {
+  await context.addInitScript(() => {
+    Object.defineProperty(Intl, 'supportedValuesOf', {
+      value: undefined,
+      configurable: true,
+    })
+    Object.defineProperty(AbortSignal, 'any', {
+      value: undefined,
+      configurable: true,
+    })
+    Object.defineProperty(AbortSignal, 'timeout', {
+      value: undefined,
+      configurable: true,
+    })
+    Object.defineProperty(AbortSignal.prototype, 'throwIfAborted', {
+      value: undefined,
+      configurable: true,
+    })
+  })
+  const backend = await createSyncBackend()
+  const other = await browser.newContext({ baseURL: 'http://127.0.0.1:4175' })
+  const errors: string[] = []
+  page.on('pageerror', (error) => errors.push(error.message))
+  try {
+    await backend.connect(context)
+    await backend.connect(other)
+    await login(page, undefined, { sync: true })
+    await page.goto('/settings')
+    await page.getByLabel('Zona horaria').selectOption('Europe/Madrid')
+    await page.goto('/tasks')
+    await page.getByRole('button', { name: 'Nueva tarea', exact: true }).click()
+    await page
+      .getByLabel('Título', { exact: true })
+      .fill('Compatible con WebView antiguo')
+    await page.getByRole('button', { name: 'Crear tarea', exact: true }).click()
+    await expect(page.getByRole('dialog')).toHaveCount(0)
+    await page.goto('/calendar?day=2026-09-24')
+    await page
+      .getByRole('button', { name: 'Nuevo evento', exact: true })
+      .click()
+    await expect(
+      page.getByRole('combobox', { name: /^Zona horaria/ }),
+    ).toHaveValue('Europe/Madrid')
+    await page.getByRole('button', { name: 'Cancelar', exact: true }).click()
+    await page.goto('/reminders')
+    await page
+      .getByRole('button', { name: 'Nuevo recordatorio', exact: true })
+      .click()
+    await expect(
+      page.getByRole('combobox', { name: /^Zona horaria/ }),
+    ).toHaveValue('Europe/Madrid')
+    await page.getByRole('button', { name: 'Cancelar', exact: true }).click()
+    await sync(page)
+    const second = await other.newPage()
+    await login(second, undefined, { sync: true })
+    await sync(second)
+    await second.goto('/tasks')
+    await expect(
+      second.getByRole('button', {
+        name: 'Abrir tarea Compatible con WebView antiguo',
+        exact: true,
+      }),
+    ).toBeVisible()
+    await second
+      .getByLabel('Título de la nueva tarea')
+      .fill('Respuesta del segundo cliente')
+    await second.getByLabel('Título de la nueva tarea').press('Enter')
+    await sync(second)
+    await sync(page)
+    await page.goto('/tasks')
+    await expect(
+      page.getByRole('button', {
+        name: 'Abrir tarea Respuesta del segundo cliente',
+        exact: true,
+      }),
+    ).toBeVisible()
+    expect(errors).toEqual([])
+  } finally {
+    await other.close()
+    await backend.close()
+  }
+})
+
 test('dos dispositivos convergen, recuperan cambios offline y transmiten borrados', async ({
   page,
   context,

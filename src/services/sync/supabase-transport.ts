@@ -3,6 +3,7 @@ import { ZodError } from 'zod'
 import type { SyncOperation } from '../../shared/types/domain'
 import type { SyncTransport } from './types'
 import { decodePage, decodeReceipt, encodeOperation } from './codec'
+import { throwIfAborted, withAbortTimeout } from '../../shared/utils/abort'
 
 export class SyncFailure extends Error {
   readonly kind: 'transient' | 'auth' | 'permanent' | 'setup'
@@ -56,32 +57,42 @@ export class SupabaseSyncTransport implements SyncTransport {
     this.userId = userId
   }
   private async check(signal: AbortSignal) {
-    signal.throwIfAborted()
+    throwIfAborted(signal)
     const { data, error } = await this.client.auth.getSession()
     if (error || data.session?.user.id !== this.userId)
       throw new SyncFailure(
         'La sesión cambió; se ha detenido la sincronización.',
         'auth',
       )
-    signal.throwIfAborted()
+    throwIfAborted(signal)
   }
   async push(operation: SyncOperation, signal: AbortSignal) {
     await this.check(signal)
     if (operation.userId !== this.userId)
       throw new SyncFailure('Operación de otra cuenta.', 'permanent')
-    const { data, error } = await this.client
-      .rpc('dayflow_apply_operation', {
-        p_operation: encodeOperation(operation),
-      })
-      .abortSignal(AbortSignal.any([signal, AbortSignal.timeout(15000)]))
+    const { data, error } = await withAbortTimeout(
+      signal,
+      15000,
+      (requestSignal) =>
+        this.client
+          .rpc('dayflow_apply_operation', {
+            p_operation: encodeOperation(operation),
+          })
+          .abortSignal(requestSignal),
+    )
     if (error) throw classifySyncError(error)
     return decodeReceipt(data, this.userId)
   }
   async pull(cursor: string, signal: AbortSignal) {
     await this.check(signal)
-    const { data, error } = await this.client
-      .rpc('dayflow_pull', { p_after: cursor, p_limit: 100 })
-      .abortSignal(AbortSignal.any([signal, AbortSignal.timeout(15000)]))
+    const { data, error } = await withAbortTimeout(
+      signal,
+      15000,
+      (requestSignal) =>
+        this.client
+          .rpc('dayflow_pull', { p_after: cursor, p_limit: 100 })
+          .abortSignal(requestSignal),
+    )
     if (error) throw classifySyncError(error)
     return decodePage(data, this.userId)
   }
