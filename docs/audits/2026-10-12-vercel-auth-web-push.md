@@ -1,7 +1,8 @@
 # Autenticación y Web Push en el dominio final de Vercel
 
-Estado: **pendiente de prueba manual**. La evidencia de Sites del 4 de octubre
-no cierra los criterios del dominio final.
+Estado: **confirmación superada; recuperación, contraseña anterior y Web Push
+pendientes de prueba manual**. La evidencia de Sites del 4 de octubre no cierra
+los criterios del dominio final.
 
 - Fecha: 12 de octubre de 2026, Europe/Madrid.
 - Origen probado: <https://dayflow-by-shadowstudio.vercel.app>.
@@ -67,14 +68,16 @@ desde el registro. Esta corrección todavía no está publicada en Vercel.
 Continuar con recuperación y Web Push en la cuenta existente. El usuario ha
 acordado otra dirección para confirmación. La consulta administrativa de esa
 segunda cuenta muestra creación el 12 de octubre de 2026 a las 01:59
-Europe/Madrid y email confirmado. Falta el resultado manual que acredite correo
-recibido, enlace abierto desde el mismo perfil y regreso al dominio final con
-acceso. No se ha creado, confirmado ni eliminado ninguna cuenta mediante Admin
-API durante esta revisión.
+Europe/Madrid y email confirmado. El usuario confirma después que recibió el
+correo, abrió el enlace y regresó a Vercel con acceso. Con este resultado manual
+y el estado remoto, la confirmación queda superada en el dominio final. No se
+comunicaron por separado hora de recepción, carpeta ni perfil del navegador.
+No se ha creado, confirmado ni eliminado ninguna cuenta mediante Admin API
+durante esta revisión.
 
 | Caso                | Estado en Vercel | Evidencia necesaria                                                                                                                                                |
 | ------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Confirmación        | Pendiente        | Registro sin confirmación administrativa, correo recibido y enlace canjeado en el mismo perfil; regreso a Vercel con acceso                                        |
+| Confirmación        | Superado         | Usuario confirma recepción del correo, apertura del enlace y regreso a Vercel con acceso; nueva cuenta confirmada en Supabase, sin confirmación administrativa     |
 | Recuperación        | Pendiente        | Correo recibido, regreso a `/auth/update-password` en Vercel, cambio guardado e inicio de sesión con la nueva contraseña                                           |
 | Contraseña anterior | Pendiente        | Intento de inicio de sesión nuevo tras el cambio rechazado con la contraseña anterior                                                                              |
 | Web Push            | Pendiente        | Alta en Vercel, recordatorio sincronizado, recepción física con las pestañas de Dayflow cerradas y navegador ejecutándose; clic que abre el recordatorio en Vercel |
