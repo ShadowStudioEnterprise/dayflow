@@ -44,3 +44,9 @@ Se ejecutan las migraciones completas en PostgreSQL embebido PGlite con defaults
 Resultados de esta rama: **299/299 pruebas unitarias en 47 archivos**, incluidas **21/21 pruebas dirigidas de SQL, Sync y Push**. `npm run typecheck`, `npm run lint`, `npm run docs:check`, `npm run test:docs` (3/3), formato de archivos afectados y `git diff --check`, correctos. El script adversarial HTTP se actualiza para exigir el código y mensaje uniformes de la migración 7; `node --check scripts/audit-supabase-api.mjs` pasa, pero no se ejecuta contra el backend alojado.
 
 Criterio de esta tarea: decisiones documentadas y cambios aplicados al repositorio. No se despliega la migración al proyecto alojado; las auditorías remotas históricas no prueban este cambio. No se certifican carreras reales, rate limiting, carga en producción ni entrega física de avisos. Para desplegar, aplicar las migraciones pendientes en orden y repetir las pruebas con JWT reales y la suite local Docker.
+
+## Estado del despliegue
+
+**Pendiente de aplicar en Supabase alojado:** `202610120007_sync_hardening.sql`. La integración de esta rama en `dev` incorpora código y documentación al repositorio; no ejecuta la migración ni acredita que el backend remoto tenga estas correcciones.
+
+El cierre del despliegue requiere aplicar las migraciones pendientes en orden, verificar el historial y los permisos efectivos del backend, y repetir las pruebas adversariales con JWT reales y la suite local Docker. Hasta entonces, las 299 pruebas aprobadas corresponden a validación local, y los resultados remotos anteriores corresponden a las migraciones anteriores.
