@@ -1,5 +1,7 @@
 # Auditorías
 
+- [Estado de CI y producción del 12 de octubre de 2026](2026-10-12-ci-deployment.md): SHA común de CI y Vercel, tres jobs correctos, producción READY, fechas e instantáneas de evidencia. Actualización documental cerrada; alcance separado de Auth/Push manual y cambios posteriores en dev.
+
 - [Versiones, fechas cliente, invocación y SQL](2026-10-12-sql-hardening.md): decisiones SQL-01/02/03/04/06 y migración aditiva con validación local.
 
 - [Capacidad y recuperación de notificaciones](../notification-capacity.md): 26 pruebas, 78 perfiles de emisor y recuperación medida en dos versiones. Cupo de 60, fronteras de cinco minutos, DST, fallos parciales y límite blando de 45 segundos documentados con datos.

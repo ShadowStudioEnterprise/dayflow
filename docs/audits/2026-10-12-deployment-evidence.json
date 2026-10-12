@@ -1,0 +1,99 @@
+{
+  "source": "Vercel MCP get_deployment + list_deployment_events (read-only)",
+  "observed_at": "2026-10-12T03:10:21.417Z",
+  "deployment": {
+    "id": "dpl_BBsU3TZUtcfzmt7ijJFC1fLreFTA",
+    "url": "dayflow-4rc1qhw07-shadow-studio3.vercel.app",
+    "project": {
+      "id": "prj_fpBaMferBZRyCQU5U8H67MF4IiKB",
+      "name": "dayflow",
+      "framework": "vite"
+    },
+    "meta": {
+      "githubCommitRef": "main",
+      "githubCommitSha": "b7b2a69c2cab8c8c630783a0c7b3585f0a9597d6",
+      "githubCommitMessage": "Merge pull request #7 from ShadowStudioEnterprise/dev\n\nrelease: validar Auth y permisos Push e incorporar ensayos de capacidad",
+      "githubRepo": "dayflow",
+      "githubOrg": "ShadowStudioEnterprise"
+    },
+    "alias": [
+      "dayflow-by-shadowstudio.vercel.app",
+      "dayflow-shadow-studio3.vercel.app",
+      "dayflow-git-main-shadow-studio3.vercel.app"
+    ],
+    "target": "production",
+    "state": "READY",
+    "source": "git",
+    "created_at": "2026-10-12T02:05:41.188Z",
+    "building_at": "2026-10-12T02:05:42.523Z",
+    "ready_at": "2026-10-12T02:06:24.015Z"
+  },
+  "build_log_excerpt": [
+    {
+      "date": 1791770742353,
+      "text": "Cloning github.com/ShadowStudioEnterprise/dayflow (Branch: main, Commit: b7b2a69)"
+    },
+    {
+      "date": 1791770745836,
+      "text": "Warning: Detected \"engines\": { \"node\": \">=24.0.0\" } in your `package.json` that will automatically upgrade when a new major Node.js Version is released. Learn More: https://vercel.link/node-version"
+    },
+    {
+      "date": 1791770758916,
+      "text": "npm warn deprecated glob@11.1.0: Old versions of glob are not supported, and contain widely publicized security vulnerabilities, which have been fixed in the current version. Please update. Support for old versions may be purchased (at exorbitant rates) by contacting i@izs.me"
+    },
+    {
+      "date": 1791770765851,
+      "text": "5 vulnerabilities (2 moderate, 3 high)"
+    },
+    {
+      "date": 1791770766613,
+      "text": "> tsc -b && vite build"
+    },
+    {
+      "date": 1791770779828,
+      "text": "\u001b[32m✓ built in 1.78s\u001b[39m"
+    },
+    {
+      "date": 1791770782535,
+      "text": "precache  74 entries (1729.72 KiB)"
+    },
+    {
+      "date": 1791770782917,
+      "text": "Build Completed in /vercel/output [37s]"
+    },
+    {
+      "date": 1791770784186,
+      "text": "Deployment completed"
+    }
+  ],
+  "ci_log_excerpts": [
+    {
+      "job_id": 114633904814,
+      "source": "https://github.com/ShadowStudioEnterprise/dayflow/actions/runs/38194437521/job/114633904814",
+      "lines": [
+        "2026-10-12T02:05:44.8591917Z node: v24.21.0",
+        "2026-10-12T02:05:44.8592389Z npm: 11.19.0",
+        "2026-10-12T02:06:56.6282216Z  Test Files  47 passed (47)",
+        "2026-10-12T02:06:56.6286221Z       Tests  296 passed (296)"
+      ]
+    },
+    {
+      "job_id": 114633904950,
+      "source": "https://github.com/ShadowStudioEnterprise/dayflow/actions/runs/38194437521/job/114633904950",
+      "lines": [
+        "2026-10-12T02:05:45.8989094Z node: v24.21.0",
+        "2026-10-12T02:05:45.8990800Z npm: 11.19.0",
+        "2026-10-12T02:07:13.0269088Z   20 passed (53.1s)"
+      ]
+    },
+    {
+      "job_id": 114633904971,
+      "source": "https://github.com/ShadowStudioEnterprise/dayflow/actions/runs/38194437521/job/114633904971",
+      "lines": [
+        "2026-10-12T02:05:46.0556242Z node: v24.21.0",
+        "2026-10-12T02:05:46.0556820Z npm: 11.19.0",
+        "2026-10-12T02:14:01.9179949Z   106 passed (7.6m)"
+      ]
+    }
+  ]
+}

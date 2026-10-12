@@ -2,6 +2,13 @@
 
 Versión del proyecto 0.9.0 · Documento 1.0 · 9 de octubre de 2026
 
+Este dossier conserva la revisión histórica fechada. El [estado vigente de CI y
+producción del 12 de octubre](audits/2026-10-12-ci-deployment.md) registra `main`
+en `b7b2a69c2cab8c8c630783a0c7b3585f0a9597d6`, CI correcto (296 unitarias,
+106 E2E, 20 PWA) y Vercel READY desde las 04:06:24.015 Europe/Madrid.
+Las referencias a ausencia de CI o a resultados antiguos debajo pertenecen
+al alcance original; no describen el estado vigente.
+
 Dayflow reúne notas, tareas, calendario y recordatorios en una aplicación personal con almacenamiento local, sincronización mediante Supabase y distribución web, PWA y móvil. Este documento describe la implementación, sus contratos de datos, los procedimientos de desarrollo y operación y las validaciones disponibles. Su finalidad es servir como base técnica para mantenimiento, incorporación de desarrolladores y preparación de la documentación definitiva del producto.
 
 Las nueve fases del plan original están implementadas como base de desarrollo. La web tiene una publicación documentada en Vercel; Android dispone de compilaciones de desarrollo y pruebas en emulador; iOS dispone de un proyecto generado y sincronizado, con compilación y ejecución física pendientes. La validación de entrega de notificaciones depende de la plataforma y del estado real del navegador o dispositivo.

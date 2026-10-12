@@ -2,6 +2,8 @@
 
 Las guías describen el comportamiento implementado; las auditorías conservan observaciones y propuestas fechadas. Los resultados históricos no certifican el commit actual.
 
+- [Estado vigente de CI y producción · 12/10/2026](audits/2026-10-12-ci-deployment.md): SHA, fechas, resultados y evidencia conservada.
+
 - [Portada del portal](index.md)
 - [Publicar el portal](portal-deployment.md)
 
