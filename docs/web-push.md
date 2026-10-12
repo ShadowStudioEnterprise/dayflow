@@ -59,7 +59,8 @@ Los cambios del motor de recurrencias requieren volver a desplegar `push-dispatc
 
 En el dominio final de Vercel, el worker publicado y la comprobación de
 actualizaciones se verificaron de nuevo el 12 de octubre de 2026 con
-`npm run test:vercel`. La entrega física permanece pendiente; consultar
+`npm run test:vercel`. El usuario confirmó también recepción y apertura de un
+aviso real en ese dominio; consultar
 [el registro específico de Auth y Web Push](audits/2026-10-12-vercel-auth-web-push.md).
 
 Se comprobaron las políticas SQL, límites, reservas y rechazo de versiones antiguas; consentimiento, revocación offline y cambios de cuenta; descarte de cargas malformadas, antiguas o ajenas y navegación local. Las pruebas PWA usan el worker de producción, IndexedDB y Notifications de Chromium, con suscripción/HTTP simulados y un evento Push inyectado.

@@ -1,8 +1,9 @@
 # Autenticación y Web Push en el dominio final de Vercel
 
-Estado: **confirmación superada; recuperación, contraseña anterior y Web Push
-pendientes de prueba manual**. La evidencia de Sites del 4 de octubre no cierra
-los criterios del dominio final.
+Estado: **superado; cuatro criterios de cierre comprobados en Vercel**.
+El cierre utiliza los resultados manuales comunicados el 12 de octubre,
+además de las comprobaciones públicas; la evidencia de Sites se conserva como
+histórico separado.
 
 - Fecha: 12 de octubre de 2026, Europe/Madrid.
 - Origen probado: <https://dayflow-by-shadowstudio.vercel.app>.
@@ -65,7 +66,7 @@ respuesta sin sesión, lo que inducía a esperar un correo también en ese caso.
 La rama cambia el texto por un mensaje condicional y ofrece acceso a recuperación
 desde el registro. Esta corrección todavía no está publicada en Vercel.
 
-Continuar con recuperación y Web Push en la cuenta existente. El usuario ha
+Se propuso recuperación y Web Push en la cuenta existente. El usuario ha
 acordado otra dirección para confirmación. La consulta administrativa de esa
 segunda cuenta muestra creación el 12 de octubre de 2026 a las 01:59
 Europe/Madrid y email confirmado. El usuario confirma después que recibió el
@@ -75,12 +76,12 @@ comunicaron por separado hora de recepción, carpeta ni perfil del navegador.
 No se ha creado, confirmado ni eliminado ninguna cuenta mediante Admin API
 durante esta revisión.
 
-| Caso                | Estado en Vercel | Evidencia necesaria                                                                                                                                                |
-| ------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| Confirmación        | Superado         | Usuario confirma recepción del correo, apertura del enlace y regreso a Vercel con acceso; nueva cuenta confirmada en Supabase, sin confirmación administrativa     |
-| Recuperación        | Pendiente        | Correo recibido, regreso a `/auth/update-password` en Vercel, cambio guardado e inicio de sesión con la nueva contraseña                                           |
-| Contraseña anterior | Pendiente        | Intento de inicio de sesión nuevo tras el cambio rechazado con la contraseña anterior                                                                              |
-| Web Push            | Pendiente        | Alta en Vercel, recordatorio sincronizado, recepción física con las pestañas de Dayflow cerradas y navegador ejecutándose; clic que abre el recordatorio en Vercel |
+| Caso                | Estado en Vercel | Evidencia registrada                                                                                                                                           |
+| ------------------- | ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Confirmación        | Superado         | Usuario confirma recepción del correo, apertura del enlace y regreso a Vercel con acceso; nueva cuenta confirmada en Supabase, sin confirmación administrativa |
+| Recuperación        | Superado         | Resultado manual confirmado por el usuario tras solicitar cambio de contraseña e inicio de sesión con la nueva en Vercel                                       |
+| Contraseña anterior | Superado         | Usuario confirma la comprobación solicitada de rechazo de la contraseña anterior después del cambio                                                            |
+| Web Push            | Superado         | Usuario confirma la comprobación solicitada de recepción y apertura de un aviso real desde Vercel                                                              |
 
 Para cada correo registrar solicitud/recepción, carpeta y resultado sin guardar
 el contenido del enlace. Una cuenta que ya existía o una pantalla de correo
@@ -89,6 +90,11 @@ permiso, hora prevista/recibida y estado del navegador. La aceptación del
 proveedor no sustituye recepción física.
 
 Usar el procedimiento de [validación de publicación](../release-validation.md).
-La tarea solo se cierra cuando los cuatro casos tengan evidencia superada en
-este dominio. Conservar separada la limitación histórica de Chrome detenido en
-Windows; esa condición no queda acreditada por una prueba con Chrome abierto.
+El usuario respondió «Comprobados» después de solicitar las tres verificaciones
+pendientes: recuperación con contraseña nueva, rechazo de la anterior y
+recepción/apertura del aviso. Esta confirmación cierra los cuatro criterios en
+el dominio final. No se comunicaron por separado cuenta usada en estos tres
+casos, horas, carpeta de correo, navegador/SO ni estado de ventanas/procesos.
+Es evidencia manual comunicada, no observación automatizada de esos recorridos.
+Conservar separada la limitación histórica de Chrome detenido en Windows;
+no se extiende este resultado a navegador detenido, suspensión u otras plataformas.

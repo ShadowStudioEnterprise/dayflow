@@ -1,6 +1,6 @@
 # Auditorías
 
-- [Autenticación y Web Push en Vercel](2026-10-12-vercel-auth-web-push.md): tres comprobaciones públicas y confirmación de correo superadas en el dominio final; recuperación, rechazo de contraseña anterior y entrega física pendientes de prueba manual.
+- [Autenticación y Web Push en Vercel](2026-10-12-vercel-auth-web-push.md): tres comprobaciones públicas superadas; confirmación, recuperación, rechazo de contraseña anterior y recepción/apertura del aviso comprobados por el usuario en el dominio final. Criterios de cierre superados.
 - [Corrección del arranque de Sync](2026-10-10-e2e-sync-fix.md): disponibilidad del motor observada por la interfaz; 60 E2E funcionales y 10 ensayos de carga retenida correctos sin reintentos.
 - [Intermitencia E2E de Sync y calendario móvil](2026-10-10-e2e-intermittency.md): causa de arranque de Sync reproducida 10/10 veces; calendario móvil 130/130 correcto sin reintentos. Diagnóstico previo a la corrección.
 - [Pruebas adversariales del 10 de octubre de 2026](2026-10-10-supabase-adversarial.md): nueva ejecución con dos cuentas, 460 comprobaciones correctas y 40 verificaciones de limpieza.

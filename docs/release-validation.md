@@ -14,8 +14,10 @@ Revisión del 12 de octubre: [registro de Auth y Web Push en el dominio final](a
 Las comprobaciones públicas se repiten con `npm run test:vercel` y están superadas.
 La confirmación nueva está superada en Vercel: correo recibido y regreso con
 acceso confirmados por el usuario, junto con una cuenta nueva confirmada en
-Supabase. Recuperación, rechazo de contraseña anterior y recepción física de
-avisos permanecen pendientes. La tabla siguiente conserva únicamente la
+Supabase. El usuario confirmó también recuperación, rechazo de contraseña
+anterior y recepción/apertura del aviso real: los cuatro criterios de esta
+repetición quedan superados. El registro detalla el alcance de la evidencia
+manual. La tabla siguiente conserva únicamente la
 evidencia histórica del alojamiento anterior.
 
 | Área                       | Estado                                                                                                            | Evidencia pendiente                                                                                           |
