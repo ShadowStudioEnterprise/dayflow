@@ -106,5 +106,25 @@ y el equipo despierto. Registrar cuenta, hora programada/recibida y resultado
 del clic. No hay navegador conectado a las herramientas de control en esta
 sesión; preparación y recepción requieren la comprobación manual del usuario.
 
+### Intento de las 02:09 Europe/Madrid
+
+El usuario comunica que no hubo aviso y precisa la hora programada: 02:09 del
+12 de octubre. La consulta remota de solo lectura a las 02:12 confirma:
+
+- La cuenta de prueba existe y tiene **cero suscripciones Web Push** al consultar.
+- «Prueba Push Vercel» llegó al servidor: creado a las 02:07:01, vencimiento
+  02:09:00, avisos activados, sin repetición y sin borrar. Su última modificación
+  es de las 02:11:47, posterior al vencimiento.
+- No hay registros de intentos de entrega para esa cuenta en las últimas dos horas.
+- Las ejecuciones de Cron de las 02:10, 02:11 y 02:12 figuran `succeeded`.
+  Esto acredita ejecución del trabajo, no aceptación del proveedor ni recepción.
+
+Resultado del intento: **fallido, sin aviso recibido**. La precondición de
+suscripción activa no está satisfecha al inspeccionar. No se atribuye el fallo
+a Chrome detenido ni a un rechazo del proveedor; no se comunicó aún el estado
+local del navegador o el permiso. Se solicita activar avisos en Vercel y obtener
+el texto exacto del estado o error antes de programar un nuevo aviso futuro.
+Web Push permanece pendiente de repetición y recepción real.
+
 Conservar separada la limitación histórica de Chrome detenido en Windows;
 no se extiende este resultado a navegador detenido, suspensión u otras plataformas.
