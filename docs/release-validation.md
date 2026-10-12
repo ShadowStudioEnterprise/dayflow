@@ -1,5 +1,7 @@
 # Validación de publicación y dispositivos
 
+Alarmas Android, preparación del 12 de octubre de 2026: [protocolo de recepción y retrasos en hardware](audits/2026-10-12-android-alarms.md). Permisos, bloqueo, Doze, ahorro de batería y reinicio permanecen pendientes de ejecución física.
+
 Preparación del 12 de octubre de 2026: [protocolo y matriz de Android físico](audits/2026-10-12-android-physical.md), con SHA del código y huella del APK actual. El usuario no dispone ahora de un teléfono; la ejecución física permanece pendiente.
 
 Estado del 4 de octubre de 2026. Una compilación, una respuesta HTTP o un emulador no acreditan recepción de correo, entrega física de notificaciones ni consumo de batería.

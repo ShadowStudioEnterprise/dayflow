@@ -1,5 +1,7 @@
 # Auditorías
 
+- [Protocolo de alarmas Android del 12 de octubre de 2026](2026-10-12-android-alarms.md): matriz de permisos, bloqueo, Doze, batería y reinicio; medición de recepción y retrasos. Ejecución física pendiente por falta de teléfono.
+
 - [Protocolo de Android físico del 12 de octubre de 2026](2026-10-12-android-physical.md): APK y SHA identificados; matriz de instalación, Auth/PKCE, offline, sincronización y recuperación de sesión. Ejecución física pendiente por falta de teléfono.
 
 - [Estado de CI y producción del 12 de octubre de 2026](2026-10-12-ci-deployment.md): SHA común de CI y Vercel, tres jobs correctos, producción READY, fechas e instantáneas de evidencia. Actualización documental cerrada; alcance separado de Auth/Push manual y cambios posteriores en dev.
