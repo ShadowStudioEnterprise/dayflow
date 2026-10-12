@@ -23,6 +23,7 @@ Las guías describen el comportamiento implementado; las auditorías conservan o
 - [relations](relations.md)
 - [release-validation](release-validation.md)
 - [reminders](reminders.md)
+- [Capacidad y recuperación de notificaciones](notification-capacity.md)
 - [sync](sync.md)
 - [tasks](tasks.md)
 - [vercel](vercel.md)

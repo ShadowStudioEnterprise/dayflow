@@ -26,6 +26,8 @@
     "test:android:local": "node scripts/android-local-test.mjs",
     "native:ios": "cap open ios",
     "test:pwa": "playwright test --config playwright.pwa.config.ts",
+    "benchmark:notifications": "node scripts/benchmark-notifications.mjs",
+    "test:notification-capacity": "vitest run --maxWorkers=1 src/services/notifications/notification-capacity.test.ts src/services/notifications/notification-recovery-sql.test.ts",
     "test:vercel": "playwright test --config playwright.vercel.config.ts",
     "backend:start": "node scripts/local-backend.mjs start",
     "backend:configure": "node scripts/local-backend.mjs configure",
