@@ -126,5 +126,15 @@ local del navegador o el permiso. Se solicita activar avisos en Vercel y obtener
 el texto exacto del estado o error antes de programar un nuevo aviso futuro.
 Web Push permanece pendiente de repetición y recepción real.
 
+### Activación posterior
+
+El usuario indica que el permiso del navegador figura «Permitido». La consulta
+remota de las 02:13:11 confirma ahora **una suscripción** para la cuenta,
+creada/actualizada a las 02:12:43, después del vencimiento del primer aviso.
+Permiso y alta de suscripción son comprobaciones distintas. Se solicita
+reprogramar «Prueba Push Vercel» a tres minutos vista, esperar sincronización y
+cerrar las pestañas de Dayflow manteniendo Chrome abierto y el equipo despierto.
+Alta superada; entrega y apertura del aviso todavía pendientes.
+
 Conservar separada la limitación histórica de Chrome detenido en Windows;
 no se extiende este resultado a navegador detenido, suspensión u otras plataformas.
