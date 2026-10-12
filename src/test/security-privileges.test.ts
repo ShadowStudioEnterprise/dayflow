@@ -31,6 +31,97 @@ afterAll(async () => {
   await pg?.close()
 })
 
+it('keeps server revisions independent of client stamps and rejects nonfinite audit dates', async () => {
+  const user = '00000000-0000-4000-8000-000000000021'
+  await pg.exec(`insert into auth.users(id) values ('${user}');
+    insert into tasks(user_id,title) values ('${user}','Template');`)
+  const template = await pg.query<{ row: Record<string, unknown> }>(
+    `select to_jsonb(t) as row from tasks t where user_id='${user}'`,
+  )
+  const row = {
+    ...template.rows[0]!.row,
+    id: crypto.randomUUID(),
+    created_at: '2026-01-01T00:00:00.000Z',
+    updated_at: '2026-01-02T00:00:00.000Z',
+    version: 2147483647,
+  }
+  const operation = {
+    id: crypto.randomUUID(),
+    entity: 'tasks',
+    entityId: row.id,
+    action: 'create',
+    row,
+  }
+  const apply = (value: unknown) =>
+    pg.query<{
+      result: {
+        change: { row: { version: number }; stamp: { version: number } }
+      }
+    }>('select dayflow_apply_operation($1::jsonb) as result', [
+      JSON.stringify(value),
+    ])
+  await pg.exec(`set role authenticated; set request.jwt.claim.sub='${user}'`)
+  try {
+    const receipt = (await apply(operation)).rows[0]!.result
+    expect(receipt.change.row.version).toBe(1)
+    expect(receipt.change.stamp.version).toBe(2147483647)
+    expect((await apply(operation)).rows[0]!.result).toEqual(receipt)
+    const update = {
+      ...operation,
+      id: crypto.randomUUID(),
+      action: 'update',
+      row: { ...row, updated_at: '2026-01-03T00:00:00.000Z' },
+    }
+    expect((await apply(update)).rows[0]!.result.change.row.version).toBe(2)
+    for (const field of ['created_at', 'updated_at', 'deleted_at']) {
+      await expect(
+        apply({
+          ...update,
+          id: crypto.randomUUID(),
+          row: { ...update.row, [field]: '-infinity' },
+        }),
+      ).rejects.toThrow('Invalid audit data')
+    }
+    await expect(
+      apply({
+        ...update,
+        id: crypto.randomUUID(),
+        action: 'delete',
+        row: { ...update.row, deleted_at: '2026-01-02T00:00:00.000Z' },
+      }),
+    ).rejects.toThrow('Invalid audit data')
+  } finally {
+    await pg.exec('reset role')
+  }
+})
+
+it('denies RPC-only writes through RLS even after an accidental table grant', async () => {
+  const user = '00000000-0000-4000-8000-000000000022'
+  await pg.exec(`insert into auth.users(id) values ('${user}');
+    grant insert, update on tasks to authenticated;
+    set role authenticated; set request.jwt.claim.sub='${user}';`)
+  try {
+    await expect(
+      pg.exec(
+        `insert into tasks(user_id,title) values ('${user}','Forbidden')`,
+      ),
+    ).rejects.toThrow('row-level security')
+  } finally {
+    await pg.exec(
+      'reset role; revoke insert, update on tasks from authenticated',
+    )
+  }
+  const policies =
+    await pg.query(`select * from pg_policies where schemaname='public'
+    and tablename <> 'profiles' and cmd in ('INSERT','UPDATE','ALL')`)
+  expect(policies.rows).toEqual([])
+  await pg.exec('create role future_client')
+  const grants = await pg.query<{ allowed: boolean }>(`select
+    has_function_privilege('future_client',oid,'EXECUTE') as allowed from pg_proc
+    where pronamespace='public'::regnamespace and (proname like 'dayflow_%' or proname='audit_entity_update')`)
+  expect(grants.rows.every((row) => !row.allowed)).toBe(true)
+})
+
 it('revokes PUBLIC and direct client grants on triggers while preserving client RPCs', async () => {
   const triggers = await pg.query<{
     name: string

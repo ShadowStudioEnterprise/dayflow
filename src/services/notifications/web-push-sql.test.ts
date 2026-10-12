@@ -21,6 +21,8 @@ beforeAll(async () => {
     '202609240003_reminder_timezone',
     '202609240004_sync',
     '202610040005_web_push',
+    '202610090006_security_privileges',
+    '202610120007_sync_hardening',
   ])
     await pg.exec(
       readFileSync(
@@ -53,7 +55,7 @@ const register = (user: string, url = endpoint) =>
 it('registra idempotentemente, aísla cuentas y prohíbe acceso al emisor', async () => {
   sub = (await register(alice)).rows[0]!.id as string
   expect((await register(alice)).rows[0]!.id).toBe(sub)
-  await expect(register(bob)).rejects.toThrow('another account')
+  await expect(register(bob)).rejects.toThrow('Invalid push subscription')
   expect((await asUser(bob, 'select * from push_subscriptions')).rows).toEqual(
     [],
   )
@@ -91,7 +93,22 @@ it('rechaza endpoints arbitrarios y claves inválidas', async () => {
       'bad',
       'bad',
     ]),
-  ).rejects.toThrow('check constraint')
+  ).rejects.toThrow('Invalid push subscription')
+})
+it('no distingue endpoints ajenos, nulos ni claves inválidas mediante código o mensaje', async () => {
+  for (const [user, url, key, auth] of [
+    [bob, endpoint, 'A'.repeat(87), 'B'.repeat(22)],
+    [alice, null, 'A'.repeat(87), 'B'.repeat(22)],
+    [alice, endpoint, null, 'B'.repeat(22)],
+    [alice, endpoint, 'bad', 'bad'],
+  ]) {
+    await expect(
+      asUser(user!, 'select dayflow_register_push($1,$2,$3)', [url, key, auth]),
+    ).rejects.toMatchObject({
+      code: '22023',
+      message: 'Invalid push subscription',
+    })
+  }
 })
 it('excluye recordatorios desactivados y concede una sola reserva por ocurrencia', async () => {
   await pg.exec(
