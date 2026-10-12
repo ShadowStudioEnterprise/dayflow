@@ -23,6 +23,7 @@ Las guías describen el comportamiento implementado; las auditorías conservan o
 - [pwa-native](pwa-native.md)
 - [relations](relations.md)
 - [release-validation](release-validation.md)
+- [Medición de batería física](battery-measurement.md)
 - [reminders](reminders.md)
 - [Capacidad y recuperación de notificaciones](notification-capacity.md)
 - [sync](sync.md)

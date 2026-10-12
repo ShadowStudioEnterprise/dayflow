@@ -96,7 +96,9 @@ Para alarmas locales nativas: concede y deniega permisos desde los diálogos rea
 
 ## Batería y evidencia
 
-Usa el mismo teléfono, estado de red, brillo, configuración de ahorro y franja de uso. Haz una ronda de referencia y una ronda con Dayflow instalada, al menos ocho horas cada una, incluyendo un periodo de pantalla apagada. Registra batería inicial/final, tiempo de pantalla, carga durante la ronda, uso activo de Dayflow, número de avisos y consumo atribuido por el sistema. Sin condiciones comparables, la diferencia no puede atribuirse a Dayflow.
+Estado del 12 de octubre de 2026: **pendiente**; `adb devices -l` no detectó dispositivos conectados. El [protocolo de medición física](battery-measurement.md) incluye condiciones comparables, guion, plantilla de registro, invalidación de rondas y cálculo del incremento en puntos porcentuales por hora.
+
+Para cerrar, registra al menos una pareja válida de ocho horas o más con y sin Dayflow por dispositivo y modalidad acordados, con periodo de pantalla apagada, consumo y evidencia inicial/final. Se recomiendan tres parejas alternando el orden. Publica la comparación y sus límites; preparar el protocolo o pasar pruebas de software no cumple el criterio. El cierre acredita medición, sin un umbral de eficiencia energética establecido.
 
 Para cada caso guarda: identificador, fecha/zona, modelo, SO/navegador/WebView, versión/SHA de la app, estado de la app/navegador, permisos, conexión, ahorro de batería, hora programada/recibida, resultado y evidencia. Estados admitidos: **pendiente**, **superado**, **fallido** o **no aplicable con motivo**. Los casos físicos permanecen pendientes al no haber hardware disponible.
 

@@ -1,5 +1,13 @@
 # Verificación — Fases 1–9, incluida PWA y Capacitor
 
+## Preparación de medición de batería física — 12 de octubre de 2026
+
+Rama `test/physical-device-battery`, creada desde `dev` en `0b015e8b03775c9b8e99f5d56b2f1f1c6d93d84e`. Entorno Windows/PowerShell. La consulta real `adb devices -l` terminó con salida **0** y una lista vacía; no hay un Android conectado para medir en esta sesión. No se ejecutaron rondas en iOS ni se registró consumo físico.
+
+Se añadió el [protocolo y plantilla de batería](battery-measurement.md), enlazado desde el índice, el portal y los criterios de publicación. Define referencia sin Dayflow, rondas de ocho horas o más, condiciones de comparabilidad, evidencia, invalidación y comparación en puntos porcentuales por hora. No se cambió la lógica de la aplicación.
+
+`npm run docs:check`, `npm run test:docs` (**3/3**), `npm run docs:build` y `git diff --check`: salida **0**. Se formatearon los documentos y la configuración del portal con Prettier. Estas comprobaciones validan la documentación, no el consumo. **La tarea permanece pendiente de rondas comparables con y sin Dayflow y consumo registrado en dispositivos físicos**; los dispositivos y modalidades de destino están por acordar.
+
 ## Preparación de SMTP para beta externa — 12 de octubre de 2026
 
 Rama `feat/beta-custom-smtp`, creada desde `dev` en `83af7b6b266624236d5abd265da32f91f8ecf17a`, con cambios de preparación sobre esa base. Windows/PowerShell, sin proveedor ni credenciales SMTP disponibles según el propietario. Se añadió un configurador de Management API, plantilla privada y [guía de activación y cierre](auth-smtp.md).

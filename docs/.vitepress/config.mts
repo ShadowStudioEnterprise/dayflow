@@ -63,6 +63,7 @@ export default defineConfig({
       group('Calidad y publicación', [
         ['Verificación', 'verification'],
         ['Validación de versiones', 'release-validation'],
+        ['Batería en dispositivos físicos', 'battery-measurement'],
         ['Evaluación web', 'web-evaluation'],
         ['Plan de implementación', 'implementation-plan'],
         ['Vercel: aplicación', 'vercel'],
