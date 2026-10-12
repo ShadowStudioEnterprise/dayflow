@@ -64,9 +64,13 @@ respuesta sin sesión, lo que inducía a esperar un correo también en ese caso.
 La rama cambia el texto por un mensaje condicional y ofrece acceso a recuperación
 desde el registro. Esta corrección todavía no está publicada en Vercel.
 
-Continuar con recuperación y Web Push en la cuenta existente. Para comprobar
-confirmación nueva hace falta acordar otra dirección sin registrar y admitida
-por el servicio de correo; no borrar la cuenta existente para repetir el alta.
+Continuar con recuperación y Web Push en la cuenta existente. El usuario ha
+acordado otra dirección para confirmación. La consulta administrativa de esa
+segunda cuenta muestra creación el 12 de octubre de 2026 a las 01:59
+Europe/Madrid y email confirmado. Falta el resultado manual que acredite correo
+recibido, enlace abierto desde el mismo perfil y regreso al dominio final con
+acceso. No se ha creado, confirmado ni eliminado ninguna cuenta mediante Admin
+API durante esta revisión.
 
 | Caso                | Estado en Vercel | Evidencia necesaria                                                                                                                                                |
 | ------------------- | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
