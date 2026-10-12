@@ -1,5 +1,7 @@
 # Auditorías
 
+- [Nota offline tras reinicio del Redmi](2026-10-12-redmi-note-offline-restart.md): pérdida de edición reportada pese al estado Guardado, sin recuperación al reconectar; 20 unitarias y 10 E2E correctos no reproducen el reinicio físico. Investigación abierta.
+
 - [Compatibilidad WebView 97](2026-10-12-webview97-compat.md): corrección de zonas horarias y cancelación/timeout de Sync tras el error en Redmi 9A. Pruebas automatizadas correctas; creación y sincronización bidireccional confirmadas manualmente tras actualizar.
 
 - [Validación física del Redmi 9A](2026-10-12-redmi-9a.md): Android 11/API 30 y WebView identificados; instalación, acceso, sincronización bidireccional, creación/reapertura offline y reconexión confirmados manualmente. Edición offline, arranque tras reinicio y demás casos pendientes; última consulta ADB offline.
