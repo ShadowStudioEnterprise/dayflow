@@ -1,6 +1,6 @@
 # Auditorías
 
-- [Validación física del Redmi 9A](2026-10-12-redmi-9a.md): Android 11/API 30 y WebView identificados; instalación rechazada por el dispositivo y reconexión pendiente. Casos funcionales y alarmas aún pendientes.
+- [Validación física del Redmi 9A](2026-10-12-redmi-9a.md): Android 11/API 30 y WebView identificados; instalación manual confirmada por el usuario después de rechazos ADB. Arranque, casos funcionales y alarmas aún pendientes; ADB offline.
 
 - [Verificación del diagnóstico de notificaciones del 12 de octubre](2026-10-12-notification-diagnostics.md): mecanismo, permisos, pendientes y renovación en Configuración; alcance de las pruebas separado de recepción física.
 
