@@ -1,0 +1,50 @@
+name: Publish aligned documentation
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: docs-portal-production
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24'
+          cache: npm
+      - run: npm ci
+      - run: npm run docs:check
+      - run: npm run test:docs
+      - run: npm run docs:build
+      - name: Advance docs-portal without rewriting history
+        id: sync
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main docs-portal
+          if [ "$(git rev-parse origin/main)" != "$GITHUB_SHA" ]; then
+            echo "A newer main commit exists; its run will publish."
+            echo "published=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git merge-base --is-ancestor origin/docs-portal HEAD
+          git push origin HEAD:refs/heads/docs-portal
+          echo "published=true" >> "$GITHUB_OUTPUT"
+      - name: Verify published SHA
+        if: steps.sync.outputs.published == 'true'
+        env:
+          PORTAL_EXPECTED_SHA: ${{ github.sha }}
+        run: node scripts/verify-docs-portal.mjs

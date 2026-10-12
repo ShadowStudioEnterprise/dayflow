@@ -1,5 +1,12 @@
 import { defineConfig } from 'vitepress'
-import { copyFileSync, cpSync, mkdirSync, readdirSync } from 'node:fs'
+import {
+  copyFileSync,
+  cpSync,
+  mkdirSync,
+  readdirSync,
+  writeFileSync,
+} from 'node:fs'
+import { execFileSync } from 'node:child_process'
 import path from 'node:path'
 
 const group = (text: string, pages: [string, string][]) => ({
@@ -15,6 +22,14 @@ export default defineConfig({
   cleanUrls: true,
   // Evidence links remain URLs; include JSON reports and nested evidence in SSG output.
   buildEnd(siteConfig) {
+    const sha =
+      process.env.VERCEL_GIT_COMMIT_SHA ||
+      execFileSync('git', ['rev-parse', 'HEAD'], { encoding: 'utf8' }).trim()
+    writeFileSync(
+      path.join(siteConfig.outDir, 'portal-version.json'),
+      JSON.stringify({ sha, builtAt: new Date().toISOString() }, null, 2) +
+        '\n',
+    )
     const source = path.join(siteConfig.srcDir, 'audits')
     const output = path.join(siteConfig.outDir, 'audits')
     mkdirSync(output, { recursive: true })
