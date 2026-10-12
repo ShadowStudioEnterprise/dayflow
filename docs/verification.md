@@ -1,5 +1,9 @@
 # Verificación — Fases 1–9, incluida PWA y Capacitor
 
+## Diagnóstico de notificaciones — 12 de octubre de 2026
+
+La interfaz ya existente en Configuración cumple el criterio funcional de mostrar mecanismo, permisos, avisos y renovación. [Verificación dirigida](audits/2026-10-12-notification-diagnostics.md): 7 unitarias y 4 E2E PWA correctos, cero reintentos E2E. La evidencia distingue fixtures/Chromium de lectura y entrega Android real; la captura móvil tiene una superposición cuya causa no se ha determinado. No se modificó código de producto.
+
 ## Calendario móvil — 12 de octubre de 2026
 
 [Revisión y evidencia](audits/2026-10-12-calendar-mobile.md): base `d3910ab`, 100 intentos con cuatro workers y 30 con uno, todos correctos, sin reintentos y con hashes de fuentes iguales antes/después. Se cierra el criterio de investigación por repeticiones controladas; no se afirma haber identificado o corregido una causa del calendario ni validado dispositivos físicos.

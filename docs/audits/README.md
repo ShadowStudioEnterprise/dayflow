@@ -1,5 +1,7 @@
 # Auditorías
 
+- [Verificación del diagnóstico de notificaciones del 12 de octubre](2026-10-12-notification-diagnostics.md): mecanismo, permisos, pendientes y renovación en Configuración; alcance de las pruebas separado de recepción física.
+
 - [Calendario móvil: repetición del 12 de octubre de 2026](2026-10-12-calendar-mobile.md): 130/130 correctos, cuatro y un worker, cero reintentos y fuentes inmutables. Investigación cerrada por evidencia; fallo no reproducido.
 
 - [PWA móvil del 12 de octubre de 2026](2026-10-12-pwa-mobile.md): ejecución automatizada, cambio de cuenta y protocolo de instalación/offline/persistencia/actualización para Android y Safari/iOS. App nativa iOS descartada por decisión del usuario.
