@@ -6,20 +6,21 @@ Actualización de alojamiento: la dirección principal es ahora
 [Dayflow en Vercel](https://dayflow-by-shadowstudio.vercel.app/auth/login), con despliegue `READY`,
 Supabase configurado y comprobación de actualizaciones superada en Chromium.
 Detalles en [publicación en Vercel](vercel.md). La evidencia de correo y avisos
-de la tabla siguiente corresponde a las pruebas previas en Sites; todavía no
-se ha repetido su recepción manual en el nuevo dominio. Los identificadores
+de la tabla siguiente corresponde a las pruebas previas en Sites; durante la
+publicación inicial no se repitió su recepción en Vercel. Los identificadores
 de Sites y del APK se conservan como referencia de esas pruebas.
 
 Revisión del 12 de octubre: [registro de Auth y Web Push en el dominio final](audits/2026-10-12-vercel-auth-web-push.md).
 Las comprobaciones públicas se repiten con `npm run test:vercel` y están superadas.
 La confirmación nueva está superada en Vercel: correo recibido y regreso con
 acceso confirmados por el usuario, junto con una cuenta nueva confirmada en
-Supabase. El usuario confirmó también recuperación, rechazo de contraseña
-anterior. Web Push sigue pendiente de recepción/apertura real: la respuesta
-«Comprobados» se había interpretado como cierre del aviso y se corrigió tras
-la aclaración del usuario. El registro detalla el alcance de la evidencia
-manual. La tabla siguiente conserva únicamente la
-evidencia histórica del alojamiento anterior.
+Supabase. El usuario confirmó también recuperación y rechazo de contraseña
+anterior. Tras activar la suscripción, el aviso de las 02:16 fue recibido y abrió
+el recordatorio en Vercel según confirmación explícita del usuario. Supabase
+registra aceptación del proveedor a las 02:16:00.642 en un intento. Los cuatro
+criterios de cierre están superados; el registro conserva el intento previo
+sin suscripción y detalla el alcance de la evidencia. La tabla siguiente
+conserva únicamente la evidencia histórica del alojamiento anterior.
 
 | Área                       | Estado                                                                                                            | Evidencia pendiente                                                                                           |
 | -------------------------- | ----------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
