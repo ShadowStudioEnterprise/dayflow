@@ -3,6 +3,8 @@
 Preparado el 12 de octubre de 2026, Europe/Madrid, en `validation/android-alarms`.
 Estado: **pendiente de ejecución física**. El usuario no dispone ahora de teléfono; ADB sólo detecta el emulador `emulator-5554`. Ningún caso de la matriz siguiente se declara ejecutado.
 
+Actualización del 13 de octubre: disponible Redmi 9A, Android 11/API 30 y WebView 97; instalación y pruebas manuales en el [registro del dispositivo](2026-10-12-redmi-9a.md). El usuario confirma notificaciones y alarmas exactas permitidas, mecanismo de alarmas locales de Android, ahorro desactivado y concordancia de fecha/hora con el ordenador. No se ha observado el recorrido de concesión ni medido la precisión del reloj. ALM-05 intento 1 solicitado, pendiente de recepción y medición; el estado inicial anterior se conserva como antecedente del protocolo.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
