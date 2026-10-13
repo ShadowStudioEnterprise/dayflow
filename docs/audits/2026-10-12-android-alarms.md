@@ -5,6 +5,8 @@ Estado: **pendiente de ejecución física**. El usuario no dispone ahora de tel�
 
 Actualización del 13 de octubre: disponible Redmi 9A, Android 11/API 30 y WebView 97; instalación y pruebas manuales en el [registro del dispositivo](2026-10-12-redmi-9a.md). El usuario confirma notificaciones y alarmas exactas permitidas, mecanismo de alarmas locales de Android, ahorro desactivado y concordancia de fecha/hora con el ordenador. No se ha observado el recorrido de concesión ni medido la precisión del reloj. ALM-05 intento 1 solicitado, pendiente de recepción y medición; el estado inicial anterior se conserva como antecedente del protocolo.
 
+Resultado posterior ALM-05 intento 1: recepción en segundo plano y apertura del recordatorio correcto confirmadas manualmente; pantalla encendida y USB/cargador conectado. El usuario informa llegada a la hora prevista, pero no aporta horas ni precisión: retraso no medido. Sin sonido ni vibración, ajustes de canal/modos/volumen pendientes de comprobar. Caso **parcial**, no cerrado: faltan medición y dos repeticiones. Los otros casos permanecen pendientes; la matriz preparada más abajo no se interpreta como resultados ejecutados.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
