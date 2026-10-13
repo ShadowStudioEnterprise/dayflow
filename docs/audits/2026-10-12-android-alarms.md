@@ -17,6 +17,8 @@ ALM-06 intento 1 confirmado manualmente: 13 de octubre, previsto 17:16 y recibid
 
 ALM-06 intento 2 confirmado manualmente: 13 de octubre, previsto 17:25 y recibido 17:25, precisión de minutos; sonó, no vibró, apertura correcta, pantalla no permaneció encendida y sin USB/cargador. Visibilidad antes de desbloquear no informada. Intento 3 solicitado bajo los mismos ajustes, incluyendo comprobación explícita de visibilidad; pendiente. Dos recepciones positivas no certifican Doze ni aportan latencia exacta.
 
+Aclaración posterior del usuario: notificación **visible antes de desbloquear en los intentos 1 y 2**. Evidencia manual retrospectiva, sin captura. El intento 3 sigue pendiente; no se cuenta esta aclaración como una tercera recepción.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
