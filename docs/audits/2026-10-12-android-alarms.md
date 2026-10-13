@@ -9,6 +9,8 @@ Resultado posterior ALM-05 intento 1: recepción en segundo plano y apertura del
 
 El usuario confirmó después sonido de reproducción desactivado en la categoría consultada. Se conserva este valor inicial. ALM-05 intento 2 solicitado con sonido activado, vibración si está disponible, modos de silencio desactivados y volumen audible; tiempos y resultado pendientes. No se atribuye la ausencia de vibración al ajuste de sonido ni se declara corregido un defecto de código.
 
+ALM-05 intento 2, resultado manual del 13 de octubre: previsto 16:58, recibido 16:58, precisión de minutos (Europe/Madrid); no se informa retraso exacto ni cero segundos. Sonó, no vibró y abrió el recordatorio correcto; pantalla encendida y USB/cargador conectado. Intento 3 solicitado manteniendo ajustes y carga; pendiente. La configuración sonora difiere del intento 1 y aún no hay tres repeticiones equivalentes ni medición en segundos. Ajuste de vibración pendiente de lectura.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
