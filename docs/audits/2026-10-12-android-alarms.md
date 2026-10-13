@@ -7,6 +7,8 @@ Actualización del 13 de octubre: disponible Redmi 9A, Android 11/API 30 y WebVi
 
 Resultado posterior ALM-05 intento 1: recepción en segundo plano y apertura del recordatorio correcto confirmadas manualmente; pantalla encendida y USB/cargador conectado. El usuario informa llegada a la hora prevista, pero no aporta horas ni precisión: retraso no medido. Sin sonido ni vibración, ajustes de canal/modos/volumen pendientes de comprobar. Caso **parcial**, no cerrado: faltan medición y dos repeticiones. Los otros casos permanecen pendientes; la matriz preparada más abajo no se interpreta como resultados ejecutados.
 
+El usuario confirmó después sonido de reproducción desactivado en la categoría consultada. Se conserva este valor inicial. ALM-05 intento 2 solicitado con sonido activado, vibración si está disponible, modos de silencio desactivados y volumen audible; tiempos y resultado pendientes. No se atribuye la ausencia de vibración al ajuste de sonido ni se declara corregido un defecto de código.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
