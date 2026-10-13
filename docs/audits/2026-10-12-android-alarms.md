@@ -29,6 +29,8 @@ ALM-07 intento 3, ensayo del 13 de octubre comunicado el 14: previsto 22:15 y re
 
 ALM-07 intento 4 confirmado manualmente: 14 de octubre, previsto 00:49 y recibido 00:49, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador y sin red. **Tres recepciones positivas de avisos creados/programados offline**, intentos 2–4; no equivalen a latencia cero ni a prueba de Doze. ALM-10 ahorro intento 1 solicitado con red recuperada, cero pendientes, ahorro normal, sin cambiar optimización propia de Dayflow y sin carga; pendiente de modo, porcentaje y resultado.
 
+ALM-10 intento 1 informado: 14 de octubre, previsto 00:55 y recibido 00:55, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado, sin USB/cargador. Ahorro activo y **sin red**, según el usuario: variante combinada, no ensayo con red restablecida. Nombre del modo, porcentaje y modo avión/Wi-Fi pendientes de aclaración. Una recepción positiva no cierra la condición; no aporta latencia exacta ni prueba de Doze.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
