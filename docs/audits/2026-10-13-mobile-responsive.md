@@ -26,6 +26,12 @@ La comprobación inicial del nuevo test se detuvo al intentar pulsar el centro d
 
 ## Alcance y revisión física
 
+Build web y APK debug correctos (`npm run build`, `npx cap sync android`, `assembleDebug --no-daemon`; Gradle: 41 s). Código compilado: `c16e276d6af300f43c49d63f89827edd90f71439`. APK preparado: `.toolchains/redmi-9a/Dayflow-0.9.0-responsive.apk`, 5.100.913 bytes, SHA-256 `64C2EE198DD5AD1218774E0E29BD2A3D97B15795D30CF567532F1518BEA6143D`. Se contrastaron los 72 archivos de `dist/` con sus entradas del APK por SHA-256: cero diferencias. El paquete sigue siendo `com.dayflow.app`, versión 0.9.0, firmado para desarrollo.
+
+La última batería de layout con Inbox/etiquetas/búsqueda ampliados pasó 5/5, 56,8 s, sin reintentos. La lectura de `VisualViewport` se verificó también simulando sólo su reducción en tablet. Revisión de React: efectos con limpieza de listeners/observer/overflow, sin hooks condicionales; etiqueta del diálogo, foco nativo y textos accesibles conservados.
+
 Las pruebas usan Chromium con emulación móvil y fixtures de Auth/Sync; no certifican Safari ni teclado, safe areas o WebView 97 físicos. La actualización del APK y revisión visual en el Redmi siguen pendientes. El dominio publicado no se actualiza en esta tarea.
+
+No había dispositivos conectados al terminar la compilación; no se copió ni instaló el nuevo APK en un teléfono.
 
 Para revisar en el Redmi: actualizar conservando datos, abrir menú y Configuración, crear/editar tarea/evento/recordatorio, abrir nota larga y teclado, comprobar cierre/guardar y modo horizontal. No dar por superados los ensayos físicos anteriores sobre un APK nuevo sin registrar la versión probada. [Registro Redmi](2026-10-12-redmi-9a.md).
