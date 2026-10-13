@@ -11,6 +11,8 @@ El usuario confirmó después sonido de reproducción desactivado en la categor�
 
 ALM-05 intento 2, resultado manual del 13 de octubre: previsto 16:58, recibido 16:58, precisión de minutos (Europe/Madrid); no se informa retraso exacto ni cero segundos. Sonó, no vibró y abrió el recordatorio correcto; pantalla encendida y USB/cargador conectado. Intento 3 solicitado manteniendo ajustes y carga; pendiente. La configuración sonora difiere del intento 1 y aún no hay tres repeticiones equivalentes ni medición en segundos. Ajuste de vibración pendiente de lectura.
 
+ALM-05 intento 3 confirmado: 13 de octubre, previsto 17:05, recibido 17:05, precisión de minutos; sonó, no vibró, apertura correcta, pantalla encendida y USB/cargador conectado. Dos intentos positivos con sonido; falta otro bajo esa configuración. Ajuste de vibración no informado. ALM-06 bloqueo intento 1 solicitado sin carga, manteniendo ajustes, con lectura externa de horas y comprobación de presentación/apertura; pendiente. No se declara Doze por tener la pantalla bloqueada.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
