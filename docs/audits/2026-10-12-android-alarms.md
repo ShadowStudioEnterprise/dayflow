@@ -35,6 +35,8 @@ Aclaración posterior: el usuario indica «98% batreria, ahorro de bateria con i
 
 ALM-10 intento 2 confirmado manualmente: 14 de octubre, previsto 01:20 y recibido 01:20, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador, ahorro e internet activos; porcentaje al inicio no informado. Segunda recepción positiva, sin latencia exacta ni evidencia de Doze. Intento 3 solicitado manteniendo condiciones y anotando batería; pendiente. Restaurar ahorro desactivado al terminar la condición.
 
+ALM-10 intento 3 confirmado manualmente: 14 de octubre, previsto 01:25 y recibido 01:25, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador, ahorro con internet activo; porcentaje inicial no informado. **Tres recepciones positivas con ahorro**, sin latencia exacta ni medición de consumo/Doze. ALM-12 reinicio intento 1 solicitado restaurando ahorro desactivado, con aviso futuro y primer desbloqueo sin abrir Dayflow; pendiente de resultado y confirmación de restauración.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
