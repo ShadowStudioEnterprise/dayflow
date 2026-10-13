@@ -34,4 +34,6 @@ Las pruebas usan Chromium con emulación móvil y fixtures de Auth/Sync; no cert
 
 No había dispositivos conectados al terminar la compilación; no se copió ni instaló el nuevo APK en un teléfono.
 
+El 13 de octubre el usuario confirmó «Estoy conforme con el diseño actual». Se registra la aceptación del diseño; esta respuesta no confirma la instalación del APK responsive ni sustituye los ensayos físicos de teclado y WebView.
+
 Para revisar en el Redmi: actualizar conservando datos, abrir menú y Configuración, crear/editar tarea/evento/recordatorio, abrir nota larga y teclado, comprobar cierre/guardar y modo horizontal. No dar por superados los ensayos físicos anteriores sobre un APK nuevo sin registrar la versión probada. [Registro Redmi](2026-10-12-redmi-9a.md).
