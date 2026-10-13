@@ -25,6 +25,8 @@ ALM-07 intento 1 confirmado manualmente: 13 de octubre, previsto 22:00 y recibid
 
 ALM-07 intento 2 confirmado manualmente bajo el recorrido de creación/programación offline: 13 de octubre, previsto 22:10 y recibido 22:10, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador y sin red. Captura de confirmación de programación no aportada; retraso exacto y Doze no medidos. Intento 3 solicitado repitiendo esta variante offline; pendiente. Mantener separadas las variantes del intento 1 y del intento 2.
 
+ALM-07 intento 3, ensayo del 13 de octubre comunicado el 14: previsto 22:15 y recibido 22:15, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador y sin red. Segunda recepción manual positiva de la variante de creación/programación offline; latencia exacta y Doze no medidos. Intento 4 solicitado para obtener la tercera repetición de esta variante; pendiente. El intento 1 mantiene su alcance de programación antes de desconectar.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
