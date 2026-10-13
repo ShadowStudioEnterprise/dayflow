@@ -19,6 +19,8 @@ ALM-06 intento 2 confirmado manualmente: 13 de octubre, previsto 17:25 y recibid
 
 Aclaración posterior del usuario: notificación **visible antes de desbloquear en los intentos 1 y 2**. Evidencia manual retrospectiva, sin captura. El intento 3 sigue pendiente; no se cuenta esta aclaración como una tercera recepción.
 
+ALM-06 intento 3 confirmado manualmente: 13 de octubre, previsto 19:15 y recibido 19:15, precisión de minutos; sonó, no vibró, apertura correcta y visible antes de desbloquear. Permaneció bloqueado hasta el aviso, sin USB/cargador. **Tres recepciones positivas bajo bloqueo**, observadas en el minuto previsto; precisión limitada a minutos, sin latencia exacta ni evidencia de Doze. Ajuste de vibración no informado. ALM-07 sin red intento 1 solicitado; pendiente.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
