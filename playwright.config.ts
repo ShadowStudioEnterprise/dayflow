@@ -7,6 +7,15 @@ export default defineConfig({
   use: { baseURL: 'http://127.0.0.1:4173', trace: 'retain-on-failure' },
   projects: [
     {
+      name: 'mobile-layout',
+      testMatch: '**/mobile-layout.spec.ts',
+      use: {
+        ...devices['iPhone 13'],
+        defaultBrowserType: 'chromium',
+        baseURL: 'http://127.0.0.1:4175',
+      },
+    },
+    {
       name: 'profile-desktop',
       testMatch: '**/profile.spec.ts',
       use: { ...devices['Desktop Chrome'], baseURL: 'http://127.0.0.1:4175' },

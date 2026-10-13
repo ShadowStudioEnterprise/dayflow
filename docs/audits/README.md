@@ -1,5 +1,7 @@
 # Auditorías
 
+- [Responsive móvil del 13 de octubre de 2026](2026-10-13-mobile-responsive.md): diálogos adaptados al teclado, estado de notas visible, menú/cabecera y controles móviles; layout y recorridos funcionales comprobados. Revisión del nuevo APK en Redmi pendiente.
+
 - [Nota offline tras reinicio del Redmi](2026-10-12-redmi-note-offline-restart.md): pérdida de edición reportada pese al estado Guardado, sin recuperación al reconectar; 20 unitarias y 10 E2E correctos no reproducen el reinicio físico. Investigación abierta.
 
 - [Compatibilidad WebView 97](2026-10-12-webview97-compat.md): corrección de zonas horarias y cancelación/timeout de Sync tras el error en Redmi 9A. Pruebas automatizadas correctas; creación y sincronización bidireccional confirmadas manualmente tras actualizar.
