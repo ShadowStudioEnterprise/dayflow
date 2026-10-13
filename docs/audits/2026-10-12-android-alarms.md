@@ -13,6 +13,8 @@ ALM-05 intento 2, resultado manual del 13 de octubre: previsto 16:58, recibido 1
 
 ALM-05 intento 3 confirmado: 13 de octubre, previsto 17:05, recibido 17:05, precisión de minutos; sonó, no vibró, apertura correcta, pantalla encendida y USB/cargador conectado. Dos intentos positivos con sonido; falta otro bajo esa configuración. Ajuste de vibración no informado. ALM-06 bloqueo intento 1 solicitado sin carga, manteniendo ajustes, con lectura externa de horas y comprobación de presentación/apertura; pendiente. No se declara Doze por tener la pantalla bloqueada.
 
+ALM-06 intento 1 confirmado manualmente: 13 de octubre, previsto 17:16 y recibido 17:16, precisión de minutos; sonó, no vibró y abrió el recordatorio correcto. Pantalla no permaneció encendida, sin USB/cargador, bajo el recorrido de bloqueo solicitado. Visibilidad antes de desbloquear pendiente de respuesta; retraso exacto y Doze no medidos. Intento 2 solicitado sin cambiar ajustes; la condición aún no está cerrada.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
