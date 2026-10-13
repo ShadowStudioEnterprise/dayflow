@@ -27,6 +27,8 @@ ALM-07 intento 2 confirmado manualmente bajo el recorrido de creación/programac
 
 ALM-07 intento 3, ensayo del 13 de octubre comunicado el 14: previsto 22:15 y recibido 22:15, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador y sin red. Segunda recepción manual positiva de la variante de creación/programación offline; latencia exacta y Doze no medidos. Intento 4 solicitado para obtener la tercera repetición de esta variante; pendiente. El intento 1 mantiene su alcance de programación antes de desconectar.
 
+ALM-07 intento 4 confirmado manualmente: 14 de octubre, previsto 00:49 y recibido 00:49, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador y sin red. **Tres recepciones positivas de avisos creados/programados offline**, intentos 2–4; no equivalen a latencia cero ni a prueba de Doze. ALM-10 ahorro intento 1 solicitado con red recuperada, cero pendientes, ahorro normal, sin cambiar optimización propia de Dayflow y sin carga; pendiente de modo, porcentaje y resultado.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
