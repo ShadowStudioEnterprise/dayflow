@@ -31,6 +31,8 @@ ALM-07 intento 4 confirmado manualmente: 14 de octubre, previsto 00:49 y recibid
 
 ALM-10 intento 1 informado: 14 de octubre, previsto 00:55 y recibido 00:55, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado, sin USB/cargador. Ahorro activo y **sin red**, según el usuario: variante combinada, no ensayo con red restablecida. Nombre del modo, porcentaje y modo avión/Wi-Fi pendientes de aclaración. Una recepción positiva no cierra la condición; no aporta latencia exacta ni prueba de Doze.
 
+Aclaración posterior: el usuario indica «98% batreria, ahorro de bateria con internet». Conectividad del intento 1 corregida a **con internet** según la información más reciente; se conserva la contradicción inicial sin contabilizar dos ensayos. Modo «ahorro de batería», 98 % leído actualmente, sin atribuirlo al inicio del ensayo. Intento 2 solicitado con red, ahorro, bloqueo y sin carga, anotando porcentaje al comienzo; pendiente. No se han medido Doze ni consumo de batería.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
