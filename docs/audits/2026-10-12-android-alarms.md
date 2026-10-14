@@ -39,6 +39,8 @@ ALM-10 intento 3 confirmado manualmente: 14 de octubre, previsto 01:25 y recibid
 
 ALM-12 intento 1: usuario aclara que **el aviso no llegó después del reinicio**. Falta delimitar fecha/hora prevista y ventana observada, primer desbloqueo, apertura previa y ahorro desactivado; falta comprobar recepción al reabrir e Inicio automático. Fallo reportado con evidencia manual incompleta, no prueba de ausencia definitiva ni causa determinada. ADB sin dispositivos; no se consultaron logs de arranque en hardware.
 
+Observación ALM-12 todavía en curso: el usuario confirma que no han transcurrido treinta minutos desde el vencimiento. Autoinicio de Dayflow **desactivado**; se solicita conservarlo hasta completar la ventana y registrar el resultado al reabrir. No se atribuye la ausencia de recepción a este ajuste sin comparación controlada.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
