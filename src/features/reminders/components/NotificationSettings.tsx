@@ -3,6 +3,7 @@ import { Capacitor } from '@capacitor/core'
 import { webPushConfigured } from '../../../services/notifications/web-push'
 import { WebPushSettings } from './WebPushSettings'
 import { NotificationDiagnostics } from './NotificationDiagnostics'
+import { AndroidNotificationSetupSettings } from '../../../services/native/AndroidNotificationSetup'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { database } from '../../../services/database/database'
 import { notificationAdapter } from '../../../services/notifications/adapter'
@@ -21,6 +22,7 @@ export function NotificationSettings({ userId }: { userId: string }) {
         <LocalNotificationSettings userId={userId} />
       )}
       <NotificationDiagnostics key={userId} userId={userId} />
+      <AndroidNotificationSetupSettings />
     </>
   )
 }

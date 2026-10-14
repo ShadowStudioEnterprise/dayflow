@@ -1570,3 +1570,31 @@ dialog > p {
     scroll-behavior: auto !important;
   }
 }
+/* First-run Android setup uses the same controls as notification settings. */
+.android-notification-setup {
+  width: min(100%, 640px);
+  margin: 0 auto;
+  padding: 24px 16px;
+  min-height: 100vh;
+  overflow-wrap: anywhere;
+}
+.android-setup-panel .notification-actions {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+.android-setup-panel > button {
+  margin: 8px 8px 0 0;
+}
+.android-setup-panel .notification-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 16px 0;
+}
+.android-setup-panel .notification-toggle input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}

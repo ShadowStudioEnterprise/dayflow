@@ -5,6 +5,7 @@ import { usePreferences } from '../store/preferences'
 import { Capacitor } from '@capacitor/core'
 import { backendConfigured } from '../../services/supabase/client'
 import { NativeNotice } from '../../services/native/NativeNotice'
+import { AndroidNotificationSetupGate } from '../../services/native/AndroidNotificationSetup'
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { staleTime: 30000, retry: 1 } },
@@ -32,19 +33,21 @@ export function AppProviders({ children }: { children: ReactNode }) {
     <QueryClientProvider client={queryClient}>
       <ThemeEffect />
       <NativeNotice />
-      <AuthProvider>
-        {backendConfigured && (
-          <Suspense fallback={null}>
-            <SyncRuntime />
-          </Suspense>
-        )}
-        {Capacitor.isNativePlatform() && (
-          <Suspense fallback={null}>
-            <NotificationRuntime />
-          </Suspense>
-        )}
-        {children}
-      </AuthProvider>
+      <AndroidNotificationSetupGate>
+        <AuthProvider>
+          {backendConfigured && (
+            <Suspense fallback={null}>
+              <SyncRuntime />
+            </Suspense>
+          )}
+          {Capacitor.isNativePlatform() && (
+            <Suspense fallback={null}>
+              <NotificationRuntime />
+            </Suspense>
+          )}
+          {children}
+        </AuthProvider>
+      </AndroidNotificationSetupGate>
     </QueryClientProvider>
   )
 }

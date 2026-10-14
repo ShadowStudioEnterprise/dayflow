@@ -44,6 +44,7 @@ export class CapacitorNotificationService implements NotificationService {
         id: 'dayflow-reminders',
         name: 'Recordatorios',
         importance: 4,
+        vibration: true,
         visibility: 0,
       })
     const result = await this.plugin.schedule({
