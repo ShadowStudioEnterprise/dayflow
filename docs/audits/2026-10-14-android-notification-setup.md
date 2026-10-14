@@ -24,4 +24,6 @@ La solicitud ocurre al **primer arranque**, no dentro del instalador del sistema
 
 ## Límites
 
+APK debug preparado: `.toolchains/redmi-9a/Dayflow-0.9.0-notification-setup.apk`, paquete `com.dayflow.app`, versión 0.9.0, **5.101.053 bytes**, SHA-256 `5930A7158F3E0B0B49BD96298F183803409985C19F2D571F947DDBFE3BD3D8F6`. Código compilado `f8c0b66178fbf4cb59f36efc2d07f88af49133e6`. Los 73 archivos de `dist/` se contrastaron con `assets/public/` del APK: cero diferencias SHA-256. Actualización del APK final en el emulador correcta, login visible y configuración completada conservada; no se reinstaló borrando datos.
+
 El emulador no es MIUI y no certifica el ajuste de Autoinicio del Redmi ni la lectura del interruptor de sonido específico del fabricante. Falta actualizar el APK en el Redmi y comprobar primer arranque, retorno desde ajustes y persistencia. El resultado de las alarmas anteriores permanece asociado a la instalación usada durante esas pruebas; no se extrapola al nuevo APK. [Registro Redmi](2026-10-12-redmi-9a.md).
