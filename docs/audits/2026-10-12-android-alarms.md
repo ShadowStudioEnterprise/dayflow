@@ -41,6 +41,8 @@ ALM-12 intento 1: usuario aclara que **el aviso no llegó después del reinicio*
 
 Observación ALM-12 todavía en curso: el usuario confirma que no han transcurrido treinta minutos desde el vencimiento. Autoinicio de Dayflow **desactivado**; se solicita conservarlo hasta completar la ventana y registrar el resultado al reabrir. No se atribuye la ausencia de recepción a este ajuste sin comparación controlada.
 
+ALM-12 intento 1: hora prevista 01:49, desbloqueo informado y ahorro desactivado; sigue sin aviso. Confirmación de fin de observación a las 02:19 o más tarde y apertura posterior sin recepción pendiente. Intento 2 solicitado después de cerrar el anterior, cambiando sólo Autoinicio a activado y manteniendo ahorro desactivado, red, reinicio y bloqueo sin carga. Resultado comparativo pendiente; valor inicial de Autoinicio desactivado registrado para restauración.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
