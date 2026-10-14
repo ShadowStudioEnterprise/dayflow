@@ -16,6 +16,8 @@ Actualización de preparación: el usuario confirma APK actualizado, asistente c
 
 Control de reloj: referencia UTC `2026-10-14T15:58:40.677+00:00`, muestra ADB de 78 ms y resolución del reloj del dispositivo de un segundo; desfase aproximado **−20,6 segundos**. Se solicita revisar fecha/hora automática antes de medir recepción; no usar el retraso aparente frente al ordenador como latencia del planificador sin corregir/registrar este desfase. No se cambió la hora mediante ADB.
 
+Lectura posterior: `auto_time=0`, `auto_time_zone=1`; hora automática desactivada. Estado de inactividad inicial `mForceIdle=false`, `mCharging=true`, `mState=ACTIVE`, `mLightState=ACTIVE`. No se ha forzado Doze ni simulado batería todavía. Activar hora automática antes de la prueba de recepción y comprobar otra vez el desfase.
+
 ALM-01/15 notificaciones solicitado: crear aviso de prueba a más de diez minutos y confirmar programación, revocar únicamente notificaciones desde Ajustes, volver a Diagnóstico y comprobar Bloqueado, conservación del recordatorio y estado de programación coherente. **Pendiente de resultado**; restauración y recepción se ejecutarán después de registrar la revocación.
 
 | Caso                             | Ensayo                                                                                                                                                    | Estado                                                              |
