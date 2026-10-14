@@ -37,6 +37,8 @@ ALM-10 intento 2 confirmado manualmente: 14 de octubre, previsto 01:20 y recibid
 
 ALM-10 intento 3 confirmado manualmente: 14 de octubre, previsto 01:25 y recibido 01:25, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador, ahorro con internet activo; porcentaje inicial no informado. **Tres recepciones positivas con ahorro**, sin latencia exacta ni medición de consumo/Doze. ALM-12 reinicio intento 1 solicitado restaurando ahorro desactivado, con aviso futuro y primer desbloqueo sin abrir Dayflow; pendiente de resultado y confirmación de restauración.
 
+ALM-12 intento 1: usuario aclara que **el aviso no llegó después del reinicio**. Falta delimitar fecha/hora prevista y ventana observada, primer desbloqueo, apertura previa y ahorro desactivado; falta comprobar recepción al reabrir e Inicio automático. Fallo reportado con evidencia manual incompleta, no prueba de ausencia definitiva ni causa determinada. ADB sin dispositivos; no se consultaron logs de arranque en hardware.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
