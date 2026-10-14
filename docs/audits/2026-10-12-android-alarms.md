@@ -43,6 +43,8 @@ Observación ALM-12 todavía en curso: el usuario confirma que no han transcurri
 
 ALM-12 intento 1: hora prevista 01:49, desbloqueo informado y ahorro desactivado; sigue sin aviso. Confirmación de fin de observación a las 02:19 o más tarde y apertura posterior sin recepción pendiente. Intento 2 solicitado después de cerrar el anterior, cambiando sólo Autoinicio a activado y manteniendo ahorro desactivado, red, reinicio y bloqueo sin carga. Resultado comparativo pendiente; valor inicial de Autoinicio desactivado registrado para restauración.
 
+ALM-12 intento 1: nueva respuesta «no llego ningun aviso», sin hora final explícita. Intento 2, con protocolo de Autoinicio activado, confirmado manualmente: 14 de octubre, previsto 03:10 y recibido 03:10, precisión de minutos; reinicio, sonido, visibilidad y apertura positivos. Faltan vibración, duplicados y confirmación expresa de primer desbloqueo/carga/apertura previa. Primera recepción positiva tras reinicio; no causa demostrada ni cierre de la condición. Intento 3 solicitado manteniendo Autoinicio y registrando los campos pendientes.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
