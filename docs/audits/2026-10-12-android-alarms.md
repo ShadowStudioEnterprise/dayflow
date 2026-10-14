@@ -45,6 +45,8 @@ ALM-12 intento 1: hora prevista 01:49, desbloqueo informado y ahorro desactivado
 
 ALM-12 intento 1: nueva respuesta «no llego ningun aviso», sin hora final explícita. Intento 2, con protocolo de Autoinicio activado, confirmado manualmente: 14 de octubre, previsto 03:10 y recibido 03:10, precisión de minutos; reinicio, sonido, visibilidad y apertura positivos. Faltan vibración, duplicados y confirmación expresa de primer desbloqueo/carga/apertura previa. Primera recepción positiva tras reinicio; no causa demostrada ni cierre de la condición. Intento 3 solicitado manteniendo Autoinicio y registrando los campos pendientes.
 
+ALM-12 intento 3 **omitido por decisión del usuario** («no es necesaria la prueba»). Se mantiene una recepción positiva manual con Autoinicio activado y un intento previo sin recepción; no se computan tres repeticiones ni una causa demostrada. Los demás casos pendientes conservan su alcance.
+
 ## Referencia y comprobación estática
 
 Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
