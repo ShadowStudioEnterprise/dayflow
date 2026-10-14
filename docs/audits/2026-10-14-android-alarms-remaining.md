@@ -12,6 +12,12 @@ Rama: `validation/android-alarms-remaining`. El usuario solicita completar Doze,
 
 ## Matriz de esta ronda
 
+Actualización de preparación: el usuario confirma APK actualizado, asistente completado, sonido y Autoinicio activados. ADB detecta el serial físico `DAXOGEL7HY7PX47D`, producto `dandelion_eea`, modelo `M2006C3LG`, API **30**. SHA-256 de `base.apk` instalado **coincide** con `5930A7158F3E0B0B49BD96298F183803409985C19F2D571F947DDBFE3BD3D8F6`. Lectura exclusiva de preferencias del asistente: `completed-v1=true`, `autostartConfirmed=true`; este último sigue siendo una confirmación del usuario, no lectura del permiso MIUI. Batería **100 %**, corriente y USB informados como conectados.
+
+Control de reloj: referencia UTC `2026-10-14T15:58:40.677+00:00`, muestra ADB de 78 ms y resolución del reloj del dispositivo de un segundo; desfase aproximado **−20,6 segundos**. Se solicita revisar fecha/hora automática antes de medir recepción; no usar el retraso aparente frente al ordenador como latencia del planificador sin corregir/registrar este desfase. No se cambió la hora mediante ADB.
+
+ALM-01/15 notificaciones solicitado: crear aviso de prueba a más de diez minutos y confirmar programación, revocar únicamente notificaciones desde Ajustes, volver a Diagnóstico y comprobar Bloqueado, conservación del recordatorio y estado de programación coherente. **Pendiente de resultado**; restauración y recepción se ejecutarán después de registrar la revocación.
+
 | Caso                             | Ensayo                                                                                                                                                    | Estado                                                              |
 | -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | Preparación                      | Actualizar sin borrar datos, completar asistente, leer permisos/sonido/Autoinicio, fecha/hora, batería y optimización                                     | Pendiente                                                           |
