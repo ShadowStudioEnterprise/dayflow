@@ -1,5 +1,7 @@
 # Auditorías
 
+- [Alarmas Android: casos restantes del 14 de octubre](2026-10-14-android-alarms-remaining.md): ronda de Doze, inactividad, permisos, cancelación y variantes de reinicio; identificación del APK nuevo y límite de permisos exactos en Android 11. Ejecución pendiente de actualización/conexión del Redmi.
+
 - [Configuración inicial de avisos Android del 14 de octubre](2026-10-14-android-notification-setup.md): asistente de primer arranque con comprobación de sonido/notificaciones y confirmación manual de Autoinicio en Xiaomi/Redmi; pruebas unitarias y emulador API 35 correctos. Validación física del nuevo APK pendiente.
 
 - [Responsive móvil del 13 de octubre de 2026](2026-10-13-mobile-responsive.md): diálogos adaptados al teclado, estado de notas visible, menú/cabecera y controles móviles; layout y recorridos funcionales comprobados. Revisión del nuevo APK en Redmi pendiente.
