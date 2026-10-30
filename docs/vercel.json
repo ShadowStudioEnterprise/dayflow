@@ -4,5 +4,11 @@
   "installCommand": "cd .. && npm ci",
   "buildCommand": "cd .. && npm run docs:build",
   "outputDirectory": ".vitepress/dist",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/portal-version.json",
+      "headers": [{ "key": "Cache-Control", "value": "no-store" }]
+    }
+  ]
 }
