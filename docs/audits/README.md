@@ -1,6 +1,34 @@
 # Auditorías
 
+- [Redmi Note 11S · 29/10/2026](2026-10-29-redmi-note11s.md): instalación conservando datos, autenticación, offline, sincronización y recuperación de sesión; registro cronológico de avisos y límites.
+- [Alineación de alarmas Android · 29/10/2026](2026-10-29-android-alarm-alignment.md): causa aislada en firmware y modo prioritario experimental.
+- [Aviso prioritario prolongado · 29/10/2026](2026-10-29-priority-prolonged.md): entrega única a las 23:51:00.132 con recepción confirmada; Doze profundo no certificado.
+
+- [Alarmas Android: casos restantes del 14 de octubre](2026-10-14-android-alarms-remaining.md): ronda de Doze, inactividad, permisos, cancelación y variantes de reinicio; identificación del APK nuevo y límite de permisos exactos en Android 11. Ejecución pendiente de actualización/conexión del Redmi.
+
+- [Configuración inicial de avisos Android del 14 de octubre](2026-10-14-android-notification-setup.md): asistente de primer arranque con comprobación de sonido/notificaciones y confirmación manual de Autoinicio en Xiaomi/Redmi; pruebas unitarias y emulador API 35 correctos. Validación física del nuevo APK pendiente.
+
+- [Responsive móvil del 13 de octubre de 2026](2026-10-13-mobile-responsive.md): diálogos adaptados al teclado, estado de notas visible, menú/cabecera y controles móviles; layout y recorridos funcionales comprobados. Revisión del nuevo APK en Redmi pendiente.
+
+- [Nota offline tras reinicio del Redmi](2026-10-12-redmi-note-offline-restart.md): pérdida de edición reportada pese al estado Guardado, sin recuperación al reconectar; 20 unitarias y 10 E2E correctos no reproducen el reinicio físico. Investigación abierta.
+
+- [Compatibilidad WebView 97](2026-10-12-webview97-compat.md): corrección de zonas horarias y cancelación/timeout de Sync tras el error en Redmi 9A. Pruebas automatizadas correctas; creación y sincronización bidireccional confirmadas manualmente tras actualizar.
+
+- [Validación física del Redmi 9A](2026-10-12-redmi-9a.md): instalación, acceso, confirmación y retorno PKCE con correo nuevo, recuperación de contraseña, aislamiento visible entre cuentas, sincronización bidireccional, creación/edición offline, controles de reinicio y recuperación de sesión/sincronización confirmados manualmente. Fallos iniciales conservados; renovación tras caducidad pendiente.
+
+- [Verificación del diagnóstico de notificaciones del 12 de octubre](2026-10-12-notification-diagnostics.md): mecanismo, permisos, pendientes y renovación en Configuración; alcance de las pruebas separado de recepción física.
+
+- [Calendario móvil: repetición del 12 de octubre de 2026](2026-10-12-calendar-mobile.md): 130/130 correctos, cuatro y un worker, cero reintentos y fuentes inmutables. Investigación cerrada por evidencia; fallo no reproducido.
+
+- [PWA móvil del 12 de octubre de 2026](2026-10-12-pwa-mobile.md): ejecución automatizada, cambio de cuenta y protocolo de instalación/offline/persistencia/actualización para Android y Safari/iOS. App nativa iOS descartada por decisión del usuario.
+
+- [Protocolo de alarmas Android del 12 de octubre de 2026](2026-10-12-android-alarms.md): matriz de permisos, bloqueo, Doze, batería y reinicio; medición de recepción y retrasos. Ejecución física pendiente por falta de teléfono.
+
+- [Protocolo de Android físico del 12 de octubre de 2026](2026-10-12-android-physical.md): APK y SHA identificados; matriz de instalación, Auth/PKCE, offline, sincronización y recuperación de sesión. Ejecución física pendiente por falta de teléfono.
+
 - [Estado de CI y producción del 12 de octubre de 2026](2026-10-12-ci-deployment.md): SHA común de CI y Vercel, tres jobs correctos, producción READY, fechas e instantáneas de evidencia. Actualización documental cerrada; alcance separado de Auth/Push manual y cambios posteriores en dev.
+
+- [Versiones, fechas cliente, invocación y SQL](2026-10-12-sql-hardening.md): decisiones SQL-01/02/03/04/06 y migración aditiva con validación local.
 
 - [Capacidad y recuperación de notificaciones](../notification-capacity.md): 26 pruebas, 78 perfiles de emisor y recuperación medida en dos versiones. Cupo de 60, fronteras de cinco minutos, DST, fallos parciales y límite blando de 45 segundos documentados con datos.
 - [Autenticación y Web Push en Vercel](2026-10-12-vercel-auth-web-push.md): cuatro criterios de cierre superados. Auth comprobado por el usuario; aviso de las 02:16 recibido y abierto en Vercel, con aceptación del proveedor registrada en un intento. Conserva el intento fallido previo sin suscripción y la corrección del cierre prematuro.

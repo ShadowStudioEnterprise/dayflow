@@ -288,7 +288,7 @@
 }
 .task-dialog {
   width: min(640px, calc(100% - 24px));
-  max-height: calc(100dvh - 36px);
+  max-height: calc(var(--modal-viewport-height, 100vh) - 36px);
   overflow-y: auto;
   padding: 25px 28px;
 }
@@ -337,7 +337,7 @@
 }
 .task-form-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
   align-items: start;
 }
@@ -618,7 +618,7 @@
   }
   .task-dialog {
     padding: 17px 15px;
-    max-height: calc(100dvh - 20px);
+    max-height: calc(var(--modal-viewport-height, 100vh) - 20px);
   }
   .task-dialog .modal-head {
     top: -17px;

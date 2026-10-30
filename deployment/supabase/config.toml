@@ -1,5 +1,7 @@
 # Perfil remoto: solo ajustes de Auth necesarios para Dayflow.
 # El archivo supabase/config.toml de la raíz sigue dedicado a Docker local.
+# SMTP se administra aparte con scripts/configure-auth-smtp.mjs y secretos
+# privados en .env.smtp.local; ver docs/auth-smtp.md. No guardar credenciales aquí.
 project_id = "dayflow-hosted"
 
 [auth]

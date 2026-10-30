@@ -8,6 +8,7 @@ import {
   FileText,
   Inbox,
   Menu,
+  X,
   PanelLeftClose,
   Plus,
   Search,
@@ -43,6 +44,22 @@ export default function AppLayout({ preview = false }: { preview?: boolean }) {
   const [modal, setModal] = useState<'create' | 'search' | null>(null)
   const [mobileMenu, setMobileMenu] = useState(false)
   const location = useLocation()
+  useEffect(() => {
+    const media = window.matchMedia('(max-width: 800px)')
+    const update = () => {
+      if (!media.matches) setMobileMenu(false)
+    }
+    media.addEventListener('change', update)
+    return () => media.removeEventListener('change', update)
+  }, [])
+  useEffect(() => {
+    if (!mobileMenu) return
+    const previous = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = previous
+    }
+  }, [mobileMenu])
   const base = preview ? '/setup' : ''
   const url = (path: string) => (path ? `${base}/${path}` : base || '/')
   const title =
@@ -99,9 +116,23 @@ export default function AppLayout({ preview = false }: { preview?: boolean }) {
         id="sidebar"
         className={`sidebar ${mobileMenu ? 'mobile-open' : ''}`}
       >
-        <Link to={url('')} className="brand-link" aria-label="Dayflow, inicio">
-          <Brand compact={collapsed && !mobileMenu} />
-        </Link>
+        <div className="sidebar-heading">
+          <Link
+            to={url('')}
+            className="brand-link"
+            aria-label="Dayflow, inicio"
+            onClick={() => setMobileMenu(false)}
+          >
+            <Brand compact={collapsed && !mobileMenu} />
+          </Link>
+          <button
+            className="icon-button mobile-drawer-close"
+            aria-label="Cerrar menú"
+            onClick={() => setMobileMenu(false)}
+          >
+            <X size={20} />
+          </button>
+        </div>
         <WorkspaceMenu
           key={`${location.key}-${mobileMenu}-${collapsed}`}
           initial={user?.email?.charAt(0).toUpperCase() ?? 'D'}

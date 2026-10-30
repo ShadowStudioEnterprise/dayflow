@@ -464,6 +464,69 @@ test('la caché de arranque no abre datos privados después de cerrar sesión', 
   await expect(page.getByLabel('Nueva captura')).toHaveCount(0)
 })
 
+test('cambiar de cuenta conserva datos offline separados en el mismo almacenamiento', async ({
+  page,
+  context,
+}) => {
+  await login(page)
+  await ready(page)
+  await page.goto('/inbox')
+  await page.getByLabel('Nueva captura').fill('Captura privada de cuenta A')
+  await page.getByLabel('Nueva captura').press('Enter')
+  await expect(
+    page.getByRole('button', { name: 'Organizar Captura privada de cuenta A' }),
+  ).toBeVisible()
+  await page.goto('/settings')
+  await page.getByRole('button', { name: 'Cerrar sesión', exact: true }).click()
+  await expect(page).toHaveURL(/auth\/login/)
+
+  await login(page, '00000000-0000-4000-8000-000000000002')
+  await ready(page)
+  await page.goto('/inbox')
+  await expect(
+    page.getByRole('button', { name: 'Organizar Captura privada de cuenta A' }),
+  ).toHaveCount(0)
+  await page.getByLabel('Nueva captura').fill('Captura privada de cuenta B')
+  await page.getByLabel('Nueva captura').press('Enter')
+  await expect(
+    page.getByRole('button', { name: 'Organizar Captura privada de cuenta B' }),
+  ).toBeVisible()
+
+  await context.setOffline(true)
+  await page.close()
+  const reopened = await context.newPage()
+  await reopened.goto('/inbox')
+  await expect(
+    reopened.getByRole('button', {
+      name: 'Organizar Captura privada de cuenta B',
+    }),
+  ).toBeVisible()
+  await expect(
+    reopened.getByRole('button', {
+      name: 'Organizar Captura privada de cuenta A',
+    }),
+  ).toHaveCount(0)
+  await context.setOffline(false)
+  await reopened.goto('/settings')
+  await reopened
+    .getByRole('button', { name: 'Cerrar sesión', exact: true })
+    .click()
+  await expect(reopened).toHaveURL(/auth\/login/)
+
+  await login(reopened)
+  await reopened.goto('/inbox')
+  await expect(
+    reopened.getByRole('button', {
+      name: 'Organizar Captura privada de cuenta A',
+    }),
+  ).toBeVisible()
+  await expect(
+    reopened.getByRole('button', {
+      name: 'Organizar Captura privada de cuenta B',
+    }),
+  ).toHaveCount(0)
+})
+
 test('instalación legible a 320 px y en oscuro, sin desbordamiento ni errores de página', async ({
   page,
 }, testInfo) => {

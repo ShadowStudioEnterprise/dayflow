@@ -1,5 +1,13 @@
 # Verificación — Fases 1–9, incluida PWA y Capacitor
 
+## Diagnóstico de notificaciones — 12 de octubre de 2026
+
+La interfaz ya existente en Configuración cumple el criterio funcional de mostrar mecanismo, permisos, avisos y renovación. [Verificación dirigida](audits/2026-10-12-notification-diagnostics.md): 7 unitarias y 4 E2E PWA correctos, cero reintentos E2E. La evidencia distingue fixtures/Chromium de lectura y entrega Android real; la captura móvil tiene una superposición cuya causa no se ha determinado. No se modificó código de producto.
+
+## Calendario móvil — 12 de octubre de 2026
+
+[Revisión y evidencia](audits/2026-10-12-calendar-mobile.md): base `d3910ab`, 100 intentos con cuatro workers y 30 con uno, todos correctos, sin reintentos y con hashes de fuentes iguales antes/después. Se cierra el criterio de investigación por repeticiones controladas; no se afirma haber identificado o corregido una causa del calendario ni validado dispositivos físicos.
+
 ## Estado vigente de CI y despliegue — 12 de octubre de 2026
 
 Producción y CI corresponden a `main`, SHA
@@ -22,6 +30,14 @@ recogidos en el [informe e instantáneas](audits/2026-10-12-ci-deployment.md).
 Los cambios posteriores de SQL/SMTP en `dev` y las pruebas físicas quedan fuera
 de esta ejecución. No se repitieron Auth ni entrega real de Push sobre este SHA.
 Las entradas siguientes conservan sus resultados y pendientes históricos.
+
+## Preparación de SMTP para beta externa — 12 de octubre de 2026
+
+Rama `feat/beta-custom-smtp`, creada desde `dev` en `83af7b6b266624236d5abd265da32f91f8ecf17a`, con cambios de preparación sobre esa base. Windows/PowerShell, sin proveedor ni credenciales SMTP disponibles según el propietario. Se añadió un configurador de Management API, plantilla privada y [guía de activación y cierre](auth-smtp.md).
+
+`npm run test:smtp`: **5/5 pruebas correctas**, salida **0**, con HTTP simulado. Verifican rechazo de proyecto distinto/datos de ejemplo antes de contactar la API, PATCH limitado a correo, lectura posterior, `check` sin escrituras, bloqueo ante Send Email Hook y errores sin secretos. `npm run docs:check`, `npm run test:docs` (**3/3**), `npm run lint` y `git diff --check`: salida **0**. `git check-ignore .env.smtp.local` confirmó que el archivo privado está excluido.
+
+No se aplicó configuración remota ni se enviaron mensajes. **La tarea permanece pendiente de activación SMTP y confirmación/recuperación completadas con destinatarios ajenos al equipo**. Las pruebas del configurador y Mailpit no prueban entrega externa.
 
 ## Corrección del arranque de Sync — 10 de octubre de 2026
 
@@ -265,3 +281,45 @@ El desplegable incluye «Cerrar sesión» para cuentas autenticadas, separado de
 **4 E2E correctos** en escritorio y viewport móvil: espera con botón desactivado, respuesta normal y error 503 del servidor, retorno al acceso y rechazo de navegación posterior a `/profile` sin sesión. La prueba inicial esperaba conservar la sesión tras un 503; se corrigió esa expectativa al comprobar que el SDK instalado elimina la sesión local también en ese caso. El test detectó además el cierre prematuro por blur del botón desactivado, que se corrigió y verificó. Build/TypeScript, lint y formato correctos. El build mantiene un aviso no bloqueante del empaquetador sobre una importación dinámica de Capacitor que ya está importado estáticamente; no afecta al cierre de sesión. No se modificó el servicio de autenticación ni se cerró la sesión real del usuario durante las pruebas.
 
 Versión 3 publicada con estado `succeeded`, despliegue `appgdep_6ac28b1d3cc48191be67d28d760ddaeb` y commit de exportación `b1b471dc26de879f0f927554941b4010e20802a2`. Se conserva el acceso privado compartido. La actualización de la copia guardada en el navegador del usuario sigue dependiendo del acceso válido al alojamiento y la activación del nuevo worker; no se declara resuelto el error de actualización comunicado anteriormente.
+
+## Avisos prioritarios Android — 29 de octubre de 2026
+
+Implementación experimental local sobre `f9e255e8264c4a65b3a0e720438c143bc480c107`, sin commit ni publicación de su código. Esta actualización publica sólo la documentación de las pruebas. Dispositivo: Redmi Note 11S / `2201117SY`, Android 13/API 33, build `V816.0.11.0.TKEEUXM`.
+
+Se aisló la alineación de alarmas del firmware al registrar con pantalla apagada: `AlarmManagerServiceStubImpl.alignAlarmLocked` utiliza un periodo predeterminado de 300.000 ms y excluye `AlarmClockInfo`. La misma fecha de las 23:05 quedó registrada sin desplazamiento con pantalla encendida y pasó a 23:09:30 al renovar con pantalla apagada; publicación observada a 23:09:30.735. Doze no estaba forzado y el usuario confirmó batería en «Sin restricciones».
+
+Se añadió el ajuste local **Avisos prioritarios en este dispositivo**, desactivado por defecto y exclusivo de Android. Usa `setAlarmClock` mediante un parche reproducible de `@capacitor/local-notifications@8.3.1`; conserva la opción en almacenamiento nativo para la reconstrucción tras arranque. La preferencia no cambia contenido ni fechas de recordatorios ni se envía al backend. Desactivar avisos conserva la preferencia de prioridad, y cambiarla no reactiva avisos deshabilitados.
+
+Validaciones correctas: TypeScript, lint, formato, 35 pruebas de adaptador/servicio/capacidad, índice y enlaces documentales y 3 pruebas del validador de documentación. Build web y `:app:assembleDebug :app:assembleDebugAndroidTest` correctos. `npm run postinstall` reaplica el parche sin errores. Dos pruebas instrumentadas correctas en el Redmi: comparación de APIs nativas y persistencia/reconstrucción del modo prioritario. Las operaciones sintéticas de esas pruebas se retiraron de forma exclusiva, sin limpiar datos de la aplicación.
+
+En la comparación nativa con pantalla apagada, las variantes exactas RTC, RTC con `allowWhileIdle` y tiempo transcurrido quedaron desplazadas 154.218 ms; `AlarmClockInfo` conservó el objetivo sin desplazamiento. El modo del plugin sobrevivió al ciclo de almacenamiento y reconstrucción nativa con diferencia de registro de 0 ms.
+
+APK debug actualizado con `adb install -r` tras comprobar la misma firma. SHA-256: `1D855897907DF101A9D2FF994CAEE41D6DEDF0422E29F37D566320A143B4BA2E`. La app y el backend alojado mantienen su identidad; no se desinstaló ni borró información.
+
+Prueba real: el modo estaba desactivado inicialmente, se activó desde su control de Configuración y sobrevivió a una recarga. El aviso prioritario previsto para las **23:25:00 Europe/Madrid** se registró sin desplazamiento con la pantalla apagada y se publicó a **23:25:00.070**. El plugin confirmó una única entrega y el usuario confirmó sonido o vibración. Se restauró la preferencia inicial desactivada. La sesión siguió autenticada, las dos tareas originales conservaron ID/título/versión, las tres notas conservaron su huella y la cola quedó vacía. Doze forzado, modo avión y simulación de batería permanecieron desactivados.
+
+Alcance de la primera prueba: entrega real en segundo plano con pantalla apagada y prueba nativa de almacenamiento/reconstrucción. El ensayo prolongado posterior se registra en el apartado siguiente; no se repitió el reinicio físico con el nuevo modo. No se promete puntualidad en todos los teléfonos o estados del sistema.
+
+Guía: [Avisos prioritarios en Android](android-priority-alarms.md). Evidencia local ignorada: `.toolchains/priority-alarms-2026-10-29/`; incluye resultados nativos, observaciones de AlarmManager, prueba de interfaz, entrega e integridad final, sin tokens ni contraseñas. El paquete auxiliar `com.dayflow.app.test` se conserva instalado, respetando la instrucción de no desinstalar.
+
+## Aviso prioritario prolongado — 29 de octubre de 2026
+
+Se activó temporalmente el modo prioritario desde Configuración y se programó un aviso para las **23:51:00,000 Europe/Madrid**. La observación con pantalla apagada duró **955 segundos** hasta detectar la entrega, con **32 muestras** y sin interrupciones de ADB. Android publicó el aviso a las **23:51:00,132**, **132 ms** después del objetivo. El sistema y el plugin confirmaron **una única entrega**.
+
+**Pasa la entrega puntual prolongada con pantalla apagada. No se certifica Doze profundo durante 15 minutos.** La orden de entrada devolvió `Unable to go deep idle; stopped at INACTIVE`; ninguna muestra acreditó IDLE profundo. Se observó reposo ligero (`mLightState=IDLE`) mientras el estado profundo seguía en INACTIVE. Se retiró enseguida la solicitud forzada al no confirmar la entrada y se continuó únicamente la observación de entrega.
+
+El dispositivo declara `min_time_to_alarm=+30m0s0ms`. El [código público de Android](https://android.googlesource.com/platform/prebuilts/fullsdk/sources/android-30/+/refs/heads/main/com/android/server/DeviceIdleController.java) comprueba la proximidad de la siguiente alarma de despertar antes de avanzar a reposo profundo. Esto es compatible con el rechazo observado; no se ha demostrado que la implementación de este firmware coincida en todos sus detalles. No se alteraron constantes globales de Doze ni la política «Sin restricciones» para forzar un resultado positivo.
+
+La confirmación perceptiva del usuario es: **Sí, con la pantalla apagada y sonido o vibración**. La hora anterior corresponde a la publicación medida por Android, no a una medición acústica.
+
+Se restauró la preferencia prioritaria inicial **desactivada**, se retiró Doze forzado y se restableció la lectura normal de batería. La misma cuenta sigue autenticada; las dos tareas originales y la huella de las tres notas se mantienen; la cola está vacía. No se desinstaló ni borró información. Los recordatorios de prueba se conservan. El reinicio físico con el modo prioritario no se ha repetido.
+
+Evidencia: `note11s-priority-prolonged-{doze,notification,observation,screen,ui,summary,final-integrity}.json`. El APK es el mismo debug ya instalado, SHA-256 `1D855897907DF101A9D2FF994CAEE41D6DEDF0422E29F37D566320A143B4BA2E`; no se cambió código de aplicación en esta continuación.
+
+Informes completos: [Redmi Note 11S](audits/2026-10-29-redmi-note11s.md), [alineación de alarmas](audits/2026-10-29-android-alarm-alignment.md) y [aviso prioritario prolongado](audits/2026-10-29-priority-prolonged.md).
+
+## Corrección de integración móvil — 30 de octubre de 2026
+
+La CI de la PR de integración a `main`, sobre `31f9d31681b28f760a035710823e2f2b2e13bdb2`, pasó 308 unitarias, 22 pruebas PWA, documentación, TypeScript, lint, formato y build. La suite E2E terminó con 110 correctas y tres fallos de anchura: diálogo de tareas a 320×568 y edición de tareas a 320 px en ambos perfiles.
+
+La medición local mostró columnas de fecha y hora con ancho intrínseco superior al formulario: 277 px de contenido en 264 px disponibles. Se cambió únicamente la definición de columnas de `.task-form-grid` a `repeat(2, minmax(0, 1fr))`, para permitir la reducción real de ambas columnas sin ocultar ni recortar campos. La medición posterior no encontró elementos desbordados. Los recorridos existentes comprueban tanto el encaje como la creación y edición; sus aserciones se conservan. El resultado final de CI se consulta en la PR de integración.

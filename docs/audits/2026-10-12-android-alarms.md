@@ -1,0 +1,147 @@
+# Android físico: alarmas y recepción de notificaciones
+
+Preparado el 12 de octubre de 2026, Europe/Madrid, en `validation/android-alarms`.
+Estado: **pendiente de ejecución física**. El usuario no dispone ahora de teléfono; ADB sólo detecta el emulador `emulator-5554`. Ningún caso de la matriz siguiente se declara ejecutado.
+
+Actualización del 13 de octubre: disponible Redmi 9A, Android 11/API 30 y WebView 97; instalación y pruebas manuales en el [registro del dispositivo](2026-10-12-redmi-9a.md). El usuario confirma notificaciones y alarmas exactas permitidas, mecanismo de alarmas locales de Android, ahorro desactivado y concordancia de fecha/hora con el ordenador. No se ha observado el recorrido de concesión ni medido la precisión del reloj. ALM-05 intento 1 solicitado, pendiente de recepción y medición; el estado inicial anterior se conserva como antecedente del protocolo.
+
+Resultado posterior ALM-05 intento 1: recepción en segundo plano y apertura del recordatorio correcto confirmadas manualmente; pantalla encendida y USB/cargador conectado. El usuario informa llegada a la hora prevista, pero no aporta horas ni precisión: retraso no medido. Sin sonido ni vibración, ajustes de canal/modos/volumen pendientes de comprobar. Caso **parcial**, no cerrado: faltan medición y dos repeticiones. Los otros casos permanecen pendientes; la matriz preparada más abajo no se interpreta como resultados ejecutados.
+
+El usuario confirmó después sonido de reproducción desactivado en la categoría consultada. Se conserva este valor inicial. ALM-05 intento 2 solicitado con sonido activado, vibración si está disponible, modos de silencio desactivados y volumen audible; tiempos y resultado pendientes. No se atribuye la ausencia de vibración al ajuste de sonido ni se declara corregido un defecto de código.
+
+ALM-05 intento 2, resultado manual del 13 de octubre: previsto 16:58, recibido 16:58, precisión de minutos (Europe/Madrid); no se informa retraso exacto ni cero segundos. Sonó, no vibró y abrió el recordatorio correcto; pantalla encendida y USB/cargador conectado. Intento 3 solicitado manteniendo ajustes y carga; pendiente. La configuración sonora difiere del intento 1 y aún no hay tres repeticiones equivalentes ni medición en segundos. Ajuste de vibración pendiente de lectura.
+
+ALM-05 intento 3 confirmado: 13 de octubre, previsto 17:05, recibido 17:05, precisión de minutos; sonó, no vibró, apertura correcta, pantalla encendida y USB/cargador conectado. Dos intentos positivos con sonido; falta otro bajo esa configuración. Ajuste de vibración no informado. ALM-06 bloqueo intento 1 solicitado sin carga, manteniendo ajustes, con lectura externa de horas y comprobación de presentación/apertura; pendiente. No se declara Doze por tener la pantalla bloqueada.
+
+ALM-06 intento 1 confirmado manualmente: 13 de octubre, previsto 17:16 y recibido 17:16, precisión de minutos; sonó, no vibró y abrió el recordatorio correcto. Pantalla no permaneció encendida, sin USB/cargador, bajo el recorrido de bloqueo solicitado. Visibilidad antes de desbloquear pendiente de respuesta; retraso exacto y Doze no medidos. Intento 2 solicitado sin cambiar ajustes; la condición aún no está cerrada.
+
+ALM-06 intento 2 confirmado manualmente: 13 de octubre, previsto 17:25 y recibido 17:25, precisión de minutos; sonó, no vibró, apertura correcta, pantalla no permaneció encendida y sin USB/cargador. Visibilidad antes de desbloquear no informada. Intento 3 solicitado bajo los mismos ajustes, incluyendo comprobación explícita de visibilidad; pendiente. Dos recepciones positivas no certifican Doze ni aportan latencia exacta.
+
+Aclaración posterior del usuario: notificación **visible antes de desbloquear en los intentos 1 y 2**. Evidencia manual retrospectiva, sin captura. El intento 3 sigue pendiente; no se cuenta esta aclaración como una tercera recepción.
+
+ALM-06 intento 3 confirmado manualmente: 13 de octubre, previsto 19:15 y recibido 19:15, precisión de minutos; sonó, no vibró, apertura correcta y visible antes de desbloquear. Permaneció bloqueado hasta el aviso, sin USB/cargador. **Tres recepciones positivas bajo bloqueo**, observadas en el minuto previsto; precisión limitada a minutos, sin latencia exacta ni evidencia de Doze. Ajuste de vibración no informado. ALM-07 sin red intento 1 solicitado; pendiente.
+
+ALM-07 intento 1 confirmado manualmente: 13 de octubre, previsto 22:00 y recibido 22:00, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador ni red al recibir. Resultado positivo para programación antes de desconectar, sin retraso exacto medido ni certificación de Doze. Intento 2 solicitado creando y programando **ya offline**, variante distinta; pendiente. Ninguna de las variantes completa aún tres repeticiones equivalentes.
+
+ALM-07 intento 2 confirmado manualmente bajo el recorrido de creación/programación offline: 13 de octubre, previsto 22:10 y recibido 22:10, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador y sin red. Captura de confirmación de programación no aportada; retraso exacto y Doze no medidos. Intento 3 solicitado repitiendo esta variante offline; pendiente. Mantener separadas las variantes del intento 1 y del intento 2.
+
+ALM-07 intento 3, ensayo del 13 de octubre comunicado el 14: previsto 22:15 y recibido 22:15, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador y sin red. Segunda recepción manual positiva de la variante de creación/programación offline; latencia exacta y Doze no medidos. Intento 4 solicitado para obtener la tercera repetición de esta variante; pendiente. El intento 1 mantiene su alcance de programación antes de desconectar.
+
+ALM-07 intento 4 confirmado manualmente: 14 de octubre, previsto 00:49 y recibido 00:49, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador y sin red. **Tres recepciones positivas de avisos creados/programados offline**, intentos 2–4; no equivalen a latencia cero ni a prueba de Doze. ALM-10 ahorro intento 1 solicitado con red recuperada, cero pendientes, ahorro normal, sin cambiar optimización propia de Dayflow y sin carga; pendiente de modo, porcentaje y resultado.
+
+ALM-10 intento 1 informado: 14 de octubre, previsto 00:55 y recibido 00:55, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado, sin USB/cargador. Ahorro activo y **sin red**, según el usuario: variante combinada, no ensayo con red restablecida. Nombre del modo, porcentaje y modo avión/Wi-Fi pendientes de aclaración. Una recepción positiva no cierra la condición; no aporta latencia exacta ni prueba de Doze.
+
+Aclaración posterior: el usuario indica «98% batreria, ahorro de bateria con internet». Conectividad del intento 1 corregida a **con internet** según la información más reciente; se conserva la contradicción inicial sin contabilizar dos ensayos. Modo «ahorro de batería», 98 % leído actualmente, sin atribuirlo al inicio del ensayo. Intento 2 solicitado con red, ahorro, bloqueo y sin carga, anotando porcentaje al comienzo; pendiente. No se han medido Doze ni consumo de batería.
+
+ALM-10 intento 2 confirmado manualmente: 14 de octubre, previsto 01:20 y recibido 01:20, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador, ahorro e internet activos; porcentaje al inicio no informado. Segunda recepción positiva, sin latencia exacta ni evidencia de Doze. Intento 3 solicitado manteniendo condiciones y anotando batería; pendiente. Restaurar ahorro desactivado al terminar la condición.
+
+ALM-10 intento 3 confirmado manualmente: 14 de octubre, previsto 01:25 y recibido 01:25, precisión de minutos; sonó, no vibró, apertura correcta, visible antes de desbloquear y permaneció bloqueado. Sin USB/cargador, ahorro con internet activo; porcentaje inicial no informado. **Tres recepciones positivas con ahorro**, sin latencia exacta ni medición de consumo/Doze. ALM-12 reinicio intento 1 solicitado restaurando ahorro desactivado, con aviso futuro y primer desbloqueo sin abrir Dayflow; pendiente de resultado y confirmación de restauración.
+
+ALM-12 intento 1: usuario aclara que **el aviso no llegó después del reinicio**. Falta delimitar fecha/hora prevista y ventana observada, primer desbloqueo, apertura previa y ahorro desactivado; falta comprobar recepción al reabrir e Inicio automático. Fallo reportado con evidencia manual incompleta, no prueba de ausencia definitiva ni causa determinada. ADB sin dispositivos; no se consultaron logs de arranque en hardware.
+
+Observación ALM-12 todavía en curso: el usuario confirma que no han transcurrido treinta minutos desde el vencimiento. Autoinicio de Dayflow **desactivado**; se solicita conservarlo hasta completar la ventana y registrar el resultado al reabrir. No se atribuye la ausencia de recepción a este ajuste sin comparación controlada.
+
+ALM-12 intento 1: hora prevista 01:49, desbloqueo informado y ahorro desactivado; sigue sin aviso. Confirmación de fin de observación a las 02:19 o más tarde y apertura posterior sin recepción pendiente. Intento 2 solicitado después de cerrar el anterior, cambiando sólo Autoinicio a activado y manteniendo ahorro desactivado, red, reinicio y bloqueo sin carga. Resultado comparativo pendiente; valor inicial de Autoinicio desactivado registrado para restauración.
+
+ALM-12 intento 1: nueva respuesta «no llego ningun aviso», sin hora final explícita. Intento 2, con protocolo de Autoinicio activado, confirmado manualmente: 14 de octubre, previsto 03:10 y recibido 03:10, precisión de minutos; reinicio, sonido, visibilidad y apertura positivos. Faltan vibración, duplicados y confirmación expresa de primer desbloqueo/carga/apertura previa. Primera recepción positiva tras reinicio; no causa demostrada ni cierre de la condición. Intento 3 solicitado manteniendo Autoinicio y registrando los campos pendientes.
+
+ALM-12 intento 3 **omitido por decisión del usuario** («no es necesaria la prueba»). Se mantiene una recepción positiva manual con Autoinicio activado y un intento previo sin recepción; no se computan tres repeticiones ni una causa demostrada. Los demás casos pendientes conservan su alcance.
+
+## Referencia y comprobación estática
+
+Usar los datos de dispositivo y la instalación descritos en el [protocolo de Android físico](2026-10-12-android-physical.md).
+
+- SHA del código preparado: `f06a41a44546d805b8f22b6fafd488f4a4545f1b`.
+- APK: `android/app/build/outputs/apk/debug/app-debug.apk`, paquete `com.dayflow.app`, versión `0.9.0`.
+- SHA-256 APK comprobado: `45FF10922E0027A407DEA2B2A5C582D0DB04E0249F53325BF18D59A53BF6DD1B`.
+- `capacitor-notification-service.ts` comprueba permiso de notificaciones y alarmas exactas antes de programar; utiliza `allowWhileIdle: true` y el canal `dayflow-reminders`.
+- El manifiesto combinado debug incluye `RECEIVE_BOOT_COMPLETED` y `LocalNotificationRestoreReceiver`.
+- El receptor del plugin instalado consulta `isUserUnlocked` y no restaura si el usuario sigue bloqueado. Omite avisos de una sola entrega ya disparados y reprograma fechas vencidas durante el apagado para aproximadamente 15 segundos después de la restauración. Es comportamiento leído en código, no evidencia física ni garantía de llegada.
+
+Si se recompila o cambia el código, registrar el nuevo SHA y la nueva huella. Las alarmas probadas son locales de la app nativa; la recepción de Web Push de una PWA instalada no acredita estos casos.
+
+## Preparación y medición
+
+1. Completar modelo, fabricante, Android/API, compilación del SO, WebView, SHA y huella del APK. Usar una cuenta de prueba y recordatorios identificados por caso e intento.
+2. Registrar zona del teléfono, fecha/hora automática, porcentaje de batería, conexión/carga, modo de ahorro, optimización de Dayflow, ajustes del fabricante, permiso de notificaciones, permiso de alarmas exactas, canal Recordatorios, bloqueo y No molestar. Conservar los valores iniciales para restaurarlos al terminar.
+3. Preparar recordatorios únicos, sin repetición, con avisos activados. En los casos positivos conceder ambos permisos desde la interfaz y confirmar en **Configuración → Diagnóstico de notificaciones** que la programación está confirmada. No concederlos por ADB para sustituir el diálogo real.
+4. Mantener menos de 60 avisos próximos. Crear los avisos de cada ensayo con margen para entrar en la condición antes del vencimiento (al menos cinco minutos en ensayos cortos). Al pasar a segundo plano usar Inicio; no utilizar `force-stop` como equivalente.
+5. Usar un reloj externo sincronizado, o grabación externa con referencia horaria, para no despertar el teléfono al comprobar la hora. Registrar el instante previsto en ISO 8601 con offset, el primer instante de presentación observado y la precisión del método. El sonido, vibración y contenido visible dependen también del canal y privacidad; anotarlos por separado.
+6. Calcular retraso en segundos: `instante de primera presentación - instante programado`. No usar el tiempo de una captura posterior ni el campo de publicación del sistema como si fueran la primera presentación. Si sólo se puede acotar, registrar el intervalo y la causa.
+7. Repetir los ensayos cortos positivos tres veces por condición. Para suspensión natural prolongada realizar al menos una sesión de una hora y otra nocturna; registrar duración real y si hubo movimientos, carga o activaciones de pantalla.
+
+Para avisos aislados en Doze separar vencimientos al menos diez minutos. Android documenta restricciones de frecuencia por aplicación incluso para alarmas permitidas durante inactividad; una ráfaga se registra como un escenario distinto, sin inferir pérdida por una ventana de observación demasiado corta. [Doze y App Standby](https://developer.android.com/training/monitoring-device-state/doze-standby).
+
+## Matriz de pruebas
+
+Todas las filas están **pendientes**. Registrar resultado por intento en el formato de evidencia posterior; no agrupar estados distintos como una única prueba superada.
+
+| Caso                                           | Condición y acciones                                                                                                                                     | Qué comprobar                                                                                                                                                                   |
+| ---------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| ALM-01 Permisos denegados                      | Denegar notificaciones desde la UI y guardar un recordatorio; mantener alarmas exactas permitidas.                                                       | Diagnóstico correcto y ausencia de afirmación de programación exitosa; recordatorio conservado.                                                                                 |
+| ALM-02 Alarmas exactas denegadas               | Permitir notificaciones y denegar alarmas exactas desde Ajustes; intentar actualizar programación.                                                       | Diagnóstico identifica la intervención necesaria y no presenta el aviso como alarma exacta programada.                                                                          |
+| ALM-03 Concesión real                          | Conceder ambos permisos desde la UI, volver a Dayflow y actualizar programación con una fecha futura.                                                    | Pendiente confirmado y recepción medida; conservar evidencia del diálogo y del ajuste de alarmas exactas.                                                                       |
+| ALM-04 Primer plano                            | Pantalla encendida, app visible, ahorro desactivado.                                                                                                     | Recepción, retraso, sonido/vibración y apertura del recordatorio correcto.                                                                                                      |
+| ALM-05 Segundo plano                           | Pulsar Inicio y mantener pantalla encendida sin volver a Dayflow.                                                                                        | Recepción y retraso sin reanudación previa de la app.                                                                                                                           |
+| ALM-06 Pantalla bloqueada                      | Programar, pulsar Inicio y bloquear hasta después del vencimiento, sin cargar.                                                                           | Recepción y retraso, visibilidad conforme a privacidad, apertura tras desbloquear.                                                                                              |
+| ALM-07 Sin red                                 | Programar previamente, activar modo avión y desactivar Wi-Fi; bloquear.                                                                                  | Recepción local sin conectividad y retraso. No confundir con un cambio aún no descargado del servidor.                                                                          |
+| ALM-08 Doze controlado                         | Entrar en IDLE por ADB después de programar; pantalla apagada, sin volver a abrir la app.                                                                | Estado IDLE comprobado antes del vencimiento, recepción y retraso; recuperación al salir.                                                                                       |
+| ALM-09 Inactividad natural                     | Sin carga, inmóvil y bloqueado durante una hora y durante la noche; programar avisos dentro de cada sesión.                                              | Recepción y retrasos; registrar por separado si existe evidencia de Doze. Bloqueo prolongado por sí solo no demuestra IDLE.                                                     |
+| ALM-10 Ahorro de batería                       | Activar ahorro desde Ajustes, usar optimización habitual de Dayflow, bloquear sin carga.                                                                 | Recepción y retraso frente al ensayo de control; registrar modo del fabricante.                                                                                                 |
+| ALM-11 Restricción de fabricante               | Si existe, configurar la restricción de batería más fuerte para Dayflow, anotar su nombre y repetir bloqueo. Después restaurar la configuración inicial. | Medir entrega o falta de entrega y efecto de reabrir; documentar limitación del modelo. Si no existe, no aplicable con motivo.                                                  |
+| ALM-12 Reinicio antes del vencimiento          | Programar con margen suficiente, reiniciar físicamente, desbloquear una vez sin abrir Dayflow y volver a bloquear.                                       | Recepción del aviso futuro sin abrir la app, retraso y ausencia de duplicados. Registrar apagado, arranque y primer desbloqueo.                                                 |
+| ALM-13 Vencimiento antes del primer desbloqueo | Programar, reiniciar y dejar vencer sin desbloquear. Después desbloquear sin abrir Dayflow.                                                              | Anotar ausencia o recepción antes del desbloqueo, recepción posterior y retraso total. La limitación esperada por lectura del plugin no se marca como entrega puntual superada. |
+| ALM-14 Vencimiento con teléfono apagado        | Apagar antes de la fecha, mantener apagado hasta después del vencimiento, encender y desbloquear sin abrir Dayflow.                                      | No se espera recepción estando apagado; medir recuperación posterior, retraso total y desde el desbloqueo, y posibles duplicados.                                               |
+| ALM-15 Revocación y restauración               | Con un aviso programado revocar alarmas exactas; regresar a la app. Restaurar el permiso y actualizar con una fecha futura. Repetir para notificaciones. | Diagnóstico coherente, error o pendiente recuperable y recepción de la nueva programación. Anotar cada permiso por separado.                                                    |
+| ALM-16 Cancelación                             | Editar fecha, eliminar otro aviso y, en otro ensayo, cerrar sesión antes del vencimiento.                                                                | Sólo llega el aviso vigente; no llegan los cancelados. Los entregados propios se retiran al cerrar sesión.                                                                      |
+
+La revocación de alarmas exactas puede cancelar las alarmas futuras del sistema; volver a conceder el permiso requiere comprobar la reprogramación. Un reinicio también requiere restauración: la declaración del receptor no acredita su ejecución. [Alarmas de Android](https://developer.android.com/develop/background-work/services/alarms).
+
+## Doze controlado y restauración
+
+Ejecutar sólo cuando haya un teléfono físico seleccionado explícitamente mediante `SERIAL`. Estos comandos quedan preparados; no se han ejecutado sobre el emulador ni sobre un teléfono en esta tarea.
+
+```powershell
+$dayflowAdb = Join-Path $env:LOCALAPPDATA 'Android\Sdk\platform-tools\adb.exe'
+# Tras programar y poner Dayflow en segundo plano, apagar la pantalla manualmente.
+& $dayflowAdb -s SERIAL shell dumpsys battery unplug
+& $dayflowAdb -s SERIAL shell dumpsys deviceidle force-idle
+& $dayflowAdb -s SERIAL shell dumpsys deviceidle
+# Comprobar mState=IDLE. Si no entra, registrar el motivo; no dar el caso por ejecutado.
+# Esperar y observar externamente hasta terminar el ensayo.
+# Restaurar siempre, también cuando la prueba falle o se interrumpa:
+& $dayflowAdb -s SERIAL shell dumpsys deviceidle unforce
+& $dayflowAdb -s SERIAL shell dumpsys battery reset
+& $dayflowAdb -s SERIAL shell dumpsys deviceidle
+& $dayflowAdb -s SERIAL shell dumpsys battery
+```
+
+El estado simulado de batería no demuestra descarga real. Para inactividad natural, desconectar el cable. Los comandos de entrada/salida se basan en la [guía oficial de pruebas de Doze](https://developer.android.com/training/monitoring-device-state/doze-standby).
+
+## Ficha de evidencia por intento
+
+| Campo                                                           | Valor a completar |
+| --------------------------------------------------------------- | ----------------- |
+| Caso e intento                                                  | Pendiente         |
+| Modelo, Android/API, WebView, SHA, huella APK                   | Pendiente         |
+| Fecha/zona, permisos y canal                                    | Pendiente         |
+| Batería, carga, ahorro, optimización, red y estado app/pantalla | Pendiente         |
+| Estado Doze confirmado y hora de entrada, si aplica             | Pendiente         |
+| Identificador del recordatorio y aviso, si disponible           | Pendiente         |
+| Hora programada, primera recepción y precisión                  | Pendiente         |
+| Retraso o intervalo de retraso, en segundos                     | Pendiente         |
+| Hora límite de observación si no se recibe                      | Pendiente         |
+| Recepción al despertar, desbloquear o reabrir                   | Pendiente         |
+| Duplicados, sonido/vibración y apertura                         | Pendiente         |
+| Esperado, observado, resultado y archivo de evidencia           | Pendiente         |
+| Configuración restaurada al terminar                            | Pendiente         |
+
+Capturas y grabaciones deben evitar correos y datos personales. No guardar tokens ni contraseñas. Consultar `dumpsys alarm` filtrado por `com.dayflow.app` puede apoyar la evidencia de programación, pero no acredita presentación. Evitar volcar notificaciones de otras aplicaciones.
+
+## Criterio de cierre
+
+Completar la matriz en hardware real y registrar recepción y retraso por condición, incluyendo los fallos y los límites observados. Para los casos positivos, sólo marcar **superado** si hay recepción sin una intervención distinta de la prevista y con retraso medido; no afirmar puntualidad sólo por recepción posterior. No hay un SLA numérico definido en la política de Dayflow: comunicar medidas individuales y mínimo/máximo por condición, sin inventar una tolerancia.
+
+Si no llega, mantener observación al menos 30 minutos después del vencimiento en ensayos cortos y comprobar también tras salir de la condición. Registrar **fallido en esa ventana**, sin afirmar que nunca llegará. En sesiones prolongadas observar hasta terminar la sesión y anotar la recepción posterior. Estados: pendiente, superado, fallido o no aplicable con motivo. Un resultado fallido documentado completa la investigación de ese caso, pero no certifica compatibilidad ni corrige el fallo.
+
+El cupo de 60, cambios de hora/zona y fallos parciales se validarán en la tarea específica de recuperación del planificador. Referencias internas: [política de notificaciones](../notifications-policy.md), [recordatorios](../reminders.md) y [capacidad y recuperación](../notification-capacity.md).

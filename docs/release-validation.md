@@ -1,6 +1,14 @@
 # Validación de publicación y dispositivos
 
+Alcance actualizado el 12 de octubre de 2026: el usuario descarta la app nativa iOS y sus notificaciones locales. Esas dos tareas salen del plan; los resultados históricos se conservan. Continúa la [validación independiente de la PWA en Android y Safari/iOS](audits/2026-10-12-pwa-mobile.md).
+
+Alarmas Android, preparación del 12 de octubre de 2026: [protocolo de recepción y retrasos en hardware](audits/2026-10-12-android-alarms.md). Permisos, bloqueo, Doze, ahorro de batería y reinicio permanecen pendientes de ejecución física.
+
+Preparación del 12 de octubre de 2026: [protocolo y matriz de Android físico](audits/2026-10-12-android-physical.md), con SHA del código y huella del APK actual. El usuario no dispone ahora de un teléfono; la ejecución física permanece pendiente.
+
 Estado del 4 de octubre de 2026. Una compilación, una respuesta HTTP o un emulador no acreditan recepción de correo, entrega física de notificaciones ni consumo de batería.
+
+Ampliación de beta — 12 de octubre de 2026: [SMTP propio preparado](auth-smtp.md), con activación pendiente de proveedor, dominio y credenciales. La confirmación y recuperación de las pruebas previas no certifican destinatarios ajenos al equipo de Supabase. Este criterio adicional sigue pendiente hasta completar ambos flujos con una cuenta externa.
 
 Actualización de alojamiento: la dirección principal es ahora
 [Dayflow en Vercel](https://dayflow-by-shadowstudio.vercel.app/auth/login), con despliegue `READY`,
@@ -30,7 +38,7 @@ conserva únicamente la evidencia histórica del alojamiento anterior.
 | Recuperación de contraseña | Superada según comprobación manual del usuario                                                                    | Rechazo de la contraseña anterior no comunicado por separado                                                  |
 | Web Push programado        | Recepción en Chrome verificada; al cerrar sus ventanas se detienen todos sus procesos y el aviso llega al reabrir | Entrega con navegador detenido no disponible en esta configuración; suspensión y otras plataformas pendientes |
 | Android alojado            | APK debug compilado                                                                                               | Instalación y pruebas en teléfono físico                                                                      |
-| iOS                        | Recursos y proyecto sincronizados                                                                                 | Compilación/firma en macOS y ejecución en iPhone/iPad                                                         |
+| iOS nativo                 | Descartado por decisión del usuario el 12 de octubre de 2026; recursos históricos conservados                     | Fuera del plan actual                                                                                         |
 | Safari y batería           | No verificados                                                                                                    | Safari real y mediciones en hardware                                                                          |
 
 ## Sitio y compilación de referencia
@@ -86,7 +94,7 @@ Haz la prueba primero desde un navegador habitual que permita notificaciones, si
 
 ## Safari y aplicaciones nativas
 
-Prueba Safari en un Mac real, Safari/PWA en iPhone o iPad, Android nativo en un teléfono y iOS nativo compilado con Xcode. No sustituyas esos resultados por WebKit automatizado, un user-agent de iPhone ni un emulador.
+Prueba Safari en un Mac real, Safari/PWA en iPhone o iPad y Android nativo en un teléfono. iOS nativo queda fuera del plan actual. No sustituyas esos resultados por WebKit automatizado, un user-agent de iPhone ni un emulador.
 
 Para cada plataforma, comprueba registro/recuperación en el mismo dispositivo, restauración de sesión, tarea y relación sincronizadas con la web, Semana/Día en cambios de zona, edición offline y reconexión, ausencia de duplicados y aislamiento tras cerrar sesión. En nativo prueba el retorno `dayflow://auth/callback` desde el correo.
 

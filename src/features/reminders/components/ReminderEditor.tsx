@@ -5,6 +5,7 @@ import { Modal } from '../../../shared/components/Modal'
 import type { Reminder } from '../../../shared/types/domain'
 import { dateTimeFields, fromDateTimeFields } from '../../../shared/utils/dates'
 import { recurrencePresets } from '../../../shared/utils/recurrence'
+import { supportedTimezones } from '../../../shared/utils/timezones'
 import {
   normalizeReminder,
   type ReminderService,
@@ -274,15 +275,11 @@ export function ReminderEditor({
               value={zone}
               onChange={(event) => setZone(event.target.value)}
             >
-              {[
-                ...new Set([
-                  zone,
-                  'UTC',
-                  ...Intl.supportedValuesOf('timeZone'),
-                ]),
-              ].map((value) => (
-                <option key={value}>{value}</option>
-              ))}
+              {[...new Set([zone, 'UTC', ...supportedTimezones()])].map(
+                (value) => (
+                  <option key={value}>{value}</option>
+                ),
+              )}
             </select>
           </label>
           <label>

@@ -10,6 +10,7 @@ import {
   type EventFormValues,
 } from '../schemas/event-form'
 import type { EventDraft } from '../services/event-service'
+import { supportedTimezones } from '../../../shared/utils/timezones'
 
 export function EventForm({
   event,
@@ -135,11 +136,11 @@ export function EventForm({
         <label>
           Zona horaria
           <select {...register('timezone')}>
-            {[
-              ...new Set([zone, 'UTC', ...Intl.supportedValuesOf('timeZone')]),
-            ].map((value) => (
-              <option key={value}>{value}</option>
-            ))}
+            {[...new Set([zone, 'UTC', ...supportedTimezones()])].map(
+              (value) => (
+                <option key={value}>{value}</option>
+              ),
+            )}
           </select>
           {message('timezone')}
         </label>

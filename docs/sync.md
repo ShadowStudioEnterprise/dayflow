@@ -28,6 +28,8 @@ Realtime observa únicamente `sync_heads`, con filtro de propietario; el evento 
 
 La estrategia está centralizada en `ConflictResolver` y su equivalente SQL `dayflow_wins`. El orden es: **fecha de escritura en milisegundos → versión del autor → tombstone en empate → UUID de operación**. El UUID sólo rompe empates; no pretende ser un reloj. La versión visible local puede avanzar al recibir contenido remoto para detectar formularios abiertos obsoletos. El sello del autor se guarda aparte del contador de revisión del documento.
 
+Desde `202610120007_sync_hardening.sql`, la RPC asigna revisión 1 al crear y el trigger avanza exactamente una revisión por actualización aceptada. El sello conserva la versión del autor. El contador local puede avanzar por separado para invalidar formularios; no es un token CAS contra el servidor. Las fechas de auditoría deben ser instantes ISO con offset y precisión máxima de milisegundos, finitos; el tombstone coincide con la fecha de escritura. Véanse [las decisiones y límites](audits/2026-10-12-sql-hardening.md).
+
 Un borrado más reciente impide que una edición antigua resucite la entidad. Como LWW decide por la fecha, una edición realmente posterior al borrado puede ganar y restaurar el documento. No se hace mezcla de texto colaborativa ni fusión por campo en este MVP.
 
 Se rechazan escrituras adelantadas más de cinco minutos respecto al servidor. Las atrasadas pueden perder un conflicto; la UI advierte si el desfase observado es grande. No se cambia silenciosamente el reloj de un snapshot ya enviado: rompería la idempotencia.

@@ -194,6 +194,7 @@ strong {
 }
 .app-layout {
   display: flex;
+  min-height: 100vh;
   min-height: 100dvh;
 }
 .sidebar {
@@ -209,6 +210,15 @@ strong {
 }
 .brand-link {
   padding: 0 12px;
+}
+.sidebar-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.mobile-drawer-close {
+  display: none;
 }
 .brand {
   display: inline-flex;
@@ -754,14 +764,15 @@ strong {
 }
 .skip-link {
   position: fixed;
-  top: -100px;
+  top: 10px;
+  transform: translateY(calc(-100% - 20px));
   left: 20px;
   background: var(--surface);
   padding: 12px;
   z-index: 100;
 }
 .skip-link:focus {
-  top: 10px;
+  transform: none;
 }
 .planned-panel {
   padding: 65px 24px;
@@ -875,6 +886,7 @@ select {
   margin: 22px 0;
 }
 .auth-layout {
+  min-height: 100vh;
   display: grid;
   grid-template-columns: 42% 58%;
   min-height: 100dvh;
@@ -993,6 +1005,9 @@ dialog {
   border-radius: 14px;
   padding: 26px;
   width: min(480px, calc(100% - 32px));
+  max-height: calc(var(--modal-viewport-height, 100vh) - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
   box-shadow: 0 20px 100px #0002;
 }
 dialog::backdrop {
@@ -1394,6 +1409,158 @@ dialog > p {
     padding-bottom: env(safe-area-inset-bottom);
   }
 }
+@media (max-width: 800px) {
+  .note-dialog .modal-head,
+  .event-dialog .modal-head,
+  .reminder-dialog .modal-head,
+  .search-dialog .modal-head {
+    position: sticky;
+    top: calc(0px - var(--modal-padding, 26px));
+    background: var(--surface);
+    z-index: 5;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--line);
+    min-height: 60px;
+  }
+  .sidebar.mobile-open,
+  .sidebar-collapsed .sidebar.mobile-open {
+    width: min(320px, calc(100vw - 56px));
+    padding: calc(16px + env(safe-area-inset-top)) 16px 24px;
+    z-index: 30;
+  }
+  .menu-scrim {
+    z-index: 29;
+  }
+  dialog {
+    top: calc(var(--modal-viewport-top, 0px) + 10px);
+    bottom: auto;
+    margin: 0 auto;
+  }
+  .mobile-open .brand-link {
+    padding: 0;
+  }
+  .mobile-open .mobile-drawer-close {
+    display: inline-flex;
+    flex-shrink: 0;
+  }
+  .mobile-menu-button,
+  .mobile-drawer-close,
+  .avatar-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .breadcrumb {
+    min-width: 0;
+    gap: 8px;
+  }
+  .breadcrumb > span {
+    display: none;
+  }
+  .breadcrumb strong {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .topbar-actions {
+    min-width: 0;
+    gap: 4px;
+  }
+  .topbar .connection {
+    min-width: 0;
+    max-width: 40vw;
+    font-size: 11px;
+  }
+  .sync-indicator > span {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .sync-indicator svg {
+    display: inline;
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+  .page-heading > div {
+    min-width: 0;
+  }
+  .settings-section,
+  .settings-section p,
+  .settings-section dd {
+    overflow-wrap: anywhere;
+  }
+}
+@media (max-width: 600px), (max-height: 450px) and (max-width: 800px) {
+  dialog,
+  .task-dialog,
+  .event-dialog,
+  .note-dialog,
+  .reminder-dialog,
+  .search-dialog {
+    top: calc(var(--modal-viewport-top, 0px) + 10px);
+    bottom: auto;
+    width: calc(100vw - 20px);
+    max-width: calc(100vw - 20px);
+    max-height: calc(var(--modal-viewport-height, 100vh) - 20px);
+    padding: 16px;
+    margin: 0 auto;
+    scroll-padding-top: 100px;
+    scroll-padding-bottom: 76px;
+  }
+  dialog .modal-head,
+  .task-dialog .modal-head {
+    position: sticky;
+    top: calc(0px - var(--modal-padding, 16px));
+    z-index: 5;
+    background: var(--surface);
+    padding: 8px 0;
+    margin: -8px 0 12px;
+    border-bottom: 1px solid var(--line);
+    min-height: 60px;
+  }
+  .modal-head h2 {
+    font-size: 18px;
+    overflow-wrap: anywhere;
+  }
+  .modal-head .icon-button {
+    min-width: 44px;
+    min-height: 44px;
+    flex-shrink: 0;
+  }
+  dialog input:not([type='checkbox']):not([type='radio']),
+  dialog select,
+  dialog textarea,
+  .task-dialog .task-form input:not([type='checkbox']),
+  .task-dialog .task-form select,
+  .event-dialog .event-form input:not([type='checkbox']),
+  .event-dialog .event-form select {
+    font-size: 16px;
+    min-width: 0;
+    max-width: 100%;
+    min-height: 44px;
+  }
+  dialog .button {
+    min-height: 44px;
+  }
+  dialog .icon-button {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+@media (max-width: 560px) {
+  .page-heading {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .page-heading > .button {
+    flex-basis: 100%;
+    justify-content: center;
+  }
+  .topbar {
+    padding-left: max(12px, env(safe-area-inset-left));
+    padding-right: max(12px, env(safe-area-inset-right));
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -1402,4 +1569,32 @@ dialog > p {
     transition: none !important;
     scroll-behavior: auto !important;
   }
+}
+/* First-run Android setup uses the same controls as notification settings. */
+.android-notification-setup {
+  width: min(100%, 640px);
+  margin: 0 auto;
+  padding: 24px 16px;
+  min-height: 100vh;
+  overflow-wrap: anywhere;
+}
+.android-setup-panel .notification-actions {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0;
+  flex-wrap: wrap;
+}
+.android-setup-panel > button {
+  margin: 8px 8px 0 0;
+}
+.android-setup-panel .notification-toggle {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin: 16px 0;
+}
+.android-setup-panel .notification-toggle input {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
 }

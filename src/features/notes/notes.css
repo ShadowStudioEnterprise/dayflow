@@ -460,7 +460,7 @@
   }
   .note-dialog {
     width: calc(100vw - 16px);
-    max-height: calc(100dvh - 20px);
+    max-height: calc(var(--modal-viewport-height, 100vh) - 20px);
     padding: 18px;
   }
   .note-title-input {
@@ -483,7 +483,63 @@
     gap: 2px;
   }
   .note-toolbar .icon-button {
-    width: 32px;
-    height: 34px;
+    width: 44px;
+    height: 44px;
+  }
+}
+@media (max-width: 800px) {
+  .note-editor-top {
+    position: sticky;
+    top: calc(var(--modal-head-height, 60px) - var(--modal-padding, 16px));
+    z-index: 4;
+    background: var(--surface);
+    padding: 10px 0;
+    margin: -12px 0 12px;
+    border-bottom: 1px solid var(--line);
+  }
+  .note-save-status {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  .note-editor-top > .small {
+    display: none;
+  }
+  .note-editor-footer {
+    position: sticky;
+    bottom: calc(0px - var(--modal-padding, 16px));
+    z-index: 4;
+    background: var(--surface);
+    border-top: 1px solid var(--line);
+    padding: 12px 0;
+    margin-top: 12px;
+    gap: 10px;
+  }
+  .note-editor-footer > .button {
+    margin-left: auto;
+    min-width: 88px;
+  }
+  .note-editor-footer > .text-button {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .note-editor-footer > a {
+    flex-basis: 100%;
+  }
+  .note-options .compact {
+    min-height: 44px;
+    font-size: 13px;
+  }
+  .note-swatch {
+    width: 36px;
+    height: 36px;
+  }
+  .note-paper .tiptap {
+    font-size: 16px;
+  }
+}
+@media (min-width: 420px) and (max-width: 800px) {
+  .note-editor-footer > a {
+    flex-basis: auto;
   }
 }

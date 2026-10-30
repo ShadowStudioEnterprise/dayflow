@@ -769,7 +769,9 @@ try {
     })
     record(
       `${actor.label}_arbitrary_push_endpoint_denied`,
-      badEndpoint.status === 400 && badEndpoint.data?.code === 'P0001',
+      badEndpoint.status === 400 &&
+        badEndpoint.data?.code === '22023' &&
+        badEndpoint.data?.message === 'Invalid push subscription',
       badEndpoint,
     )
     const steal = await rpc(actor, 'dayflow_register_push', {
@@ -779,7 +781,9 @@ try {
     })
     record(
       `${actor.label}_foreign_push_registration_denied`,
-      steal.status === 400 && steal.data?.code === 'P0001',
+      steal.status === 400 &&
+        steal.data?.code === '22023' &&
+        steal.data?.message === 'Invalid push subscription',
       steal,
     )
     const foreignDelete = await request(

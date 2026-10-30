@@ -1,0 +1,459 @@
+{
+  "date": "2026-10-29T22:35:28.819Z",
+  "mode": "priority-alarm-clock",
+  "expectedAt": "2026-10-29T22:51:00.000Z",
+  "minimumSeconds": 900,
+  "observations": [
+    {
+      "at": "2026-10-29T22:35:30.431Z",
+      "elapsedSeconds": 1,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+45m29s310ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:36:01.208Z",
+      "elapsedSeconds": 32,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+44m58s546ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:36:31.999Z",
+      "elapsedSeconds": 62,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+44m27s769ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:37:02.769Z",
+      "elapsedSeconds": 93,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+43m56s965ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:37:33.557Z",
+      "elapsedSeconds": 124,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+43m26s198ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:38:04.338Z",
+      "elapsedSeconds": 155,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+42m55s407ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:38:35.139Z",
+      "elapsedSeconds": 185,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+42m24s612ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:39:05.913Z",
+      "elapsedSeconds": 216,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+41m53s820ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:39:36.735Z",
+      "elapsedSeconds": 247,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+41m23s53ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:40:07.495Z",
+      "elapsedSeconds": 278,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+40m52s237ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:40:38.262Z",
+      "elapsedSeconds": 309,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+40m21s477ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:41:09.052Z",
+      "elapsedSeconds": 339,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+39m50s681ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:41:39.892Z",
+      "elapsedSeconds": 370,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+39m19s897ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:42:10.676Z",
+      "elapsedSeconds": 401,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=INACTIVE",
+        "mNextAlarmTime=+38m49s63ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:42:41.453Z",
+      "elapsedSeconds": 432,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+38m18s277ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:43:12.229Z",
+      "elapsedSeconds": 463,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+37m47s517ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:43:42.986Z",
+      "elapsedSeconds": 493,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+37m16s745ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:44:13.754Z",
+      "elapsedSeconds": 524,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+36m45s977ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:44:44.537Z",
+      "elapsedSeconds": 555,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+36m15s196ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:45:15.315Z",
+      "elapsedSeconds": 586,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+35m44s430ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:45:46.120Z",
+      "elapsedSeconds": 616,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+35m13s646ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:46:16.912Z",
+      "elapsedSeconds": 647,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+34m42s824ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:46:47.728Z",
+      "elapsedSeconds": 678,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+34m12s39ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:47:18.516Z",
+      "elapsedSeconds": 709,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+33m41s237ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:47:49.322Z",
+      "elapsedSeconds": 740,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+33m10s415ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:48:20.088Z",
+      "elapsedSeconds": 770,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+32m39s635ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:48:50.862Z",
+      "elapsedSeconds": 801,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+32m8s864ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:49:21.635Z",
+      "elapsedSeconds": 832,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+31m38s101ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:49:52.400Z",
+      "elapsedSeconds": 863,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+31m7s322ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:50:23.169Z",
+      "elapsedSeconds": 894,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+30m36s557ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:50:53.947Z",
+      "elapsedSeconds": 924,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+30m5s788ms"
+      ],
+      "testTitleInSystem": false
+    },
+    {
+      "at": "2026-10-29T22:51:24.755Z",
+      "elapsedSeconds": 955,
+      "idle": false,
+      "state": [
+        "min_time_to_alarm=+30m0s0ms",
+        "mForceIdle=false",
+        "mCharging=false",
+        "mState=INACTIVE mLightState=IDLE",
+        "mNextAlarmTime=+29m34s992ms"
+      ],
+      "testTitleInSystem": true
+    }
+  ],
+  "restoreAttempts": [],
+  "initial": [
+    "min_time_to_alarm=+30m0s0ms",
+    "mForceIdle=false",
+    "mCharging=true",
+    "mState=ACTIVE mLightState=ACTIVE"
+  ],
+  "forceCommand": "Unable to go deep idle; stopped at INACTIVE",
+  "entered": [
+    "min_time_to_alarm=+30m0s0ms",
+    "mForceIdle=false",
+    "mCharging=false",
+    "mState=INACTIVE mLightState=INACTIVE",
+    "mNextAlarmTime=+45m29s567ms"
+  ],
+  "dozeInitiallyConfirmed": false,
+  "initialDozeLimitation": "Doze no confirmado con alarma de reloj próxima; observación prolongada con pantalla apagada, sin atribuirla a IDLE",
+  "enteredAt": "2026-10-29T22:35:29.655Z",
+  "firstNonIdleAt": "2026-10-29T22:35:30.431Z",
+  "deliveryObservedWhileIdle": false,
+  "elapsedAtDeliverySeconds": 955,
+  "postedAt": "2026-10-29T22:51:00.132Z",
+  "delayMs": 132,
+  "deliveryPassed": true,
+  "strictDozePassed": false,
+  "passed": false,
+  "final": [
+    "min_time_to_alarm=+30m0s0ms",
+    "mForceIdle=false",
+    "mCharging=true",
+    "mState=ACTIVE mLightState=ACTIVE"
+  ],
+  "batterySimulationActive": false,
+  "restored": true,
+  "restoredAt": "2026-10-29T22:51:25.185Z"
+}

@@ -39,10 +39,12 @@ Consulta la [guía de conexión a Supabase alojado](docs/hosted-backend.md), con
 
 3. Aplica las migraciones de `supabase/migrations/` en orden: `202609200001_foundation.sql`, `202609200002_task_recurrence.sql`, `202609240003_reminder_timezone.sql`, `202609240004_sync.sql`, `202610040005_web_push.sql` y `202610090006_security_privileges.sql`. Ejecuta sólo las pendientes. La cuarta conserva los datos existentes y exige la RPC para escrituras de clientes; la quinta añade suscripciones y reservas de Web Push; la sexta retira permisos sobrantes de triggers y exige permisos explícitos de cliente para nuevos objetos. El repositorio ya tiene configuración CLI; también puedes usar `npx supabase link --project-ref TU-PROYECTO` y `npx supabase db push`.
 4. En Auth → URL Configuration configura Site URL y redirect URLs del entorno, incluyendo `http://localhost:5173/` y `http://localhost:5173/auth/update-password`.
-5. Activa email/contraseña y confirmación por email; configura SMTP antes de producción. Usa una contraseña mínima de 12 caracteres también en la política del servidor.
+5. Activa email/contraseña y confirmación por email; configura [SMTP propio para destinatarios externos](docs/auth-smtp.md) antes de ampliar la beta. Usa una contraseña mínima de 12 caracteres también en la política del servidor.
 6. Reinicia Vite. Registro, login, logout, restauración de sesión y recuperación ya utilizan el servicio real. Con PKCE, abre el enlace de confirmación/recuperación en el mismo navegador donde lo solicitaste.
 
 Las variables `VITE_*` son públicas. Nunca uses `service_role` ni secretos. `.env` y `.env.*` están ignorados, con excepción de `.env.example`. La configuración de este ordenador contiene únicamente la URL y clave pública del proyecto alojado; las claves administrativas no se guardan en el frontend.
+
+**Beta externa pendiente:** la integración SMTP está preparada, pero aún faltan proveedor, dominio remitente verificado y credenciales. La tarea no se cierra hasta completar confirmación y recuperación con destinatarios ajenos al equipo de Supabase. Consulta el [estado y los pasos de cierre](docs/auth-smtp.md).
 
 RLS se aplica a todas las tablas privadas. Las relaciones incluyen propietario; DELETE está revocado para clientes. El cierre de sesión mantiene IndexedDB para conservar cambios pendientes y los repositorios aíslan los datos por UUID de usuario. Consulta [base de datos](docs/database.md).
 
@@ -170,3 +172,7 @@ vincula CI y producción con el SHA `b7b2a69c2cab8c8c630783a0c7b3585f0a9597d6`:
 artefactos y evidencia conservada, sin extender estos resultados a cambios posteriores.
 
 Consulta el [índice documental](docs/README.md), la [auditoría](docs/audits/README.md) y la [política de notificaciones](docs/notifications-policy.md). Ejecuta `npm run docs:check` y `npm run test:docs` antes de enviar cambios. GitHub Actions valida documentación, TypeScript, lint, formato, unitarias, build, E2E y PWA en PR y push a main.
+
+## Avisos prioritarios en Android
+
+El APK experimental validado el 29 de octubre incorpora el modo opcional **Avisos prioritarios en este dispositivo**, que usa alarmas de reloj de Android y está desactivado por defecto. Puede mostrar el icono de próxima alarma y salir del reposo para entregar los avisos. La preferencia es local por cuenta y dispositivo. Su implementación permanece local, pendiente de publicación del código; esta actualización publica la documentación. Consulta [uso, compilación reproducible y verificación](docs/android-priority-alarms.md) y la [validación del Redmi Note 11S](docs/audits/2026-10-29-redmi-note11s.md).

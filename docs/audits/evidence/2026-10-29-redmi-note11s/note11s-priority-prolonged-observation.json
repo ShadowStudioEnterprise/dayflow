@@ -1,0 +1,43 @@
+{
+  "title": "Aviso prioritario prolongado Note 11S · 2026-10-29T22:35:24.847Z",
+  "expectedAt": "2026-10-29T22:51:00.000Z",
+  "snapshots": [
+    {
+      "at": "2026-10-29T22:36:13.215Z",
+      "forcedIdle": "false",
+      "alarmBlock": [
+        "RTC_WAKEUP #19: Alarm{9cab956 type 0 origWhen 1793314260000 whenElapsed 23489337 com.dayflow.app}",
+        "tag=*walarm*:com.dayflow.app/com.capacitorjs.plugins.localnotifications.TimedNotificationPublisher",
+        "type=RTC_WAKEUP origWhen=2026-10-29 23:51:00.000 window=0 exactAllowReason=permission repeatInterval=0 count=0 flags=0x3",
+        "policyWhenElapsed: requester=+14m46s649ms app_standby=-42s225ms device_idle=-- battery_saver=-- tare=-43s794ms power_pending=--",
+        "whenElapsed=+14m46s649ms maxWhenElapsed=+14m46s649ms",
+        "Alarm clock:",
+        "triggerTime=2026-10-29 23:51:00.000"
+      ],
+      "effectiveRtc": "2026-10-29T22:50:59.999Z",
+      "postedTimes": []
+    },
+    {
+      "at": "2026-10-29T22:46:02.250Z",
+      "forcedIdle": "false",
+      "alarmBlock": [
+        "RTC_WAKEUP #12: Alarm{9cab956 type 0 origWhen 1793314260000 whenElapsed 23489337 com.dayflow.app}",
+        "tag=*walarm*:com.dayflow.app/com.capacitorjs.plugins.localnotifications.TimedNotificationPublisher",
+        "type=RTC_WAKEUP origWhen=2026-10-29 23:51:00.000 window=0 exactAllowReason=permission repeatInterval=0 count=0 flags=0x3",
+        "policyWhenElapsed: requester=+4m57s601ms app_standby=-10m31s273ms device_idle=-- battery_saver=-- tare=-10m32s842ms power_pending=--",
+        "whenElapsed=+4m57s601ms maxWhenElapsed=+4m57s601ms",
+        "Alarm clock:",
+        "triggerTime=2026-10-29 23:51:00.000"
+      ],
+      "effectiveRtc": "2026-10-29T22:50:59.999Z",
+      "postedTimes": []
+    },
+    {
+      "at": "2026-10-29T22:51:32.401Z",
+      "forcedIdle": "false",
+      "alarmBlock": [],
+      "effectiveRtc": null,
+      "postedTimes": ["2026-10-29T22:51:00.132Z"]
+    }
+  ]
+}

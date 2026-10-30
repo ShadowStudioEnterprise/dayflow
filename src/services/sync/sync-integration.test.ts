@@ -21,7 +21,7 @@ let pg: PGlite
 const bases: DayflowDatabase[] = []
 beforeAll(async () => {
   pg = new PGlite()
-  await pg.exec(`create role anon; create role authenticated; create schema auth;
+  await pg.exec(`create role anon; create role authenticated; create role service_role bypassrls; create schema auth;
     create table auth.users(id uuid primary key, raw_user_meta_data jsonb default '{}');
     create function auth.uid() returns uuid language sql stable as $$ select nullif(current_setting('request.jwt.claim.sub', true), '')::uuid $$;
     grant usage on schema auth, public to authenticated; grant execute on function auth.uid() to authenticated;`)
@@ -48,6 +48,17 @@ beforeAll(async () => {
       'utf8',
     ),
   )
+  for (const name of [
+    '202610040005_web_push',
+    '202610090006_security_privileges',
+    '202610120007_sync_hardening',
+  ])
+    await pg.exec(
+      readFileSync(
+        new URL(`../../../supabase/migrations/${name}.sql`, import.meta.url),
+        'utf8',
+      ),
+    )
 }, 60000)
 afterAll(async () => {
   for (const db of bases) await db.delete()
