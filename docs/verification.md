@@ -317,3 +317,9 @@ Se restauró la preferencia prioritaria inicial **desactivada**, se retiró Doze
 Evidencia: `note11s-priority-prolonged-{doze,notification,observation,screen,ui,summary,final-integrity}.json`. El APK es el mismo debug ya instalado, SHA-256 `1D855897907DF101A9D2FF994CAEE41D6DEDF0422E29F37D566320A143B4BA2E`; no se cambió código de aplicación en esta continuación.
 
 Informes completos: [Redmi Note 11S](audits/2026-10-29-redmi-note11s.md), [alineación de alarmas](audits/2026-10-29-android-alarm-alignment.md) y [aviso prioritario prolongado](audits/2026-10-29-priority-prolonged.md).
+
+## Corrección de integración móvil — 30 de octubre de 2026
+
+La CI de la PR de integración a `main`, sobre `31f9d31681b28f760a035710823e2f2b2e13bdb2`, pasó 308 unitarias, 22 pruebas PWA, documentación, TypeScript, lint, formato y build. La suite E2E terminó con 110 correctas y tres fallos de anchura: diálogo de tareas a 320×568 y edición de tareas a 320 px en ambos perfiles.
+
+La medición local mostró columnas de fecha y hora con ancho intrínseco superior al formulario: 277 px de contenido en 264 px disponibles. Se cambió únicamente la definición de columnas de `.task-form-grid` a `repeat(2, minmax(0, 1fr))`, para permitir la reducción real de ambas columnas sin ocultar ni recortar campos. La medición posterior no encontró elementos desbordados. Los recorridos existentes comprueban tanto el encaje como la creación y edición; sus aserciones se conservan. El resultado final de CI se consulta en la PR de integración.
