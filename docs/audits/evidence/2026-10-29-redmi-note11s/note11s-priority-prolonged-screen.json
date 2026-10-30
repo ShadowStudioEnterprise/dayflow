@@ -1,0 +1,22 @@
+{
+  "snapshots": [
+    {
+      "at": "2026-10-29T22:43:59.429Z",
+      "power": ["mWakefulness=Dozing", "mIsPowered=false", "mIsPowered=false"],
+      "idle": [
+        "mForceIdle=false",
+        "mScreenOn=false",
+        "mState=INACTIVE mLightState=IDLE"
+      ]
+    },
+    {
+      "at": "2026-10-29T22:51:31.451Z",
+      "power": ["mWakefulness=Awake", "mIsPowered=true", "mIsPowered=true"],
+      "idle": [
+        "mForceIdle=false",
+        "mScreenOn=true",
+        "mState=ACTIVE mLightState=ACTIVE"
+      ]
+    }
+  ]
+}

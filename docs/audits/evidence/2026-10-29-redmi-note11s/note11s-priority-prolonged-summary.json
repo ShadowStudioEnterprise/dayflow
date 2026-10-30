@@ -1,0 +1,20 @@
+{
+  "date": "2026-10-29T22:52:08.539Z",
+  "expectedAt": "2026-10-29T22:51:00Z",
+  "postedAt": "2026-10-29T22:51:00.132Z",
+  "delayMs": 132,
+  "observedSeconds": 955,
+  "sampleCount": 32,
+  "idleSamples": 0,
+  "deliveryPassed": true,
+  "deliveredCount": 1,
+  "strictDozePassed": false,
+  "limitation": "Doze no confirmado con alarma de reloj próxima; observación prolongada con pantalla apagada, sin atribuirla a IDLE",
+  "forceCommand": "Unable to go deep idle; stopped at INACTIVE",
+  "powerStateRestored": true,
+  "preferenceRestored": true,
+  "originalPriorityMode": false,
+  "integrityPassed": true,
+  "sensoryConfirmation": "Sí, con la pantalla apagada y sonido o vibración",
+  "scope": "Entrega prolongada con pantalla apagada; no certifica 15 minutos en IDLE profundo ni reinicio físico del modo prioritario"
+}

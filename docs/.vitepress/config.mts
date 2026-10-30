@@ -54,6 +54,7 @@ export default defineConfig({
       group('Plataformas y servicios', [
         ['PWA y aplicaciones nativas', 'pwa-native'],
         ['Android local', 'android-local'],
+        ['Avisos prioritarios Android', 'android-priority-alarms'],
         ['Backend local', 'local-backend'],
         ['Backend alojado', 'hosted-backend'],
         ['SMTP para la beta', 'auth-smtp'],
@@ -62,6 +63,7 @@ export default defineConfig({
       ]),
       group('Calidad y publicación', [
         ['Verificación', 'verification'],
+        ['Redmi Note 11S · 29/10/2026', 'audits/2026-10-29-redmi-note11s'],
         ['Validación de versiones', 'release-validation'],
         ['Evaluación web', 'web-evaluation'],
         ['Plan de implementación', 'implementation-plan'],

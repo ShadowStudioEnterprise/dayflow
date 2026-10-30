@@ -172,3 +172,7 @@ vincula CI y producción con el SHA `b7b2a69c2cab8c8c630783a0c7b3585f0a9597d6`:
 artefactos y evidencia conservada, sin extender estos resultados a cambios posteriores.
 
 Consulta el [índice documental](docs/README.md), la [auditoría](docs/audits/README.md) y la [política de notificaciones](docs/notifications-policy.md). Ejecuta `npm run docs:check` y `npm run test:docs` antes de enviar cambios. GitHub Actions valida documentación, TypeScript, lint, formato, unitarias, build, E2E y PWA en PR y push a main.
+
+## Avisos prioritarios en Android
+
+El APK experimental validado el 29 de octubre incorpora el modo opcional **Avisos prioritarios en este dispositivo**, que usa alarmas de reloj de Android y está desactivado por defecto. Puede mostrar el icono de próxima alarma y salir del reposo para entregar los avisos. La preferencia es local por cuenta y dispositivo. Su implementación permanece local, pendiente de publicación del código; esta actualización publica la documentación. Consulta [uso, compilación reproducible y verificación](docs/android-priority-alarms.md) y la [validación del Redmi Note 11S](docs/audits/2026-10-29-redmi-note11s.md).

@@ -1,5 +1,9 @@
 # Auditorías
 
+- [Redmi Note 11S · 29/10/2026](2026-10-29-redmi-note11s.md): instalación conservando datos, autenticación, offline, sincronización y recuperación de sesión; registro cronológico de avisos y límites.
+- [Alineación de alarmas Android · 29/10/2026](2026-10-29-android-alarm-alignment.md): causa aislada en firmware y modo prioritario experimental.
+- [Aviso prioritario prolongado · 29/10/2026](2026-10-29-priority-prolonged.md): entrega única a las 23:51:00.132 con recepción confirmada; Doze profundo no certificado.
+
 - [Alarmas Android: casos restantes del 14 de octubre](2026-10-14-android-alarms-remaining.md): ronda de Doze, inactividad, permisos, cancelación y variantes de reinicio; identificación del APK nuevo y límite de permisos exactos en Android 11. Ejecución pendiente de actualización/conexión del Redmi.
 
 - [Configuración inicial de avisos Android del 14 de octubre](2026-10-14-android-notification-setup.md): asistente de primer arranque con comprobación de sonido/notificaciones y confirmación manual de Autoinicio en Xiaomi/Redmi; pruebas unitarias y emulador API 35 correctos. Validación física del nuevo APK pendiente.

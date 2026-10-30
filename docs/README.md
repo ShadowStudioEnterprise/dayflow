@@ -12,6 +12,7 @@ Las guías describen el comportamiento implementado; las auditorías conservan o
 ## Guías
 
 - [android-local](android-local.md)
+- [Avisos prioritarios en Android](android-priority-alarms.md)
 - [architecture](architecture.md)
 - [calendar](calendar.md)
 - [dashboard](dashboard.md)
@@ -34,6 +35,7 @@ Las guías describen el comportamiento implementado; las auditorías conservan o
 - [web-evaluation](web-evaluation.md)
 - [web-push](web-push.md)
 
+- [Validación del Redmi Note 11S · 29/10/2026](audits/2026-10-29-redmi-note11s.md)
 - [Auditorías](audits/README.md)
 
 - [Política de notificaciones](notifications-policy.md)

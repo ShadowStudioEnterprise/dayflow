@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-29T22:52:06.190Z",
+  "app": {
+    "sameAuthenticatedUser": true,
+    "originalTasks": [
+      {
+        "id": "01d6ab85-89c8-4214-8edc-b03426d908a5",
+        "present": true,
+        "unchanged": true
+      },
+      {
+        "id": "735cddf1-72f0-47f5-9baf-0a87f874a9f0",
+        "present": true,
+        "unchanged": true
+      }
+    ],
+    "notesHashUnchanged": true,
+    "notesCount": 3,
+    "pending": 0,
+    "syncState": "idle",
+    "realtime": true,
+    "lastSuccessAt": "2026-10-29T22:52:08.710Z",
+    "setup": {
+      "notifications": true,
+      "sound": true,
+      "vibration": true,
+      "autostartRequired": true,
+      "autostartConfirmed": true,
+      "completed": true
+    }
+  },
+  "forcedIdle": "false",
+  "airplaneMode": "0",
+  "batterySimulationActive": false,
+  "passed": true
+}
