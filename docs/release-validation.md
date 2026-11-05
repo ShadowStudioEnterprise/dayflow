@@ -1,5 +1,7 @@
 # Validación de publicación y dispositivos
 
+La [validación manual de la PWA en Windows del 5 de noviembre](audits/2026-11-05-pwa-windows.md) acredita instalación, apertura independiente, manifest, worker activo, reapertura sin red con sesión y búsqueda de actualizaciones en Chrome y Edge. La descarga y activación de una actualización real queda pendiente de una nueva publicación.
+
 Alcance actualizado el 12 de octubre de 2026: el usuario descarta la app nativa iOS y sus notificaciones locales. Esas dos tareas salen del plan; los resultados históricos se conservan. Continúa la [validación independiente de la PWA en Android y Safari/iOS](audits/2026-10-12-pwa-mobile.md).
 
 Alarmas Android, preparación del 12 de octubre de 2026: [protocolo de recepción y retrasos en hardware](audits/2026-10-12-android-alarms.md). Permisos, bloqueo, Doze, ahorro de batería y reinicio permanecen pendientes de ejecución física.
