@@ -1,5 +1,7 @@
 # Auditorías
 
+- [PWA en Windows · 5/11/2026](2026-11-05-pwa-windows.md). Instalación, worker, reapertura sin red y búsqueda de actualizaciones verificados en Chrome y Edge. Descarga y activación de una actualización real pendientes.
+
 - [Redmi Note 11S · 29/10/2026](2026-10-29-redmi-note11s.md): instalación conservando datos, autenticación, offline, sincronización y recuperación de sesión; registro cronológico de avisos y límites.
 - [Alineación de alarmas Android · 29/10/2026](2026-10-29-android-alarm-alignment.md): causa aislada en firmware y modo prioritario experimental.
 - [Aviso prioritario prolongado · 29/10/2026](2026-10-29-priority-prolonged.md): entrega única a las 23:51:00.132 con recepción confirmada; Doze profundo no certificado.
