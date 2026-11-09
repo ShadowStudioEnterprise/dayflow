@@ -111,6 +111,31 @@ function LocalNotificationSettings({ userId }: { userId: string }) {
         />
         Permitir avisos en este dispositivo
       </label>
+      {capability?.platform === 'android' && (
+        <>
+          <label className="notification-toggle">
+            <input
+              type="checkbox"
+              checked={preference?.priority === true}
+              disabled={busy}
+              aria-describedby="priority-alarm-description"
+              onChange={(event) => {
+                const priority = event.target.checked
+                void run(() =>
+                  notificationScheduler.setPriority(userId, priority),
+                )
+              }}
+            />
+            Avisos prioritarios en este dispositivo
+          </label>
+          <p id="priority-alarm-description" className="muted small">
+            Android tratará los avisos próximos como alarmas de reloj. Puede
+            mostrar el icono de próxima alarma y salir del reposo para
+            entregarlos. Este modo puede consumir más batería y sólo afecta a
+            este dispositivo. Desactivado por defecto.
+          </p>
+        </>
+      )}
       <div className="notification-actions">
         <button
           className="button secondary"

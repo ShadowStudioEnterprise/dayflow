@@ -53,7 +53,16 @@ export class CapacitorNotificationService implements NotificationService {
         title: item.title,
         body: item.body,
         channelId: 'dayflow-reminders',
-        schedule: { at: new Date(item.at), allowWhileIdle: true },
+        schedule: {
+          at: new Date(item.at),
+          allowWhileIdle: true,
+          ...(this.platform === 'android' && item.priority
+            ? { dayflowAlarmClock: true }
+            : {}),
+        },
+        ...(this.platform === 'android' && item.priority
+          ? { isExactNotification: true, isExactMandatory: true }
+          : {}),
         extra: {
           dayflow: true,
           reminderId: item.reminderId,

@@ -14,6 +14,8 @@ export interface NotificationRequest {
   title: string
   body: string
   at: string
+  /** Local Android preference; never part of a synchronized reminder. */
+  priority?: boolean
 }
 export interface NotificationService {
   capabilities(): Promise<NotificationCapability>
