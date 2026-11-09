@@ -109,3 +109,54 @@ it('rechaza una degradación a alarma inexacta devuelta por Android', async () =
     ).schedule([request]),
   ).rejects.toThrow('exacta')
 })
+
+it('usa alarma de reloj sólo con prioridad explícita en Android y exige exactitud', async () => {
+  const mock = plugin()
+  await new CapacitorNotificationService(
+    'android',
+    mock as unknown as LocalNotificationsPlugin,
+  ).schedule([{ ...request, priority: true }])
+  expect(mock.schedule).toHaveBeenCalledWith({
+    notifications: [
+      expect.objectContaining({
+        isExactNotification: true,
+        isExactMandatory: true,
+        schedule: {
+          at: new Date(request.at),
+          allowWhileIdle: true,
+          dayflowAlarmClock: true,
+        },
+      }),
+    ],
+  })
+})
+it('ignora la preferencia Android en iOS', async () => {
+  const mock = plugin()
+  await new CapacitorNotificationService(
+    'ios',
+    mock as unknown as LocalNotificationsPlugin,
+  ).schedule([{ ...request, priority: true }])
+  expect(mock.schedule).toHaveBeenCalledWith({
+    notifications: [expect.not.objectContaining({ isExactMandatory: true })],
+  })
+  expect(mock.schedule).toHaveBeenCalledWith({
+    notifications: [
+      expect.objectContaining({
+        schedule: { at: new Date(request.at), allowWhileIdle: true },
+      }),
+    ],
+  })
+})
+it('no programa avisos prioritarios cuando faltan alarmas exactas', async () => {
+  const mock = plugin()
+  mock.checkExactNotificationSetting.mockResolvedValue({
+    exact_alarm: 'denied',
+  })
+  await expect(
+    new CapacitorNotificationService(
+      'android',
+      mock as unknown as LocalNotificationsPlugin,
+    ).schedule([{ ...request, priority: true }]),
+  ).rejects.toThrow('alarmas exactas')
+  expect(mock.schedule).not.toHaveBeenCalled()
+})

@@ -258,3 +258,57 @@ it('migra una base v1 sin perder datos existentes', async () => {
     await upgraded.delete()
   }
 })
+
+it('prioridad local optativa conserva contenido y cola remota y sobrevive a reabrir la base', async () => {
+  vi.mocked(adapter.capabilities).mockResolvedValue({
+    platform: 'android',
+    permission: 'granted',
+    exact: true,
+    scheduling: true,
+  })
+  const service = createReminderService(alice, db, adapter)
+  const { reminder } = await service.create(draft())
+  expect(pending[0]).not.toHaveProperty('priority')
+  const before = await service.get(reminder.id)
+  const queue = await db.syncQueue.toArray()
+  const scheduler = createNotificationScheduler(db, adapter)
+  await scheduler.setPriority(alice, true)
+  expect(pending).toHaveLength(1)
+  expect(pending[0]).toMatchObject({ priority: true })
+  expect(await service.get(reminder.id)).toMatchObject({
+    title: before!.title,
+    triggerAt: before!.triggerAt,
+    version: before!.version,
+  })
+  expect(await db.syncQueue.toArray()).toEqual(queue)
+  db.close()
+  await db.open()
+  expect(await db.notificationPreferences.get(alice)).toMatchObject({
+    enabled: true,
+    priority: true,
+  })
+  await scheduler.setEnabled(alice, false)
+  expect(pending).toHaveLength(0)
+  expect(await db.notificationPreferences.get(alice)).toMatchObject({
+    enabled: false,
+    priority: true,
+  })
+  await scheduler.setEnabled(alice, true)
+  expect(pending[0]).toMatchObject({ priority: true })
+  await scheduler.setPriority(alice, false)
+  expect(pending[0]).not.toHaveProperty('priority')
+  expect(await db.syncQueue.toArray()).toEqual(queue)
+})
+it('cambiar prioridad no reactiva avisos deshabilitados ni la aplica a iOS', async () => {
+  await createReminderService(alice, db, adapter).create(draft())
+  const scheduler = createNotificationScheduler(db, adapter)
+  await scheduler.setEnabled(alice, false)
+  await scheduler.setPriority(alice, true)
+  expect(pending).toHaveLength(0)
+  expect(await db.notificationPreferences.get(alice)).toMatchObject({
+    enabled: false,
+    priority: true,
+  })
+  await scheduler.setEnabled(alice, true)
+  expect(pending[0]).not.toHaveProperty('priority')
+})

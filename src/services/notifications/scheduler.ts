@@ -71,8 +71,10 @@ export function createNotificationScheduler(
       // Keep old identifiers until OS cancellation succeeds, including after interrupted scheduling.
       await cancelUnsafe()
       const capability = await adapter.capabilities()
-      const enabled =
-        (await db.notificationPreferences.get(userId))?.enabled !== false
+      const preference = await db.notificationPreferences.get(userId)
+      const enabled = preference?.enabled !== false
+      const priority =
+        capability.platform === 'android' && preference?.priority === true
       const from = Temporal.Instant.from(now.toISOString())
         .toZonedDateTimeISO('UTC')
         .toPlainDate()
@@ -112,6 +114,7 @@ export function createNotificationScheduler(
               at,
               title: reminder.title,
               body: reminder.description || 'Es el momento de tu recordatorio.',
+              ...(priority ? { priority: true } : {}),
             })
         } catch (error) {
           state.status = 'error'
@@ -206,9 +209,21 @@ export function createNotificationScheduler(
         await cancelUnsafe()
         await adapter.clearDelivered()
       }),
+    setPriority: (userId: string, priority: boolean) =>
+      notificationLock(db, async () => {
+        const preference = await db.notificationPreferences.get(userId)
+        await db.notificationPreferences.put({
+          enabled: true,
+          ...preference,
+          userId,
+          priority,
+        })
+        await reconcileUnsafe(userId)
+      }),
     setEnabled: (userId: string, enabled: boolean) =>
       notificationLock(db, async () => {
-        await db.notificationPreferences.put({ userId, enabled })
+        const preference = await db.notificationPreferences.get(userId)
+        await db.notificationPreferences.put({ ...preference, userId, enabled })
         await reconcileUnsafe(userId)
       }),
   }

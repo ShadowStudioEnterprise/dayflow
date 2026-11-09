@@ -1,0 +1,78 @@
+diff --git a/node_modules/@capacitor/local-notifications/android/src/main/kotlin/com/capacitorjs/plugins/localnotifications/LocalNotification.kt b/node_modules/@capacitor/local-notifications/android/src/main/kotlin/com/capacitorjs/plugins/localnotifications/LocalNotification.kt
+index 7646cc9..d572191 100644
+--- a/node_modules/@capacitor/local-notifications/android/src/main/kotlin/com/capacitorjs/plugins/localnotifications/LocalNotification.kt
++++ b/node_modules/@capacitor/local-notifications/android/src/main/kotlin/com/capacitorjs/plugins/localnotifications/LocalNotification.kt
+@@ -237,6 +237,8 @@ class LocalNotification {
+                     jsSchedule.put("count", schedule.count)
+                     jsSchedule.put("on", schedule.onObj)
+                     jsSchedule.put("repeats", schedule.isRepeating())
++                    jsSchedule.put("allowWhileIdle", schedule.allowWhileIdle())
++                    jsSchedule.put("dayflowAlarmClock", schedule.isDayflowAlarmClock())
+                     jsNotification.put("schedule", jsSchedule)
+                 }
+ 
+diff --git a/node_modules/@capacitor/local-notifications/android/src/main/kotlin/com/capacitorjs/plugins/localnotifications/LocalNotificationManager.kt b/node_modules/@capacitor/local-notifications/android/src/main/kotlin/com/capacitorjs/plugins/localnotifications/LocalNotificationManager.kt
+index 72c31a7..b104b32 100644
+--- a/node_modules/@capacitor/local-notifications/android/src/main/kotlin/com/capacitorjs/plugins/localnotifications/LocalNotificationManager.kt
++++ b/node_modules/@capacitor/local-notifications/android/src/main/kotlin/com/capacitorjs/plugins/localnotifications/LocalNotificationManager.kt
+@@ -131,6 +131,12 @@ class LocalNotificationManager(
+             call?.let { LocalNotificationsError.NOTIFICATIONS_DISABLED.reject(it) }
+             return null
+         }
++        // Dayflow's opt-in clock mode must never silently fall back to an inexact alarm.
++        if (localNotifications.any { it.schedule?.isDayflowAlarmClock() == true } &&
++            !canScheduleExactAlarms(context.getSystemService(Context.ALARM_SERVICE) as AlarmManager)) {
++            call?.let { LocalNotificationsError.EXACT_ALARM_PERMISSION_REQUIRED.reject(it) }
++            return null
++        }
+         for (localNotification in localNotifications) {
+             val id = localNotification.id
+             if (id == null) {
+@@ -358,6 +364,18 @@ class LocalNotificationManager(
+         if (localNotification.isExactNotification && !useExact) {
+             Logger.warn("Capacitor/LocalNotification", "Exact alarms not allowed in user settings.  Notification scheduled with non-exact alarm.")
+         }
++        if (schedule.isDayflowAlarmClock()) {
++            // The explicit user preference survives source JSON persistence and boot restore.
++            val launch = context.packageManager.getLaunchIntentForPackage(context.packageName)
++                ?: Intent().setClassName(context.packageName, "com.dayflow.app.MainActivity")
++            launch.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP)
++            val showIntent = PendingIntent.getActivity(
++                context, localNotification.id ?: 0, launch,
++                PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
++            )
++            alarmManager.setAlarmClock(AlarmManager.AlarmClockInfo(trigger, showIntent), pendingIntent)
++            return
++        }
+         if (useExact) {
+             if (schedule.allowWhileIdle()) {
+                 alarmManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, trigger, pendingIntent)
+diff --git a/node_modules/@capacitor/local-notifications/android/src/main/kotlin/com/capacitorjs/plugins/localnotifications/LocalNotificationSchedule.kt b/node_modules/@capacitor/local-notifications/android/src/main/kotlin/com/capacitorjs/plugins/localnotifications/LocalNotificationSchedule.kt
+index f207acf..5c3e33f 100644
+--- a/node_modules/@capacitor/local-notifications/android/src/main/kotlin/com/capacitorjs/plugins/localnotifications/LocalNotificationSchedule.kt
++++ b/node_modules/@capacitor/local-notifications/android/src/main/kotlin/com/capacitorjs/plugins/localnotifications/LocalNotificationSchedule.kt
+@@ -15,6 +15,7 @@ class LocalNotificationSchedule {
+     var on: DateMatch? = null
+ 
+     private var whileIdle: Boolean = false
++    private var dayflowAlarmClock: Boolean = false
+     private var scheduleObj: JSObject? = null
+ 
+     constructor()
+@@ -46,6 +47,7 @@ class LocalNotificationSchedule {
+         }
+ 
+         whileIdle = schedule.getBoolean("allowWhileIdle", false) ?: false
++        dayflowAlarmClock = schedule.getBoolean("dayflowAlarmClock", false) ?: false
+     }
+ 
+     val onObj: JSObject?
+@@ -53,6 +55,8 @@ class LocalNotificationSchedule {
+ 
+     fun allowWhileIdle(): Boolean = whileIdle
+ 
++    fun isDayflowAlarmClock(): Boolean = dayflowAlarmClock
++
+     fun isRepeating(): Boolean = repeats == true
+ 
+     /** Whether this schedule keeps firing indefinitely (never settles into a final "triggered" state). */

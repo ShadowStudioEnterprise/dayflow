@@ -17,7 +17,10 @@ export class DayflowDatabase extends Dexie {
   syncConflicts!: Table<SyncConflict, string>
   notificationJobs!: Table<NotificationJob, number>
   notificationStates!: Table<ReminderNotificationState, string>
-  notificationPreferences!: Table<{ userId: string; enabled: boolean }, string>
+  notificationPreferences!: Table<
+    { userId: string; enabled: boolean; priority?: boolean },
+    string
+  >
   constructor(name = 'dayflow') {
     super(name)
     this.version(1).stores({
