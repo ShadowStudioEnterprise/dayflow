@@ -1,10 +1,10 @@
 # Dayflow
 
-Una aplicación personal para organizar notas, tareas, calendario y recordatorios, diseñada para evolucionar a web, PWA, Android e iOS.
+Una aplicación personal para organizar notas, tareas, calendario y recordatorios, disponible como web, PWA y aplicación Android. En iOS, el alcance actual es Safari y PWA.
 
 **Web publicada:** [Dayflow en Vercel](https://dayflow-by-shadowstudio.vercel.app/auth/login).
 
-Incluye notas, tareas, vistas de calendario de mes/semana/día, recordatorios, relaciones, Dashboard, Inbox, búsqueda, etiquetas y perfil con estadísticas. Ofrece sincronización con Supabase, instalación como PWA, arranque offline, actualizaciones sin interrumpir borradores y proyectos Android/iOS. La confirmación y recuperación por correo y las notificaciones web se verificaron manualmente en el alojamiento anterior; la recepción en el nuevo dominio sigue pendiente de prueba manual. Quedan pendientes la firma y publicación en tiendas y la validación en dispositivos físicos. Consulta la [validación de publicación](docs/release-validation.md) y la [configuración de Vercel](docs/vercel.md).
+Incluye notas, tareas, vistas de calendario de mes/semana/día, recordatorios, relaciones, Dashboard, Inbox, búsqueda, etiquetas y perfil con estadísticas. Ofrece sincronización con Supabase, instalación como PWA, arranque offline, actualizaciones sin interrumpir borradores y proyectos nativos de Capacitor. La confirmación y recuperación por correo y Web Push cuentan con validación manual documentada en Vercel. La ampliación de la beta a destinatarios externos requiere SMTP propio y pruebas con cuentas externas. Quedan pendientes la firma y distribución Android y la validación física de la versión integrada con alarmas prioritarias. La aplicación nativa iOS está descartada del alcance actual. Consulta la [validación de publicación](docs/release-validation.md) y la [configuración de Vercel](docs/vercel.md).
 
 ## Inicio rápido
 
@@ -37,7 +37,7 @@ Consulta la [guía de conexión a Supabase alojado](docs/hosted-backend.md), con
    VITE_SUPABASE_ANON_KEY=TU-CLAVE-PUBLICA
    ```
 
-3. Aplica las migraciones de `supabase/migrations/` en orden: `202609200001_foundation.sql`, `202609200002_task_recurrence.sql`, `202609240003_reminder_timezone.sql`, `202609240004_sync.sql`, `202610040005_web_push.sql` y `202610090006_security_privileges.sql`. Ejecuta sólo las pendientes. La cuarta conserva los datos existentes y exige la RPC para escrituras de clientes; la quinta añade suscripciones y reservas de Web Push; la sexta retira permisos sobrantes de triggers y exige permisos explícitos de cliente para nuevos objetos. El repositorio ya tiene configuración CLI; también puedes usar `npx supabase link --project-ref TU-PROYECTO` y `npx supabase db push`.
+3. Aplica las migraciones de `supabase/migrations/` en orden: `202609200001_foundation.sql`, `202609200002_task_recurrence.sql`, `202609240003_reminder_timezone.sql`, `202609240004_sync.sql`, `202610040005_web_push.sql`, `202610090006_security_privileges.sql` y `202610120007_sync_hardening.sql`. Ejecuta sólo las pendientes. La cuarta conserva los datos existentes y exige la RPC para escrituras de clientes; la quinta añade suscripciones y reservas de Web Push; la sexta retira permisos sobrantes de triggers y exige permisos explícitos de cliente para nuevos objetos. La séptima endurece las versiones, fechas y permisos de sincronización; su aplicación en Supabase alojado sigue pendiente de confirmación. El repositorio ya tiene configuración CLI; también puedes usar `npx supabase link --project-ref TU-PROYECTO` y `npx supabase db push`.
 4. En Auth → URL Configuration configura Site URL y redirect URLs del entorno, incluyendo `http://localhost:5173/` y `http://localhost:5173/auth/update-password`.
 5. Activa email/contraseña y confirmación por email; configura [SMTP propio para destinatarios externos](docs/auth-smtp.md) antes de ampliar la beta. Usa una contraseña mínima de 12 caracteres también en la política del servidor.
 6. Reinicia Vite. Registro, login, logout, restauración de sesión y recuperación ya utilizan el servicio real. Con PKCE, abre el enlace de confirmación/recuperación en el mismo navegador donde lo solicitaste.
@@ -117,7 +117,7 @@ npm run build
 npm run preview
 ```
 
-La salida está en `dist/`. Un hosting estático debe resolver las rutas de la SPA hacia `index.html` y servir HTTPS. No se ha desplegado la aplicación. Configura las variables públicas antes de compilar.
+La salida está en `dist/`. Un hosting estático debe resolver las rutas de la SPA hacia `index.html` y servir HTTPS. La web publicada está alojada en Vercel. Configura las variables públicas antes de compilar.
 
 ## Arquitectura y siguientes fases
 
@@ -150,11 +150,11 @@ Los proyectos `android/` e `ios/` usan `com.dayflow.app`, nombre Dayflow y recur
 
 `npm run test:pwa` verifica dos builds de producción: instalación, arranque sin red, actualización entre ventanas y aislamiento tras logout. Consulta [PWA, proyectos nativos y despliegue](docs/pwa-native.md) para compilación, caché, permisos, callbacks y límites.
 
-El plan de nueve fases queda implementado como base de desarrollo. El siguiente paso recomendado es validar Supabase alojado, iOS y entrega de notificaciones en dispositivos reales, y preparar firma y distribución.
+El plan de nueve fases queda implementado como base de desarrollo. Quedan pendientes la confirmación del despliegue de la migración 7, SMTP externo, validación de alarmas prioritarias tras reinicio y en Doze profundo, Safari/PWA en dispositivos Apple y firma y distribución Android.
 
 ## Referencias oficiales consultadas
 
-La [web HTTPS publicada](https://dayflow-productividad.gptgonzaleznavarrete.chatgpt.site) tiene acceso privado mediante Sites. La [guía de validación de publicación y dispositivos](docs/release-validation.md) contiene el APK actualizado, los pasos de correo real y las comprobaciones pendientes en Safari y hardware físico.
+La [web principal](https://dayflow-by-shadowstudio.vercel.app/auth/login) está publicada en Vercel. El alojamiento anterior en Sites se conserva como referencia histórica. La [guía de validación de publicación y dispositivos](docs/release-validation.md) contiene el APK actualizado, los pasos de correo real y las comprobaciones pendientes en Safari y hardware físico.
 
 - [Vite: guía de inicio](https://vite.dev/guide/)
 - [Supabase: eventos de autenticación](https://supabase.com/docs/reference/javascript/auth-onauthstatechange)
@@ -175,4 +175,4 @@ Consulta el [índice documental](docs/README.md), la [auditoría](docs/audits/RE
 
 ## Avisos prioritarios en Android
 
-El APK experimental validado el 29 de octubre incorpora el modo opcional **Avisos prioritarios en este dispositivo**, que usa alarmas de reloj de Android y está desactivado por defecto. Puede mostrar el icono de próxima alarma y salir del reposo para entregar los avisos. La preferencia es local por cuenta y dispositivo. Su implementación permanece local, pendiente de publicación del código; esta actualización publica la documentación. Consulta [uso, compilación reproducible y verificación](docs/android-priority-alarms.md) y la [validación del Redmi Note 11S](docs/audits/2026-10-29-redmi-note11s.md).
+El APK experimental validado el 29 de octubre incorpora el modo opcional **Avisos prioritarios en este dispositivo**, que usa alarmas de reloj de Android y está desactivado por defecto. Puede mostrar el icono de próxima alarma y salir del reposo para entregar los avisos. La preferencia es local por cuenta y dispositivo. La implementación y el parche reproducible de Capacitor se integraron en `main` mediante el PR #11, con el commit `b023b1f`. La evidencia física del 29 de octubre corresponde al APK experimental; la validación de la versión integrada tras reinicio y en Doze profundo sigue pendiente. Consulta [uso, compilación reproducible y verificación](docs/android-priority-alarms.md) y la [validación del Redmi Note 11S](docs/audits/2026-10-29-redmi-note11s.md).
