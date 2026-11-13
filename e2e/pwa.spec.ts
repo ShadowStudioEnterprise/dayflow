@@ -1,5 +1,6 @@
 import { test, expect, chromium, type Page } from '@playwright/test'
 import { login } from './auth-fixture.ts'
+import { createSyncBackend } from './sync-fixture.ts'
 
 async function ready(page: Page) {
   await page.goto('/settings')
@@ -406,6 +407,124 @@ test('arranca en una ventana nueva sin red, carga módulos no visitados y conser
     offline.getByRole('alert').filter({ hasText: 'No se pudo comprobar' }),
   ).toBeVisible()
   await context.setOffline(false)
+})
+
+test('conserva la cola al reabrir sin red y sincroniza los cambios al reconectar', async ({
+  page,
+  context,
+  browser,
+  baseURL,
+}) => {
+  const backend = await createSyncBackend()
+  const other = await browser.newContext({ baseURL })
+  const taskTitle = 'Tarea WIN-05 editada'
+  const noteTitle = 'Nota WIN-05'
+  const noteText = 'Edición final sin conexión'
+
+  async function expectChanges(target: Page) {
+    await target.goto('/tasks')
+    await expect(
+      target.getByRole('button', {
+        name: `Abrir tarea ${taskTitle}`,
+        exact: true,
+      }),
+    ).toHaveCount(1)
+    await expect(
+      target.getByRole('button', {
+        name: 'Abrir tarea Tarea WIN-05',
+        exact: true,
+      }),
+    ).toHaveCount(0)
+    await target.goto('/notes')
+    const note = target.getByRole('button', {
+      name: `Abrir nota: ${noteTitle}`,
+      exact: true,
+    })
+    await expect(note).toHaveCount(1)
+    await note.click()
+    await expect(
+      target.getByRole('textbox', { name: 'Contenido de la nota' }),
+    ).toHaveText(noteText)
+  }
+
+  try {
+    await backend.connect(context)
+    await login(page, undefined, { sync: true })
+    await ready(page)
+    const confirmation = page.locator('.sync-summary time')
+    await expect(page.getByText('Sin pendientes', { exact: true })).toBeVisible(
+      {
+        timeout: 15000,
+      },
+    )
+    await expect(confirmation).toHaveAttribute('datetime', /.+/)
+    const initialConfirmation = (await confirmation.getAttribute('datetime'))!
+
+    await context.setOffline(true)
+    await page.goto('/tasks')
+    const quickTask = page.getByLabel('Título de la nueva tarea')
+    await quickTask.fill('Tarea WIN-05')
+    await quickTask.press('Enter')
+    await page
+      .getByRole('button', { name: 'Abrir tarea Tarea WIN-05', exact: true })
+      .click()
+    const task = page.getByRole('dialog')
+    await task.getByLabel('Título', { exact: true }).fill(taskTitle)
+    await task.getByRole('button', { name: 'Guardar cambios' }).click()
+    await expect(task).toHaveCount(0)
+
+    await page.goto('/notes')
+    await page.getByRole('button', { name: 'Nueva nota', exact: true }).click()
+    await page.getByRole('textbox', { name: /Título/ }).fill(noteTitle)
+    await page.getByRole('button', { name: 'Crear nota', exact: true }).click()
+    const body = page.getByRole('textbox', { name: 'Contenido de la nota' })
+    await body.fill(noteText)
+    await expect(
+      page.getByText('Guardado en este dispositivo', { exact: true }),
+    ).toBeVisible()
+    await page.getByRole('button', { name: 'Listo', exact: true }).click()
+
+    await page.goto('/settings')
+    const pending = page.getByText(/^[1-9]\d* operaciones pendientes$/)
+    await expect(pending).toBeVisible()
+    const pendingText = await pending.innerText()
+    await expect(confirmation).toHaveAttribute('datetime', initialConfirmation)
+    await page.close()
+
+    const reopened = await context.newPage()
+    await reopened.goto('/settings')
+    const syncStatus = reopened.locator(
+      '.sync-settings p[role=status] > strong',
+    )
+    const reopenedConfirmation = reopened.locator('.sync-summary time')
+    await expect(syncStatus).toContainText('Sin conexión')
+    await expect(reopened.getByText(pendingText, { exact: true })).toBeVisible()
+    await expect(reopenedConfirmation).toHaveAttribute(
+      'datetime',
+      initialConfirmation,
+    )
+    await expectChanges(reopened)
+
+    await reopened.goto('/settings')
+    await context.setOffline(false)
+    await expect(syncStatus).toHaveText('Sin pendientes', { timeout: 15000 })
+    await expect(
+      reopened.getByText('0 operaciones pendientes', { exact: true }),
+    ).toBeVisible()
+    await expect
+      .poll(async () =>
+        Date.parse((await reopenedConfirmation.getAttribute('datetime')) ?? ''),
+      )
+      .toBeGreaterThan(Date.parse(initialConfirmation))
+
+    await backend.connect(other)
+    const remote = await other.newPage()
+    await login(remote, undefined, { sync: true })
+    await expectChanges(remote)
+  } finally {
+    await other.close()
+    await backend.close()
+  }
 })
 
 test('una actualización espera a todas las ventanas y conserva un borrador abierto', async ({
