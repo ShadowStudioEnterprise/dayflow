@@ -2,11 +2,23 @@
 
 La [validación manual de la PWA en Windows del 5 de noviembre](audits/2026-11-05-pwa-windows.md) acredita instalación, apertura independiente, manifest, worker activo, reapertura sin red con sesión y búsqueda de actualizaciones en Chrome y Edge. La descarga y activación de una actualización real queda pendiente de una nueva publicación.
 
+## Evidencia por versión y entorno
+
+| Entorno                            | Referencia                                                                                              | Resultado y límite                                                                                                                                                                                                                     |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Windows, PWA instalada · 05/11     | Vercel `7a92da4`, Chrome `156.0.8078.80` y Edge `156.0.4314.58`                                         | Instalación, reapertura sin red y búsqueda de actualizaciones verificadas. Pendientes el cambio de versión real y la sincronización de una cola pendiente tras una interrupción.                                                       |
+| Vercel · 12/10                     | Base de revisión `39593d2`, recursos publicados identificados por huella                                | Confirmación, recuperación, rechazo de la contraseña anterior y recepción y apertura del aviso comprobados. Queda la validación con SMTP propio y destinatario externo.                                                                |
+| Redmi 9A · 12–13/10                | APK corregido para WebView 97, código `beeca6a`                                                         | Creación offline y sincronización bidireccional confirmadas por el usuario. En la prueba posterior de Auth se confirmó acceso y recuperación sin una nueva huella del APK instalado. [Auditoría](audits/2026-10-12-redmi-9a.md)        |
+| Redmi Note 11S, Android 13 · 29/10 | APK debug inicial SHA-256 `5930A7158F3E0B0B49BD96298F183803409985C19F2D571F947DDBFE3BD3D8F6`            | Se verificaron instalación conservando datos, sesión, offline, sincronización y recuperación de un aviso básico tras reinicio. El ensayo en Doze prolongado registró entrega diferida. [Auditoría](audits/2026-10-29-redmi-note11s.md) |
+| Redmi Note 11S, Android 13 · 29/10 | APK prioritario experimental SHA-256 `1D855897907DF101A9D2FF994CAEE41D6DEDF0422E29F37D566320A143B4BA2E` | Aviso de las 23:51 emitido una vez y recibido con pantalla apagada en reposo ligero. [Auditoría](audits/2026-10-29-priority-prolonged.md)                                                                                              |
+| Android integrado en `main`        | PR #11, `b023b1f`, merge `086ed94`                                                                      | Implementación integrada. Pendiente validar la versión integrada en Doze profundo y tras reinicio.                                                                                                                                     |
+| PWA Android y Safari/iOS           | Protocolo del 12/10                                                                                     | Preparado. Pendiente de ejecutar en los dispositivos del protocolo.                                                                                                                                                                    |
+
 Alcance actualizado el 12 de octubre de 2026: el usuario descarta la app nativa iOS y sus notificaciones locales. Esas dos tareas salen del plan; los resultados históricos se conservan. Continúa la [validación independiente de la PWA en Android y Safari/iOS](audits/2026-10-12-pwa-mobile.md).
 
-Alarmas Android, preparación del 12 de octubre de 2026: [protocolo de recepción y retrasos en hardware](audits/2026-10-12-android-alarms.md). Permisos, bloqueo, Doze, ahorro de batería y reinicio permanecen pendientes de ejecución física.
+Alarmas Android, preparación del 12 de octubre de 2026: [protocolo de recepción y retrasos en hardware](audits/2026-10-12-android-alarms.md). Los resultados físicos posteriores y el estado de la versión integrada figuran en la matriz.
 
-Preparación del 12 de octubre de 2026: [protocolo y matriz de Android físico](audits/2026-10-12-android-physical.md), con SHA del código y huella del APK actual. El usuario no dispone ahora de un teléfono; la ejecución física permanece pendiente.
+Preparación del 12 de octubre de 2026: [protocolo y matriz de Android físico](audits/2026-10-12-android-physical.md), con SHA del código y huella del APK actual. La ejecución dependía de disponer de hardware. Las rondas posteriores figuran en la matriz.
 
 Estado del 4 de octubre de 2026. Una compilación, una respuesta HTTP o un emulador no acreditan recepción de correo, entrega física de notificaciones ni consumo de batería.
 
@@ -43,7 +55,7 @@ conserva únicamente la evidencia histórica del alojamiento anterior.
 | iOS nativo                 | Descartado por decisión del usuario el 12 de octubre de 2026; recursos históricos conservados                     | Fuera del plan actual                                                                                         |
 | Safari y batería           | No verificados                                                                                                    | Safari real y mediciones en hardware                                                                          |
 
-## Sitio y compilación de referencia
+## Alojamiento anterior y compilación de referencia
 
 - URL: <https://dayflow-productividad.gptgonzaleznavarrete.chatgpt.site>.
 - Acceso al alojamiento: privado para su propietario y un visitante de prueba añadido con autorización del usuario. La aplicación conserva su autenticación de Supabase.
@@ -106,13 +118,11 @@ Para alarmas locales nativas: concede y deniega permisos desde los diálogos rea
 
 Usa el mismo teléfono, estado de red, brillo, configuración de ahorro y franja de uso. Haz una ronda de referencia y una ronda con Dayflow instalada, al menos ocho horas cada una, incluyendo un periodo de pantalla apagada. Registra batería inicial/final, tiempo de pantalla, carga durante la ronda, uso activo de Dayflow, número de avisos y consumo atribuido por el sistema. Sin condiciones comparables, la diferencia no puede atribuirse a Dayflow.
 
-Para cada caso guarda: identificador, fecha/zona, modelo, SO/navegador/WebView, versión/SHA de la app, estado de la app/navegador, permisos, conexión, ahorro de batería, hora programada/recibida, resultado y evidencia. Estados admitidos: **pendiente**, **superado**, **fallido** o **no aplicable con motivo**. Los casos físicos permanecen pendientes al no haber hardware disponible.
+Para cada caso guarda: identificador, fecha/zona, modelo, SO/navegador/WebView, versión/SHA de la app, estado de la app/navegador, permisos, conexión, ahorro de batería, hora programada/recibida, resultado y evidencia. Estados admitidos: **pendiente**, **superado**, **fallido** o **no aplicable con motivo**. La matriz indica los casos físicos ejecutados y los pendientes por versión.
 
 ## Volver a publicar
 
-Compila el proyecto principal con `npm run build`. Ejecuta `node scripts/prepare-web-release.mjs D:/Projects/dayflow/deployment/web` y usa el flujo de Sites sobre ese checkout, conservando su identidad. Sólo se copia la exportación estática; las claves privadas no se incluyen. Se conservan los assets con hash de la versión anterior para las pestañas abiertas.
-
-En Windows, el empaquetador de Sites necesita Git Bash en `PATH` y `TAR_OPTIONS=--force-local` para que la unidad `D:` no se interprete como un servidor remoto. Las credenciales temporales de Sites se pasan por stdin y no se guardan en archivos. Las rutas SPA, manifest y service worker están incluidos en la exportación.
+Sigue la [guía de publicación en Vercel](vercel.md). Registra el SHA que sirve el dominio principal y comprueba el ciclo de actualización en Chrome y Edge según la [auditoría de Windows](audits/2026-11-05-pwa-windows.md).
 
 ## Referencias
 
