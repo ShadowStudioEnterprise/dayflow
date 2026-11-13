@@ -4,7 +4,7 @@ Una aplicación personal para organizar notas, tareas, calendario y recordatorio
 
 **Web publicada:** [Dayflow en Vercel](https://dayflow-by-shadowstudio.vercel.app/auth/login).
 
-Incluye notas, tareas, vistas de calendario de mes/semana/día, recordatorios, relaciones, Dashboard, Inbox, búsqueda, etiquetas y perfil con estadísticas. Ofrece sincronización con Supabase, instalación como PWA, arranque offline, actualizaciones sin interrumpir borradores y proyectos nativos de Capacitor. La confirmación y recuperación por correo y Web Push cuentan con validación manual documentada en Vercel. La ampliación de la beta a destinatarios externos requiere SMTP propio y pruebas con cuentas externas. Quedan pendientes la firma y distribución Android y la validación física de la versión integrada con alarmas prioritarias. La aplicación nativa iOS está descartada del alcance actual. Consulta la [validación de publicación](docs/release-validation.md) y la [configuración de Vercel](docs/vercel.md).
+Incluye notas, tareas, vistas de calendario de mes/semana/día, recordatorios, relaciones, Dashboard, Inbox, búsqueda, etiquetas y perfil con estadísticas. Ofrece sincronización con Supabase, instalación como PWA, arranque offline, actualizaciones sin interrumpir borradores y proyectos nativos de Capacitor. El 13 de noviembre de 2026 se verificaron en Chrome y Edge sobre Windows 11 25H2 la actualización de la PWA instalada a `322f123` con sesión, datos y borrador conservados, y la persistencia y sincronización de la cola tras una interrupción de red. La confirmación y recuperación por correo y Web Push cuentan con validación manual documentada en Vercel. La ampliación de la beta a destinatarios externos requiere SMTP propio y pruebas con cuentas externas. Quedan pendientes la firma y distribución Android y la validación física de la versión integrada con alarmas prioritarias. La aplicación nativa iOS está descartada del alcance actual. Consulta la [validación de publicación](docs/release-validation.md) y la [configuración de Vercel](docs/vercel.md).
 
 ## Inicio rápido
 
@@ -150,7 +150,7 @@ Los proyectos `android/` e `ios/` usan `com.dayflow.app`, nombre Dayflow y recur
 
 `npm run test:pwa` verifica dos builds de producción: instalación, arranque sin red, actualización entre ventanas y aislamiento tras logout. Consulta [PWA, proyectos nativos y despliegue](docs/pwa-native.md) para compilación, caché, permisos, callbacks y límites.
 
-El plan de nueve fases queda implementado como base de desarrollo. Quedan pendientes la confirmación del despliegue de la migración 7, SMTP externo, validación de alarmas prioritarias tras reinicio y en Doze profundo, Safari/PWA en dispositivos Apple y firma y distribución Android.
+El plan de nueve fases queda implementado como base de desarrollo. Quedan pendientes SMTP externo, validación de alarmas prioritarias tras reinicio y en Doze profundo, Safari/PWA en dispositivos Apple y firma y distribución Android.
 
 ## Referencias oficiales consultadas
 
