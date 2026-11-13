@@ -62,6 +62,9 @@ test('el último día completo es incluido y la navegación respeta las preferen
     page.getByRole('heading', { name: 'octubre de 2026' }),
   ).toBeVisible()
   await page.getByLabel('Ir al mes').fill('2026-12')
+  await expect(
+    page.getByRole('heading', { name: 'diciembre de 2026' }),
+  ).toBeVisible()
   await page.getByRole('button', { name: 'Mes siguiente' }).click()
   await expect(
     page.getByRole('heading', { name: 'enero de 2027' }),

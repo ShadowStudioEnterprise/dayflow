@@ -690,7 +690,7 @@ La documentación registra un proyecto Dayflow en `eu-central-1`, con referencia
 
 Tras revisar proyecto e historial, se puede enlazar mediante `npx supabase link --project-ref REFERENCIA` y aplicar pendientes con `npx supabase db push`. Deben configurarse Site URL, retornos exactos de web y nativo y confirmación de correo. El mínimo de contraseña debe corresponder al cliente. Una configuración SMTP propia es necesaria para ampliar destinatarios según las restricciones documentadas del servicio predeterminado.
 
-El perfil alojado declara Vercel como Site URL, conserva los retornos anteriores Sites y los locales, y permite callbacks nativos. La documentación confirma aplicación de las seis migraciones y despliegue de Push. La verificación del 9 de octubre comprueba permisos efectivos y aislamiento por API con JWT reales de dos cuentas de ensayo. Cambiar de Docker a alojado no migra automáticamente cuentas ni documentos entre proyectos.
+El perfil alojado declara Vercel como Site URL, conserva los retornos anteriores Sites y los locales, y permite callbacks nativos. La documentación histórica acredita las primeras seis migraciones y el despliegue de Push. La aplicación de la séptima en Supabase alojado se verificó el 13 de noviembre de 2026 con 74/74 comprobaciones de historial y catálogo ([BE-08](audits/2026-10-12-sql-hardening.md#estado-del-despliegue)). La verificación del 9 de octubre comprueba permisos efectivos y aislamiento por API con JWT reales de dos cuentas de ensayo. Cambiar de Docker a alojado no migra automáticamente cuentas ni documentos entre proyectos.
 
 Fuentes: `supabase/config.toml`, `deployment/supabase/config.toml`, `docs/local-backend.md` y `docs/hosted-backend.md`.
 

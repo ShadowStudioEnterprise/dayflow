@@ -43,10 +43,23 @@ Se ejecutan las migraciones completas en PostgreSQL embebido PGlite con defaults
 
 Resultados de esta rama: **299/299 pruebas unitarias en 47 archivos**, incluidas **21/21 pruebas dirigidas de SQL, Sync y Push**. `npm run typecheck`, `npm run lint`, `npm run docs:check`, `npm run test:docs` (3/3), formato de archivos afectados y `git diff --check`, correctos. El script adversarial HTTP se actualiza para exigir el código y mensaje uniformes de la migración 7; `node --check scripts/audit-supabase-api.mjs` pasa, pero no se ejecuta contra el backend alojado.
 
-Criterio de esta tarea: decisiones documentadas y cambios aplicados al repositorio. No se despliega la migración al proyecto alojado; las auditorías remotas históricas no prueban este cambio. No se certifican carreras reales, rate limiting, carga en producción ni entrega física de avisos. Para desplegar, aplicar las migraciones pendientes en orden y repetir las pruebas con JWT reales y la suite local Docker.
+La revisión del 12 de octubre documentó las decisiones y probó los cambios en el repositorio. En esa revisión no se desplegó la migración. Las pruebas locales cubrieron los casos indicados arriba y dejaron fuera carreras reales, rate limiting, carga en producción y entrega física de avisos.
 
 ## Estado del despliegue
 
-**Pendiente de aplicar en Supabase alojado:** `202610120007_sync_hardening.sql`. La integración de esta rama en `dev` incorpora código y documentación al repositorio; no ejecuta la migración ni acredita que el backend remoto tenga estas correcciones.
+**13 de noviembre de 2026 · BE-08 cerrada y verificada.** El usuario ejecutó íntegramente `202610120007_sync_hardening.sql` en el SQL Editor de Supabase alojado y volvió a ejecutar la consulta de solo lectura. El resultado aportado contiene **74/74 filas OK**. La referencia del SQL es `main` en `322f123`.
 
-El cierre del despliegue requiere aplicar las migraciones pendientes en orden, verificar el historial y los permisos efectivos del backend, y repetir las pruebas adversariales con JWT reales y la suite local Docker. Hasta entonces, las 299 pruebas aprobadas corresponden a validación local, y los resultados remotos anteriores corresponden a las migraciones anteriores.
+En la primera consulta figuraban las siete versiones en el historial, con 58 filas OK y 16 REVISAR. El diagnóstico identificó los cuerpos de las migraciones 4 y 5 por sus MD5 y las 26 políticas heredadas de inserción y actualización. La causa de la discrepancia entre historial y catálogo quedó sin determinar.
+
+| Comprobación                                                                                                             |     OK |
+| ------------------------------------------------------------------------------------------------------------------------ | -----: |
+| Versiones registradas en el historial                                                                                    |      7 |
+| Funciones con cuerpo (MD5), firma, configuración y permisos esperados                                                    |      3 |
+| Tablas RPC con RLS, sin permisos directos de escritura para clientes ni políticas heredadas de inserción y actualización |     13 |
+| Triggers                                                                                                                 |     26 |
+| Restricciones                                                                                                            |     20 |
+| Columna `sync_operations.result`                                                                                         |      1 |
+| Permisos por defecto                                                                                                     |      4 |
+| **Total**                                                                                                                | **74** |
+
+La evidencia alojada cubre el historial y el catálogo. Las 299 pruebas de comportamiento del 12 de octubre corresponden al entorno local.

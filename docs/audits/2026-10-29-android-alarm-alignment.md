@@ -1,6 +1,6 @@
 # Investigación del retraso de alarmas — Redmi Note 11S
 
-Registro fechado del APK debug experimental. La implementación prioritaria permanece local y no se incluye en esta publicación documental. Los apartados conservan el orden de las pruebas; los resultados posteriores actualizan los pendientes anteriores. [Guía del modo prioritario](../android-priority-alarms.md).
+Este registro recoge las pruebas del 29 de octubre de 2026 con el APK debug experimental en el Redmi Note 11S. El PR #11 integró posteriormente la implementación prioritaria en `main` (`b023b1f`, merge `086ed94`). Sigue pendiente verificar la entrega con la versión integrada en Doze profundo y tras reinicio. Los apartados conservan el orden de las pruebas. [Guía del modo prioritario](../android-priority-alarms.md).
 
 Fecha: 29 de octubre de 2026. Android 13, build `V816.0.11.0.TKEEUXM`, modelo `2201117SY`.
 

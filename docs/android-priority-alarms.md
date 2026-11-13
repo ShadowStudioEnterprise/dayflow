@@ -1,6 +1,6 @@
 # Avisos prioritarios en Android
 
-Estado del 29 de octubre de 2026: esta guía describe el APK debug experimental instalado y probado en el Redmi Note 11S. La implementación y el parche permanecen en el entorno local de desarrollo y no forman parte de esta publicación documental; los pasos de compilación siguientes requieren esos cambios. El código publicado antes de incorporarlos no ofrece este ajuste.
+El PR #11 integró en `main` la implementación de avisos prioritarios y el parche reproducible de Capacitor (`b023b1f`, merge `086ed94`). Los resultados físicos del 29 de octubre de 2026 corresponden al APK debug experimental instalado en el Redmi Note 11S. Sigue pendiente verificar la entrega con la versión integrada en Doze profundo y tras reinicio.
 
 En **Configuración → Notificaciones en este dispositivo**, activa **Avisos prioritarios en este dispositivo** cuando necesites que Android trate los avisos como alarmas de reloj. La opción está desactivada por defecto.
 

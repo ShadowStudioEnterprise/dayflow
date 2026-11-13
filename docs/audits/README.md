@@ -1,9 +1,11 @@
 # Auditorías
 
-- [PWA en Windows · 5/11/2026](2026-11-05-pwa-windows.md). Instalación, worker, reapertura sin red y búsqueda de actualizaciones verificados en Chrome y Edge. Descarga y activación de una actualización real pendientes.
+La web principal está publicada en Vercel. Consulta la [matriz de publicación y dispositivos](../release-validation.md#evidencia-por-versión-y-entorno) para identificar la versión, el entorno y el alcance de cada resultado. Los registros de Sites corresponden al alojamiento anterior.
+
+- Instalación y reapertura sin red verificadas el 5/11/2026 sobre Vercel `7a92da4`. El 13/11/2026, en Windows 11 25H2 con Chrome `157.0.8103.79` y Edge `157.0.4341.46`, se verificaron la actualización a `322f123` con sesión, datos y borrador conservados y el envío de la cola tras reabrir sin red. [Auditoría de la PWA en Windows](2026-11-05-pwa-windows.md)
 
 - [Redmi Note 11S · 29/10/2026](2026-10-29-redmi-note11s.md): instalación conservando datos, autenticación, offline, sincronización y recuperación de sesión; registro cronológico de avisos y límites.
-- [Alineación de alarmas Android · 29/10/2026](2026-10-29-android-alarm-alignment.md): causa aislada en firmware y modo prioritario experimental.
+- [Alineación de alarmas Android · 29/10/2026](2026-10-29-android-alarm-alignment.md): causa aislada en firmware y modo prioritario experimental. El código se integró después en `main` mediante el PR #11 (`b023b1f`, merge `086ed94`). La entrega de la versión integrada sigue pendiente en Doze profundo y tras reinicio.
 - [Aviso prioritario prolongado · 29/10/2026](2026-10-29-priority-prolonged.md): entrega única a las 23:51:00.132 con recepción confirmada; Doze profundo no certificado.
 
 - [Alarmas Android: casos restantes del 14 de octubre](2026-10-14-android-alarms-remaining.md): ronda de Doze, inactividad, permisos, cancelación y variantes de reinicio; identificación del APK nuevo y límite de permisos exactos en Android 11. Ejecución pendiente de actualización/conexión del Redmi.
@@ -30,7 +32,7 @@
 
 - [Estado de CI y producción del 12 de octubre de 2026](2026-10-12-ci-deployment.md): SHA común de CI y Vercel, tres jobs correctos, producción READY, fechas e instantáneas de evidencia. Actualización documental cerrada; alcance separado de Auth/Push manual y cambios posteriores en dev.
 
-- [Versiones, fechas cliente, invocación y SQL](2026-10-12-sql-hardening.md): decisiones SQL-01/02/03/04/06 y migración aditiva con validación local.
+- [Versiones, fechas cliente, invocación y SQL](2026-10-12-sql-hardening.md): decisiones SQL-01/02/03/04/06 y migración aditiva con validación local. El 13/11/2026 se verificó su aplicación en Supabase alojado con 74/74 comprobaciones de historial y catálogo.
 
 - [Capacidad y recuperación de notificaciones](../notification-capacity.md): 26 pruebas, 78 perfiles de emisor y recuperación medida en dos versiones. Cupo de 60, fronteras de cinco minutos, DST, fallos parciales y límite blando de 45 segundos documentados con datos.
 - [Autenticación y Web Push en Vercel](2026-10-12-vercel-auth-web-push.md): cuatro criterios de cierre superados. Auth comprobado por el usuario; aviso de las 02:16 recibido y abierto en Vercel, con aceptación del proveedor registrada en un intento. Conserva el intento fallido previo sin suscripción y la corrección del cierre prematuro.
