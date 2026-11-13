@@ -62,14 +62,18 @@ for (const size of sizes) {
     await page.screenshot({ path: info.outputPath('navigation.png') })
     await page.getByRole('button', { name: 'Cerrar menú', exact: true }).click()
     if (size.width === 320) {
+      const body = page.locator('body')
+      await expect(body).not.toHaveCSS('overflow', 'hidden')
+      const originalOverflow = await body.evaluate(
+        (element) => getComputedStyle(element).overflow,
+      )
       await page.getByRole('button', { name: 'Abrir navegación' }).click()
+      await expect(body).toHaveCSS('overflow', 'hidden')
       await page.setViewportSize({ width: 1024, height: 768 })
       await expect(
         page.getByRole('button', { name: 'Cerrar navegación' }),
       ).toHaveCount(0)
-      expect(await page.evaluate(() => document.body.style.overflow)).not.toBe(
-        'hidden',
-      )
+      await expect(body).toHaveCSS('overflow', originalOverflow)
       await page.setViewportSize(size)
       await page.getByRole('button', { name: 'Abrir navegación' }).click()
       await page
