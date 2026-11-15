@@ -25,7 +25,7 @@ La web principal está publicada en Vercel. Consulta la [matriz de publicación 
 
 - [Calendario móvil: repetición del 12 de octubre de 2026](2026-10-12-calendar-mobile.md): 130/130 correctos, cuatro y un worker, cero reintentos y fuentes inmutables. Investigación cerrada por evidencia; fallo no reproducido.
 
-- PWA móvil. Protocolo y cobertura automatizada del 12/10/2026. El 15/11/2026 se confirmaron en Chrome Android instalado la instalación, el guion de arranque offline y persistencia, y la reanudación tras una hora. Quedan pendientes la actualización en Chrome Android y la matriz física de Safari/iOS. [Informe de PWA móvil](2026-10-12-pwa-mobile.md).
+- PWA móvil. Protocolo y cobertura automatizada del 12/10/2026. El 15/11/2026 se confirmaron en Chrome Android instalado la instalación, el guion de arranque offline y persistencia, y la reanudación tras una hora. También se verificó la actualización de `5e5107ff` a `dd0ec83` con sesión, datos locales y borrador conservados. Queda pendiente la matriz física de Safari/iOS. [Informe de PWA móvil](2026-10-12-pwa-mobile.md).
 
 - [Protocolo de alarmas Android del 12 de octubre de 2026](2026-10-12-android-alarms.md): matriz de permisos, bloqueo, Doze, batería y reinicio; medición de recepción y retrasos. Ejecución física pendiente por falta de teléfono.
 
