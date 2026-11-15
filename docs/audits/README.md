@@ -5,7 +5,8 @@ La web principal está publicada en Vercel. Consulta la [matriz de publicación 
 - Instalación y reapertura sin red verificadas el 5/11/2026 sobre Vercel `7a92da4`. El 13/11/2026, en Windows 11 25H2 con Chrome `157.0.8103.79` y Edge `157.0.4341.46`, se verificaron la actualización a `322f123` con sesión, datos y borrador conservados y el envío de la cola tras reabrir sin red. [Auditoría de la PWA en Windows](2026-11-05-pwa-windows.md)
 
 - [Redmi Note 11S · 29/10/2026](2026-10-29-redmi-note11s.md): instalación conservando datos, autenticación, offline, sincronización y recuperación de sesión; registro cronológico de avisos y límites.
-- [Alineación de alarmas Android · 29/10/2026](2026-10-29-android-alarm-alignment.md): causa aislada en firmware y modo prioritario experimental. El código se integró después en `main` mediante el PR #11 (`b023b1f`, merge `086ed94`). La entrega de la versión integrada sigue pendiente en Doze profundo y tras reinicio.
+- APK integrada en Redmi Note 11S · 14–15/11/2026. Instalación y arranque de `dd4ac54`, aviso tras reinicio y desbloqueo, recepción después de salir de Doze profundo y recuperación del permiso de notificaciones. QA-04 verificó también la apertura del recordatorio desde el aviso y la persistencia offline con sincronización bidireccional. [Informe del Redmi Note 11S](2026-10-29-redmi-note11s.md#apk-integrada-del-14-y-15-de-noviembre-de-2026).
+- [Alineación de alarmas Android · 29/10/2026](2026-10-29-android-alarm-alignment.md): causa aislada en firmware y modo prioritario experimental. El código se integró después en `main` mediante el PR #11 (`b023b1f`, merge `086ed94`).
 - [Aviso prioritario prolongado · 29/10/2026](2026-10-29-priority-prolonged.md): entrega única a las 23:51:00.132 con recepción confirmada; Doze profundo no certificado.
 
 - [Alarmas Android: casos restantes del 14 de octubre](2026-10-14-android-alarms-remaining.md): ronda de Doze, inactividad, permisos, cancelación y variantes de reinicio; identificación del APK nuevo y límite de permisos exactos en Android 11. Ejecución pendiente de actualización/conexión del Redmi.
@@ -24,7 +25,7 @@ La web principal está publicada en Vercel. Consulta la [matriz de publicación 
 
 - [Calendario móvil: repetición del 12 de octubre de 2026](2026-10-12-calendar-mobile.md): 130/130 correctos, cuatro y un worker, cero reintentos y fuentes inmutables. Investigación cerrada por evidencia; fallo no reproducido.
 
-- [PWA móvil del 12 de octubre de 2026](2026-10-12-pwa-mobile.md): ejecución automatizada, cambio de cuenta y protocolo de instalación/offline/persistencia/actualización para Android y Safari/iOS. App nativa iOS descartada por decisión del usuario.
+- PWA móvil. Protocolo y cobertura automatizada del 12/10/2026. El 15/11/2026 se confirmaron en Chrome Android instalado la instalación, el guion de arranque offline y persistencia, y la reanudación tras una hora. Quedan pendientes la actualización en Chrome Android y la matriz física de Safari/iOS. [Informe de PWA móvil](2026-10-12-pwa-mobile.md).
 
 - [Protocolo de alarmas Android del 12 de octubre de 2026](2026-10-12-android-alarms.md): matriz de permisos, bloqueo, Doze, batería y reinicio; medición de recepción y retrasos. Ejecución física pendiente por falta de teléfono.
 

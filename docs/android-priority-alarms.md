@@ -1,6 +1,6 @@
 # Avisos prioritarios en Android
 
-El PR #11 integró en `main` la implementación de avisos prioritarios y el parche reproducible de Capacitor (`b023b1f`, merge `086ed94`). Los resultados físicos del 29 de octubre de 2026 corresponden al APK debug experimental instalado en el Redmi Note 11S. Sigue pendiente verificar la entrega con la versión integrada en Doze profundo y tras reinicio.
+El PR #11 integró en `main` la implementación de avisos prioritarios y el parche reproducible de Capacitor (`b023b1f`, merge `086ed94`). El 14 y 15 de noviembre de 2026 se probó la versión integrada en el Redmi Note 11S con la APK debug 0.9.0 (código 1) de `dd4ac54`. Se confirmó la recepción tras reiniciar y desbloquear. En el ensayo de Doze profundo, Android volvió a salir de `IDLE` antes de emitir el aviso. Sigue pendiente verificar la entrega durante `IDLE` profundo y acreditar que Dayflow permaneció cerrada tras el reinicio. [Resultados físicos de la APK integrada](audits/2026-10-29-redmi-note11s.md#apk-integrada-del-14-y-15-de-noviembre-de-2026).
 
 En **Configuración → Notificaciones en este dispositivo**, activa **Avisos prioritarios en este dispositivo** cuando necesites que Android trate los avisos como alarmas de reloj. La opción está desactivada por defecto.
 
