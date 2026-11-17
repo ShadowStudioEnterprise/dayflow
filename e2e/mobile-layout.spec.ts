@@ -1,6 +1,65 @@
 import { test, expect, type Page } from '@playwright/test'
 import { login } from './auth-fixture.ts'
 
+for (const width of [320, 1280]) {
+  test(`la recuperación por código a ${width}px no abre una sesión persistente`, async ({
+    page,
+  }) => {
+    await page.setViewportSize({ width, height: 800 })
+    const id = '00000000-0000-4000-8000-000000000001'
+    const email = 'recuperacion@dayflow.test'
+    const exp = Math.floor(Date.now() / 1000) + 3600
+    const user = {
+      id,
+      aud: 'authenticated',
+      email,
+      user_metadata: {},
+      app_metadata: {},
+    }
+    const token = `${Buffer.from('{"alg":"HS256","typ":"JWT"}').toString('base64url')}.${Buffer.from(JSON.stringify({ sub: id, exp })).toString('base64url')}.test-signature`
+
+    await page.route(
+      'https://dayflow-e2e.supabase.co/auth/v1/**',
+      async (route) => {
+        const endpoint = new URL(route.request().url()).pathname
+        if (endpoint === '/auth/v1/recover') return route.fulfill({ json: {} })
+        if (endpoint !== '/auth/v1/verify') return route.abort()
+        expect(route.request().postDataJSON()).toMatchObject({
+          email,
+          token: '012345',
+          type: 'recovery',
+        })
+        return route.fulfill({
+          json: {
+            access_token: token,
+            refresh_token: 'refresh-de-prueba',
+            expires_in: 3600,
+            expires_at: exp,
+            token_type: 'bearer',
+            user,
+          },
+        })
+      },
+    )
+    await page.goto('/auth/reset-password')
+    await page.getByLabel('Email').fill(email)
+    await page.getByRole('button', { name: 'Enviar correo' }).click()
+    await page.getByLabel('Código de seis cifras').fill('012345')
+    await fits(page)
+    await page.getByRole('button', { name: 'Verificar código' }).click()
+    await expect(
+      page.getByRole('heading', { name: 'Una nueva contraseña.' }),
+    ).toBeVisible()
+    await fits(page)
+    await page.reload()
+    await expect(
+      page.getByRole('button', { name: 'Enviar correo' }),
+    ).toBeVisible()
+    await page.goto('/')
+    await expect(page).toHaveURL(/\/auth\/login$/)
+  })
+}
+
 const sizes = [
   { width: 320, height: 568 },
   { width: 360, height: 640 },

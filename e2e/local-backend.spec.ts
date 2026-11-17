@@ -59,7 +59,7 @@ async function register(page: Page, request: APIRequestContext) {
   await page.getByLabel('Email').fill(email)
   await page.getByLabel('Contraseña').fill(password)
   await page.getByRole('button', { name: 'Crear cuenta', exact: true }).click()
-  await expect(page.getByRole('status')).toContainText('Revisa tu correo')
+  await expect(page.getByText(/Revisa tu correo y spam/)).toBeVisible()
   await page.goto(await emailLink(request, email, 'signup'))
   await expect(
     page.getByRole('heading', { name: 'Hoy, con un poco más de calma.' }),
@@ -106,8 +106,8 @@ test('registro, correo de confirmación, recuperación y cierre de sesión reale
     page.getByRole('heading', { name: 'Volvamos a entrar.' }),
   ).toBeVisible()
   await page.getByLabel('Email').fill(email)
-  await page.getByRole('button', { name: 'Enviar enlace', exact: true }).click()
-  await expect(page.getByRole('status')).toContainText('recibirás un enlace')
+  await page.getByRole('button', { name: 'Enviar correo', exact: true }).click()
+  await expect(page.getByText(/Si existe una cuenta/)).toBeVisible()
   await page.goto(await emailLink(request, email, 'recovery'))
   await expect(
     page.getByRole('heading', { name: 'Una nueva contraseña.' }),
@@ -120,6 +120,112 @@ test('registro, correo de confirmación, recuperación y cierre de sesión reale
   await expect(page.getByRole('status')).toContainText('Contraseña guardada')
   await login(page, email, next)
   await sync(page)
+})
+
+async function emailCode(
+  request: APIRequestContext,
+  email: string,
+  subject: string,
+  previousCode?: string,
+) {
+  let code = ''
+  await expect
+    .poll(
+      async () => {
+        const query = encodeURIComponent(`to:${email} subject:"${subject}"`)
+        const response = await request.get(
+          `${mail}/view/latest.html?query=${query}`,
+        )
+        if (!response.ok()) return false
+        code =
+          /Código de Dayflow:\s*(\d{6})/.exec(await response.text())?.[1] ?? ''
+        return Boolean(code) && code !== previousCode
+      },
+      { timeout: 20000 },
+    )
+    .toBe(true)
+  return code
+}
+
+test('confirma el alta y recupera la contraseña con códigos de Mailpit', async ({
+  page,
+  request,
+}) => {
+  const email = `dayflow-otp-${randomUUID()}@dayflow.test`
+  await page.goto('/auth/register')
+  await page.getByLabel('Tu nombre').fill('Prueba código')
+  await page.getByLabel('Email').fill(email)
+  await page.getByLabel('Contraseña').fill(password)
+  await page.getByRole('button', { name: 'Crear cuenta', exact: true }).click()
+  await page
+    .getByLabel('Código de seis cifras')
+    .fill(await emailCode(request, email, 'Confirma tu correo de Dayflow'))
+  await page.getByRole('button', { name: 'Confirmar correo' }).click()
+  await expect(
+    page.getByRole('heading', { name: 'Hoy, con un poco más de calma.' }),
+  ).toBeVisible()
+  await page.goto('/settings')
+  await page.getByRole('button', { name: 'Cerrar sesión', exact: true }).click()
+
+  await page.goto('/auth/reset-password')
+  await page.getByLabel('Email').fill(email)
+  await page.getByRole('button', { name: 'Enviar correo' }).click()
+  const code = await emailCode(
+    request,
+    email,
+    'Recupera tu contraseña de Dayflow',
+  )
+  await page.getByLabel('Código de seis cifras').fill(code)
+  await page.getByRole('button', { name: 'Verificar código' }).click()
+  await expect(
+    page.getByRole('heading', { name: 'Una nueva contraseña.' }),
+  ).toBeVisible()
+
+  // Otra pestaña comparte el almacenamiento del navegador, pero no la sesión de recuperación.
+  const secondTab = await page.context().newPage()
+  await secondTab.goto('/')
+  await expect(secondTab).toHaveURL(/\/auth\/login$/)
+  await secondTab.close()
+
+  const next = `${password}-otp`
+  await page.getByLabel('Contraseña').fill(next)
+  await page.getByRole('button', { name: 'Guardar contraseña' }).click()
+  await expect(page.getByRole('status')).toContainText('Contraseña guardada')
+  await page.goto('/auth/login')
+  await page.getByLabel('Email').fill(email)
+  await page.getByLabel('Contraseña').fill(password)
+  await page
+    .getByRole('button', { name: 'Iniciar sesión', exact: true })
+    .click()
+  await expect(page.getByRole('alert')).toBeVisible()
+  await login(page, email, next)
+
+  await page.goto('/settings')
+  await page.getByRole('button', { name: 'Cerrar sesión', exact: true }).click()
+  await expect(page).toHaveURL(/\/auth\/login$/)
+  await page.goto('/auth/reset-password')
+  await page.getByLabel('Email').fill(email)
+  await page.getByRole('button', { name: 'Enviar correo' }).click()
+  await page
+    .getByLabel('Código de seis cifras')
+    .fill(
+      await emailCode(
+        request,
+        email,
+        'Recupera tu contraseña de Dayflow',
+        code,
+      ),
+    )
+  await page.getByRole('button', { name: 'Verificar código' }).click()
+  await expect(
+    page.getByRole('heading', { name: 'Una nueva contraseña.' }),
+  ).toBeVisible()
+  await page.reload()
+  await expect(
+    page.getByRole('button', { name: 'Enviar correo' }),
+  ).toBeVisible()
+  await page.goto('/')
+  await expect(page).toHaveURL(/\/auth\/login$/)
 })
 
 test('dos instalaciones sincronizan con RPC y WebSocket reales, recuperan offline y aíslan otra cuenta', async ({

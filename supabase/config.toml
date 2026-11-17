@@ -65,5 +65,13 @@ max_frequency = "1s"
 otp_length = 6
 otp_expiry = 3600
 
+[auth.email.template.confirmation]
+subject = "Confirma tu correo de Dayflow"
+content_path = "./supabase/templates/confirmation-local.html"
+
+[auth.email.template.recovery]
+subject = "Recupera tu contraseña de Dayflow"
+content_path = "./supabase/templates/recovery-local.html"
+
 [functions.push-dispatch]
 verify_jwt = false
