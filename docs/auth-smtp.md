@@ -19,11 +19,11 @@ En **Authentication → Emails → Templates**, copiar el HTML de cada bloque al
 
 **Confirm sign up**
 
-<<< ../deployment/supabase/templates/confirmation.html
+<<< ./auth-templates/confirmation.html
 
 **Reset password**
 
-<<< ../deployment/supabase/templates/recovery.html
+<<< ./auth-templates/recovery.html
 
 El alta termina al introducir el código y abrir Dayflow. La recuperación pide la nueva contraseña en la misma pantalla que verificó el código. Si se recarga o se abandona esa pantalla antes de guardar, hay que solicitar otro código. La sesión que permite guardar la contraseña se conserva solo en memoria y queda separada del acceso habitual a Dayflow. Los códigos requieren conexión a Supabase.
 
