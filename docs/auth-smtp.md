@@ -15,7 +15,15 @@ Supabase Auth envía confirmación y recuperación. Su correo predeterminado res
 
 Publicar primero una versión de Dayflow con el formulario de código. Comprobar que está disponible en la web y que las instalaciones PWA y Android que usen el mismo proyecto se han actualizado o pueden seguir el flujo en la web. Las versiones antiguas no tienen un campo para el código. Durante la transición, la interfaz nueva acepta códigos y conserva el retorno de enlaces anteriores. Para revertir, restaurar primero las plantillas por enlace y usar un proveedor que preserve las URLs.
 
-En **Authentication → Emails → Templates**, copiar el HTML de [Confirm sign up](../deployment/supabase/templates/confirmation.html) y [Reset password](../deployment/supabase/templates/recovery.html) al mensaje correspondiente. Mantener la confirmación obligatoria y comprobar que la longitud del código sea de seis cifras, como en el entorno local. No incluir `ConfirmationURL` ni `TokenHash` en los mensajes de Brevo. Mantener el código fuera de URLs, registros y evidencias.
+En **Authentication → Emails → Templates**, copiar el HTML de cada bloque al mensaje correspondiente. Mantener la confirmación obligatoria y comprobar que la longitud del código sea de seis cifras, como en el entorno local. No incluir `ConfirmationURL` ni `TokenHash` en los mensajes de Brevo. Mantener el código fuera de URLs, registros y evidencias.
+
+**Confirm sign up**
+
+<<< ../deployment/supabase/templates/confirmation.html
+
+**Reset password**
+
+<<< ../deployment/supabase/templates/recovery.html
 
 El alta termina al introducir el código y abrir Dayflow. La recuperación pide la nueva contraseña en la misma pantalla que verificó el código. Si se recarga o se abandona esa pantalla antes de guardar, hay que solicitar otro código. La sesión que permite guardar la contraseña se conserva solo en memoria y queda separada del acceso habitual a Dayflow. Los códigos requieren conexión a Supabase.
 
