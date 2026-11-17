@@ -2,6 +2,12 @@ import { z } from 'zod'
 export const emailSchema = z.object({
   email: z.email('Escribe un email válido.'),
 })
+export const emailCodeSchema = z.object({
+  token: z
+    .string()
+    .trim()
+    .regex(/^\d{6}$/, 'Escribe el código de seis cifras.'),
+})
 export const loginSchema = emailSchema.extend({
   password: z.string().min(1, 'Escribe tu contraseña.'),
 })

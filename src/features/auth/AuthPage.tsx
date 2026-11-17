@@ -10,13 +10,15 @@ import {
   loginSchema,
   registrationSchema,
   emailSchema,
+  emailCodeSchema,
   passwordSchema,
 } from '../../shared/validation/auth-schemas'
 import { Brand } from '../../shared/components/Brand'
 import { useAuth } from './auth-context'
 import { LocalMailNotice } from './LocalMailNotice'
 
-type Mode = 'login' | 'register' | 'reset' | 'update'
+type RouteMode = 'login' | 'register' | 'reset' | 'update'
+type Mode = RouteMode | 'confirm-code' | 'recovery-code'
 const modes = {
   login: {
     title: 'Un lugar para tu día.',
@@ -30,8 +32,20 @@ const modes = {
   },
   reset: {
     title: 'Volvamos a entrar.',
-    intro: 'Te enviaremos un enlace para recuperar tu contraseña.',
-    submit: 'Enviar enlace',
+    intro: 'Te enviaremos un correo para recuperar tu contraseña.',
+    submit: 'Enviar correo',
+  },
+  'confirm-code': {
+    title: 'Confirma tu correo.',
+    intro:
+      'Revisa tu correo y spam. Introduce el código o sigue el enlace si el mensaje incluye uno.',
+    submit: 'Confirmar correo',
+  },
+  'recovery-code': {
+    title: 'Comprueba tu correo.',
+    intro:
+      'Si existe una cuenta con ese email, recibirás un mensaje. Introduce el código o sigue el enlace si el mensaje incluye uno.',
+    submit: 'Verificar código',
   },
   update: {
     title: 'Una nueva contraseña.',
@@ -43,10 +57,11 @@ interface Fields {
   email?: string
   password?: string
   name?: string
+  token?: string
 }
 export default function AuthPage() {
   const location = useLocation()
-  const mode: Mode = location.pathname.endsWith('register')
+  const mode: RouteMode = location.pathname.endsWith('register')
     ? 'register'
     : location.pathname.endsWith('reset-password')
       ? 'reset'
@@ -55,12 +70,24 @@ export default function AuthPage() {
         : 'login'
   return <AuthForm key={mode} mode={mode} />
 }
-function AuthForm({ mode }: { mode: Mode }) {
+function AuthForm({ mode: routeMode }: { mode: RouteMode }) {
   const { user, loading, recovery } = useAuth()
   const [error, setError] = useState('')
   const [success, setSuccess] = useState('')
-  const schema =
-    mode === 'register'
+  const [codeEmail, setCodeEmail] = useState('')
+  const [saveRecoveryPassword, setSaveRecoveryPassword] =
+    useState<Awaited<ReturnType<typeof authService.verifyRecoveryCode>>>()
+  const mode: Mode = saveRecoveryPassword
+    ? 'update'
+    : codeEmail
+      ? routeMode === 'register'
+        ? 'confirm-code'
+        : 'recovery-code'
+      : routeMode
+  const enteringCode = mode === 'confirm-code' || mode === 'recovery-code'
+  const schema = enteringCode
+    ? emailCodeSchema
+    : mode === 'register'
       ? registrationSchema
       : mode === 'reset'
         ? emailSchema
@@ -72,6 +99,7 @@ function AuthForm({ mode }: { mode: Mode }) {
       email: z.string().optional(),
       password: z.string().optional(),
       name: z.string().optional(),
+      token: z.string().optional(),
     })
     .superRefine((fields, context) => {
       const result = schema.safeParse(fields)
@@ -86,11 +114,12 @@ function AuthForm({ mode }: { mode: Mode }) {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<Fields>({ resolver: zodResolver(formSchema) })
-  if (recovery && mode !== 'update')
+  if (recovery && routeMode !== 'update')
     return <Navigate to="/auth/update-password" replace />
-  if (user && !recovery && (mode === 'login' || mode === 'register'))
+  if (user && !recovery && routeMode !== 'update')
     return <Navigate to="/" replace />
   const submit = handleSubmit(async (fields) => {
     setError('')
@@ -101,20 +130,37 @@ function AuthForm({ mode }: { mode: Mode }) {
         const result = await authService.signUp(
           registrationSchema.parse(fields),
         )
-        if (!result.session)
-          setSuccess(
-            'Si este correo puede registrarse, recibirás un enlace de confirmación. Revisa tu correo y spam. Si ya tienes cuenta, inicia sesión o recupera tu contraseña.',
-          )
+        if (!result.session) {
+          setCodeEmail(emailSchema.parse(fields).email)
+          reset()
+        }
       }
       if (mode === 'reset') {
-        await authService.resetPassword(emailSchema.parse(fields))
-        setSuccess(
-          'Si existe una cuenta con ese email, recibirás un enlace de recuperación.',
-        )
+        const input = emailSchema.parse(fields)
+        await authService.resetPassword(input)
+        setCodeEmail(input.email)
+        reset()
+      }
+      if (enteringCode) {
+        const input = { email: codeEmail, ...emailCodeSchema.parse(fields) }
+        if (mode === 'confirm-code') await authService.confirmEmail(input)
+        else {
+          const save = await authService.verifyRecoveryCode(input)
+          setSaveRecoveryPassword(() => save)
+        }
+        reset()
       }
       if (mode === 'update') {
-        await authService.updatePassword(passwordSchema.parse(fields))
-        await authService.signOut()
+        const input = passwordSchema.parse(fields)
+        if (saveRecoveryPassword) {
+          await saveRecoveryPassword(input)
+          setSaveRecoveryPassword(undefined)
+          setCodeEmail('')
+          reset()
+        } else {
+          await authService.updatePassword(input)
+          await authService.signOut()
+        }
         setSuccess('Contraseña guardada. Ya puedes iniciar sesión.')
       }
     } catch (reason) {
@@ -162,11 +208,16 @@ function AuthForm({ mode }: { mode: Mode }) {
               instrucciones de instalación en README.md.
             </div>
           )}
-          {mode === 'update' && !loading && !user && !success && (
-            <div className="notice">
-              Abre el enlace enviado a tu correo para establecer una contraseña.
-            </div>
-          )}
+          {mode === 'update' &&
+            !loading &&
+            !user &&
+            !saveRecoveryPassword &&
+            !success && (
+              <div className="notice">
+                Abre el enlace enviado a tu correo para establecer una
+                contraseña.
+              </div>
+            )}
           <form onSubmit={submit} noValidate>
             {mode === 'register' && (
               <label>
@@ -181,7 +232,7 @@ function AuthForm({ mode }: { mode: Mode }) {
                 )}
               </label>
             )}
-            {mode !== 'update' && (
+            {mode !== 'update' && !enteringCode && (
               <label>
                 Email
                 <input
@@ -196,7 +247,22 @@ function AuthForm({ mode }: { mode: Mode }) {
                 )}
               </label>
             )}
-            {mode !== 'reset' && (
+            {enteringCode && (
+              <label>
+                Código de seis cifras
+                <input
+                  type="text"
+                  inputMode="numeric"
+                  autoComplete="one-time-code"
+                  {...register('token')}
+                  aria-invalid={Boolean(errors.token)}
+                />
+                {errors.token && (
+                  <span className="field-error">{errors.token.message}</span>
+                )}
+              </label>
+            )}
+            {mode !== 'reset' && !enteringCode && (
               <label>
                 Contraseña
                 <input
@@ -234,12 +300,26 @@ function AuthForm({ mode }: { mode: Mode }) {
                 !backendConfigured ||
                 isSubmitting ||
                 loading ||
-                (mode === 'update' && !user)
+                (mode === 'update' && !user && !saveRecoveryPassword)
               }
             >
               {isSubmitting ? 'Un momento…' : modes[mode].submit}
               <ArrowRight size={17} />
             </button>
+            {enteringCode && (
+              <button
+                type="button"
+                className="button full"
+                disabled={isSubmitting}
+                onClick={() => {
+                  setCodeEmail('')
+                  setError('')
+                  reset({ email: codeEmail })
+                }}
+              >
+                Volver a solicitar el correo
+              </button>
+            )}
           </form>
           <p className="auth-switch">
             {mode === 'login' ? (
@@ -250,7 +330,7 @@ function AuthForm({ mode }: { mode: Mode }) {
             ) : (
               <>
                 <Link to="/auth/login">Volver a iniciar sesión</Link>
-                {mode === 'register' && (
+                {routeMode === 'register' && (
                   <>
                     {' · '}
                     <Link to="/auth/reset-password">Recuperar contraseña</Link>

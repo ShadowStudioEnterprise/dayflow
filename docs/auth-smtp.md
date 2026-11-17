@@ -9,7 +9,15 @@ Supabase Auth envía confirmación y recuperación. Su correo predeterminado res
 1. Elegir un proveedor con SMTP que permita enviar a destinatarios externos. Supabase enumera, entre otros, Resend, Brevo, Postmark y Amazon SES. Revisar su cuota y comprobar que la cuenta no está limitada a un sandbox o a destinatarios verificados.
 2. Usar un dominio o subdominio propio para el remitente, por ejemplo `auth.tudominio.com`. Las direcciones de alojamiento de Vercel y Sites no conceden control DNS para autenticar correo. Hace falta un dominio administrable y acceso a su DNS.
 3. Publicar los registros SPF y DKIM indicados por el proveedor y configurar DMARC. Esperar a que el proveedor confirme el dominio; evitar duplicar registros SPF. Elegir una dirección de remitente autorizada y nombre **Dayflow**.
-4. Obtener host, puerto TLS, usuario y contraseña SMTP. Desactivar seguimiento de enlaces en estos mensajes para conservar los enlaces de Auth. Conservar las plantillas con su enlace de confirmación original.
+4. Obtener host, puerto TLS, usuario y contraseña SMTP. Para proveedores que conservan los enlaces originales, se puede mantener el flujo por enlace. Brevo confirmó que en esta cuenta SMTP no puede desactivar la reescritura de enlaces. Para Dayflow con Brevo, usar las plantillas con código y sin enlaces.
+
+## Cambiar a códigos con Brevo
+
+Publicar primero una versión de Dayflow con el formulario de código. Comprobar que está disponible en la web y que las instalaciones PWA y Android que usen el mismo proyecto se han actualizado o pueden seguir el flujo en la web. Las versiones antiguas no tienen un campo para el código. Durante la transición, la interfaz nueva acepta códigos y conserva el retorno de enlaces anteriores. Para revertir, restaurar primero las plantillas por enlace y usar un proveedor que preserve las URLs.
+
+En **Authentication → Emails → Templates**, copiar el HTML de [Confirm sign up](../deployment/supabase/templates/confirmation.html) y [Reset password](../deployment/supabase/templates/recovery.html) al mensaje correspondiente. Mantener la confirmación obligatoria y comprobar que la longitud del código sea de seis cifras, como en el entorno local. No incluir `ConfirmationURL` ni `TokenHash` en los mensajes de Brevo. Mantener el código fuera de URLs, registros y evidencias.
+
+El alta termina al introducir el código y abrir Dayflow. La recuperación pide la nueva contraseña en la misma pantalla que verificó el código. Si se recarga o se abandona esa pantalla antes de guardar, hay que solicitar otro código. La sesión que permite guardar la contraseña se conserva solo en memoria y queda separada del acceso habitual a Dayflow. Los códigos requieren conexión a Supabase.
 
 ## Configurar Supabase
 
@@ -39,8 +47,8 @@ El perfil `deployment/supabase/config.toml` sigue administrando URLs y política
 Usar una cuenta de prueba controlada que **no pertenezca al equipo de la organización Supabase**. Registrar su condición de externa sin publicar su dirección. Repetir en un segundo proveedor de buzón para ampliar la evidencia de entregabilidad.
 
 1. Desde la web de Vercel, registrar la cuenta. Verificar que no puede iniciar sesión antes de confirmar y que llega el correo; revisar también spam. No confirmar la cuenta mediante Admin API.
-2. Abrir el enlace en el mismo navegador y perfil donde se solicitó (PKCE). Comprobar regreso al dominio correcto y acceso a Dayflow. Cerrar sesión e iniciar sesión con la contraseña elegida.
-3. Solicitar recuperación desde `/auth/reset-password`. Comprobar recepción del correo y abrirlo en el mismo navegador/perfil. Verificar la llegada a `/auth/update-password`, cambiar la contraseña y cerrar sesión.
+2. Con Brevo, comprobar que llega el código de confirmación, introducirlo en Dayflow y comprobar el acceso. En un despliegue que use plantillas por enlace, abrirlo en el mismo navegador y perfil donde se solicitó (PKCE) y verificar el retorno. Cerrar sesión e iniciar sesión con la contraseña elegida.
+3. Solicitar recuperación desde `/auth/reset-password`. Comprobar recepción e introducir el código para mostrar el formulario de nueva contraseña. Para la variante por enlace, abrirlo en el mismo navegador y perfil y verificar la llegada a `/auth/update-password`. Guardar y comprobar que Dayflow requiere iniciar sesión otra vez.
 4. Comprobar que la contraseña anterior se rechaza y la nueva permite entrar. Registrar errores y contrastar con los logs de Auth y del proveedor. Aceptación SMTP no equivale a recepción.
 5. Eliminar las cuentas de prueba cuando ya no sean necesarias. No conservar en evidencia pública contraseñas, tokens, enlaces completos de Auth ni direcciones personales.
 
@@ -53,7 +61,7 @@ La tarea se cierra cuando **confirmación y recuperación están completadas por
 | Proveedor, dominio autenticado y cuenta fuera de sandbox | Pendiente        |
 | Ajustes remotos SMTP leídos tras aplicar                 | Pendiente        |
 | Correo de confirmación recibido por cuenta externa       | Pendiente        |
-| Enlace de confirmación y acceso desde Vercel             | Pendiente        |
+| Confirmación por código con Brevo y acceso desde Vercel  | Pendiente        |
 | Recuperación recibida y cambio completado                | Pendiente        |
 | Contraseña anterior rechazada y nueva aceptada           | Pendiente        |
 

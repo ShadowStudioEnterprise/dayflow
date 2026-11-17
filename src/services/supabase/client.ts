@@ -24,3 +24,15 @@ export function requireSupabase() {
     )
   return supabase
 }
+
+export function createRecoveryClient() {
+  if (!config.success) throw new Error('Supabase no está configurado.')
+  return createClient(config.data.url, config.data.key, {
+    auth: {
+      storageKey: `dayflow-recovery-${crypto.randomUUID()}`,
+      persistSession: false,
+      autoRefreshToken: false,
+      detectSessionInUrl: false,
+    },
+  })
+}

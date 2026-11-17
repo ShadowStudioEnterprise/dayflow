@@ -1,14 +1,47 @@
-import { requireSupabase } from './client'
+import { createRecoveryClient, requireSupabase } from './client'
 import { Capacitor } from '@capacitor/core'
 import { authRedirect } from '../native/auth-links'
 import {
   emailSchema,
+  emailCodeSchema,
   loginSchema,
   passwordSchema,
   registrationSchema,
 } from '../../shared/validation/auth-schemas'
 
+type EmailCode = { email: string; token: string }
+
+function parseEmailCode(input: EmailCode) {
+  return { ...emailSchema.parse(input), ...emailCodeSchema.parse(input) }
+}
+
 export const authService = {
+  async confirmEmail(input: EmailCode) {
+    const { data, error } = await requireSupabase().auth.verifyOtp({
+      ...parseEmailCode(input),
+      // El tipo genérico «email» también acepta códigos de recuperación.
+      type: 'signup',
+    })
+    if (error || !data.session)
+      throw new Error('El código no es válido o ha caducado.')
+  },
+  async verifyRecoveryCode(input: EmailCode) {
+    // Una recarga descarta la sesión de recuperación sin abrir la sesión principal.
+    const { auth } = createRecoveryClient()
+    await auth.initialize()
+    await auth.stopAutoRefresh()
+    const { data, error } = await auth.verifyOtp({
+      ...parseEmailCode(input),
+      type: 'recovery',
+    })
+    if (error || !data.session)
+      throw new Error('El código no es válido o ha caducado.')
+    return async (input: { password: string }) => {
+      const { error } = await auth.updateUser(passwordSchema.parse(input))
+      if (error) throw error
+      await auth.signOut({ scope: 'local' })
+    }
+  },
   async signIn(input: { email: string; password: string }) {
     const { error } = await requireSupabase().auth.signInWithPassword(
       loginSchema.parse(input),
