@@ -2,6 +2,8 @@
 
 La web principal está publicada en Vercel. Consulta la [matriz de publicación y dispositivos](../release-validation.md#evidencia-por-versión-y-entorno) para identificar la versión, el entorno y el alcance de cada resultado. Los registros de Sites corresponden al alojamiento anterior.
 
+- [Safari y PWA en macOS · 16/11/2026](2026-11-16-pwa-macos.md): sesión, persistencia offline, envío automático y convergencia sin duplicados; Web Push recibido y abierto, revocación y recuperación. PWA del Dock conserva nota guardada con/sin red. Relación persistida y revisión de ocho pantallas a 320 px en iframe de Safari. Actualización A→B pendiente.
+
 - Instalación y reapertura sin red verificadas el 5/11/2026 sobre Vercel `7a92da4`. El 13/11/2026, en Windows 11 25H2 con Chrome `157.0.8103.79` y Edge `157.0.4341.46`, se verificaron la actualización a `322f123` con sesión, datos y borrador conservados y el envío de la cola tras reabrir sin red. [Auditoría de la PWA en Windows](2026-11-05-pwa-windows.md)
 
 - [Redmi Note 11S · 29/10/2026](2026-10-29-redmi-note11s.md): instalación conservando datos, autenticación, offline, sincronización y recuperación de sesión; registro cronológico de avisos y límites.
