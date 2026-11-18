@@ -1,6 +1,6 @@
 # SMTP para ampliar la beta
 
-Estado del 18 de noviembre de 2026: **Brevo activo y alta y recuperación por código comprobadas con un buzón externo**. El propietario confirmó ambas recepciones y los resultados en Dayflow sobre la versión de Vercel `7ea033c`, proyecto `spfrfvpexfnnhwpfinrq`. Quedan por registrar las cabeceras de autenticación del mensaje y una segunda ronda con otro proveedor de buzón.
+Estado del 18 de noviembre de 2026: **Brevo activo y alta y recuperación por código comprobadas con un buzón externo**. El propietario confirmó ambas recepciones y los resultados en Dayflow sobre la versión de Vercel `7ea033c`, proyecto `spfrfvpexfnnhwpfinrq`. Gmail mostró SPF, DKIM y DMARC en PASS para un mensaje recibido. En una segunda ronda con Outlook, el propietario confirmó recepción en No deseado, alta y cambio de contraseña. No indicó la carpeta de cada mensaje por separado, las cabeceras de Outlook ni el resultado de iniciar sesión con ambas contraseñas en esa ronda.
 
 Supabase Auth envía confirmación y recuperación. Su correo predeterminado restringe destinatarios al equipo del proyecto. Configurar SMTP propio significa conectar un proveedor de correo transaccional a Supabase; no requiere crear un servidor de correo en Dayflow ni cambiar sus llamadas de Auth.
 
@@ -64,15 +64,15 @@ Si aparece `Email address not authorized`, comprobar que se usa el proyecto espe
 
 La tarea se cierra cuando **confirmación y recuperación están completadas por destinatarios ajenos al equipo**. Mientras falten proveedor, dominio, credenciales o esa evidencia, su estado permanece pendiente.
 
-| Evidencia                     | Resultado del 18/11/2026                                                                                                                             |
-| ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
-| BE-01 · Proveedor SMTP        | Brevo tiene una clave activa y el propietario confirmó la recepción externa.                                                                         |
-| BE-02 · Dominio remitente     | Brevo muestra el dominio autenticado. DNS público con los dos DKIM y DMARC `p=none`. Falta comprobar SPF, DKIM y DMARC en las cabeceras del mensaje. |
-| BE-03 · Configuración alojada | SMTP activo con el relay de Brevo en el puerto 587 y ambas plantillas guardadas con el código de Supabase.                                           |
-| BE-04 · Confirmación recibida | El propietario confirmó la recepción en el buzón externo.                                                                                            |
-| BE-05 · Acceso tras confirmar | El propietario confirmó el acceso con el código de alta.                                                                                             |
-| BE-06 · Recuperación recibida | El propietario confirmó la recepción del código de recuperación.                                                                                     |
-| BE-07 · Cambio de contraseña  | El propietario confirmó el rechazo de la anterior y el acceso con la nueva.                                                                          |
+| Evidencia                     | Resultado del 18/11/2026                                                                                                                                                                                              |
+| ----------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| BE-01 · Proveedor SMTP        | Brevo tiene una clave activa y el propietario confirmó la recepción externa.                                                                                                                                          |
+| BE-02 · Dominio remitente     | Brevo muestra el dominio autenticado. DNS público con los dos DKIM y DMARC `p=none`. Gmail mostró SPF PASS (IP `77.32.148.23`), DKIM PASS para `dayflowbyshadowstudio.dpdns.org` y DMARC PASS en un mensaje recibido. |
+| BE-03 · Configuración alojada | SMTP activo con el relay de Brevo en el puerto 587 y ambas plantillas guardadas con el código de Supabase.                                                                                                            |
+| BE-04 · Confirmación recibida | El propietario confirmó la recepción en el buzón externo.                                                                                                                                                             |
+| BE-05 · Acceso tras confirmar | El propietario confirmó el acceso con el código de alta.                                                                                                                                                              |
+| BE-06 · Recuperación recibida | El propietario confirmó la recepción del código de recuperación.                                                                                                                                                      |
+| BE-07 · Cambio de contraseña  | El propietario confirmó el rechazo de la anterior y el acceso con la nueva.                                                                                                                                           |
 
 En esta ronda se recibió inicialmente un código de ocho cifras y la interfaz de `7ea033c` aceptaba seis. El propietario confirmó BE-05 a BE-07 tras detectar la discrepancia. El proveedor del buzón, las horas y los identificadores de mensaje no se comunicaron.
 
