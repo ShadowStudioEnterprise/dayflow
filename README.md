@@ -46,7 +46,7 @@ Consulta la [guía de conexión a Supabase alojado](docs/hosted-backend.md), con
 
 Las variables `VITE_*` son públicas. Nunca uses `service_role` ni secretos. `.env` y `.env.*` están ignorados, con excepción de `.env.example`. La configuración de este ordenador contiene únicamente la URL y clave pública del proyecto alojado; las claves administrativas no se guardan en el frontend.
 
-**Correo de la beta externa:** Brevo está activo. El propietario confirmó el alta y la recuperación por código con un buzón ajeno al equipo de Supabase en Vercel. Queda pendiente registrar las cabeceras de autenticación y repetir con otro proveedor de buzón. Consulta la [evidencia de la prueba](docs/auth-smtp.md).
+**Correo de la beta externa:** Brevo está activo. El propietario confirmó el alta y la recuperación por código con un buzón ajeno al equipo de Supabase en Vercel. Gmail mostró SPF, DKIM y DMARC en PASS para un mensaje recibido. En una segunda ronda con Outlook, el correo llegó a No deseado y se completaron el alta y el cambio de contraseña. Consulta la [evidencia de la prueba](docs/auth-smtp.md).
 
 RLS se aplica a todas las tablas privadas. Las relaciones incluyen propietario; DELETE está revocado para clientes. El cierre de sesión mantiene IndexedDB para conservar cambios pendientes y los repositorios aíslan los datos por UUID de usuario. Consulta [base de datos](docs/database.md).
 
