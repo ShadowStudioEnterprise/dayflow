@@ -86,6 +86,58 @@ El APK contiene el Supabase alojado. No necesita Docker ni un túnel USB para au
 
 La actualización del menú y perfil se publicó en la web; el APK de referencia anterior todavía no incorpora ese cambio. Pruebas y alcance en [verificación de Mi espacio](verification.md#mi-espacio-menú-y-perfil-con-estadísticas--4-de-octubre-de-2026).
 
+## QA-06: Compilación Android release firmada
+
+La firma la realiza el propietario en Windows con Android Studio, JDK 21 y Android SDK 36. La validación de QA-04 se hizo con una APK **debug** (0.9.0, código 1, `dd4ac54`); no acredita la compilación ni la instalación de la candidata firmada.
+
+Usa una versión de Android Studio compatible con AGP 8.13.0, como Narwhal 3 Feature Drop (2025.1.3) o una versión estable más reciente que figure como compatible. Si el IDE indica que admite hasta AGP 8.6.0, actualiza Android Studio y conserva la versión de AGP del proyecto. Android SDK 36 requiere AGP 8.9.1 como mínimo. [Tabla oficial de compatibilidad](https://developer.android.com/build/releases/about-agp).
+
+1. Parte del commit elegido y registra su SHA. Confirma que el módulo `app` usa `com.dayflow.app` y que `versionCode` es superior al de cualquier versión que la candidata deba actualizar. El proyecto parte de 0.9.0 (código 1). Usa la configuración pública de Supabase del entorno de distribución y excluye la variante Dayflow Local. Con las dependencias del repositorio ya instaladas, ejecuta desde la raíz:
+
+   ```powershell
+   npm run build
+   npm exec -- cap sync android
+   npm run native:android
+   ```
+
+   Continúa solo si cada comando termina correctamente. La sincronización se limita a Android y copia el frontend recién compilado al proyecto nativo.
+
+2. En Android Studio, abre **Build → Generate Signed Bundle / APK**. Elige **Android App Bundle** para Google Play o **APK** para instalación directa. Selecciona el módulo `app` y la variante `release`. Usa la clave de subida registrada si la app ya usa Play App Signing, o la clave de firma correspondiente si distribuyes APK directamente. Crea una clave solo si aún no existe una que debas conservar. Guarda la keystore y su copia de seguridad fuera del repositorio. Introduce las contraseñas solo en el asistente, sin guardarlas en Gradle ni compartirlas.
+
+3. Localiza el archivo generado. Para APK, usa `apksigner` de Android SDK Build Tools; para AAB, usa `jarsigner` del JDK. En los ejemplos, ejecuta solo el bloque correspondiente y sustituye la ruta por la del artefacto:
+
+   ```powershell
+   apksigner verify --verbose --print-certs "ruta\a\dayflow-release.apk"
+   Get-FileHash -Algorithm SHA256 -LiteralPath "ruta\a\dayflow-release.apk"
+   ```
+
+   ```powershell
+   jarsigner -verify -verbose -certs "ruta\a\dayflow-release.aab"
+   keytool -printcert -jarfile "ruta\a\dayflow-release.aab"
+   Get-FileHash -Algorithm SHA256 -LiteralPath "ruta\a\dayflow-release.aab"
+   ```
+
+   Confirma que la verificación es satisfactoria y que la huella SHA-256 del certificado coincide con la esperada. El hash del archivo identifica el artefacto y se registra por separado. Inspecciona el manifiesto con APK Analyzer para confirmar el paquete, la versión, el código de versión y que no sea depurable.
+
+4. Para verificar la candidata, prueba el APK en un dispositivo de ensayo o usa un canal interno autorizado de Google Play para el AAB. Una APK release con un certificado distinto no puede actualizar la APK debug del mismo paquete. Si el teléfono ya tiene esa APK debug, usa otro dispositivo o perfil de pruebas para preservar sus datos. Con Play App Signing, verifica el certificado de distribución de Play para evaluar una actualización; el certificado del AAB corresponde a la clave de subida. Repite en la candidata los recorridos de QA-04 que correspondan, incluyendo arranque offline, persistencia de la cola y sincronización al reconectar.
+
+Registra el SHA de Git, el tipo de artefacto, paquete, versión, código, SHA-256 del archivo y huella pública del certificado. Separa los resultados de compilación y firma, instalación y prueba física.
+
+### Resultado de QA-06
+
+**Compilación y firma completadas por el propietario el 18/11/2026. Prueba física confirmada el 19/11/2026 (Europe/Madrid).** APK release del paquete `com.dayflow.app`, versión `0.9.0`, código `1`. El checkout de preparación y de registro corresponde a `bac619b`, rama `codex/qa-06-firma-android`. El SHA de los recursos web empaquetados no se inspeccionó.
+
+- APK local: `android/app/release/app-release.apk`.
+- SHA-256 del APK: `9665C355F233393DCF036E93BCD42CBD6771C58F39891BB4FDED873D3AEAEBD2`.
+- SHA-256 del certificado: `7B1333EC8362796234295FA3DDF7134DA48D2E613E9C9DE54345EF6AB9EAAB1A`.
+- Firma comprobada con `apksigner` de Build Tools 35.0.0, ejecutado con Java de Android Studio: código de salida 0, esquema v2 verificado y un firmante RSA de 2048 bits.
+- Manifiesto inspeccionado con `aapt dump badging`: paquete y versión anteriores, SDK de compilación 36 y ausencia de `application-debuggable`. El hash se volvió a comprobar al registrar la evidencia el 19/11.
+- Instalación y prueba manual confirmadas por el propietario en **Redmi 9A, MIUI 12.5.7, Android 11**. El PASS responde al recorrido de acceso a datos, creación de una tarea en modo avión, retirada de Recientes y reapertura offline conservando sesión, tarea y operación pendiente, reconexión hasta «Sin pendientes» y una sola copia de la tarea en la web.
+
+**QA-06 cerrada en el alcance de preparación de la APK firmada y el recorrido físico descrito.** La conservación de datos durante una actualización desde otra APK, los avisos, el reinicio del teléfono y Doze quedan sin verificar en esta candidata. La distribución y publicación en tiendas quedan pendientes.
+
+Referencias: [Firma en Android Studio](https://developer.android.com/studio/publish/app-signing) y [verificación de APK con apksigner](https://developer.android.com/tools/apksigner).
+
 ## Correo real: prueba manual
 
 El 18 de noviembre de 2026, el propietario confirmó en la [web de Vercel](https://dayflow-by-shadowstudio.vercel.app/) sobre `7ea033c` la recepción de ambos códigos en un buzón externo, el acceso tras confirmar el alta y, en la recuperación, el rechazo de la contraseña anterior y el acceso con la nueva. Esta ronda cubre BE-04 a BE-07 en web. El resultado compartido desde Gmail mostró SPF PASS (IP `77.32.148.23`), DKIM PASS para `dayflowbyshadowstudio.dpdns.org` y DMARC PASS. Quedan sin documentar las horas y el navegador concreto. En una segunda ronda con Outlook, el propietario confirmó recepción en No deseado, alta y cambio de contraseña. Quedaron sin detallar la carpeta de cada correo por separado, las cabeceras de Outlook y la comprobación de acceso con la contraseña antigua y la nueva.
