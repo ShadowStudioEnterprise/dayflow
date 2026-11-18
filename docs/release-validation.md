@@ -25,7 +25,7 @@ Preparación del 12 de octubre de 2026: [protocolo y matriz de Android físico](
 
 Estado del 4 de octubre de 2026. Una compilación, una respuesta HTTP o un emulador no acreditan recepción de correo, entrega física de notificaciones ni consumo de batería.
 
-Ampliación de beta — 12 de octubre de 2026: [SMTP propio preparado](auth-smtp.md), con activación pendiente de proveedor, dominio y credenciales. La confirmación y recuperación de las pruebas previas no certifican destinatarios ajenos al equipo de Supabase. Este criterio adicional sigue pendiente hasta completar ambos flujos con una cuenta externa.
+Ampliación de beta — 18 de noviembre de 2026: el propietario confirmó recepción y uso de los códigos de alta y recuperación con un buzón externo, mediante [SMTP de Brevo](auth-smtp.md) en Vercel `7ea033c`.
 
 Actualización de alojamiento: la dirección principal es ahora
 [Dayflow en Vercel](https://dayflow-by-shadowstudio.vercel.app/auth/login), con despliegue `READY`,
@@ -76,6 +76,8 @@ La actualización del menú y perfil se publicó en la web; el APK de referencia
 
 ## Correo real: prueba manual
 
+El 18 de noviembre de 2026, el propietario confirmó en la [web de Vercel](https://dayflow-by-shadowstudio.vercel.app/) sobre `7ea033c` la recepción de ambos códigos en un buzón externo, el acceso tras confirmar el alta y, en la recuperación, el rechazo de la contraseña anterior y el acceso con la nueva. Esta ronda cubre BE-04 a BE-07 en web. El proveedor de buzón, las horas, las cabeceras, el navegador concreto y una segunda ronda no quedaron documentados.
+
 Para la beta externa con Brevo, seguir el [guion con códigos](auth-smtp.md#cambiar-a-códigos-con-brevo). En BE-05 comprobar el acceso tras introducir el código de alta y en BE-07 verificar el cambio de contraseña, el rechazo de la anterior y el acceso con la nueva. Registrar el SHA, la plataforma y la recepción de ambos mensajes en un buzón externo, sin copiar los códigos. El guion siguiente conserva la referencia de la prueba histórica por enlace.
 
 El 17 de noviembre de 2026, en Windows y Chromium de Playwright, `npm run test:local` pasó 3/3 con Supabase local en Docker y Mailpit sobre la rama `codex/auth-codigo-correo` (base `65535e6`, cambios de Auth sin commit). Se verificaron el alta y la recuperación por enlace y por código. El caso por código comprobó el rechazo de la contraseña anterior, el acceso con la nueva y que ni otra pestaña ni una recarga durante la recuperación abren una sesión privada. La entrega por Brevo a destinatarios externos quedó pendiente.
@@ -91,7 +93,7 @@ No compartas la contraseña ni el contenido completo de enlaces que conceden acc
 5. Abre ese enlace en el mismo navegador/perfil. Debe mostrar «Una nueva contraseña». Elige otra contraseña, guárdala y confirma que puedes iniciar sesión con ella. Comprueba que la anterior ya no permite iniciar una sesión nueva.
 6. Informa del resultado de ambos flujos o del texto del error, sin enviar contraseñas ni códigos.
 
-No hay SMTP propio configurado. El servicio predeterminado de Supabase limita los destinatarios a miembros del equipo del proyecto y, según su documentación consultada, dos mensajes por hora. Si aparece `Email address not authorized`, hace falta configurar un proveedor SMTP; repetir la solicitud no lo soluciona. Si hay un límite de envío, espera a que se restablezca. No se desactiva la confirmación de email para sortear estos controles.
+En la prueba histórica aún se usaba el servicio predeterminado de Supabase, que limita los destinatarios a miembros del equipo del proyecto. El entorno actual usa el [SMTP propio de Brevo](auth-smtp.md). Si hay un límite de envío, espera a que se restablezca. Mantén la confirmación por email activada.
 
 ## Web Push con la aplicación cerrada
 
