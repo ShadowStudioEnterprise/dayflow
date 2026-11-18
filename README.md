@@ -8,6 +8,8 @@ Incluye notas, tareas, vistas de calendario de mes/semana/día, recordatorios, r
 
 El 16 de noviembre de 2026 se verificaron en Safari 18.6 sobre macOS 15.7.9 la persistencia de sesión, la cola offline y su envío automático, y los permisos y la recepción de Web Push. La PWA del Dock conservó sesión, datos y una nota guardada al reabrir con y sin red. El recorrido incluyó relaciones persistidas y revisión de ocho pantallas a 320 px en un iframe de Safari. El 18 de noviembre el usuario confirmó la detección de una actualización en la PWA del Dock y su reapertura a las 09:00 CET conservando sesión y nota guardada; después volvió a estar lista sin conexión y dejó de ofrecer la actualización. Los SHA de los workers de partida y destino no se identificaron directamente. [Auditoría de macOS](docs/audits/2026-11-16-pwa-macos.md).
 
+El 18 de noviembre de 2026, el propietario confirmó en un iPhone 11 con iOS 27.2.1 declarada la instalación nueva de la PWA, apertura independiente, persistencia de sesión, edición offline, sincronización con Chrome del Mac sin duplicados, aislamiento entre cuentas, reanudación tras 64 minutos y recepción/apertura de Web Push. La actualización real A → B y el recorrido separado en pestaña de Safari siguen pendientes. [Auditoría del iPhone y límites](docs/audits/2026-11-18-pwa-ios.md).
+
 ## Inicio rápido
 
 Requisito recomendado: Node.js 24 LTS con npm. Desde esta carpeta:

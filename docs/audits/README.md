@@ -2,6 +2,8 @@
 
 La web principal está publicada en Vercel. Consulta la [matriz de publicación y dispositivos](../release-validation.md#evidencia-por-versión-y-entorno) para identificar la versión, el entorno y el alcance de cada resultado. Los registros de Sites corresponden al alojamiento anterior.
 
+- [PWA en iPhone 11 · 18/11/2026](2026-11-18-pwa-ios.md): ocho IDs superados por confirmación manual en iOS 27.2.1 declarada. IOS-06 conserva pendiente la actualización real A → B; sólo se comprobó el control. Safari en pestaña y otros modelos sin verificar.
+
 - [Safari y PWA en macOS · 16/11/2026](2026-11-16-pwa-macos.md): sesión, persistencia offline, envío automático y convergencia sin duplicados; Web Push recibido y abierto, revocación y recuperación. PWA del Dock conserva nota guardada con/sin red. Relación persistida y revisión de ocho pantallas a 320 px en iframe de Safari. El 18/11 se confirmó manualmente el ciclo de actualización, con sesión y nota conservadas al reabrir a las 09:00 CET; SHA de los workers sin identificar.
 
 - Instalación y reapertura sin red verificadas el 5/11/2026 sobre Vercel `7a92da4`. El 13/11/2026, en Windows 11 25H2 con Chrome `157.0.8103.79` y Edge `157.0.4341.46`, se verificaron la actualización a `322f123` con sesión, datos y borrador conservados y el envío de la cola tras reabrir sin red. [Auditoría de la PWA en Windows](2026-11-05-pwa-windows.md)
@@ -27,7 +29,7 @@ La web principal está publicada en Vercel. Consulta la [matriz de publicación 
 
 - [Calendario móvil: repetición del 12 de octubre de 2026](2026-10-12-calendar-mobile.md): 130/130 correctos, cuatro y un worker, cero reintentos y fuentes inmutables. Investigación cerrada por evidencia; fallo no reproducido.
 
-- PWA móvil. Protocolo y cobertura automatizada del 12/10/2026. El 15/11/2026 se confirmaron en Chrome Android instalado la instalación, el guion de arranque offline y persistencia, y la reanudación tras una hora. También se verificó la actualización de `5e5107ff` a `dd0ec83` con sesión, datos locales y borrador conservados. Queda pendiente la matriz física de Safari/iOS. [Informe de PWA móvil](2026-10-12-pwa-mobile.md).
+- PWA móvil. Protocolo y cobertura automatizada del 12/10/2026. El 15/11/2026 se confirmaron en Chrome Android instalado la instalación, el guion de arranque offline y persistencia, y la reanudación tras una hora. También se verificó la actualización de `5e5107ff` a `dd0ec83` con sesión, datos locales y borrador conservados. La ronda del iPhone 11 del 18/11 se registra por separado; actualización real y Safari en pestaña siguen pendientes. [Informe de PWA móvil](2026-10-12-pwa-mobile.md).
 
 - [Protocolo de alarmas Android del 12 de octubre de 2026](2026-10-12-android-alarms.md): matriz de permisos, bloqueo, Doze, batería y reinicio; medición de recepción y retrasos. Ejecución física pendiente por falta de teléfono.
 
