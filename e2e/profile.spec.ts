@@ -122,12 +122,15 @@ test('menú accesible, perfil vivo y estadísticas después de completar y reabr
   await page
     .getByRole('checkbox', { name: 'Reabrir Tarea terminada', exact: true })
     .click()
-  await page.goto('/profile')
+  // Cambiar de ruta sin descargar la página deja terminar la escritura de Dexie.
+  await openWorkspace(page)
+  await page.getByRole('link', { name: 'Perfil', exact: true }).click()
   await expect(page.getByRole('progressbar')).toHaveAttribute('value', '0')
   await page.reload()
   await expect(
     page.getByRole('heading', { name: 'Perfil', exact: true }),
   ).toBeVisible()
+  await expect(page.getByRole('progressbar')).toHaveAttribute('value', '0')
   expect(errors).toEqual([])
 })
 
