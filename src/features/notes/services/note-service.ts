@@ -6,7 +6,7 @@ import {
 } from '../../../services/database/database'
 import { createRepository } from '../../../services/database/repository'
 import type { Note } from '../../../shared/types/domain'
-import { emptyDocument, normalizeDocument } from './note-document'
+import { emptyDocument } from './note-empty-document'
 
 export const noteColors = [
   'neutral',
@@ -38,7 +38,7 @@ export function draftFromNote(note: Note): NoteDraft {
     isArchived: note.isArchived,
   }
 }
-function normalizeDraft(draft: NoteDraft) {
+async function normalizeDraft(draft: NoteDraft) {
   const metadata = z
     .object({
       title: z
@@ -50,6 +50,7 @@ function normalizeDraft(draft: NoteDraft) {
       isArchived: z.boolean(),
     })
     .parse(draft)
+  const { normalizeDocument } = await import('./note-document')
   return {
     ...metadata,
     title: metadata.title || 'Sin título',
@@ -77,7 +78,7 @@ export function createNoteService(
   return {
     list: repository.findAll,
     get: repository.findById,
-    create: (
+    create: async (
       draft: NoteDraft = {
         title: '',
         content: emptyDocument,
@@ -85,9 +86,9 @@ export function createNoteService(
         isPinned: false,
         isArchived: false,
       },
-    ) => repository.create(normalizeDraft(draft)),
-    save(id: string, version: number, draft: NoteDraft) {
-      const data = normalizeDraft(draft)
+    ) => repository.create(await normalizeDraft(draft)),
+    async save(id: string, version: number, draft: NoteDraft) {
+      const data = await normalizeDraft(draft)
       return db.transaction('rw', table, db.syncQueue, async () => {
         await checkVersion(id, version)
         return repository.update(id, data)

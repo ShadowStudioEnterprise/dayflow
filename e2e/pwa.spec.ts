@@ -381,6 +381,21 @@ test('arranca en una ventana nueva sin red, carga módulos no visitados y conser
   await expect(
     offline.getByRole('heading', { name: 'Tus notas.' }),
   ).toBeVisible()
+  await offline.getByRole('button', { name: 'Nueva nota', exact: true }).click()
+  await offline.locator('#new-note-title').fill('Nota de una ruta sin visitar')
+  await offline.getByRole('button', { name: 'Crear nota', exact: true }).click()
+  const noteBody = offline.getByRole('textbox', {
+    name: 'Contenido de la nota',
+  })
+  await noteBody.fill('El primer editor también abre sin red.')
+  await offline.getByRole('button', { name: 'Listo', exact: true }).click()
+  await offline.goto('/search')
+  await offline
+    .getByRole('searchbox', { name: 'Buscar en todos tus elementos' })
+    .fill('primer editor')
+  await expect(
+    offline.getByRole('link', { name: /Nota de una ruta sin visitar/ }),
+  ).toBeVisible()
   await offline.goto('/profile')
   await expect(
     offline.getByRole('heading', { name: 'Perfil', exact: true }),

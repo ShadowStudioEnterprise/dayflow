@@ -3,6 +3,7 @@ import { DayflowDatabase } from '../../services/database/database'
 import { createRepository } from '../../services/database/repository'
 import {
   createSearchService,
+  prepareSearchData,
   searchRecords,
   type SearchData,
   type SearchFilters,
@@ -53,6 +54,13 @@ const filters: SearchFilters = {
   tagId: '',
   archived: false,
 }
+function searchSnapshot(
+  data: SearchData,
+  filters: SearchFilters,
+  timezone: string,
+) {
+  return searchRecords(prepareSearchData(data), filters, timezone)
+}
 let db: DayflowDatabase
 beforeEach(() => {
   db = new DayflowDatabase(`search-${crypto.randomUUID()}`)
@@ -61,7 +69,7 @@ afterEach(async () => {
   await db.delete()
 })
 it('busca sin acentos ni mayúsculas y exige todas las palabras, con enlaces por tipo', () => {
-  const results = searchRecords(data, filters, 'Europe/Madrid')
+  const results = searchSnapshot(data, filters, 'Europe/Madrid')
   expect(results).toHaveLength(5)
   expect(results.find((item) => item.kind === 'events')?.href).toBe(
     '/calendar?day=2026-09-26&event=a',
@@ -70,32 +78,32 @@ it('busca sin acentos ni mayúsculas y exige todas las palabras, con enlaces por
     '/inbox?item=a',
   )
   expect(
-    searchRecords(data, { ...filters, query: 'reunion imposible' }, 'UTC'),
+    searchSnapshot(data, { ...filters, query: 'reunion imposible' }, 'UTC'),
   ).toHaveLength(0)
 })
 it('consulta contenido, lugar y nombres de etiquetas, con filtro combinado', () => {
   expect(
-    searchRecords(data, { ...filters, query: 'arbol montana' }, 'UTC').map(
+    searchSnapshot(data, { ...filters, query: 'arbol montana' }, 'UTC').map(
       (item) => item.kind,
     ),
   ).toEqual(['notes'])
   expect(
-    searchRecords(data, { ...filters, query: 'estudio norte' }, 'UTC').map(
+    searchSnapshot(data, { ...filters, query: 'estudio norte' }, 'UTC').map(
       (item) => item.kind,
     ),
   ).toEqual(['events'])
   expect(
-    searchRecords(data, { ...filters, query: 'trabajo' }, 'UTC').map(
+    searchSnapshot(data, { ...filters, query: 'trabajo' }, 'UTC').map(
       (item) => item.kind,
     ),
   ).toEqual(['notes'])
   expect(
-    searchRecords(data, { ...filters, query: '', tagId: 'tag' }, 'UTC'),
+    searchSnapshot(data, { ...filters, query: '', tagId: 'tag' }, 'UTC'),
   ).toHaveLength(1)
   expect(
-    searchRecords(data, { ...filters, tagId: 'tag', kind: 'tasks' }, 'UTC'),
+    searchSnapshot(data, { ...filters, tagId: 'tag', kind: 'tasks' }, 'UTC'),
   ).toHaveLength(0)
-  expect(searchRecords(data, { ...filters, query: '' }, 'UTC')).toHaveLength(0)
+  expect(searchSnapshot(data, { ...filters, query: '' }, 'UTC')).toHaveLength(0)
 })
 it('oculta borrados, relaciones eliminadas y notas archivadas hasta solicitarlas', () => {
   const changed: SearchData = {
@@ -103,21 +111,21 @@ it('oculta borrados, relaciones eliminadas y notas archivadas hasta solicitarlas
     tasks: [{ ...task, deletedAt: base.updatedAt }],
     notes: [{ ...note, isArchived: true }],
   }
-  expect(searchRecords(changed, filters, 'UTC')).toHaveLength(3)
+  expect(searchSnapshot(changed, filters, 'UTC')).toHaveLength(3)
   expect(
-    searchRecords(changed, { ...filters, archived: true }, 'UTC').find(
+    searchSnapshot(changed, { ...filters, archived: true }, 'UTC').find(
       (item) => item.kind === 'notes',
     )?.status,
   ).toBe('Archivada')
   expect(
-    searchRecords(
+    searchSnapshot(
       { ...data, tags: [{ ...data.tags[0]!, deletedAt: base.updatedAt }] },
       { ...filters, tagId: 'tag' },
       'UTC',
     ),
   ).toEqual([])
   expect(
-    searchRecords(
+    searchSnapshot(
       {
         ...data,
         noteTags: [{ ...data.noteTags[0]!, deletedAt: base.updatedAt }],
@@ -140,7 +148,7 @@ it('ordena coincidencias exactas antes que prefijos y contenido y conserva texto
     { ...task, id: 'exact', title: 'Café' },
     { ...task, id: 'html', title: '<script>cafe</script>' },
   ]
-  const results = searchRecords(
+  const results = searchSnapshot(
     { ...data, tasks },
     { ...filters, query: 'cafe', kind: 'tasks' },
     'UTC',
@@ -161,6 +169,27 @@ it('la instantánea aísla cuentas y no añade operaciones por buscar', async ()
   const snapshot = await createSearchService(userId, db).list()
   expect(snapshot.tasks).toHaveLength(1)
   expect(snapshot.tasks[0]?.userId).toBe(userId)
-  expect(searchRecords(snapshot, filters, 'UTC')).toHaveLength(1)
+  expect(searchSnapshot(snapshot, filters, 'UTC')).toHaveLength(1)
   expect(await db.syncQueue.count()).toBe(before)
+})
+
+it('reutiliza las etiquetas al escribir y refleja los cambios al preparar otra instantánea', () => {
+  const snapshot = prepareSearchData(data)
+  const lookup = (prepared: typeof snapshot, query: string) =>
+    searchRecords(prepared, { ...filters, query, tagId: 'tag' }, 'UTC')
+
+  expect(lookup(snapshot, 'tra').map((result) => result.tags)).toEqual([
+    ['Trabajo'],
+  ])
+  expect(lookup(snapshot, 'trabajo').map((result) => result.kind)).toEqual([
+    'notes',
+  ])
+  const updated = prepareSearchData({
+    ...data,
+    tags: [{ ...data.tags[0]!, name: 'Viaje' }],
+  })
+  expect(lookup(updated, 'trabajo')).toEqual([])
+  expect(lookup(updated, 'via').map((result) => result.tags)).toEqual([
+    ['Viaje'],
+  ])
 })

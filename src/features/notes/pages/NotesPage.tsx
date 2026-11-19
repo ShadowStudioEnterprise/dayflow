@@ -1,4 +1,4 @@
-import { lazy, Suspense, useMemo, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { Navigate, useSearchParams } from 'react-router-dom'
 import { FileText, Plus, Search, Pin, Archive } from 'lucide-react'
 import { useAuth } from '../../auth/auth-context'
@@ -31,10 +31,26 @@ function NoteWorkspace({ userId }: { userId: string }) {
   const [params, setParams] = useSearchParams()
   const [view, setView] = useState<'active' | 'pinned' | 'archived'>('active')
   const [search, setSearch] = useState('')
-  const [recoveries, setRecoveries] = useState(() =>
-    readEmergencyDrafts(userId),
-  )
+  const [recoveries, setRecoveries] = useState<EmergencyDraft[]>([])
+  const [recoveryError, setRecoveryError] = useState(false)
+  const [recoveryRevision, setRecoveryRevision] = useState(0)
   const [recovery, setRecovery] = useState<EmergencyDraft>()
+  useEffect(() => {
+    let active = true
+    void readEmergencyDrafts(userId).then(
+      (drafts) => {
+        if (!active) return
+        setRecoveries(drafts)
+        setRecoveryError(false)
+      },
+      () => {
+        if (active) setRecoveryError(true)
+      },
+    )
+    return () => {
+      active = false
+    }
+  }, [userId, recoveryRevision])
   const notes = state?.data ?? emptyNotes
   const pin = useNotePin(service, notes)
   const visible = useMemo(
@@ -59,7 +75,8 @@ function NoteWorkspace({ userId }: { userId: string }) {
       }),
     [timezone],
   )
-  const refreshRecoveries = () => setRecoveries(readEmergencyDrafts(userId))
+  const refreshRecoveries = () =>
+    setRecoveryRevision((revision) => revision + 1)
   const open = (note: Note) => {
     setRecovery(undefined)
     refreshRecoveries()
@@ -141,6 +158,16 @@ function NoteWorkspace({ userId }: { userId: string }) {
         <p className="field-error" role="alert">
           {pin.error}
         </p>
+      )}
+      {recoveryError && (
+        <div className="notice">
+          <p role="alert">
+            No se pudieron revisar los borradores de este dispositivo.
+          </p>
+          <button className="button secondary" onClick={refreshRecoveries}>
+            Reintentar recuperación
+          </button>
+        </div>
       )}
       {recoveries.length > 0 && (
         <section className="notice" aria-label="Borradores recuperables">

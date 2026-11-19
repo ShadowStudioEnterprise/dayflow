@@ -11,7 +11,7 @@ Las notas tienen cinco colores, fijado, archivo y restauración. Las fijadas apa
 ## Persistencia y autoguardado
 
 - `note-service.ts` reutiliza el repositorio de notas, valida metadatos con Zod y normaliza contenido antes de escribir.
-- `note-document.ts` concentra extensiones y validación de JSON contra el esquema de ProseMirror. `plainTextContent` se deriva del documento, nunca del texto suministrado por otro cliente. No se renderiza HTML arbitrario mediante `dangerouslySetInnerHTML`.
+- `note-document.ts` concentra extensiones y validación de JSON contra el esquema de ProseMirror. Se carga al abrir el editor, crear o guardar una nota, o validar una copia de emergencia de la cuenta. El listado sin borradores recuperables y el documento vacío se pueden cargar por separado. `plainTextContent` se deriva del documento. El editor evita renderizar HTML arbitrario con `dangerouslySetInnerHTML`.
 - El documento admite hasta 1 MB de JSON en UTF-8 y 50 niveles de anidación. Superar un límite informa de error sin truncar. Las imágenes, archivos y tablas quedan para futuras extensiones y Storage.
 - Los enlaces aceptan direcciones completas `https:`, `http:` o `mailto:`. La barra y el servicio rechazan protocolos ejecutables y URLs relativas. Al pegar, TipTap sólo conserva los nodos/marcas que admite su esquema. Los enlaces no navegan al pulsarlos dentro del editor.
 - `NoteAutosave` espera 600 ms desde el último cambio. Sólo hay una escritura simultánea; los cambios ocurridos durante ella se guardan después con la nueva versión. El estado «Guardado en este dispositivo» aparece tras el commit de nota y operación de cola.
@@ -21,7 +21,7 @@ Las notas tienen cinco colores, fijado, archivo y restauración. Las fijadas apa
 - Si `localStorage` también falla (cuota, permisos o almacenamiento bloqueado), se informa de que la reapertura no está protegida y el texto sigue en memoria para copiarlo o reintentar el guardado. La copia no garantiza supervivencia a borrado de datos del navegador, fin de una sesión privada o pérdida de alimentación antes de que el navegador escriba físicamente los datos. No se solicita almacenamiento persistente: protege frente a evicción, pero no sustituye la escritura síncrona ni resuelve un fallo de IndexedDB.
 - Fijar desde el listado actualiza la vista optimistamente y revierte ante fallo. La comprobación de versión y escritura son atómicas, incluidas eliminación y fijado. Esto evita pérdida por formularios locales obsoletos; la resolución de conflictos remotos LWW llegará con el SyncEngine en fase 6.
 
-Las notas siguen funcionando sin red después de cargar la aplicación y el módulo. Todavía no hay sincronización remota ni caché PWA para arranque offline en frío. Los datos permanecen en IndexedDB bajo el usuario autenticado; la cola pendiente se conserva al cerrar sesión. La tabla PostgreSQL `notes` y su RLS ya existen en la migración Foundation y no requieren cambios en esta entrega.
+Una vez que Configuración indica «Lista para abrir sin conexión», la PWA puede abrir el listado y el editor sin red incluso si todavía no se han visitado. Los datos permanecen en IndexedDB bajo el usuario autenticado. La cola pendiente se conserva al cerrar sesión y se puede sincronizar al recuperar la conexión. El ciclo de precaché y actualización se describe en la [guía de PWA](pwa-native.md#arranque-offline-y-actualizaciones).
 
 ## Comprobaciones
 

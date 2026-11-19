@@ -1,6 +1,5 @@
 import { z } from 'zod'
 import type { Note } from '../../../shared/types/domain'
-import { normalizeDocument } from './note-document'
 import { noteColors, type NoteDraft } from './note-service'
 
 const prefix = 'dayflow:note-draft:v1:'
@@ -60,36 +59,54 @@ export function removeEmergency(key: string, raw: string) {
   }
 }
 
-export function readEmergencyDrafts(userId: string): EmergencyDraft[] {
-  const drafts: EmergencyDraft[] = []
+export async function readEmergencyDrafts(
+  userId: string,
+): Promise<EmergencyDraft[]> {
+  const snapshots: {
+    key: string
+    raw: string
+    data: z.infer<typeof schema>
+  }[] = []
   try {
     for (let index = 0; index < localStorage.length; index++) {
       const key = localStorage.key(index)
       if (!key?.startsWith(`${prefix}${encodeURIComponent(userId)}:`)) continue
       try {
-        const raw = localStorage.getItem(key)!
+        const raw = localStorage.getItem(key)
+        if (raw === null) continue
         const data = schema.parse(JSON.parse(raw))
-        if (data.userId !== userId) continue
-        const document = normalizeDocument(data.draft.content)
-        drafts.push({
-          key,
-          raw,
-          note: {
-            ...data.draft,
-            ...document,
-            id: data.noteId,
-            userId,
-            version: data.version,
-            createdAt: data.updatedAt,
-            updatedAt: data.updatedAt,
-          },
-        })
+        if (data.userId === userId) snapshots.push({ key, raw, data })
       } catch {
-        // Ignore malformed entries without deleting potentially recoverable data.
+        // Las copias con datos ilegibles se conservan para una posible recuperación.
       }
     }
   } catch {
-    // Storage may be unavailable in private mode or blocked by the browser.
+    // El navegador puede bloquear el acceso al almacenamiento.
+  }
+  if (!snapshots.length) return []
+
+  const { normalizeDocument } = await import('./note-document')
+  const drafts: EmergencyDraft[] = []
+  for (const { key, raw, data } of snapshots) {
+    try {
+      if (localStorage.getItem(key) !== raw) continue
+      const document = normalizeDocument(data.draft.content)
+      drafts.push({
+        key,
+        raw,
+        note: {
+          ...data.draft,
+          ...document,
+          id: data.noteId,
+          userId,
+          version: data.version,
+          createdAt: data.updatedAt,
+          updatedAt: data.updatedAt,
+        },
+      })
+    } catch {
+      // Se conserva la copia si el esquema del editor rechaza el documento.
+    }
   }
   return drafts.sort((a, b) => b.note.updatedAt.localeCompare(a.note.updatedAt))
 }
