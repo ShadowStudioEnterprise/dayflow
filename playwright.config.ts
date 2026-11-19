@@ -1,4 +1,17 @@
 import { defineConfig, devices } from '@playwright/test'
+
+export const fixtureServer = {
+  command: 'npm run dev -- --host 127.0.0.1 --port 4175 --strictPort',
+  url: 'http://127.0.0.1:4175',
+  reuseExistingServer: false,
+  env: {
+    VITE_SUPABASE_URL: 'https://dayflow-e2e.supabase.co',
+    VITE_WEB_PUSH_PUBLIC_KEY: '',
+    VITE_SUPABASE_ANON_KEY: 'public-anon-test-key-not-a-secret',
+    VITE_LOCAL_MAILBOX_URL: '',
+  },
+}
+
 export default defineConfig({
   testDir: './e2e',
   fullyParallel: true,
@@ -125,12 +138,12 @@ export default defineConfig({
     },
     {
       name: 'tasks-desktop',
-      testMatch: '**/tasks.spec.ts',
+      testMatch: ['**/tasks.spec.ts', '**/form-accessibility.spec.ts'],
       use: { ...devices['Desktop Chrome'], baseURL: 'http://127.0.0.1:4175' },
     },
     {
       name: 'tasks-mobile',
-      testMatch: '**/tasks.spec.ts',
+      testMatch: ['**/tasks.spec.ts', '**/form-accessibility.spec.ts'],
       use: {
         ...devices['iPhone 13'],
         defaultBrowserType: 'chromium',
@@ -150,16 +163,6 @@ export default defineConfig({
         VITE_LOCAL_MAILBOX_URL: '',
       },
     },
-    {
-      command: 'npm run dev -- --host 127.0.0.1 --port 4175 --strictPort',
-      url: 'http://127.0.0.1:4175',
-      reuseExistingServer: false,
-      env: {
-        VITE_SUPABASE_URL: 'https://dayflow-e2e.supabase.co',
-        VITE_WEB_PUSH_PUBLIC_KEY: '',
-        VITE_SUPABASE_ANON_KEY: 'public-anon-test-key-not-a-secret',
-        VITE_LOCAL_MAILBOX_URL: '',
-      },
-    },
+    fixtureServer,
   ],
 })

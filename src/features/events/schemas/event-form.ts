@@ -63,7 +63,7 @@ export function createEventFormSchema(event?: CalendarEvent) {
         invalid = true
         context.addIssue({
           code: 'custom',
-          path: [`${prefix}Date`],
+          path: [values.allDay ? `${prefix}Date` : `${prefix}Time`],
           message: error instanceof Error ? error.message : 'Fecha no válida.',
         })
       }

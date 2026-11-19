@@ -8,6 +8,44 @@ La guía recoge también las pruebas manuales de PWA en Windows, Android, macOS 
 
 Los resultados de CI y Vercel de octubre se refieren al SHA consultado en esa fecha. Cada comprobación posterior tiene su propia referencia documentada.
 
+## QA-13 · Modernización web
+
+Los formularios de Acceso, Tareas y Eventos asocian los mensajes con su campo mediante `aria-describedby`. Tras un envío inválido, el foco pasa al primer campo marcado con error, incluso si está dentro de una sección de Tareas cerrada. Los mensajes de hora se asocian con el selector de hora cuando ese es el dato que hay que corregir.
+
+El recorrido [de compatibilidad WebKit](release-validation.md#compatibilidad-web-objetivo) comprueba el foco, el nombre y la descripción accesibles, la corrección por teclado y el atajo de búsqueda. Para la comprobación con lector de pantalla, envía cada formulario con varios campos inválidos, escucha el nombre del primer campo y su mensaje, corrige el valor y vuelve a enviar para comprobar el siguiente. Incluye el campo de hora dentro de la sección de Tareas y los campos de fecha de Eventos. Registra lector, navegador, plataforma y versión de Dayflow.
+
+### Compilación y actualización local
+
+Comparación del 19 de noviembre de 2026 en Windows 11, Node 24.18.0 y Vite 8.3.0. La base es `e225793`; la candidata corresponde al árbol de `codex/qa-13-modernizacion-web`. Ambas compilaciones usaron las mismas respuestas de prueba y la misma configuración de Vite. Los tamaños de JS suman los archivos de las dependencias estáticas del manifiesto, comprimidos individualmente con gzip. Cada fila añade los archivos que faltan después de cargar las filas anteriores.
+
+| Carga de JS                 |     Base | Candidata |
+| --------------------------- | -------: | --------: |
+| Entrada común               | 237,3 kB |  237,3 kB |
+| Listado de Notas            | 183,5 kB |   66,9 kB |
+| Primera apertura del editor |  14,6 kB |  131,4 kB |
+
+El precaché pasó de 76 recursos (1.750,81 KiB) a 77 (1.753,18 KiB), medidos antes de comprimir. En Chromium 153 de Playwright, una prueba en el mismo origen sirvió primero `index-Ds7nPQXL.js` y después `index-fS7ZSiBa.js`. La candidata quedó en espera con dos ventanas abiertas. Tras cerrar ambas, la aplicación reabrió sin red, conservó la sesión y recuperó un borrador de Notas cuya escritura se había bloqueado en la primera versión. El texto se guardó y sobrevivió a otra recarga. Se comprobó en escritorio y con el perfil iPhone 13 de Chromium.
+
+En cinco pasadas por compilación con el perfil iPhone 13, en el mismo servidor local y sin limitar red ni CPU, las marcas del navegador dieron estas medianas.
+
+| Intervalo                                                                                             |   Base | Candidata |
+| ----------------------------------------------------------------------------------------------------- | -----: | --------: |
+| Desde la navegación inicial hasta «Lista para abrir sin conexión», con sesión de prueba y caché vacía | 575 ms |    610 ms |
+| Desde la primera navegación a Notas, con el precaché listo, hasta mostrar el listado vacío            | 107 ms |     97 ms |
+| Desde el clic en una nota existente tras recargar el listado hasta montar el campo editable           | 330 ms |    331 ms |
+
+### Búsqueda local con datos sintéticos
+
+En el perfil iPhone 13 de Chromium 153 se cargaron 5.000 notas, 500 etiquetas y 20.000 asociaciones en IndexedDB. Con la instantánea ya preparada, se midió el intervalo entre el evento de entrada y el cambio del contador de resultados. En 30 consultas por compilación después de una ronda de calentamiento, la mediana pasó de 1.261,1 a 18,5 ms y el percentil 95 de 1.406,1 a 32,5 ms. Las seis consultas de la secuencia devolvieron los mismos conteos en ambas versiones. Las pruebas de búsqueda cubren además orden, filtros y separación entre cuentas.
+
+### Regresión en navegador
+
+Playwright 1.63.0 en Windows ejecutó 4/4 casos de WebKit 26.6 y 24/24 casos de PWA en Chromium. El caso de ruta sin visitar abrió por primera vez el listado y el editor de Notas sin red, guardó el texto y lo encontró con la búsqueda local. En los E2E de Chromium pasaron 117/119 en la primera ejecución. Las dos pruebas restantes agotaron el tiempo al tomar capturas (perfil móvil y diseño de 768 × 1024) y pasaron al repetir con un solo trabajador.
+
+`npm run test:local` pasó 3/3 contra Supabase local en Docker y Mailpit. Se comprobaron el alta, la recuperación por enlace y código y la sincronización con RPC y WebSocket locales.
+
+La validación física en Safari, iOS/iPadOS, Android y con lector de pantalla queda pendiente para esta candidata. IOS-06 requiere la transición en una PWA instalada en iPhone o iPad.
+
 ## Diagnóstico de notificaciones — 12 de octubre de 2026
 
 La interfaz ya existente en Configuración cumple el criterio funcional de mostrar mecanismo, permisos, avisos y renovación. [Verificación dirigida](audits/2026-10-12-notification-diagnostics.md): 7 unitarias y 4 E2E PWA correctos, cero reintentos E2E. La evidencia distingue fixtures/Chromium de lectura y entrega Android real; la captura móvil tiene una superposición cuya causa no se ha determinado. No se modificó código de producto.

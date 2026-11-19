@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useFormErrorFeedback } from '../../../shared/hooks/use-invalid-form-focus'
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import type { CalendarEvent } from '../../../shared/types/domain'
@@ -35,8 +36,9 @@ export function EventForm({
     control,
     handleSubmit,
     setValue,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, submitCount },
   } = useForm<EventFormValues>({
+    shouldFocusError: false,
     resolver: zodResolver(createEventFormSchema(initial)),
     defaultValues: eventFormDefaults(initial, day, timezone),
   })
@@ -52,15 +54,19 @@ export function EventForm({
     ),
   )
   const [error, setError] = useState('')
+  const disabled = busy || isSubmitting
+  const { formRef, errorId, errorProps } = useFormErrorFeedback<
+    keyof EventFormValues
+  >(errors, submitCount, isSubmitting)
   const message = (name: keyof EventFormValues) =>
     errors[name] ? (
-      <span className="field-error" id={`event-${name}-error`}>
+      <span className="field-error" id={errorId(name)}>
         {errors[name]?.message}
       </span>
     ) : null
-  const disabled = busy || isSubmitting
   return (
     <form
+      ref={formRef}
       className="event-form"
       aria-label={event ? 'Editar evento' : 'Crear evento'}
       noValidate
@@ -87,8 +93,7 @@ export function EventForm({
           placeholder="Haz espacio para algo importante…"
           maxLength={300}
           {...register('title')}
-          aria-invalid={Boolean(errors.title)}
-          aria-describedby="event-title-error"
+          {...errorProps('title')}
         />
         {message('title')}
         {initial?.recurrenceRule && (
@@ -102,69 +107,102 @@ export function EventForm({
           Todo el día
         </label>
         <div className="event-form-grid">
-          <label>
-            Fecha de inicio
-            <input
-              type="date"
-              {...register('startDate')}
-              aria-invalid={Boolean(errors.startDate)}
-            />
+          <div>
+            <label>
+              Fecha de inicio
+              <input
+                type="date"
+                {...register('startDate')}
+                {...errorProps('startDate')}
+              />
+            </label>
             {message('startDate')}
-          </label>
-          <label>
-            {allDay ? 'Último día (incluido)' : 'Fecha de fin'}
-            <input
-              type="date"
-              {...register('endDate')}
-              aria-invalid={Boolean(errors.endDate)}
-            />
+          </div>
+          <div>
+            <label>
+              {allDay ? 'Último día (incluido)' : 'Fecha de fin'}
+              <input
+                type="date"
+                {...register('endDate')}
+                {...errorProps('endDate')}
+              />
+            </label>
             {message('endDate')}
-          </label>
+          </div>
         </div>
         {!allDay && (
           <div className="event-form-grid">
-            <label>
-              Hora de inicio
-              <input type="time" {...register('startTime')} />
-            </label>
-            <label>
-              Hora de fin
-              <input type="time" {...register('endTime')} />
-            </label>
+            <div>
+              <label>
+                Hora de inicio
+                <input
+                  type="time"
+                  {...register('startTime')}
+                  {...errorProps('startTime')}
+                />
+              </label>
+              {message('startTime')}
+            </div>
+            <div>
+              <label>
+                Hora de fin
+                <input
+                  type="time"
+                  {...register('endTime')}
+                  {...errorProps('endTime')}
+                />
+              </label>
+              {message('endTime')}
+            </div>
           </div>
         )}
-        <label>
-          Zona horaria
-          <select {...register('timezone')}>
-            {[...new Set([zone, 'UTC', ...supportedTimezones()])].map(
-              (value) => (
-                <option key={value}>{value}</option>
-              ),
-            )}
-          </select>
+        <div>
+          <label>
+            Zona horaria
+            <select {...register('timezone')} {...errorProps('timezone')}>
+              {[...new Set([zone, 'UTC', ...supportedTimezones()])].map(
+                (value) => (
+                  <option key={value}>{value}</option>
+                ),
+              )}
+            </select>
+          </label>
           {message('timezone')}
-        </label>
+        </div>
         <p className="muted small">
           {allDay
             ? 'Los días completos conservan su fecha en todas las zonas.'
             : 'Las horas pertenecen a esta zona. Cambiarla mantiene la hora escrita y cambia el instante.'}
         </p>
-        <label>
-          Lugar <span className="muted">opcional</span>
-          <input
-            {...register('location')}
-            placeholder="Una dirección o sala"
-            maxLength={10000}
-          />
-        </label>
-        <label>
-          Descripción <span className="muted">opcional</span>
-          <textarea rows={3} {...register('description')} maxLength={10000} />
-        </label>
+        <div>
+          <label>
+            Lugar <span className="muted">opcional</span>
+            <input
+              {...register('location')}
+              {...errorProps('location')}
+              placeholder="Una dirección o sala"
+              maxLength={10000}
+            />
+          </label>
+          {message('location')}
+        </div>
+        <div>
+          <label>
+            Descripción <span className="muted">opcional</span>
+            <textarea
+              rows={3}
+              {...register('description')}
+              {...errorProps('description')}
+              maxLength={10000}
+            />
+          </label>
+          {message('description')}
+        </div>
         <label>
           Repetir
           <select
             value={customRule ? 'custom' : rule}
+            {...(!customRule && errorProps('recurrenceRule'))}
             onChange={(e) => {
               const custom = e.target.value === 'custom'
               setCustomRule(custom)
@@ -188,6 +226,7 @@ export function EventForm({
             Regla RRULE
             <input
               {...register('recurrenceRule')}
+              {...errorProps('recurrenceRule')}
               placeholder="FREQ=WEEKLY;COUNT=6"
               maxLength={1000}
             />

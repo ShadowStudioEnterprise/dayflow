@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useFormErrorFeedback } from '../../../shared/hooks/use-invalid-form-focus'
 import { useForm, useWatch } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import type { Task } from '../../../shared/types/domain'
@@ -32,8 +33,9 @@ export function TaskForm({
     handleSubmit,
     control,
     setValue,
-    formState: { errors, isSubmitting },
+    formState: { errors, isSubmitting, submitCount },
   } = useForm<TaskFormValues>({
+    shouldFocusError: false,
     resolver: zodResolver(createTaskFormSchema(initialTask)),
     defaultValues: taskFormDefaults(initialTask, timezone),
   })
@@ -59,14 +61,18 @@ export function TaskForm({
       )
     }
   })
+  const { formRef, errorId, errorProps, formId } = useFormErrorFeedback<
+    keyof TaskFormValues
+  >(errors, submitCount, isSubmitting)
   const message = (name: keyof TaskFormValues) =>
     errors[name] ? (
-      <span className="field-error" id={`task-${name}-error`}>
+      <span className="field-error" id={errorId(name)}>
         {errors[name]?.message}
       </span>
     ) : null
   return (
     <form
+      ref={formRef}
       className="task-form"
       onSubmit={submit}
       onChange={onDirty}
@@ -82,8 +88,7 @@ export function TaskForm({
           placeholder="¿Qué quieres hacer?"
           maxLength={300}
           {...register('title')}
-          aria-invalid={Boolean(errors.title)}
-          aria-describedby="task-title-error"
+          {...errorProps('title')}
         />
         {message('title')}
         <label htmlFor="task-description">
@@ -94,6 +99,7 @@ export function TaskForm({
           rows={3}
           placeholder="Un poco de contexto…"
           {...register('description')}
+          {...errorProps('description')}
         />
         {message('description')}
         <div className="task-form-grid">
@@ -119,53 +125,79 @@ export function TaskForm({
           </label>
         </div>
         <div className="task-form-grid">
-          <label>
-            Fecha límite
-            <input
-              type="date"
-              {...register('dueDate')}
-              readOnly={recurrenceLocked}
-              aria-invalid={Boolean(errors.dueDate)}
-            />
+          <div>
+            <label>
+              Fecha límite
+              <input
+                type="date"
+                {...register('dueDate')}
+                {...errorProps('dueDate')}
+                readOnly={recurrenceLocked}
+              />
+            </label>
             {message('dueDate')}
-          </label>
-          <label>
-            Hora límite <span className="muted">opcional</span>
-            <input
-              type="time"
-              {...register('dueTime')}
-              readOnly={recurrenceLocked}
-            />
-          </label>
+          </div>
+          <div>
+            <label>
+              Hora límite <span className="muted">opcional</span>
+              <input
+                type="time"
+                {...register('dueTime')}
+                {...errorProps('dueTime')}
+                readOnly={recurrenceLocked}
+              />
+            </label>
+            {message('dueTime')}
+          </div>
         </div>
         <details open={Boolean(task?.startAt || task?.recurrenceRule)}>
           <summary>Inicio, repetición y zona horaria</summary>
           <div className="task-form-grid">
-            <label>
-              Fecha de inicio
-              <input type="date" {...register('startDate')} />
+            <div>
+              <label>
+                Fecha de inicio
+                <input
+                  type="date"
+                  {...register('startDate')}
+                  {...errorProps('startDate')}
+                />
+              </label>
               {message('startDate')}
-            </label>
-            <label>
-              Hora de inicio
-              <input type="time" {...register('startTime')} />
-            </label>
+            </div>
+            <div>
+              <label>
+                Hora de inicio
+                <input
+                  type="time"
+                  {...register('startTime')}
+                  {...errorProps('startTime')}
+                />
+              </label>
+              {message('startTime')}
+            </div>
           </div>
-          <label>
-            Zona horaria
-            <select {...register('timezone')} disabled={recurrenceLocked}>
-              {[...new Set([selectedZone, 'UTC', ...supportedTimezones()])].map(
-                (zone) => (
+          <div>
+            <label>
+              Zona horaria
+              <select
+                {...register('timezone')}
+                {...errorProps('timezone')}
+                disabled={recurrenceLocked}
+              >
+                {[
+                  ...new Set([selectedZone, 'UTC', ...supportedTimezones()]),
+                ].map((zone) => (
                   <option key={zone}>{zone}</option>
-                ),
-              )}
-            </select>
+                ))}
+              </select>
+            </label>
             {message('timezone')}
-          </label>
+          </div>
           <label>
             Repetir
             <select
               value={customRule ? 'custom' : rule}
+              {...(!customRule && errorProps('recurrenceRule'))}
               disabled={recurrenceLocked}
               onChange={(e) => {
                 const custom = e.target.value === 'custom'
@@ -188,18 +220,21 @@ export function TaskForm({
             </select>
           </label>
           {customRule && (
-            <label>
-              Regla RRULE
-              <input
-                {...register('recurrenceRule')}
-                placeholder="FREQ=WEEKLY;BYDAY=MO,WE"
-                readOnly={recurrenceLocked}
-              />
-              <span className="muted small">
+            <div>
+              <label>
+                Regla RRULE
+                <input
+                  {...register('recurrenceRule')}
+                  {...errorProps('recurrenceRule', formId + '-recurrence-help')}
+                  placeholder="FREQ=WEEKLY;BYDAY=MO,WE"
+                  readOnly={recurrenceLocked}
+                />
+              </label>
+              <span id={formId + '-recurrence-help'} className="muted small">
                 Admite frecuencia diaria, semanal, mensual o anual; COUNT o
                 UNTIL para limitar la serie.
               </span>
-            </label>
+            </div>
           )}
           {message('recurrenceRule')}
           {rule && (
