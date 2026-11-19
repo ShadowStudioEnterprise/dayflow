@@ -1,5 +1,13 @@
 # Verificación — Fases 1–9, incluida PWA y Capacitor
 
+## Estado documentado al 19 de noviembre de 2026
+
+La guía de publicación reúne las verificaciones posteriores a la instantánea de octubre, con la fecha, la versión y el entorno de cada prueba. El 13 de noviembre se verificaron en Supabase alojado el historial de las siete migraciones y el catálogo (74/74 comprobaciones, referencia SQL `322f123`). El 18 de noviembre se confirmaron manualmente el alta y la recuperación por código con Brevo y un buzón externo en Vercel sobre `7ea033c`. [Matriz de evidencias por versión y entorno](release-validation.md#evidencia-por-versión-y-entorno).
+
+La guía recoge también las pruebas manuales de PWA en Windows, Android, macOS y iPhone, y la validación parcial del 19 de noviembre de la APK release firmada 0.9.0 (código 1) en el Redmi 9A. La prueba de actualización desde una release anterior compatible sigue pendiente. [Validación física de la APK candidata](release-validation.md#qa-08-validación-física-de-la-apk-candidata).
+
+Los resultados de CI y Vercel de octubre se refieren al SHA consultado en esa fecha. Cada comprobación posterior tiene su propia referencia documentada.
+
 ## Diagnóstico de notificaciones — 12 de octubre de 2026
 
 La interfaz ya existente en Configuración cumple el criterio funcional de mostrar mecanismo, permisos, avisos y renovación. [Verificación dirigida](audits/2026-10-12-notification-diagnostics.md): 7 unitarias y 4 E2E PWA correctos, cero reintentos E2E. La evidencia distingue fixtures/Chromium de lectura y entrega Android real; la captura móvil tiene una superposición cuya causa no se ha determinado. No se modificó código de producto.
@@ -8,9 +16,9 @@ La interfaz ya existente en Configuración cumple el criterio funcional de mostr
 
 [Revisión y evidencia](audits/2026-10-12-calendar-mobile.md): base `d3910ab`, 100 intentos con cuatro workers y 30 con uno, todos correctos, sin reintentos y con hashes de fuentes iguales antes/después. Se cierra el criterio de investigación por repeticiones controladas; no se afirma haber identificado o corregido una causa del calendario ni validado dispositivos físicos.
 
-## Estado vigente de CI y despliegue — 12 de octubre de 2026
+## Instantánea histórica de CI y despliegue — 12 de octubre de 2026
 
-Producción y CI corresponden a `main`, SHA
+En la consulta del 12 de octubre, producción y CI correspondían a `main`, SHA
 [`b7b2a69c2cab8c8c630783a0c7b3585f0a9597d6`](https://github.com/ShadowStudioEnterprise/dayflow/commit/b7b2a69c2cab8c8c630783a0c7b3585f0a9597d6).
 [Dayflow CI #17](https://github.com/ShadowStudioEnterprise/dayflow/actions/runs/38194437521)
 terminó `success`: **296 unitarias, 106 E2E y 20 PWA** correctos, junto con
@@ -18,7 +26,7 @@ documentación, portal, TypeScript, lint, formato y build. Ubuntu 24.04.5,
 Node 24.21.0 y npm 11.19.0; inicio 04:05:38 y última actualización 04:14:06
 Europe/Madrid del 12/10/2026.
 
-Vercel identifica el mismo SHA en producción:
+Vercel identificó el mismo SHA en producción:
 [`dpl_BBsU3TZUtcfzmt7ijJFC1fLreFTA`](https://vercel.com/shadow-studio3/dayflow/dpl_BBsU3TZUtcfzmt7ijJFC1fLreFTA),
 **READY** desde las 04:06:24.015, con 74 entradas de precaché y el alias
 [dayflow-by-shadowstudio.vercel.app](https://dayflow-by-shadowstudio.vercel.app).

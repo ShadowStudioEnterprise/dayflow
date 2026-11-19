@@ -20,7 +20,9 @@ Dexie v2 añade tres tablas locales: `notificationJobs`, `notificationStates` y 
 
 ## Verificación y aplicación
 
-Las pruebas usan PGlite (PostgreSQL embebido), creando roles `anon`/`authenticated` y `auth.uid()` de prueba; ejecutan la migración real y verifican RLS, foreign keys, fechas, auditoría y soft delete. No se ha aplicado la migración a un servicio externo.
+La validación inicial de `202609200001_foundation.sql` se hizo en PGlite (PostgreSQL embebido), con roles `anon`/`authenticated` y `auth.uid()` de prueba. Ejecutó la migración real y verificó RLS, foreign keys, fechas, auditoría y soft delete. En esa etapa, la aplicación a un servicio externo aún estaba pendiente.
+
+El 13 de noviembre de 2026, tras aplicar `202610120007_sync_hardening.sql` en Supabase alojado, se registraron **74/74 comprobaciones correctas** del historial de las siete migraciones y del catálogo. La referencia del SQL es `322f123`. [Auditoría del despliegue](audits/2026-10-12-sql-hardening.md#estado-del-despliegue).
 
 Para Supabase, configura un proyecto y aplica el archivo con SQL Editor, o inicializa Supabase CLI en este repositorio (`supabase init`), enlaza tu proyecto (`supabase link --project-ref ...`) y ejecuta `supabase db push`. Revisa el destino antes de aplicar migraciones. Usa una base vacía de desarrollo para esta migración inicial.
 
