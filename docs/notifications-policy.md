@@ -1,6 +1,6 @@
 # Política de notificaciones
 
-Dayflow 0.9.0 (Beta). Política incorporada el 9 de octubre de 2026; validación física pendiente.
+Dayflow 0.9.0 (Beta). Política incorporada el 9 de octubre de 2026; limitaciones revisadas el 19 de noviembre de 2026 (QA-07) con las pruebas físicas de AND-03 y AND-04.
 
 Guardar un recordatorio, sincronizarlo, programar su aviso y mostrarlo son estados distintos. Dayflow ofrece notificaciones de mejor esfuerzo; no garantiza alarmas críticas ni entrega exacta en todas las plataformas.
 
@@ -14,7 +14,11 @@ Los mensajes web utilizan contenido genérico. Los cambios offline no llegan al 
 
 Capacitor programa notificaciones locales con permisos del sistema. El planificador selecciona hasta 60 avisos próximos dentro de 366 días y reconcilia al reanudar la aplicación. La renovación requiere ejecución posterior. Batería, suspensión, permisos y restricciones del fabricante pueden afectar la entrega. Un identificador pendiente en el sistema no demuestra entrega puntual.
 
-Las pruebas en emulador no acreditan teléfonos físicos. Quedan pendientes reinicio, Doze, revocación/restauración de permisos, cambios horarios y suspensión prolongada. Consulta [recordatorios](reminders.md), [PWA y nativo](pwa-native.md) y [validación de publicación](release-validation.md).
+En Android, **Avisos prioritarios en este dispositivo** utiliza alarmas de reloj. Está desactivado por defecto y su preferencia es local por cuenta y dispositivo. Sigue necesitando permisos de notificaciones y alarmas exactas; puede consumir más batería. Consulta los [resultados y límites del modo prioritario](android-priority-alarms.md#resultados-físicos-de-la-apk-integrada--14-y-15-de-noviembre).
+
+En el Redmi Note 11S con Android 13 y la APK debug integrada 0.9.0 (código 1) de `dd4ac54`, AND-03 verificó emisión y recepción con sonido tras reiniciar y desbloquear. No se acreditó de forma independiente que Dayflow permaneciera cerrada tras reiniciar. AND-04 verificó entrada en `IDLE`, salida previa con motivo `alarm` y posterior emisión y recepción del aviso; el registro no identifica qué alarma causó la salida. **La entrega mientras el teléfono permanece en Doze profundo sigue sin verificarse.** AND-05 comprobó revocación y recuperación del permiso de notificaciones, manteniendo concedido el de alarmas exactas. La [auditoría física](audits/2026-10-29-redmi-note11s.md#apk-integrada-del-14-y-15-de-noviembre-de-2026) recoge los resultados y sus límites.
+
+Estas pruebas no acreditan otros modelos, versiones ni la candidata release firmada de QA-06. Siguen pendientes cambios horarios y suspensión prolongada en la APK integrada, revocación del permiso de alarmas exactas y las condiciones de reinicio y Doze señaladas. Las pruebas en emulador tampoco acreditan teléfonos físicos. iOS nativo está fuera del alcance actual; Safari y la PWA de iPhone/iPad se validan por separado. Consulta [recordatorios](reminders.md), [PWA y nativo](pwa-native.md) y [validación de publicación](release-validation.md).
 
 ## Diagnóstico en Configuración
 

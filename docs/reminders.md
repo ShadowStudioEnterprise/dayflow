@@ -34,7 +34,7 @@ El permiso no garantiza la entrega: Doze, ahorro de energía, modo silencio y aj
 
 La fase 9 generó los proyectos Android/iOS y sincronizó Core, App y Local Notifications 8, incluyendo los permisos de notificaciones y alarmas exactas. La variante [Dayflow Local](android-local.md) permite ejecutar las comprobaciones contra Supabase local desde un emulador. Los resultados de entrega realmente ejecutados se registran en [verificación](verification.md).
 
-Las pruebas de servicios usan IndexedDB real en Playwright, fake-indexeddb en Vitest y un doble del plugin para comprobar llamadas y errores. Sigue siendo necesario validar en teléfonos físicos el diálogo de permisos, denegación/revocación, Doze prolongado, reinicio y cambios de zona. Compilar y probar iOS requiere macOS/Xcode.
+Las pruebas de servicios usan IndexedDB real en Playwright, fake-indexeddb en Vitest y un doble del plugin para comprobar llamadas y errores. En el Redmi Note 11S, Android 13, APK debug integrada `dd4ac54`, se verificaron recepción tras reinicio y primer desbloqueo (AND-03), recepción después de salir de `IDLE` (AND-04) y revocación y recuperación del permiso de notificaciones (AND-05). Siguen sin verificarse la entrega durante Doze profundo, que Dayflow permaneciera cerrada tras reiniciar, la revocación del permiso de alarmas exactas, los cambios de zona y la suspensión prolongada en esa APK. Resultados y condiciones en la [guía de avisos prioritarios](android-priority-alarms.md#resultados-físicos-de-la-apk-integrada--14-y-15-de-noviembre) y la [política de notificaciones](notifications-policy.md). iOS nativo está descartado del alcance actual; estos resultados no validan Safari ni la PWA de iPhone/iPad.
 
 ## Referencias oficiales
 
