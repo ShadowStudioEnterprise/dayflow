@@ -44,7 +44,17 @@ Playwright 1.63.0 en Windows ejecutó 4/4 casos de WebKit 26.6 y 24/24 casos de 
 
 `npm run test:local` pasó 3/3 contra Supabase local en Docker y Mailpit. Se comprobaron el alta, la recuperación por enlace y código y la sincronización con RPC y WebSocket locales.
 
-La validación física en Safari, iOS/iPadOS, Android y con lector de pantalla queda pendiente para esta candidata. IOS-06 requiere la transición en una PWA instalada en iPhone o iPad.
+### Validación con Narrador de Windows
+
+El 19 de noviembre de 2026, el propietario escuchó los avisos de Narrador `10.0.26100.9949` en Edge `157.0.4341.60` sobre Windows 11 (compilación 26200). La sesión ejecutó `734a68d` en un servidor local con una cuenta ficticia. Playwright activó los botones con Enter y registró el foco y la descripción accesible. El propietario confirmó los mensajes que oyó.
+
+| Formulario | Foco observado                                                                               | Mensaje confirmado                                                                                               |
+| ---------- | -------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| Acceso     | Email y, al corregirlo y reenviar, Contraseña                                                | «Escribe un email válido.» y «Escribe tu contraseña.»                                                            |
+| Tareas     | Título y, al corregirlo y reenviar, Hora de inicio dentro de la sección inicialmente cerrada | «Escribe un título.» y «Añade una hora de inicio.»                                                               |
+| Eventos    | Título y, al corregirlo y reenviar, Fecha de fin                                             | «Escribe un título.» en el primer envío. En el segundo, el propietario oyó la indicación de introducir la fecha. |
+
+La validación física en Safari, iOS/iPadOS y Android queda pendiente para esta candidata. IOS-06 requiere la transición en una PWA instalada en iPhone o iPad.
 
 ## Diagnóstico de notificaciones — 12 de octubre de 2026
 
