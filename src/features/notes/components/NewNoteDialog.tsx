@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react'
 import { Modal } from '../../../shared/components/Modal'
-import { emptyDocument } from '../services/note-document'
+import { emptyDocument } from '../services/note-empty-document'
 import type { NoteService } from '../services/note-service'
 import type { Note } from '../../../shared/types/domain'
 import {

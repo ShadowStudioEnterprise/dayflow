@@ -2,6 +2,12 @@
 
 La validación manual de la PWA en Windows cubrió la instalación y la reapertura sin red el 5 de noviembre. El 13 de noviembre se superaron en Chrome y Edge la actualización real con sesión, datos y borrador conservados y la sincronización de una cola pendiente tras una interrupción. [Auditoría de Windows](audits/2026-11-05-pwa-windows.md)
 
+## Compatibilidad web objetivo
+
+La compilación de Dayflow apunta a Safari 16.4 o posterior en macOS y Safari/PWA desde iOS y iPadOS 16.4. Para Android con Capacitor, el objetivo es Android System WebView basado en Chromium 111 o posterior. Son mínimos técnicos para la candidata, derivados de la compilación de Vite 8 y del CSS de Tailwind 4. La evidencia del APK histórico en WebView 97 sigue circunscrita a esa versión. [Objetivos de Vite 8](https://v8.vite.dev/config/build-options.html#build-target) · [Compatibilidad de Tailwind 4](https://tailwindcss.com/docs/compatibility#browser-support).
+
+El recorrido automatizado de navegación, teclado y formularios usa WebKit de Playwright con perfiles de escritorio y móvil. Ejecuta `npx playwright install webkit` si falta el navegador y luego `npx playwright test --config playwright.webkit.config.ts`. La validación física requiere Safari y, para IOS-06, una transición A → B en la PWA instalada en el mismo origen. Registra las dos compilaciones, el worker de cada una y la conservación de sesión, datos y borrador. [Matriz de iPhone](audits/2026-11-18-pwa-ios.md).
+
 ## Evidencia por versión y entorno
 
 **QA-05 · Consolidación del 18/11/2026.** La matriz reúne pruebas ya realizadas. El SHA del servidor identifica el despliegue consultado; por sí solo no identifica la versión activa en una PWA instalada. Todas las fechas son de 2026.

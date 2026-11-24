@@ -112,7 +112,7 @@ it('recupera el último documento tras perder la instancia antes del debounce', 
   saver.change({ title: 'Sin guardar', content, color: 'rose' })
   expect(save).not.toHaveBeenCalled()
   saver.stopTimer() // Simulate losing all in-memory state without lifecycle flush.
-  const recovery = readEmergencyDrafts(note.userId)[0]!
+  const recovery = (await readEmergencyDrafts(note.userId))[0]!
   expect(recovery.note).toMatchObject({
     title: 'Sin guardar',
     content,
@@ -128,7 +128,7 @@ it('recupera el último documento tras perder la instancia antes del debounce', 
   )
   expect(reopened.getSnapshot()).toMatchObject({ dirty: true, recovered: true })
   expect(await reopened.flush()).toBe(true)
-  expect(readEmergencyDrafts(note.userId)).toEqual([])
+  expect(await readEmergencyDrafts(note.userId)).toEqual([])
 })
 
 it('mantiene la recuperación tras fallar IndexedDB y sólo la elimina al guardar una copia', async () => {
@@ -138,7 +138,7 @@ it('mantiene la recuperación tras fallar IndexedDB y sólo la elimina al guarda
   await saver.flush()
   saver.change({ title: 'Último cambio tras el fallo' })
   saver.stopTimer()
-  const recovery = readEmergencyDrafts(note.userId)[0]!
+  const recovery = (await readEmergencyDrafts(note.userId))[0]!
   const reopened = new NoteAutosave(
     note.id,
     recovery.note,
@@ -147,11 +147,11 @@ it('mantiene la recuperación tras fallar IndexedDB y sólo la elimina al guarda
     recovery,
   )
   expect(await reopened.flush()).toBe(false)
-  expect(readEmergencyDrafts(note.userId)[0]!.note.title).toBe(
+  expect((await readEmergencyDrafts(note.userId))[0]!.note.title).toBe(
     'Último cambio tras el fallo',
   )
   reopened.preservedAsCopy()
-  expect(readEmergencyDrafts(note.userId)).toEqual([])
+  expect(await readEmergencyDrafts(note.userId)).toEqual([])
 })
 
 it('aísla cuentas y borradores simultáneos de la misma nota', async () => {
@@ -161,11 +161,11 @@ it('aísla cuentas y borradores simultáneos de la misma nota', async () => {
   first.change({ title: 'Pestaña A' })
   second.change({ title: 'Pestaña B' })
   second.stopTimer()
-  expect(readEmergencyDrafts('otro-usuario')).toEqual([])
-  expect(readEmergencyDrafts(note.userId)).toHaveLength(2)
+  expect(await readEmergencyDrafts('otro-usuario')).toEqual([])
+  expect(await readEmergencyDrafts(note.userId)).toHaveLength(2)
   await first.flush()
   expect(
-    readEmergencyDrafts(note.userId).map((entry) => entry.note.title),
+    (await readEmergencyDrafts(note.userId)).map((entry) => entry.note.title),
   ).toEqual(['Pestaña B'])
 })
 
@@ -189,7 +189,16 @@ it('no bloquea la edición si también falla la copia de emergencia', async () =
   expect(saver.getSnapshot().recoveryError).toBe('')
 })
 
-it('ignora copias corruptas sin romper la recuperación', () => {
+it('ignora copias corruptas sin romper la recuperación', async () => {
   localStorage.setItem(`dayflow:note-draft:v1:${note.userId}:corrupto`, '{')
-  expect(readEmergencyDrafts(note.userId)).toEqual([])
+  expect(await readEmergencyDrafts(note.userId)).toEqual([])
+})
+
+it('omite una copia que se retira mientras se carga el esquema', async () => {
+  const saver = new NoteAutosave(note.id, note, { save: vi.fn() })
+  saver.change({ title: 'Borrador pendiente' })
+  saver.stopTimer()
+  const recovery = readEmergencyDrafts(note.userId)
+  saver.preservedAsCopy()
+  expect(await recovery).toEqual([])
 })

@@ -5,6 +5,7 @@ import { Search } from 'lucide-react'
 import { usePreferences } from '../../app/store/preferences'
 import {
   createSearchService,
+  prepareSearchData,
   searchKinds,
   searchLabels,
   searchRecords,
@@ -35,18 +36,22 @@ export default function SearchPanel({
   }, [])
   const state = useLiveQuery(async () => {
     try {
-      return { data: await service.list(), error: '' }
+      return { search: prepareSearchData(await service.list()), error: '' }
     } catch {
       return {
-        data: null,
+        search: null,
         error: 'No se pudo buscar en los datos de este dispositivo.',
       }
     }
   }, [service, revision])
   const results = useMemo(
     () =>
-      state?.data
-        ? searchRecords(state.data, { query, kind, tagId, archived }, timezone)
+      state?.search
+        ? searchRecords(
+            state.search,
+            { query, kind, tagId, archived },
+            timezone,
+          )
         : [],
     [state, query, kind, tagId, archived, timezone],
   )
@@ -97,14 +102,15 @@ export default function SearchPanel({
             onChange={(event) => setTagId(event.target.value)}
           >
             <option value="">Todas las etiquetas</option>
-            {state?.data?.tags.map((tag) => (
+            {state?.search?.data.tags.map((tag) => (
               <option key={tag.id} value={tag.id}>
                 {tag.name}
               </option>
             ))}
-            {tagId && !state?.data?.tags.some((tag) => tag.id === tagId) && (
-              <option value={tagId}>Etiqueta no disponible</option>
-            )}
+            {tagId &&
+              !state?.search?.data.tags.some((tag) => tag.id === tagId) && (
+                <option value={tagId}>Etiqueta no disponible</option>
+              )}
           </select>
         </label>
       </div>

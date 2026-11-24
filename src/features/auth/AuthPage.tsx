@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useFormErrorFeedback } from '../../shared/hooks/use-invalid-form-focus'
 import { Link, Navigate, useLocation } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -115,8 +116,22 @@ function AuthForm({ mode: routeMode }: { mode: RouteMode }) {
     register,
     handleSubmit,
     reset,
-    formState: { errors, isSubmitting },
-  } = useForm<Fields>({ resolver: zodResolver(formSchema) })
+    formState: { errors, isSubmitting, submitCount },
+  } = useForm<Fields>({
+    resolver: zodResolver(formSchema),
+    shouldFocusError: false,
+  })
+  const { formRef, errorId, errorProps } = useFormErrorFeedback<keyof Fields>(
+    errors,
+    submitCount,
+    isSubmitting,
+  )
+  const message = (name: keyof Fields) =>
+    errors[name] ? (
+      <span className="field-error" id={errorId(name)}>
+        {errors[name]?.message}
+      </span>
+    ) : null
   if (recovery && routeMode !== 'update')
     return <Navigate to="/auth/update-password" replace />
   if (user && !recovery && routeMode !== 'update')
@@ -218,65 +233,65 @@ function AuthForm({ mode: routeMode }: { mode: RouteMode }) {
                 contraseña.
               </div>
             )}
-          <form onSubmit={submit} noValidate>
+          <form ref={formRef} onSubmit={submit} noValidate>
             {mode === 'register' && (
-              <label>
-                Tu nombre
-                <input
-                  autoComplete="name"
-                  {...register('name')}
-                  aria-invalid={Boolean(errors.name)}
-                />
-                {errors.name && (
-                  <span className="field-error">{errors.name.message}</span>
-                )}
-              </label>
+              <div>
+                <label>
+                  Tu nombre
+                  <input
+                    autoComplete="name"
+                    {...register('name')}
+                    {...errorProps('name')}
+                  />
+                </label>
+                {message('name')}
+              </div>
             )}
             {mode !== 'update' && !enteringCode && (
-              <label>
-                Email
-                <input
-                  type="email"
-                  placeholder="tu@ejemplo.com"
-                  autoComplete="email"
-                  {...register('email')}
-                  aria-invalid={Boolean(errors.email)}
-                />
-                {errors.email && (
-                  <span className="field-error">{errors.email.message}</span>
-                )}
-              </label>
+              <div>
+                <label>
+                  Email
+                  <input
+                    type="email"
+                    placeholder="tu@ejemplo.com"
+                    autoComplete="email"
+                    {...register('email')}
+                    {...errorProps('email')}
+                  />
+                </label>
+                {message('email')}
+              </div>
             )}
             {enteringCode && (
-              <label>
-                Código de seis cifras
-                <input
-                  type="text"
-                  inputMode="numeric"
-                  autoComplete="one-time-code"
-                  {...register('token')}
-                  aria-invalid={Boolean(errors.token)}
-                />
-                {errors.token && (
-                  <span className="field-error">{errors.token.message}</span>
-                )}
-              </label>
+              <div>
+                <label>
+                  Código de seis cifras
+                  <input
+                    type="text"
+                    inputMode="numeric"
+                    autoComplete="one-time-code"
+                    {...register('token')}
+                    {...errorProps('token')}
+                  />
+                </label>
+                {message('token')}
+              </div>
             )}
             {mode !== 'reset' && !enteringCode && (
-              <label>
-                Contraseña
-                <input
-                  type="password"
-                  autoComplete={
-                    mode === 'login' ? 'current-password' : 'new-password'
-                  }
-                  {...register('password')}
-                  aria-invalid={Boolean(errors.password)}
-                />
-                {errors.password && (
-                  <span className="field-error">{errors.password.message}</span>
-                )}
-              </label>
+              <div>
+                <label>
+                  Contraseña
+                  <input
+                    type="password"
+                    autoComplete={
+                      mode === 'login' ? 'current-password' : 'new-password'
+                    }
+                    {...register('password')}
+                    {...errorProps('password')}
+                  />
+                </label>
+                {message('password')}
+              </div>
             )}
             {mode === 'login' && (
               <Link className="text-link" to="/auth/reset-password">

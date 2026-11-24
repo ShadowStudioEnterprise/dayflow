@@ -30,7 +30,7 @@ Se buscan notas, tareas, eventos, recordatorios e Inbox. Títulos, contenido pla
 
 Los resultados se agrupan por tipo. Se puede filtrar por tipo y etiqueta, incluir notas archivadas y abrir el editor original. Las tareas completadas/canceladas siguen localizables con su estado visible. Los borrados lógicos se excluyen siempre. Se muestran 20 resultados por grupo, ampliables; el contador refleja el total. Flecha abajo desde el campo lleva al primer resultado; arriba/abajo recorre enlaces, Enter abre y Escape cierra el diálogo.
 
-`createSearchService` obtiene una instantánea por cuenta de Dexie; `searchRecords` es una proyección pura y no genera escrituras. `useLiveQuery` actualiza los resultados cuando cambian documentos, etiquetas o asociaciones, incluidos cambios sincronizados. Se distinguen carga, error con reintento, consulta vacía y ausencia de coincidencias. Los textos se renderizan como texto de React, nunca como HTML.
+`createSearchService` obtiene una instantánea por cuenta de Dexie. Al recibirla, el panel agrupa las etiquetas vigentes por tipo e ID de entidad y reutiliza ese mapa al teclear o cambiar filtros. `useLiveQuery` vuelve a prepararlo cuando cambian los documentos, las etiquetas o sus asociaciones. `searchRecords` proyecta los resultados en memoria sin escrituras. Se distinguen carga, error con reintento, consulta vacía y ausencia de coincidencias. Los textos se renderizan como texto de React, nunca como HTML.
 
 Este MVP recorre los documentos locales en memoria. No es un índice full-text ni garantiza encontrar documentos aún no descargados. La frontera de servicio permite sustituir el recorrido por un índice local/remoto más adelante. No se añaden dependencias, tablas ni migraciones en esta fase.
 

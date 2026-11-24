@@ -57,12 +57,20 @@ export function createTaskFormSchema(task?: Task) {
         else {
           startAt = value
           if (value && value.length === 10)
-            throw new Error('Añade una hora de inicio.')
+            context.addIssue({
+              code: 'custom',
+              path: ['startTime'],
+              message: 'Añade una hora de inicio.',
+            })
         }
       } catch (error) {
         context.addIssue({
           code: 'custom',
-          path: [`${prefix}Date`],
+          path: [
+            values[`${prefix}Date`] && values[`${prefix}Time`]
+              ? `${prefix}Time`
+              : `${prefix}Date`,
+          ],
           message: error instanceof Error ? error.message : 'Fecha no válida.',
         })
       }

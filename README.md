@@ -72,6 +72,8 @@ Git usa LF para los archivos de texto también en Windows, aunque `core.autocrlf
 
 Las pruebas de repositorios cubren transacciones, cola, rollback, aislamiento por cuenta, borrado lógico, persistencia y concurrencia. Las pruebas SQL ejecutan la migración en PGlite con un esquema de Auth simulado y comprueban RLS y restricciones reales de PostgreSQL. Los componentes verifican formularios y rutas protegidas. Playwright cubre escritorio y tamaño móvil, modo oscuro persistente, navegación, diálogo, 320 px y desconexión.
 
+La [guía de compatibilidad web](docs/release-validation.md#compatibilidad-web-objetivo) recoge los mínimos técnicos de Safari, iOS/iPadOS y Android WebView y el comando para repetir el recorrido de WebKit.
+
 Los E2E de Foundation ejecutan sin backend; los módulos privados pasan por el formulario de login y el cliente Supabase, con respuestas HTTP interceptadas exclusivamente en Playwright para un dominio de prueba. Cubren creación, edición, persistencia, desconexión, filtros, eliminación e independencia de cuentas en desktop y móvil. Las notas verifican formato y autoguardado; el calendario comprueba fechas, eventos de varios días, series, tareas y protección de cambios sin guardar. Los escenarios de sincronización ejecutan las RPC SQL en PGlite y comprueban dos instalaciones independientes, conflictos y recuperación de fallos. No hay bypass de autenticación en la aplicación. Además, `npm run test:local` comprueba Auth, correos capturados en Mailpit, RPC, WebSocket Realtime y aislamiento RLS contra Supabase local real en Docker, sin interceptar HTTP. Consulta [los resultados y límites de verificación](docs/verification.md).
 
 ## Inbox, etiquetas y búsqueda

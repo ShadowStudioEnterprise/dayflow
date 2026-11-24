@@ -31,10 +31,6 @@ export const noteExtensions = [
   }),
 ]
 const schema = getSchema(noteExtensions)
-export const emptyDocument: JSONContent = {
-  type: 'doc',
-  content: [{ type: 'paragraph' }],
-}
 
 /** Validate at the service boundary; derive search text from canonical JSON. */
 export function normalizeDocument(content: JSONContent) {

@@ -54,6 +54,32 @@ export function createSearchService(
 export type SearchData = Awaited<
   ReturnType<ReturnType<typeof createSearchService>['list']>
 >
+type TaggableKind = keyof typeof associationTable
+
+export function prepareSearchData(data: SearchData) {
+  const tags = new Map(
+    data.tags.filter((tag) => !tag.deletedAt).map((tag) => [tag.id, tag.name]),
+  )
+  const tagsByEntity = new Map<
+    TaggableKind,
+    Map<string, { id: string; name: string }[]>
+  >()
+  for (const kind of ['notes', 'tasks', 'events'] as const) {
+    const byId = new Map<string, { id: string; name: string }[]>()
+    for (const link of data[associationTable[kind]]) {
+      const name = tags.get(link.tagId)
+      if (link.deletedAt || name === undefined) continue
+      let entityTags = byId.get(link.entityId)
+      if (!entityTags) {
+        entityTags = []
+        byId.set(link.entityId, entityTags)
+      }
+      entityTags.push({ id: link.tagId, name })
+    }
+    tagsByEntity.set(kind, byId)
+  }
+  return { data, tagsByEntity }
+}
 export interface SearchResult {
   kind: SearchKind
   id: string
@@ -72,18 +98,13 @@ export interface SearchFilters {
   archived: boolean
 }
 export function searchRecords(
-  data: SearchData,
+  { data, tagsByEntity }: ReturnType<typeof prepareSearchData>,
   filters: SearchFilters,
   timezone: string,
 ) {
   const query = searchText(filters.query)
   if (!query && !filters.tagId) return []
   const terms = query.split(/\s+/).filter(Boolean)
-  const tags = new Map(
-    data.tags
-      .filter((item) => !item.deletedAt)
-      .map((item) => [item.id, item.name]),
-  )
   const result: SearchResult[] = []
   for (const kind of searchKinds) {
     if (filters.kind !== 'all' && filters.kind !== kind) continue
@@ -95,19 +116,11 @@ export function searchRecords(
         continue
       const relations =
         kind === 'notes' || kind === 'tasks' || kind === 'events'
-          ? data[associationTable[kind]].filter(
-              (link) =>
-                !link.deletedAt &&
-                link.entityId === item.id &&
-                tags.has(link.tagId),
-            )
+          ? (tagsByEntity.get(kind)?.get(item.id) ?? [])
           : []
-      if (
-        filters.tagId &&
-        !relations.some((link) => link.tagId === filters.tagId)
-      )
+      if (filters.tagId && !relations.some((tag) => tag.id === filters.tagId))
         continue
-      const names = relations.map((link) => tags.get(link.tagId)!)
+      const names = relations.map((tag) => tag.name)
       const body =
         'plainTextContent' in item
           ? item.plainTextContent
